@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>淘房网</title>
+
+    <!-- 引入样式 -->
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="app">
+aaa
+
+</div>
+
+<!-- 引入组件库 -->
+<script src="../js/vue.js"></script>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/axios-0.18.0.js"></script>
+
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            dataList: [],//当前页要展示的列表数据
+            loginTip: "登录使用完整功能~",
+            loginBtnText: "登录",
+            searchCity: "",
+            uname: ""
+        },
+
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+            this.getAll();
+        },
+
+        methods: {
+
+            getAll() {
+                //发送ajax请求
+                axios.get("/tenant/").then((res) => {
+                    console.log(res);
+                    res.data.data.forEach(item => {
+                        // 添加商品数量属性
+                        item.quantity = 1;
+                    });
+                    this.dataList = res.data.data;
+
+                    if (res.data.msg) {
+                        this.uname = res.data.msg
+                        this.loginTip = "欢迎您，" + this.uname;
+                        this.loginBtnText = "退出";
+                    }
+                });
+            },
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://plantpad.samlab.cn/index.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>GDP-KG_America</title>
+    <!-- 引入 logo 图片 -->
+    <link rel="icon" type="image/png" href="ziyuan/imgs/logo.png">
+    <!-- 设置 logo 样式 -->
+    <style>
+        /* 设置 logo 图片大小 */
+        .logo {
+            width: 50px; /* 根据需要调整大小 */
+            height: auto; /* 自适应高度 */
+            margin-right: 10px; /* 可以根据需要调整 logo 与标题的间距 */
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'element-icons';
+            src: url('ziyuan/plugins/elementui/fonts/element-icons.woff') format('woff');
+        }
+    </style>
+    <!-- 引入组件库 -->
+    <script src="ziyuan/js/vue.js"></script>
+    <script type="text/javascript" src="ziyuan/js/jquery.min.js"></script>
+    <script src="ziyuan/js/axios-0.18.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="ziyuan/plugins/elementui/index.css">
+    <script src="ziyuan/plugins/elementui/index.js"></script>
+
+    <link rel="stylesheet" href="ziyuan/GDP-KG/index2.css">
+    <link rel="stylesheet" href="ziyuan/GDP-KG/nav.css">
+    <link rel="stylesheet" href="ziyuan/GDP-KG/foot.css">
+    <style>
+        .foot-left {
+            width: 38.7vw;
+            height: 100%;
+            display: inline;
+            margin-top: 3vw;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <div class="header">
+
+        <div class="nav">
+
+            <div class="nav-logo"></div>
+            <!--            <img src="./imgs/顶部logo.png" style="height: 30px;margin-top: 0px">-->
+<!--            <img src="ziyuan/imgs/顶部logo.png" alt="顶部logo" style="height: 30px;">-->
+            <a href="http://gdpkg.samlab.cn/"><img src="ziyuan/imgs/顶部logo.png" alt="顶部logo" style="height: 2vw;"></a>
+            <!--            <div class="nav-title" style="background-color: #3c6db0">-->
+            <!--            <img src="./imgs/顶部logo.png" style="height: 30px;margin-top: 0px">-->
+            <!--            </div>-->
+
+
+            <div class="nav-items">
+                <div class="nav-item" onclick="window.location.href = 'http://127.0.0.1:8889/backStage';">
+                    HOME
+                    <div class="line" style="margin-left:  0.59vw;"></div>
+                </div>
+
+                <div class="nav-item-select">
+                    Browse
+                    <div class="dropdown-content">
+                        <div class="nav-item" onclick="window.location.href = 'http://china.gdpkg.samlab.cn/';">China</div>
+                        <div class="nav-item" onclick="window.location.href = 'http://gdpkg.samlab.cn/japan_home.html';">Japan</div>
+                        <div class="nav-item" onclick="window.location.href = 'http://gdpkg.samlab.cn/Australia.html';">Australia</div>
+                    </div>
+                </div>
+
+<!--                <div class="nav-item">-->
+<!--                    Search-->
+
+<!--                </div>-->
+
+                <div class="nav-item-select">
+                    Language switch
+                    <div class="dropdown-content" style="margin-left: 2vw">
+                        <div class="nav-item" onclick="window.location.href = '/home2.html';">日本語</div>
+                    </div>
+                </div>
+<!--                <div class="nav-item" onclick="window.location.href = 'http://127.0.0.1:8889/backStage';">-->
+<!--                    Backstage-->
+<!--                </div>-->
+<!--                <div class="nav-item">-->
+<!--                    About-->
+<!--                </div>-->
+            </div>
+        </div>
+        <div class="head">
+
+            <!--第一张-->
+            <div class="head_title" style=" font-size: 2.3vw;margin-left: 45.89vw;margin-top: 0.9vw;width: 94vw;">
+                <p>Welcome to the Dutch Pesticide Advisory Website</p>
+            </div>
+            <div class="head_txt" style="margin-left: 45.89vw;margin-top: -5vw; font-size: 1.3vw">
+                <p>Provide Pesticide Solutions Globally</p>
+            </div>
+            <div class="head_txt" style="margin-left: 45.89vw;margin-top: -2vw; font-size: 1.2vw;width:60vw;">
+                <p>
+                    Unravel the Intriguing Mysteries of plant Pathology: Explore the underlying causes,
+                    diverse symptoms, and profound impact on plant health, unraveling the mysteries that lie within.
+                </p>
+            </div>
+            <div class="head_button" style="flex-direction: column;">
+                <button onclick="window.location.href='/answer'"
+                        style="margin-top: 2vw; margin-left: 93vw; height: 3.5vw; width: 12vw; font-size: 2vw;
+               background-color: #FA8C61; border: none; border-radius: 1vw;color: white;
+               cursor: pointer; transition: background-color 0.3s ease;">
+                    <span style="vertical-align: middle;">Q&A</span>
+                    <span style="vertical-align: middle; margin-left: 1vw;">&rarr;</span>
+                </button>
+
+
+                <button onclick="window.location.href='/gragh.html'"
+                        style="margin-top: 1.5vw; margin-left: 93vw; height: 3.5vw; width: 12vw; font-size: 2vw;
+               background-color: #009E38; border: none; border-radius: 1vw;color: white;
+               cursor: pointer; transition: background-color 0.3s ease;">
+
+                    <span style="vertical-align: middle;">Gragh</span>
+                    <span style="vertical-align: middle; margin-left: 1vw;">&rarr;</span>
+                </button>
+            </div>
+            <div style="margin-top: 200px;margin-left: 300px;height: 30px;width: 100px"></div>
+
+            <div style="background-color: #cf9236"></div>
+
+            <!--element按钮-->
+            <!--            <el-button type="warning" onclick="window.location.href='http://127.0.0.1:8889/answer'"
+                                   style="margin-top: 361px;margin-left: 246px;height: 60px;width: 178px;font-size: 27px;">
+                            Q&A&rarr;
+                        </el-button>
+                        <el-button type="success" onclick="window.location.href='/gragh.html'"
+                                   style="margin-top: 3px;margin-left: 11px;height: 60px;width: 178px;font-size: 27px;">
+                            Gragh&rarr;
+                        </el-button>-->
+
+
+            <!--            <button onclick="window.location.href='http://127.0.0.1:8889/answer'"-->
+            <!--                    style="margin-top: 300px; margin-left: 255px; height: 62px; width: 178px; font-size: 20px;-->
+            <!--               background-color: #FA8C61; border: none; border-radius: 5px;color: white;-->
+            <!--               cursor: pointer; transition: background-color 0.3s ease;">-->
+            <!--                <span style="vertical-align: middle;">Q&A</span>-->
+            <!--                <span style="vertical-align: middle; margin-left: 5px;">&rarr;</span>-->
+            <!--            </button>-->
+
+
+            <!--            <button onclick="window.location.href='/gragh.html'"-->
+            <!--                    style="margin-top: 1px; margin-left: 11px; height: 62px; width: 178px; font-size: 20px;-->
+            <!--               background-color: #009E38; border: none; border-radius: 5px;color: white;-->
+            <!--               cursor: pointer; transition: background-color 0.3s ease;">-->
+
+            <!--                <span style="vertical-align: middle;">Gragh</span>-->
+            <!--                <span style="vertical-align: middle; margin-left: 5px;">&rarr;</span>-->
+            <!--            </button>-->
+
+
+        </div>
+    </div>
+    <!--第二张-->
+    <div class="body-zero">
+        <p style="font-size: 2.5vw;">Website Introduction</p>
+    </div>
+    <div id="body-one" class="body-one">
+        <div class="body-one-head-body">
+            <div class="body-one-head-body-left">
+
+                <div style="	display: flex;flex-flow: column;">
+                    <p style="	width: 23.96vw;height: 2.2vw;font-size: 2.4vw;font-family: Arial, Arial-Bold;
+                    font-weight: 700;
+                    text-align: left;
+                    color: #333333;
+                    margin-top: 3.91vw;
+                    margin-bottom: 0;margin-left: 9vw">About Us</p>
+
+                </div>
+
+                <div class="body-one-head-body-left-head">
+                    <div class="body-one-head-body-left-head-text">
+                        <p>Global Data of Pesticide Knowledge Graph</p>
+                    </div>
+
+                </div>
+                <div class="body-one-head-body-left-text">
+
+                    We are unwavering in our commitment to sourcing and integrating data from reputable andauthoritative sources,
+                    ensuring the accuracy and credibility of the information that we provide on ourwebsite. We maintain the timeliness
+                    and completeness of our database by continuously updating andsupplementing the data from a diverse array of sources.
+
+                </div>
+                <div class="body-one-head-body-left-bottom">
+                    <div class="body-one-head-body-left-bottom-margin1">
+                        <div class="body-one-head-body-left-bottom-head">
+                            <p>7000+</p>
+                        </div>
+                        <div class="body-one-head-body-left-bottom-bottom">
+                            knowledge node
+                        </div>
+                    </div>
+                    <div class="body-one-head-body-left-bottom-margin2">
+                        <div class="body-one-head-body-left-bottom-head">
+                            <p>200000+</p>
+                        </div>
+                        <div class="body-one-head-body-left-bottom-bottom">
+                            knowledge relations
+                        </div>
+                    </div>
+                    <div class="body-one-head-body-left-bottom-margin3">
+                        <div class="body-one-head-body-left-bottom-head">
+                            <p>2</p>
+                        </div>
+                        <div class="body-one-head-body-left-bottom-bottom">
+                            usage pattern
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--            <div>-->
+            <!--                <img style="	width: 30.77vw;-->
+            <!--                height: 31.15vw;-->
+            <!--                margin-left: 5vw;" src="./imgs/介绍.png">-->
+            <!--            </div>-->
+            <div>
+                <img style="	width: 31.77vw;
+                            height: 21.15vw;
+                            margin-top: 0vw;
+                            margin-left: 11vw;" src="ziyuan/imgs/Netherland/喷洒农药2.jpg">
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--第三张服务-->
+    <div id="body-two" class="body-two" style="height: 20vw">
+        <div class="body-one-head" style="height: 20vw">
+            <!--            <p class="body-one-head-title">Our Services</p>-->
+
+            <!--            <div class="body-one-head-icon">-->
+            <div style="width: 100%; height: 100%; background: url('ziyuan/imgs/Netherland/底.png') no-repeat center center; background-size: cover;">
+                <div style="	display: flex;flex-flow: column;">
+                    <p style="	width: 100%;height: 2.2vw;font-size: 2.4vw;font-family: Arial, Arial-Bold;
+                    font-weight: 700;color: white;
+                    text-align: left;
+                    /*color: #333333;*/
+                    margin-top: 1.91vw;
+                    margin-bottom: 0;margin-left:9vw">Explore a whole new world of plant diseases</p>
+
+                </div>
+                <div class="body-two-text"
+                     style="margin-top: 4vw;margin-left: 9vw;width: 82vw;color: white;">
+                    Allow us to introduce our website, a dedicated platform for knowledge sharing and
+                    interactive Q&A in the realm of pesticides. By constructing a detailed pesticide
+                    knowledge map, we integrate information on types, mechanisms, usage methods,
+                    safety precautions, and more, providing users with comprehensive and accurate
+                    pesticide knowledge.
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="body-zero">
+        <p style="font-size: 2.5vw;">Our service</p>
+    </div>
+    <div class="flex-container">
+        <div>
+            <img style="	width: 32vw;
+                            height: 20vw;
+                            margin-top: 0vw;
+                            margin-left: 9vw;" src="ziyuan/imgs/Netherland/虫害叶2.jpg">
+        </div>
+        <div class="middle-column">
+            <p class="text-white">
+                <span class="large-text">Disease</span><br></span><br>
+                introduction
+            </p>
+        </div>
+        <div class="right-column">
+            <p class="text-green">Our Services offers a Detailed DiseaseIntroduction,
+                exploring the correlationbetween diseases and specific crops.
+                Wedelve into which crops are susceptibleto common diseases,
+                providing farmerscrucial insights for prevention andmanagement.</p>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div class="middle-column" style="margin-left: 9vw">
+            <p class="text-white">
+                <span class="large-text">Crop</span><br></span><br>
+                introduction
+            </p>
+        </div>
+        <div class="right-column">
+            <p class="text-green">Our Services offers a Detailed CropIntroduction,
+                highlighting thesusceptibility of various crops todiseases.
+                We explore the commonailments that affect crop health, theirsymptoms,
+                and managementtechniques, aiming to empower farmerswith knowledge for
+                disease prevention.</p>
+        </div>
+        <div>
+            <img style="	width: 32vw;
+                            height: 20vw;
+                            margin-top: 0vw;
+                            margin-left: 0vw;" src="ziyuan/imgs/Netherland/叶2.jpg">
+        </div>
+    </div>
+
+    <div class="flex-container">
+        <div>
+            <img style="	width: 32vw;
+                            height: 20vw;
+                            margin-top: 0vw;
+                            margin-left: 9vw;" src="ziyuan/imgs/Netherland/农药2.jpg">
+        </div>
+        <div class="middle-column">
+            <p class="text-white">
+                <span class="large-text">Pesticides</span><br></span><br>
+                introduction
+            </p>
+        </div>
+        <div class="right-column">
+            <p class="text-green">Our Services features a DetailedIntroduction To Pesticides,
+                focusing onthe diseases pesticides can prevent.
+                Weoutline the effectiveness of pesticides insafeguarding crops,
+                ensuring healthygrowth and productivity.</p>
+        </div>
+    </div>
+
+
+    <!--我们承诺-->
+    <div class="body-tree-head" style="height: 10vw;background-color: white">
+        <div class="body-zero">
+            <p style="font-size: 2.5vw;">Our Promise</p>
+        </div>
+
+    </div>
+
+
+<!--    <div class="body-two-body" style="background-color: #cf9236;">-->
+            <div class="body-two-body" style="background-color: white">
+        <!--    <div class="body-two-body" style="background-color: #3c6db0">-->
+        <div class="body-two-body-main" style="background-color: #EAF6F2;margin-left: 2vw">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/光圈.png">
+
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 21vw;height: 2.2vw;font-size: 1.2vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 3vw">Plant Diease Information</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 3vw">
+                </div>
+            </div>
+
+
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">At the Global Pesticide Knowledge Graph,
+                    we specialize in providing thorough and current information on plant diseases.
+                    Our platform explores the intricate connections between pesticides,
+                    crops, and diseases, offering detailed insights into disease prevention,
+                    management, and control.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="body-two-body-main" style="background-color: #EAF6F2">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/草球.png">
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 21vw;height: 2.2vw;font-size: 1.2vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 3vw">Updates and Improvements</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 3vw">
+                </div>
+            </div>
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">We prioritize staying current with advancements in plant health research and technology. Our commitment includes continuous updates and enhancements to ensure users access the latest, most reliable information. From integrating new data to refining search capabilities, we are dedicated to evolving our platform to meet user needs.
+                </p>
+            </div>
+        </div>
+
+        <div class="body-two-body-main" style="background-color: #EAF6F2">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/手机.png">
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 21vw;height: 2.2vw;font-size: 1.2vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 3vw">Valuing User Feedback</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 3vw">
+                </div>
+            </div>
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">We value user feedback as it guides us in improving our services. Your input helps shape a platform that meets your needs. Share your thoughts with us and help us create a better experience for you!
+                </p>
+            </div>
+
+        </div>
+
+        <div class="body-two-body-main" style="background-color: #EAF6F2">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/手护.png">
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 21vw;height: 2.2vw;font-size: 1.2vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 3vw">Prompt Issue Resolution</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 3vw">
+                </div>
+            </div>
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">We are committed to providing timely and effective support to address any issues or concerns users may encounter. Our dedicated team of professionals is readily available to assist with troubleshooting, resolving technical issues, and offering guidance whenever needed. We prioritize quick issue resolution to ensure users can continue to benefit from our platform seamlessly.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="body-tree">
+    <!--    <div class="body-tree-head">-->
+    <!--        <p class="body-tree-head-title">Our Promise</p>-->
+
+    <!--        <div class="body-tree-head-icon">-->
+    <!--        </div>-->
+
+    <!--    </div>-->
+    <!--    <div class="body-tree-head-text-kuang">-->
+    <!--        <p class="body-tree-head-text">-->
+    <!--            Our website is devoted to furnishing a comprehensive and practical wealth of plant disease information-->
+    <!--            to a-->
+    <!--            diverse range of users, empowering you to better protect and manage your plants. We are constantly-->
+    <!--            updating-->
+    <!--            and expanding our content library, while simultaneously improving our diagnostic models to optimize your-->
+    <!--            user experience. We value the feedback and opinions of our users, which aid us in our ongoing efforts to-->
+    <!--            enhance and improve our services. Should you encounter any issues while utilizing our website or have-->
+    <!--            any-->
+    <!--            suggestions for improvement, please do not hesitate to reach out to us via the contact page or feedback-->
+    <!--            form. Our team is committed to promptly addressing your concerns and resolving any issues that may-->
+    <!--            arise.-->
+
+    <!--        </p>-->
+    <!--    </div>-->
+
+    <!--底部信息-->
+    <div style="height: 20vw;width: 25vw;position: absolute;top: 242.5vw;left: 9vw;">
+        <div style="height: 3vw">
+            <img style="width:90%;height:100%;" src="ziyuan/imgs/顶部logo.png">
+        </div>
+
+        <div style="height: 10vw;width: 100%;font-size: 1vw;margin-top: 2vw; text-align: justify;">
+            The Global Pesticide Knowledge Gragh is a platform dedicated to collecting, organizing, and showcasing
+            global
+            pesticide-related information. Through our platform, users can easily understand the relationships between
+            different pesticide and crops,as well as their application in agricultural production.
+        </div>
+    </div>
+
+    <!--    <div style="height: 300px;width: 300px;position: absolute;top: 2790px;left: 570px;background-color: #cf9236">-->
+
+    <!--    </div>-->
+
+
+    <div class="foot" style="background-color: #edf3f2">
+        <div class="foot-left">
+            <!--            <img style="width:100%;height:80%;" src="./imgs/statistics.png">-->
+            <img style="width:100%;height:80%;" src="ziyuan/imgs/地图.png">
+        </div>
+        <div class="foot-right">
+            <div class="box">
+                <div class="info">
+                    <div class="title">get in touch</div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/address.png">Guizhou University, Guiyang,
+                        Guizhou,
+                        China
+                    </div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/phone.png">+86 17885726450</div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/email.png">wangqi@samlab.cn</div>
+                </div>
+                <div class="letter">
+                    <div class="title">newsletter</div>
+                    <div class="item" style="color: black">Enter your Email address for our mailling list to keep your
+                        self our lastest
+                        updated.
+                    </div>
+                    <input placeholder="Enter your Email ">
+                    <button style="color:black;font-size: 0.8vw">SUBMIT</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="ziyuan/GDP-KG/vue.min.js.下载"></script>
+<script src="ziyuan/GDP-KG/common.js.下载"></script>
+<script src="ziyuan/GDP-KG/nav.js.下载"></script>
+<div style="position: static; display: none; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;">
+    <div id="trans-tooltip">
+        <div id="tip-left-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-top.png&quot;);"></div>
+        <div id="tip-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-top.png&quot;) repeat-x;"></div>
+        <div id="tip-right-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-top.png&quot;);"></div>
+        <div id="tip-right"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right.png&quot;) repeat-y;"></div>
+        <div id="tip-right-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-bottom.png&quot;);"></div>
+        <div id="tip-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-bottom.png&quot;) repeat-x;"></div>
+        <div id="tip-left-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-bottom.png&quot;);"></div>
+        <div id="tip-left"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left.png&quot;);"></div>
+        <div id="trans-content"></div>
+    </div>
+    <div id="tip-arrow-bottom"
+         style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-bottom.png&quot;);"></div>
+    <div id="tip-arrow-top"
+         style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-top.png&quot;);"></div>
+</div>
+
+
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {},
+
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+        },
+
+        methods: {}
+    })
+</script>
+</body>
+
+
+<div style="position: absolute; top: 0px; right: 0px; width: 100%; z-index: 2147483647;">
+
+    <style>
+        @font-face {
+            font-family: "cicons";
+            font-weight: 400;
+            font-style: normal;
+            src: url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_43e43c5.woff) format("woff"),
+            url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_ab43222.svg?#cicons) format("svg");
+        }
+
+        @font-face {
+            font-family: "cosmicIcon";
+            font-weight: 400;
+            font-style: normal;
+            src: url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_43e43c5.woff) format("woff"),
+            url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_ab43222.svg?#cicons) format("svg");
+        }</style>
+</div>
+
+
+</html>

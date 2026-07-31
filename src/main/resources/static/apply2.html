@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KnowMap</title>
+    <link rel="icon" type="image/png" href="ziyuan/imgs/logo.png">
+    <!-- 设置 logo 样式 -->
+    <style>
+        /* 设置 logo 图片大小 */
+        .logo {
+            width: 50px; /* 根据需要调整大小 */
+            height: auto; /* 自适应高度 */
+            margin-right: 10px; /* 可以根据需要调整 logo 与标题的间距 */
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'element-icons';
+            src: url('ziyuan/plugins/elementui/fonts/element-icons.woff') format('woff');
+            /* 可选：您还可以指定其他字体格式，例如： */
+            /* src: url('element-icons.ttf') format('truetype'); */
+            /* src: url('element-icons.svg#element-icons') format('svg'); */
+        }
+    </style>
+    <style type="text/css">
+        html, body {
+            font: 16pt Arial, sans-serif;
+        }
+
+        #viz {
+            height: 530px;
+            /*border: 1px solid lightgray;*/
+            /*font: 22pt Arial, sans-serif;*/
+            font: 10px Arial, sans-serif;
+            /*background-color: #dd6161;*/
+            /*font-size: 5px;*/
+            /*font-size: 10px !important; !* 修改为您想要的字体大小 *!*/
+        }
+
+        #searchBoxInfo {
+            /*position: absolute;*/
+            margin-top: 20px; /* 上边距 */
+            text-align: center; /* 文字居中 */
+            font-size: 18px; /* 字体大小 */
+            color: #888; /* 文字颜色 */
+        }
+    </style>
+
+    <!-- Load NeoVis.js -->
+    <script type="text/javascript" src="ziyuan/js/neovis.js"></script>
+    <script src="ziyuan/js/jquery.min.js"></script>
+
+    <!--图片下载库-->
+    <script src="ziyuan/js/html2canvas.min.js"></script>
+
+    <script type="text/javascript">
+        var viz; // 定义可视化对象
+
+        $(document).ready(function () {
+            // 从网址中获取 searchInput 参数的值
+            var searchInput = getUrlParameter("searchInput");
+            // console.log(searchInput)
+
+            // 发送 AJAX POST 请求获取 Cypher 查询语句
+            $.post("/applyj", {searchInput: searchInput}, function (data) {
+                // console.log(data)
+
+                // 在成功返回后将查询语句赋值给 initial_cypher
+                var initialCypher = data;
+                var config = {
+                    container_id: "viz",
+                    server_url: "bolt://gdpkg.samlab.cn:7687",
+                    server_user: "neo4j",
+                    server_password: "REDACTED_NEO4J_PASSWORD",
+                    labels: {
+                        "Pesticide": {
+                            "caption": "name", "font": {
+                                "size": 15
+                            },
+                        },
+                        "Crop": {
+                            "caption": "name", "font": {
+                                "size": 15
+                            },
+                        }
+                    },
+                    relationships: {
+                        "係る": {
+                            "thickness": "20", "caption": true, "font": {
+                                "size": 1
+                            },
+                        }
+                    },
+                    initial_cypher: initialCypher
+                };
+                viz = new NeoVis.default(config);
+                viz.render();
+            });
+        });
+
+    </script>
+    <script>
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        function submitForm() {
+            var selectBox = document.getElementById("searchType");
+            var inputBox = document.getElementById("searchInput");
+            var searchType = selectBox.value;
+            var searchInput = inputBox.value;
+            var url = "";
+
+            if (searchType == "1") {
+                url = "/applyj.html?searchInput=" + encodeURIComponent(searchInput);
+            } else if (searchType == "2") {
+                url = "/prevent.html?searchInput=" + encodeURIComponent(searchInput);
+            } else if (searchType == "3") {
+                url = "/disease.html?searchInput=" + encodeURIComponent(searchInput);
+            }
+
+            window.location.href = url;
+        }
+
+
+        function redirectToHome() {
+            window.location.href = 'http://localhost:8889/japan_home';
+        }
+
+
+    </script>
+
+</head>
+<body>
+<div id="app">
+    <button onclick="window.location.href='/japanHome.html'" style="background-color: transparent; border: none;
+     cursor: pointer;height: 50px;width: 400px;position: absolute;top: 10px;left: 10px">
+    </button>
+
+    <button onclick="window.location.href='/japan_answer'" style="background-color: transparent; border: none;
+     cursor: pointer;height: 50px;width: 60px;position: absolute;top: 10px;left: 450px">
+    </button>
+
+    <button onclick="window.location.href='/gragh2.html'" style="background-color: transparent; border: none;
+     cursor: pointer;height: 50px;width: 70px;position: absolute;top: 10px;left: 545px">
+    </button>
+
+    <div style="background-color: #dd6161;height: 50px">
+        <img src="ziyuan/imgs/页眉_知识图谱.png" alt="页眉" style="height: 50px;width: 100%;margin-top: 0px">
+    </div>
+
+    <div style="width: 100%; height: 50px;display: flex; justify-content: center;background-color: #F3F3F3;margin-top: 0px">
+        <el-button type="success" @click="saveAsImage()" style="position: absolute;top: 14px;left: 93%">{{tip}}
+        </el-button>
+
+
+        <div style="margin-top: 5px; width: 600px;">
+            <el-input :placeholder="placeholder" v-model="input" class="input-with-select"
+                      @keyup.enter.native="submitForm"
+                      ref="searchInput">
+                <el-select v-model="select" slot="prepend" placeholder="请选择" @change="updatePlaceholder">
+                    <el-option label="係る" value="1"></el-option>
+                    <el-option label="予防と治療" value="2"></el-option>
+                    <el-option label="いためる" value="3"></el-option>
+                </el-select>
+                <el-button slot="append" icon="el-icon-search" @click="submitForm"></el-button>
+            </el-input>
+        </div>
+    </div>
+
+    <div style="height: 600px;width: 100%;display: flex;background-color: #F3F3F3">
+        <!--适用关系-->
+        <div style="background-color: white;height: 580px;width: 20%;display: block">
+            <div style="height: 50px;font-size:1.8vw;color: #0f9d58;margin-top: 20px">
+                検索結果
+            </div>
+            <div style="height: 30px;display: flex;">
+                <div style="width: 160px;font-size:1.2vw;display: flex; align-items: center; ">
+                    農薬名：
+                </div>
+                <div style="background-color: #effbe8;border-radius: 5px;
+                height: 30px;font-size:0.9vw;width: 130px;display: flex; align-items: center; justify-content: center;">
+                    {{information}}
+                </div>
+            </div>
+            <div style="height: 50px;font-size:1.2vw;margin-top: 10px;height: 30px">
+                適した植物：
+            </div>
+            <!--遍历所有灰块-->
+            <div style=" height: 430px; overflow-y: scroll; padding: 10px">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+                    <div v-for="(item, index) in result" :key="index"
+                         style="margin-bottom: 10px; width: calc(29% - 20px);margin-left: 10px;height: 10px;
+                          background-color: #f0f0f0; border-radius: 5px; padding: 10px;font-size: 0.7vw;display: flex; align-items: center; justify-content: center;">
+                        {{ item }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--知识图谱-->
+        <div style="width: 60%;">
+            <div style="height: 50px;font-size:1.8vw;color: #0f9d58;margin-top: 20px;margin-left: 10px">
+                ナレッジ・グラッグ
+            </div>
+            <div style="height: 530px">
+                <div id="viz" style="width: 100%"></div>
+            </div>
+        </div>
+
+        <!--信息-->
+        <div style="height: 580px;width: 20%;display: block;background-color: white;">
+            <div style="height: 40px;font-size:1.8vw;color: #0f9d58;margin-top: 20px;margin-left: 10px;">
+                インフォメーション
+            </div>
+
+            <div style="height: 50px;display: flex;align-items: center; justify-content: center;">
+                <div style="height: 50px;background-color: #D6F2F0;width: 250px;display: flex;align-items: center; justify-content: center;">
+                    {{information}}
+                </div>
+            </div>
+
+
+            <div style="height: 30px;display: flex;margin-top: 20px;">
+                <div style="height: 20px;margin-left: 10px">
+                    <div style="width: 13px; height: 13px; background-color: #0f9d58; border-radius: 50%;margin-top: 5px"></div>
+                </div>
+                <div style="height: 20px;width: 200px;font-size:1.2vw;margin-left: 7px">
+                    登録内容
+                </div>
+            </div>
+
+            <div style=" margin-left: 10px;  font-size: 0.7vw;">
+                <div>1、登録者情報: {{registrantInformation}}
+                </div>
+                <div style="margin-top: 5px">2、登録時間: {{registrationTime}}</div>
+            </div>
+
+            <div style="height: 10px;margin-top: 10px;display: flex; align-items: center; justify-content: center;">
+                <div style="border-bottom: 1px solid #ddd;width: 230px"></div>
+            </div>
+
+            <div style="height: 30px;display: flex;margin-top: 20px;">
+                <div style="height: 20px;margin-left: 10px">
+                    <div style="width: 13px; height: 13px;margin-top: 5px; background-color: #0f9d58; border-radius: 50%;"></div>
+                </div>
+                <div style="height: 20px;width: 200px;font-size:1.2vw;margin-left: 7px">
+                    化学物質の詳細
+                </div>
+            </div>
+
+            <div style="margin-left: 10px;  font-size: 0.7vw;">
+                <div>1、有効成分: {{activeIngredient}}</div>
+                <div style="margin-top: 5px">2、その他の成分: {{otherComponents}}</div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+
+<!-- 引入组件库 -->
+<script src="ziyuan/js/vue.js"></script>
+<script type="text/javascript" src="ziyuan/js/jquery.min.js"></script>
+<script src="ziyuan/js/axios-0.18.0.js"></script>
+<!-- 引入 Element UI 样式文件 -->
+<!--<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">-->
+<link rel="stylesheet" href="ziyuan/css/element-ui.css">
+<link rel="stylesheet" type="text/css" href="ziyuan/plugins/elementui/index.css">
+<script src="ziyuan/plugins/elementui/index.js"></script>
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            tip: 'ヒント',
+            input: '',
+            select: '1',
+            placeholder: 'Please enter the name of the pesticide',
+            information: '',
+            result: [],
+            registrantInformation: '',
+            registrationTime: '',
+            activeIngredient: '',
+            otherComponents: '',
+            structuralCategory: '',
+            specificTypes: '',
+            modeOfAction: '',
+        },
+
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+            this.init();
+        },
+
+        methods: {
+            init() {
+                const urlParams = new URLSearchParams(window.location.search);
+                this.information = urlParams.get('searchInput');
+
+                // console.log("init了")
+                // console.log(this.information);
+
+                axios.post('/applyInformationJ/' + this.information)
+                    .then(response => {
+                        // console.log(response);
+
+                        this.result = response.data.result;
+                        // console.log("result前");
+                        // console.log(this.result);
+
+                        this.result = this.result.map(item => {
+                            if (item.length > 10) {
+                                return item.substring(0, 10) + '...';
+                            } else {
+                                return item;
+                            }
+                        });
+
+                        // console.log("result后");
+                        // console.log(this.result)
+
+                        this.registrantInformation = response.data.registrantInformation;
+                        this.registrationTime = response.data.registrationTime;
+                        this.activeIngredient = response.data.activeIngredient;
+                        this.otherComponents = response.data.otherComponents;
+                        this.structuralCategory = response.data.structuralCategory;
+                        this.specificTypes = response.data.specificTypes;
+                        this.modeOfAction = response.data.modeOfAction;
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            },
+
+
+            tips() {
+                this.$alert(
+                    `<strong>Visual Knowledge Graph Search Feature</strong><br><br>` +
+                    `The visual knowledge graph search feature allows for a detailed exploration of the knowledge graph. ` +
+                    `Try clicking on nodes or edges to access more detailed information. ` +
+                    `Give it a try!`,
+                    'Hint',
+                    {dangerouslyUseHTMLString: true, confirmButtonText: "OK",}
+                );
+            },
+
+            // 下载图像的方法
+            saveAsImage() {
+                var self = this; // 保存 Vue 实例的引用
+
+                var vizElement = document.querySelector('#viz');
+
+                // 使用 html2canvas 将 <div> 转换为图像
+                html2canvas(vizElement).then(function (canvas) {
+                    // 创建下载链接并模拟点击进行下载
+                    var link = document.createElement('a');
+                    link.download = self.information + '_apply_graph.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            },
+
+            updatePlaceholder() {
+                if (this.select === '3') {
+                    this.placeholder = '病名を入力してください';
+                } else {
+                    this.placeholder = '農薬名を入力してください';
+                }
+            },
+
+            submitForm() {
+                const searchInput = this.input;
+                const searchType = this.select;
+                let url = '';
+
+                if (searchType === '1') {
+                    url = '/apply2.html?searchInput=' + encodeURIComponent(searchInput);
+                } else if (searchType === '2') {
+                    url = '/prevent2.html?searchInput=' + encodeURIComponent(searchInput);
+                } else if (searchType === '3') {
+                    url = '/disease2.html?searchInput=' + encodeURIComponent(searchInput);
+                }
+
+                window.location.href = url;
+            },
+
+
+        },
+        mounted() {
+            this.updatePlaceholder();
+        },
+    })
+</script>
+<style>
+    .el-select {
+        width: 100px;
+    }
+</style>
+</body>
+</html>
