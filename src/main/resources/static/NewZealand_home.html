@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://plantpad.samlab.cn/index.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>GDP-KG_NewZeland</title>
+    <!-- 引入 logo 图片 -->
+    <link rel="icon" type="image/png" href="ziyuan/imgs/logo.png">
+    <!-- 设置 logo 样式 -->
+    <style>
+        /* 设置 logo 图片大小 */
+        .logo {
+            width: 7vw; /* 根据需要调整大小 */
+            height: auto; /* 自适应高度 */
+            margin-right: 5vw; /* 可以根据需要调整 logo 与标题的间距 */
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'element-icons';
+            src: url('ziyuan/plugins/elementui/fonts/element-icons.woff') format('woff');
+        }
+    </style>
+    <!-- 引入组件库 -->
+    <script src="ziyuan/js/vue.js"></script>
+    <script type="text/javascript" src="ziyuan/js/jquery.min.js"></script>
+    <script src="ziyuan/js/axios-0.18.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="ziyuan/plugins/elementui/index.css">
+    <script src="ziyuan/plugins/elementui/index.js"></script>
+
+    <link rel="stylesheet" href="ziyuan/GDP-KG/NewZealand_index.css">
+    <link rel="stylesheet" href="ziyuan/GDP-KG/nav.css">
+    <link rel="stylesheet" href="ziyuan/GDP-KG/foot.css">
+    <style>
+        .foot-left {
+            width: 38.7vw;
+            height: 100%;
+            display: inline;
+            margin-top: 3vw;
+            justify-content: center;
+            align-items: center;
+        }
+
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <div class="header">
+        <div class="nav">
+            <div class="nav-logo"></div>
+            <!--            <img src="./imgs/顶部logo.png" style="height: 30px;margin-top: 0px">-->
+            <!--            <img src="ziyuan/imgs/顶部logo.png" alt="顶部logo" style="height: 30px;">-->
+            <a href="http://gdpkg.samlab.cn/"><img src="ziyuan/imgs/顶部logo.png" alt="顶部logo" style="height: 2vw;"></a>
+            <!--            <div class="nav-title" style="background-color: #3c6db0">-->
+            <!--            <img src="./imgs/顶部logo.png" style="height: 30px;margin-top: 0px">-->
+            <!--            </div>-->
+
+
+            <div class="nav-items">
+                <div class="nav-item" onclick="window.location.href = 'http://127.0.0.1:8889/backStage';">
+                    HOME
+                    <div class="line" style="margin-left:  0.21vw;"></div>
+                </div>
+
+                <div class="nav-item-select">
+                    browse
+                    <div class="dropdown-content">
+                        <!--                        gdpkg.samlab.cn-->
+                        <div class="nav-item" onclick="window.location.href = 'http://china.gdpkg.samlab.cn/';">China
+                        </div>
+                        <div class="nav-item" onclick="window.location.href = 'http://localhost:4399/home2.html';">
+                            Japan
+                        </div>
+                        <div class="nav-item" onclick="window.location.href = 'http://gdpkg.samlab.cn/Australia.html';">
+                            Australia
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="nav-item-select">
+                    Language
+                    <div class="dropdown-content" style="margin-left: 0.8vw">
+                        <div class="nav-item" onclick="window.location.href = '/home2.html';">English</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="head">
+
+            <!--第一张-->
+            <div class="head_title"
+                 style="margin-left: 28%;font-size: 2.4vw; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                <p>Decoding the Enigma of Pesticide Usage in New Zealand</p>
+            </div>
+
+            <div class="head_txt" style="margin-left: 28%;">
+                <p>Demystifying Pesticide Usage: Discover the intricate relationship between pesticides, crops, and
+                    plant diseases, and how these chemicals play a crucial role in modern agriculture.</p>
+            </div>
+            <div class="head_button">
+
+                <button onclick="window.location.href='http://localhost:8889/japan_answer'"
+                        style="margin-top: 4.0vw; margin-left: 30%; height: 3.0vw; width: 8.0vw; font-size: 1.2vw;
+               background-color: #FA8C61; border: none; border-radius: 0.5vw;color: white;
+               cursor: pointer; transition: background-color 0.3s ease;">
+                    <span style="vertical-align: middle;">Q&A</span>
+                    <span style="vertical-align: middle; margin-left: 0.5vw;">&rarr;</span>
+                </button>
+
+
+                <button onclick="window.location.href='/gragh2.html'"
+                        style="margin-top: 4.0vw; margin-left: 2.0vw; height: 3.0vw; width: 8.0vw; font-size: 1.2vw;
+               background-color: #009E38; border: none; border-radius: 0.5vw;color: white;
+               cursor: pointer; transition: background-color 0.3s ease;">
+
+                    <span style="vertical-align: middle;">Graph</span>
+                    <span style="vertical-align: middle; margin-left: 0.5vw;">&rarr;</span>
+                </button>
+            </div>
+            <div style="margin-top: 20vw;margin-left: 30vw;height: 3vw;width: 10vw"></div>
+
+            <div style="background-color: #cf9236"></div>
+
+
+        </div>
+    </div>
+    <!--第二张-->
+    <div id="body-one" class="body-one">
+        <div class="body-one-head-body">
+            <div class="body-one-head-body-left">
+
+                <div style="	display: flex;flex-flow: column;">
+                    <p style="	width: 23.96vw;height: 2.2vw;font-size: 1.7vw;font-family: Arial, Arial-Bold;
+                    font-weight: 700;
+                    text-align: center;
+                    color: #029f3a;
+                    margin-top: 1.0vw;
+                    margin-bottom: 0;margin-left: 14vw">WEBSITEINTRODUCTION</p>
+
+                    <div style="	width: 7.07vw;
+                    height: 0.26vw;
+                    background: #36be69;
+                    border-radius: 0.16vw;
+                    margin-top: 1.0vw;margin-left: 16vw">
+                    </div>
+                </div>
+
+                <div class="body-one-head-body-left-head">
+                    <div class="body-one-head-body-left-head-text">
+                        <p>Explore a whole new world of plant disease</p>
+                    </div>
+
+                </div>
+                <div class="body-one-head-body-left-text">
+
+                    Welcome to our website, the Crop Disease Pesticide Knowledge Graph System.
+                    Our platform not only offers Q&A services, such as identifying suitable pesticides
+                    for specific crop diseases, but also features a Knowledge Map search function.
+                    This function allows users to explore the relationships between pesticides, crops,
+                    and diseases by their names, providing insights into the application scope and effectiveness
+                    of various pesticides. Our website boasts an intuitive interface and user-friendly features
+                    for easy access to essential information. Whether you're a professional or a plant enthusiast,
+                    we are committed to delivering top-notch service and support.
+
+
+                </div>
+                <div class="body-one-head-body-left-bottom">
+                    <div class="body-one-head-body-left-bottom-margin1">
+                        <div class="body-one-head-body-left-bottom-head">
+                            <p>2000+</p>
+                        </div>
+                        <div class="body-one-head-body-left-bottom-bottom">
+                            knowledge node
+                        </div>
+                    </div>
+                    <div class="body-one-head-body-left-bottom-margin2">
+                        <div class="body-one-head-body-left-bottom-head">
+                            <p>200000+</p>
+                        </div>
+                        <div class="body-one-head-body-left-bottom-bottom">
+                            knowledge relations
+                        </div>
+                    </div>
+                    <div class="body-one-head-body-left-bottom-margin3">
+                        <div class="body-one-head-body-left-bottom-head">
+                            <p>2+</p>
+                        </div>
+                        <div class="body-one-head-body-left-bottom-bottom">
+                            knowledge patterns
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--            <div>-->
+            <!--                <img style="	width: 30.77vw;-->
+            <!--                height: 31.15vw;-->
+            <!--                margin-left: 5vw;" src="./imgs/介绍.png">-->
+            <!--            </div>-->
+            <div style="margin-left: 7vw;">
+                <img style="width: 30.77vw;
+                height: 31.15vw;
+                /*margin-top: 0px;*/
+                padding-left: 7vw;"
+                     src="ziyuan/imgs/NewZealand/介绍.jpg">
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <!--第三张服务-->
+    <div id="body-two" class="body-two" style="height: 20vw">
+        <div class="body-one-head" style="height: 20vw">
+            <!--            <p class="body-one-head-title">Our Services</p>-->
+
+            <!--            <div class="body-one-head-icon">-->
+            <div style="width: 40%;height: 20vw;background-color: #009E38">
+                <div style="	display: flex;flex-flow: column;">
+                    <p style="	width: 10vw;height: 2vw;font-size: 1.4vw;font-family: Arial, Arial-Bold;
+                    font-weight: 800;color: white;
+                    /*text-align: center;*/
+                    /*color: #333333;*/
+                    margin-top: 10vw;
+                    padding-top: 4vw;
+                    margin-left:13vw">Our Service</p>
+
+                    <div style="	width: 7.07vw;
+                    height: 0.26vw;
+                    background: white;
+                    border-radius: 0.16vw;color: white;
+                    margin-top: 0vw;margin-left: 13vw">
+                    </div>
+                </div>
+                <div class="body-one-head-body-left-text"
+                     style="margin-top: 1vw;margin-left: 13vw;width: 23vw;color: white;">
+                    Providing comprehensive plant disease information to protect your plants.Timely
+                    updates,excellent user experience.
+                </div>
+            </div>
+            <div style="width: 60vw;height: 20vw">
+                <img style="height: 20vw;width:60vw" src="ziyuan/imgs/NewZealand/新西兰-中间部分.jpg">
+            </div>
+        </div>
+    </div>
+
+
+    <!--我们的服务-->
+    <div style="height: 30vw;background-color: #F7F7F7;display: flex">
+        <!--    <div style="height: 400px;display: flex;background-color: #3c6db0">-->
+        <div style="width: 50%;height: 30vw;display: block;">
+            <div style="height: 7vw;width: 100%;display: flex">
+                <div style="display: flex; justify-content: center; align-items: center;
+            height: 4vw; width: 4vw; margin-left: 13vw; margin-top: 2vw; background-color: #FA8C61;">
+                    <p style="font-size:1.2vw;color: white; margin: 0;">Q&A</p>
+                </div>
+
+
+                <div style="	display: flex;flex-flow: column;">
+                    <p style="	width: 23.96vw;height: 2.2vw;font-size: 1.3vw;font-family: Arial, Arial-Bold;
+                    font-weight: 700;
+                    /*text-align: center;*/
+                    color: #333333;
+                    margin-top: 2.5vw;
+                    padding-top: 1vw;
+                    margin-bottom: 0;margin-left: 2vw">About Smart Q&A</p>
+
+                    <div style="	width: 3.07vw;
+                    height: 0.26vw;
+                    background: #FA8C61;
+                    border-radius: 0.16vw;
+                    margin-top: 0.2vw;margin-left: 2vw">
+                    </div>
+                </div>
+            </div>
+            <div style="height: 20vw;background-color: #F7F7F7;width: 100%">
+                <div class="body-one-head-body-left-text"
+                     style="margin-top: 1vw;margin-left: 13vw;width: 32vw;color: #333333">
+                    On our platform, you can easily search for information related to various crops, diseases and
+                    pesticides. Pesticides contain attributes such as type, dosage form, toxicity, and structural class
+                    to which they belong. Pesticide control relationship, including dilution times, number of times
+                    used, duration of use, method of use and other important information to help you choose the right
+                    pesticide for disease control. Our goal is to provide you with the most comprehensive and
+                    professional information to help you better manage and protect your plants to ensure plant health
+                    and bountiful harvests.
+                </div>
+            </div>
+        </div>
+
+
+        <div style="width: 50%;height: 30vw;display: block;">
+            <div style="height: 7vw;width: 100%;">
+                <div style="height: 7vw;width: 100%;display: flex;">
+                    <div style="display: flex; justify-content: center; align-items: center; background-color: #009E38;
+            height: 4vw; width: 4vw; margin-left: 7vw; margin-top: 2vw;">
+                        <p style="font-size:1.2vw;color: white; margin: 0;">Graph</p>
+                    </div>
+
+
+                    <div style="	display: flex;flex-flow: column;">
+                        <p style="	width: 23.96vw;height: 2.2vw;font-size: 1.3vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 2.5vw;
+                        padding-top: 1vw;
+                        margin-bottom: 0;margin-left: 2vw">Knowledge Graph Query</p>
+
+                        <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0.2vw;margin-left: 2vw">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 20vw;width: 100%">
+                <div class="body-one-head-body-left-text"
+                     style="margin-top: 1vw;margin-left: 7vw;width: 32vw;color: #333333;">
+                    In addition to the Q&A feature, we offer a visualization of the Crop Disease Pesticide Knowledge
+                    Graph query that focuses on the relationship between crops, diseases and pesticides. The
+                    visualization gives you insight into the interactions between crops, diseases and pesticides. We
+                    provide detailed information on pesticide-applicable crops,and disease-corresponding crop
+                    information. Such visualization helps you to understand the connection between different elements
+                    more intuitively and provides an important reference for agricultural production and plant
+                    protection.
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--我们承诺-->
+    <div class="body-tree-head" style="height: 5vw;background-color: white">
+        <p style="	width: 23.96vw;
+        height: 2.2vw;
+        font-size: 2.0vw;
+        font-family: Arial, Arial-Bold;
+        font-weight: 700;
+        text-align: center;
+        color: #029f3a;
+        margin-top: 1.91vw;
+        margin-bottom: 0;">OUR PROMISE</p>
+
+        <div style="	width: 10.0vw;
+        height: 0.8vw;
+        background: #36be69;
+        border-radius: 0.4vw;
+        margin-top: 0.8vw;
+        border: 0.2vw solid #36be69; /* 调整这里的边框粗细和颜色 */">
+        </div>
+
+    </div>
+
+
+    <!--    <div class="body-two-body" style="background-color: #cf9236;">-->
+    <div class="body-two-body" style="background-color: white">
+        <!--    <div class="body-two-body" style="background-color: #3c6db0">-->
+        <div class="body-two-body-main" style="background-color: #ffffff;margin-left: 1vw">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/NewZealand/down1.jpg">
+
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 21vw;height: 2.2vw;font-size: 1.3vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 3.5vw">Plant Disease Information</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 3.5vw">
+                </div>
+            </div>
+
+
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">We provide extensive and practical plant disease
+                    information, covering various plant types and disease categories, to help users
+                    better protect and manage their plants.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="body-two-body-main" style="background-color: #ffffff">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/NewZealand/down2.jpg">
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 21vw;height: 2.2vw;font-size: 1.3vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 3.5vw">Updates and Improvements</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 3.5vw">
+                </div>
+            </div>
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">We continuously update and expand our content
+                    library, and improve diagnostic models to ensure users always receive the most
+                    accurate and up-to-date information, enhancing their user experience.
+                </p>
+            </div>
+        </div>
+
+        <div class="body-two-body-main" style="background-color: #ffffff">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/手机.png">
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 21vw;height: 2.2vw;font-size: 1.3vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 3.5vw">Valuing User Feedback</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 3.6vw">
+                </div>
+            </div>
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">We value user feedback and opinions, which help us
+                    continuously improve and enhance our services to better meet users' needs.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="body-two-body-main" style="background-color: #ffffff">
+            <img class="body-two-body-main-img" src="ziyuan/imgs/NewZealand/down4.jpg">
+            <div style="	display: flex;flex-flow: column;">
+                <p style="	width: 20vw;height: 2.2vw;font-size: 1.3vw;font-family: Arial, Arial-Bold;
+                        font-weight: 700;
+                        /*text-align: center;*/
+                        color: #009E38;
+                        margin-top: 1.91vw;
+                        margin-bottom: 0;margin-left: 2.7vw">Prompt Issue Resolution</p>
+
+                <div style="	width: 3.07vw;
+                        height: 0.26vw;
+                        background: #009E38;
+                        border-radius: 0.16vw;
+                        margin-top: 0vw;margin-left: 2.7vw">
+                </div>
+            </div>
+            <div class="body-two-body-main-text-kuang">
+                <p class="body-two-body-main-text">If users encounter any issues while using our
+                    website or have any suggestions for improvement, our team will promptly respond
+                    and address their concerns to ensure users have a positive experience.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div class="body-tree">
+    <!--    <div class="body-tree-head">-->
+    <!--        <p class="body-tree-head-title">Our Promise</p>-->
+
+    <!--        <div class="body-tree-head-icon">-->
+    <!--        </div>-->
+
+    <!--    </div>-->
+    <!--    <div class="body-tree-head-text-kuang">-->
+    <!--        <p class="body-tree-head-text">-->
+    <!--            Our website is devoted to furnishing a comprehensive and practical wealth of plant disease information-->
+    <!--            to a-->
+    <!--            diverse range of users, empowering you to better protect and manage your plants. We are constantly-->
+    <!--            updating-->
+    <!--            and expanding our content library, while simultaneously improving our diagnostic models to optimize your-->
+    <!--            user experience. We value the feedback and opinions of our users, which aid us in our ongoing efforts to-->
+    <!--            enhance and improve our services. Should you encounter any issues while utilizing our website or have-->
+    <!--            any-->
+    <!--            suggestions for improvement, please do not hesitate to reach out to us via the contact page or feedback-->
+    <!--            form. Our team is committed to promptly addressing your concerns and resolving any issues that may-->
+    <!--            arise.-->
+
+    <!--        </p>-->
+    <!--    </div>-->
+
+    <!--底部信息-->
+    <div style="height: 20vw;width: 25vw;position: absolute;top: 183vw;left: 15vw;">
+        <div style="height: 3vw">
+            <img style="width:90%;height:100%;" src="ziyuan/imgs/顶部logo.png">
+        </div>
+
+        <div style="height: 5vw;width: 100%;line-height: 1.5vw;font-size: 1.0vw;color:#8eb69d;margin-top: 1.8vw; text-align: justify;">
+            The Global Pesticide Knowledge Gragh is a platform dedicated to collecting, organizing, and showcasing
+            global
+            pesticide-related information. Through our platform, users can easily understand the relationships between
+            different pesticide and crops,as well as their application in agricultural production.
+        </div>
+    </div>
+
+    <!--    <div style="height: 300px;width: 300px;position: absolute;top: 2790px;left: 570px;background-color: #cf9236">-->
+
+    <!--    </div>-->
+
+
+    <div class="foot" style="background-color: #edf3f2">
+        <div class="foot-left">
+            <!--            <img style="width:100%;height:80%;" src="./imgs/statistics.png">-->
+            <img style="width:100%;height:80%;" src="ziyuan/imgs/地图.png">
+        </div>
+        <div class="foot-right">
+            <div class="box">
+                <div class="info">
+                    <div class="title">get in touch</div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/address.png">Guizhou University,
+                        Guiyang,
+                        Guizhou,
+                        China
+                    </div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/phone.png">+86 17885726450</div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/email.png">wangqi@samlab.cn</div>
+                </div>
+                <div class="letter">
+                    <div class="title">newsletter</div>
+                    <div class="item" style="color: black">Enter your Email address for our mailling list to keep your
+                        self our lastest
+                        updated.
+                    </div>
+                    <input placeholder="Enter your Email ">
+                    <button style="color:black;font-size: 14px">SUBMIT</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="ziyuan/GDP-KG/vue.min.js.下载"></script>
+<script src="ziyuan/GDP-KG/common.js.下载"></script>
+<script src="ziyuan/GDP-KG/nav.js.下载"></script>
+<div style="position: static; display: none; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;">
+    <div id="trans-tooltip">
+        <div id="tip-left-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-top.png&quot;);"></div>
+        <div id="tip-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-top.png&quot;) repeat-x;"></div>
+        <div id="tip-right-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-top.png&quot;);"></div>
+        <div id="tip-right"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right.png&quot;) repeat-y;"></div>
+        <div id="tip-right-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-bottom.png&quot;);"></div>
+        <div id="tip-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-bottom.png&quot;) repeat-x;"></div>
+        <div id="tip-left-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-bottom.png&quot;);"></div>
+        <div id="tip-left"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left.png&quot;);"></div>
+        <div id="trans-content"></div>
+    </div>
+    <div id="tip-arrow-bottom"
+         style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-bottom.png&quot;);"></div>
+    <div id="tip-arrow-top"
+         style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-top.png&quot;);"></div>
+</div>
+
+
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {},
+
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+        },
+
+        methods: {}
+    })
+</script>
+</body>
+
+
+<div style="position: absolute; top: 0vw; right: 0vw; width: 100%; z-index: 2147483647;">
+
+    <style>
+        @font-face {
+            font-family: "cicons";
+            font-weight: 400;
+            font-style: normal;
+            src: url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_43e43c5.woff) format("woff"),
+            url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_ab43222.svg?#cicons) format("svg");
+        }
+
+        @font-face {
+            font-family: "cosmicIcon";
+            font-weight: 400;
+            font-style: normal;
+            src: url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_43e43c5.woff) format("woff"),
+            url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_ab43222.svg?#cicons) format("svg");
+        }</style>
+</div>
+
+
+</html>

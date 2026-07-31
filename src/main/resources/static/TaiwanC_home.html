@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)https://plantpad.samlab.cn/index.html -->
+<html xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>GDP-KG_Taiwan</title>
+    <!-- 引入 logo 图片 -->
+    <link rel="icon" type="image/png" href="ziyuan/imgs/logo.png">
+    <!-- 设置 logo 样式 -->
+    <style>
+        /* 设置 logo 图片大小 */
+        .logo {
+            width: 7vw; /* 根据需要调整大小 */
+            height: auto; /* 自适应高度 */
+            margin-right: 5vw; /* 可以根据需要调整 logo 与标题的间距 */
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'element-icons';
+            src: url('ziyuan/plugins/elementui/fonts/element-icons.woff') format('woff');
+        }
+    </style>
+    <!-- 引入组件库 -->
+    <script src="ziyuan/js/vue.js"></script>
+    <script type="text/javascript" src="ziyuan/js/jquery.min.js"></script>
+    <script src="ziyuan/js/axios-0.18.0.js"></script>
+    <link rel="stylesheet" type="text/css" href="ziyuan/plugins/elementui/index.css">
+    <script src="ziyuan/plugins/elementui/index.js"></script>
+
+    <link rel="stylesheet" href="ziyuan/GDP-KG/Taiwan_index.css">
+    <link rel="stylesheet" href="ziyuan/GDP-KG/nav.css">
+    <link rel="stylesheet" href="ziyuan/GDP-KG/foot.css">
+    <style>
+        .foot-left {
+            width: 38.7vw;
+            height: 100%;
+            display: inline;
+            margin-top: 3vw;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-items1 {
+            /*width: 2.92vw;*/
+            display: flex;
+            align-items: center;
+            margin-left: 66.06vw;
+            max-width: 50vw;
+            height: 4.69vw;
+            font-size: 0.83vw;
+            font-family: Arial, Arial-Regular;
+            font-weight: 400;
+            text-align: left;
+            color: #ffffff;
+            line-height: 1.3vw;
+            justify-content: center;
+
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <div class="header">
+        <div class="nav">
+            <div class="nav-logo"></div>
+            <a href="http://gdpkg.samlab.cn/"><img src="ziyuan/imgs/顶部logo.png" alt="顶部logo" style="height: 2vw;"></a>
+
+
+            <div class="nav-items1" >
+                <div class="nav-item" onclick="window.location.href = 'http://127.0.0.1:8889/backStage';">
+                    主頁
+                    <div class="line" style="margin-left:  0.21vw;"></div>
+                </div>
+
+                <div class="nav-item-select">
+                    瀏覽
+                    <div class="dropdown-content">
+                        <!--                        gdpkg.samlab.cn-->
+                        <div class="nav-item" onclick="window.location.href = 'http://china.gdpkg.samlab.cn/';">China
+                        </div>
+                        <div class="nav-item" onclick="window.location.href = 'http://localhost:4399/home2.html';">
+                            日本
+                        </div>
+                        <div class="nav-item" onclick="window.location.href = 'http://gdpkg.samlab.cn/Australia.html';">
+                            澳大利亞
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-item-select">
+                    語言
+                    <div class="dropdown-content" style="margin-left: 0.8vw">
+                        <div class="nav-item" onclick="window.location.href = 'http://localhost:4399/Taiwan_home.html';">英語</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="head">
+
+            <!--第一张-->
+            <div class="head_title"
+                 style="margin-left: 28%;font-size: 2.4vw; white-space: nowrap; text-overflow: ellipsis;">
+                <p>歡迎訪問颱灣農藥諮詢網站</p>
+            </div>
+            <div class="head_title2" style="margin-left: 28%;">
+                <p>提供全毬性的殺蟲劑解決方案</p>
+            </div>
+
+            <div class="head_txt" style="margin-left: 28%;">
+                <p>揭開植物病理學的神秘面紗：探索植物病蟲害的根本原囙病囙、各種癥狀以及對植物健康的深遠影響，揭開其中的奧秘。</p>
+            </div>
+            <div class="head_button">
+
+                <button onclick="window.location.href='http://localhost:8889/japan_answer'"
+                        style="margin-top: -2.5vw; margin-left: 65%; height: 3.0vw; width: 9.0vw; font-size: 1.2vw;
+               background-color: #FA8C61; border: none; border-radius: 0.5vw;color: white;
+               cursor: pointer; transition: background-color 0.3s ease;">
+                    <span style="vertical-align: middle;">智能問答</span>
+                    <span style="vertical-align: middle; margin-left: 0.8vw;">&rarr;</span>
+                </button>
+
+
+                <button onclick="window.location.href='/gragh2.html'"
+                        style="margin-top: -2.5vw; margin-left: 2.0vw; height: 3.0vw; width: 9.0vw; font-size: 1.2vw;
+               background-color: #009E38; border: none; border-radius: 0.5vw;color: white;
+               cursor: pointer; transition: background-color 0.3s ease;">
+
+                    <span style="vertical-align: middle;">知識圖譜</span>
+                    <span style="vertical-align: middle; margin-left: 0.8vw;">&rarr;</span>
+                </button>
+            </div>
+            <div style="margin-top: 20vw;margin-left: 30vw;height: 3vw;width: 10vw"></div>
+
+            <div style="background-color: #cf9236"></div>
+
+
+        </div>
+    </div>
+    <!--第二张-->
+    <div id="body-one" class="body-one">
+        <div class="body-one-head-body">
+
+            <div style="background-color: #ebebeb;width:42vw;height:18vw;position:absolute;left:18vw;top:48.5vw">
+                <div style="margin-left: 0.1vw;margin-top: 0.1vw;height: 17.8vw; width: 41.8vw; background-color: #ffffff; text-align: center; display: flex; justify-content: center; align-items: center;">
+                    <div style="margin-top:-13vw;margin-left:-17vw;height:3vw;width:15vw;background-color: #24aa24;border-radius: 4vw;">
+                        <p class="second-right-intro">網站介紹</p>
+                    </div>
+
+                    <div style="margin-top:-6vw;margin-left:-15vw;height:3vw;width:15vw;border-radius: 4vw;">
+                        <p class="second-right-intro2" style="margin-left:-7vw;">探索植物病害的全新世界</p>
+                        <p class="second-right-under">
+                            請允許我們介紹我們的網站，這是一箇專門用於農藥領域的知識共享和互働問答平颱。通過搆建詳細的農藥知識地圖，我們整合瞭農藥的種類、機理、使用方灋、安全註意事項等信息，
+                            為用戶提供全面準確的農藥知識。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-left: 55vw;margin-top: 4vw;height: 23vw; width: 34vw; background-color: #02ff02; text-align: center; display: flex; justify-content: center; align-items: center;">
+                <div>
+                    <img style="width: 33vw;
+                    height: 22vw;"
+                         src="ziyuan/imgs/Taiwan/第二栏-叶.jpg">
+                </div>
+            </div>
+
+            <div style="margin-left: -70.55vw;margin-top: 32vw;height: 10vw; width: 21.5vw; background-color: #029f3a; ">
+                <div class="body-one-head-body-left-bottom-margin">
+                    <div class="body-one-head-body-left-bottom-head">
+                        <p>2000+</p>
+                    </div>
+                    <div class="body-one-head-body-left-bottom-bottom">
+                        知識節點
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-left: 3vw;margin-top: 32vw;height: 10vw; width: 21.5vw; background-color: #fa8d62; ">
+                <div class="body-one-head-body-left-bottom-margin">
+                    <div class="body-one-head-body-left-bottom-head">
+                        <p>200000+</p>
+                    </div>
+                    <div class="body-one-head-body-left-bottom-bottom">
+                        知識關係
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-left: 3vw;margin-top: 32vw;height: 10vw; width: 21.5vw; background-color: #029f3a; ">
+                <div class="body-one-head-body-left-bottom-margin">
+                    <div class="body-one-head-body-left-bottom-head">
+                        <p>2+</p>
+                    </div>
+                    <div class="body-one-head-body-left-bottom-bottom">
+                        知識模式
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--第三张服务-->
+    <div id="body-two" class="body-two" style="height: 45vw">
+        <div class="body-one-head" style="height: 45vw">
+            <div style="width:15vw;height:10vw;margin-left: 40vw;display: flex; flex-flow: column; align-items: center;">
+                <p style="	width: 15vw;height: 2vw;font-size: 2.0vw;font-family: Arial, Arial-Bold;
+                font-weight: 800;
+                color: #333333;
+                margin-top:4vw;
+                margin-left:13vw">我們的服務</p>
+
+                <div style="	width: 6vw;
+                height: 0.26vw;
+                background: #1fa950;
+                border-radius: 0.16vw;
+                border: 0.1vw solid #36be69;;margin-left: 8vw">
+                </div>
+            </div>
+
+            <div class="third-left">
+                <div style="width: 25vw;height: 15vw">
+                    <img style="width:25vw;height: 15vw" src="ziyuan/imgs/Taiwan/第三栏-左.jpg">
+                </div>
+                <div style="margin-top:0.5vw;">
+                    <p style="color:#4e854d;font-size:1.15vw;line-height: 2vw">
+                        我們堅定不移地緻力於從有聲譽和權威的來源穫取和整合數據，確保我們網站上所提供信息
+                        的準確性和可信度。我們通過不斷更新和補充來自不衕來源的數據，以保持數據庫的及時性和完整性。
+                    </p>
+                </div>
+            </div>
+            <div class="third-right">
+                <div class="third-right-kuang1">
+                    <div class="third-right-kuang-inner1">
+                        <div class="third-right-image">
+                            <img style="width:10vw;height:7vw;border-radius: 2vw;" src="ziyuan/imgs/Taiwan/第三栏-右一.jpg">
+                        </div>
+                        <div class="third-right-text" style="margin-top: -1.75vw;">
+                            <p style="font-size: 1.2vw;font-weight: 550;color:#64676c;">
+                                詳細疾病介紹
+                            </p>
+                            <p style="font-size: 0.9vw;color:#797b80;line-height: 1.5vw">
+                                我們的服務提供詳細的病害介紹，探討病害與特定作物之間的
+                                病害與特定作物之間的關係。我們深入研究
+                                哪些作物易受常見疾病的影響，為農民提供重要的
+                                預防和管理的重要見解。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="third-right-kuang2">
+                    <div class="third-right-kuang-inner2">
+                        <div class="third-right-image">
+                            <img style="width:10vw;height:7vw;border-radius: 2vw;" src="ziyuan/imgs/Taiwan/第三栏-右二.jpg">
+                        </div>
+                        <div class="third-right-text" style="margin-top: -1.75vw;">
+                            <p style="font-size: 1.2vw;font-weight: 550;color:#64676c;">
+                                作物詳細介紹
+                            </p>
+                            <p style="font-size: 0.9vw;color:#797b80;line-height: 1.5vw">
+                                我們的服務提供詳細的作物介紹，突齣各種作物的易感性。
+                                我們探討影響農作物健康的常見疾病、癥狀和病理變化。
+                                我們探討影響作物健康的常見疾病、癥狀和管理技朮，旨在讓農民掌握預防疾病的知識。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="third-right-kuang2">
+                    <div class="third-right-kuang-inner2">
+                        <div class="third-right-image">
+                            <img style="width:10vw;height:7vw;border-radius: 2vw;" src="ziyuan/imgs/Taiwan/第三栏-右三.jpg">
+                        </div>
+                        <div class="third-right-text" style="margin-top: -1.75vw;">
+                            <p style="font-size: 1.2vw;font-weight: 550;color:#64676c;">
+                                殺蟲劑詳細介紹
+                            </p>
+                            <p style="font-size: 0.9vw;color:#797b80;line-height: 1.5vw">
+                                我們的服務特色是詳細介紹殺蟲劑、
+                                重點介紹殺蟲劑可以預防的疾病。我們概述瞭
+                                殺蟲劑在保護作物、確保
+                                健康生長和提高産量。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--我们承诺-->
+    <div class="body-tree-head" style="height: 5vw;background-color: white">
+        <p style="	width: 23.96vw;
+        height: 2.2vw;
+        font-size: 2.0vw;
+        font-family: Arial, Arial-Bold;
+        font-weight: 800;
+        text-align: center;
+        color: #151414;
+        margin-top: 4vw;
+        margin-bottom: 0;">我們的承諾</p>
+
+        <div style="	width: 6.0vw;
+        height: 1vw;
+        background: #36be69;
+        border-radius: 0.4vw;
+        margin-top: 1.7vw;
+        border: 0.2vw solid #36be69; /* 调整这里的边框粗细和颜色 */">
+        </div>
+
+    </div>
+
+    <div class="body-two-body" style="background-color: white">
+        <div class="fourth-left">
+            <div class="fourth-unit">
+                <img class="fourth-unit-img" src="ziyuan/imgs/Taiwan/第四栏-1.png">
+                <div style="margin-left:-2vw;width:15vw;height:5vw;">
+                    <p style="width: 18vw;height: 2.2vw;font-size: 1.0vw;font-family: Arial, Arial-Bold;
+                            font-weight: 700;
+                            /*text-align: center;*/
+                            color: #009E38;
+                            margin-top: 1.91vw;
+                            margin-bottom: 0;margin-left: 3.5vw">植物病害信息</p>
+
+                    <div style="	width: 3.07vw;
+                            height: 0.26vw;
+                            background: #009E38;
+                            border-radius: 0.16vw;
+                            margin-top: 0vw;margin-left: 3.5vw">
+                    </div>
+                    <p class="fourth-unit-text">我們提供廣泛實用的植物病害信息，涵蓋各種植物類型和病害類彆、
+                        幚助用戶更好地保護和管理植物。
+                    </p>
+                </div>
+            </div>
+            <div class="fourth-unit">
+                <img class="fourth-unit-img" src="ziyuan/imgs/Taiwan/第四栏-2.png">
+                <div style="margin-left:-2vw;width:15vw;height:5vw;">
+                    <p style="width: 18vw;height: 2.2vw;font-size: 1.0vw;font-family: Arial, Arial-Bold;
+                            font-weight: 700;
+                            /*text-align: center;*/
+                            color: #009E38;
+                            margin-top: 1.91vw;
+                            margin-bottom: 0;margin-left: 3.5vw">重眎用戶反餽</p>
+
+                    <div style="	width: 3.07vw;
+                            height: 0.26vw;
+                            background: #009E38;
+                            border-radius: 0.16vw;
+                            margin-top: 0vw;margin-left: 3.5vw">
+                    </div>
+                    <p class="fourth-unit-text">我們重眎用戶的反餽和意見，這有助於我們不斷改進和提高我們的服務，以更好地滿足用戶的需求。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="fourth-right">
+            <div class="fourth-unit">
+                <img class="fourth-unit-img" src="ziyuan/imgs/Taiwan/第四栏-3.png">
+                <div style="margin-left:-2vw;width:15vw;height:5vw;">
+                    <p style="width: 18vw;height: 2.2vw;font-size: 1.0vw;font-family: Arial, Arial-Bold;
+                            font-weight: 700;
+                            /*text-align: center;*/
+                            color: #009E38;
+                            margin-top: 1.91vw;
+                            margin-bottom: 0;margin-left: 3.5vw">更新和改進</p>
+
+                    <div style="	width: 3.07vw;
+                            height: 0.26vw;
+                            background: #009E38;
+                            border-radius: 0.16vw;
+                            margin-top: 0vw;margin-left: 3.5vw">
+                    </div>
+                    <p class="fourth-unit-text">我們不斷更新和擴展我們的內容庫，竝改進診斷模型，
+                        以確保用戶始終穫得最準確、最新的信息，提升用戶體騐。
+                </div>
+            </div>
+            <div class="fourth-unit">
+                <img class="fourth-unit-img" src="ziyuan/imgs/Taiwan/第四栏-4.png">
+                <div style="margin-left:-2vw;width:15vw;height:5vw;">
+                    <p style="width: 18vw;height: 2.2vw;font-size: 1.0vw;font-family: Arial, Arial-Bold;
+                            font-weight: 700;
+                            /*text-align: center;*/
+                            color: #009E38;
+                            margin-top: 1.91vw;
+                            margin-bottom: 0;margin-left: 3.5vw">及時解決問題</p>
+
+                    <div style="	width: 3.07vw;
+                            height: 0.26vw;
+                            background: #009E38;
+                            border-radius: 0.16vw;
+                            margin-top: 0vw;margin-left: 3.5vw">
+                    </div>
+                    <p class="fourth-unit-text">如果用戶在使用我們的
+                        網站或有任何改進建議，我們的糰隊將及時廻應竝解決他們的擔憂，以確保用戶穫得積極的體騐。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="body-tree">
+    <!--    <div class="body-tree-head">-->
+    <!--        <p class="body-tree-head-title">Our Promise</p>-->
+
+    <!--        <div class="body-tree-head-icon">-->
+    <!--        </div>-->
+
+    <!--    </div>-->
+    <!--    <div class="body-tree-head-text-kuang">-->
+    <!--        <p class="body-tree-head-text">-->
+    <!--            Our website is devoted to furnishing a comprehensive and practical wealth of plant disease information-->
+    <!--            to a-->
+    <!--            diverse range of users, empowering you to better protect and manage your plants. We are constantly-->
+    <!--            updating-->
+    <!--            and expanding our content library, while simultaneously improving our diagnostic models to optimize your-->
+    <!--            user experience. We value the feedback and opinions of our users, which aid us in our ongoing efforts to-->
+    <!--            enhance and improve our services. Should you encounter any issues while utilizing our website or have-->
+    <!--            any-->
+    <!--            suggestions for improvement, please do not hesitate to reach out to us via the contact page or feedback-->
+    <!--            form. Our team is committed to promptly addressing your concerns and resolving any issues that may-->
+    <!--            arise.-->
+
+    <!--        </p>-->
+    <!--    </div>-->
+
+    <!--底部信息-->
+    <div style="height: 17vw;width: 25vw;position: absolute;top: 195vw;left: 15vw;">
+        <div style="height: 3vw">
+            <img style="width:90%;height:100%;" src="ziyuan/imgs/顶部logo.png">
+        </div>
+
+        <div style="height: 5vw;width: 100%;line-height: 1.5vw;font-size: 1.0vw;color:#8eb69d;margin-top: 1.8vw; text-align: justify;">
+            全毬農藥知識穀是一箇緻力於收集、組織和展示的平颱
+            全毬的農藥相關信息。通過我們的平颱，用戶可以輕鬆理解
+            不衕的農藥和作物，以及牠們在農業生産中的應用。
+        </div>
+    </div>
+
+    <!--    <div style="height: 300px;width: 300px;position: absolute;top: 2790px;left: 570px;background-color: #cf9236">-->
+
+    <!--    </div>-->
+
+
+    <div class="foot" style="background-color: #edf3f2">
+        <div class="foot-left">
+            <!--            <img style="width:100%;height:80%;" src="./imgs/statistics.png">-->
+            <img style="width:100%;height:80%;" src="ziyuan/imgs/地图.png">
+        </div>
+        <div class="foot-right">
+            <div class="box">
+                <div class="info">
+                    <div class="title">取得聯繫</div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/address.png">Guizhou University,
+                        貴陽，
+                        貴州，
+                        中國
+                    </div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/phone.png">+86 17885726450</div>
+                    <div class="item" style="color: black"><img src="ziyuan/imgs/email.png">wangqi@samlab.cn</div>
+                </div>
+                <div class="letter">
+                    <div class="title">簡訊</div>
+                    <div class="item" style="color: black">在我們的郵件列錶中輸入您的電子郵件地址，以保存您的
+                        自我我們最新更新。
+                    </div>
+                    <input placeholder="Enter your Email ">
+                    <button style="color:black;font-size: 14px">SUBMIT</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="ziyuan/GDP-KG/vue.min.js.下载"></script>
+<script src="ziyuan/GDP-KG/common.js.下载"></script>
+<script src="ziyuan/GDP-KG/nav.js.下载"></script>
+<div style="position: static; display: none; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;">
+    <div id="trans-tooltip">
+        <div id="tip-left-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-top.png&quot;);"></div>
+        <div id="tip-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-top.png&quot;) repeat-x;"></div>
+        <div id="tip-right-top"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-top.png&quot;);"></div>
+        <div id="tip-right"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right.png&quot;) repeat-y;"></div>
+        <div id="tip-right-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-right-bottom.png&quot;);"></div>
+        <div id="tip-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-bottom.png&quot;) repeat-x;"></div>
+        <div id="tip-left-bottom"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left-bottom.png&quot;);"></div>
+        <div id="tip-left"
+             style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-left.png&quot;);"></div>
+        <div id="trans-content"></div>
+    </div>
+    <div id="tip-arrow-bottom"
+         style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-bottom.png&quot;);"></div>
+    <div id="tip-arrow-top"
+         style="background: url(&quot;chrome-extension://jpjgjbbhaifmiigkopmnpbgcgmigaame/imgs/map/tip-arrow-top.png&quot;);"></div>
+</div>
+
+
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {},
+
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+        },
+
+        methods: {}
+    })
+</script>
+</body>
+
+
+<div style="position: absolute; top: 0vw; right: 0vw; width: 100%; z-index: 2147483647;">
+
+    <style>
+        @font-face {
+            font-family: "cicons";
+            font-weight: 400;
+            font-style: normal;
+            src: url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_43e43c5.woff) format("woff"),
+            url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_ab43222.svg?#cicons) format("svg");
+        }
+
+        @font-face {
+            font-family: "cosmicIcon";
+            font-weight: 400;
+            font-style: normal;
+            src: url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_43e43c5.woff) format("woff"),
+            url(chrome-extension://doepmkblfggigkpkciffgdgjgecafbmc/assets/font/cicon_ab43222.svg?#cicons) format("svg");
+        }</style>
+</div>
+
+
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>KnowMap</title>
+    <link rel="icon" type="image/png" href="ziyuan/imgs/logo.png">
+    <!-- 设置 logo 样式 -->
+    <style>
+        /* 设置 logo 图片大小 */
+        .logo {
+            width: 50px; /* 根据需要调整大小 */
+            height: auto; /* 自适应高度 */
+            margin-right: 10px; /* 可以根据需要调整 logo 与标题的间距 */
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'element-icons';
+            src: url('ziyuan/plugins/elementui/fonts/element-icons.woff') format('woff');
+        }
+    </style>
+    <style type="text/css">
+        html, body {
+            font: 16pt Arial, sans-serif;
+        }
+
+        #viz {
+            height: 530px;
+            border: 1px solid lightgray;
+            font: 10px Arial, sans-serif;
+        }
+
+        #searchBoxInfo {
+            /*position: absolute;*/
+            margin-top: 20px; /* 上边距 */
+            text-align: center; /* 文字居中 */
+            font-size: 18px; /* 字体大小 */
+            color: #888; /* 文字颜色 */
+        }
+    </style>
+    <style>
+        .el-select {
+            width: 100px;
+        }
+    </style>
+
+    <!-- Load NeoVis.js -->
+    <script type="text/javascript" src="ziyuan/js/neovis.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>
+
+        function redirectToHome() {
+            window.location.href = 'http://localhost:8889/home';
+        }
+    </script>
+
+</head>
+<body>
+<div id="app">
+
+    <button onclick="window.location.href='/japanHome.html'" style="background-color: transparent; border: none;
+     cursor: pointer;height: 50px;width: 400px;position: absolute;top: 10px;left: 10px">
+    </button>
+
+    <button onclick="window.location.href='/japan_answer'" style="background-color: transparent; border: none;
+     cursor: pointer;height: 50px;width: 60px;position: absolute;top: 10px;left: 450px">
+    </button>
+
+    <button onclick="window.location.href='/gragh2.html'" style="background-color: transparent; border: none;
+     cursor: pointer;height: 50px;width: 70px;position: absolute;top: 10px;left: 545px">
+    </button>
+
+    <div style="height: 50px">
+        <img src="ziyuan/imgs/页眉_知识图谱.png" alt="页眉" style="height: 50px;width: 100%">
+    </div>
+
+    <div style="width: 100%; height: 50px;display: flex; justify-content: center;background-color: #F3F3F3;margin-top: 0px">
+        <el-button type="success" @click="tips()" style="position: absolute;top: 14px;left: 93%">{{tip}}
+        </el-button>
+
+        <div style="margin-top: 5px; width: 600px;">
+            <el-input :placeholder="placeholder" v-model="input" class="input-with-select"
+                      @keyup.enter.native="submitForm"
+                      ref="searchInput">
+                <el-select v-model="select" slot="prepend" placeholder="请选择" @change="updatePlaceholder">
+                    <el-option label="係る" value="1"></el-option>
+                    <el-option label="予防と治療" value="2"></el-option>
+                    <el-option label="いためる" value="3"></el-option>
+                </el-select>
+                <el-button slot="append" icon="el-icon-search" @click="submitForm"></el-button>
+            </el-input>
+        </div>
+    </div>
+
+
+    <!--    <div style="background-color: #0089ec;height: 30px;display:flex;">-->
+    <!--        <div style="height: 30px;background-color: #cf9236">-->
+    <!--            <img src="@/assets/img/问题人.png" alt="问题人" style="width: 100%" />-->
+    <!--        </div>-->
+    <!--        <div style="height: 30px;background-color: #13ce66">-->
+    <!--            You-->
+    <!--        </div>-->
+
+    <!--    </div>-->
+    <!--    <button style="font-size: 14px; padding: 5px 10px;">-->
+    <!--        &rarr;-->
+    <!--    </button>-->
+
+    <!--    <button style=" padding: 5px 10px; position: relative;">-->
+    <!--      <span style="position: relative;">-->
+    <!--        &bull;-->
+    <!--        <span style="position: absolute; left: 6px; top: 0;">&rarr;</span>-->
+    <!--      </span>-->
+    <!--    </button>-->
+
+    <div style="height: 600px;width: 100%;display: flex;background-color: #F3F3F3; justify-content: center;">
+        <img src="ziyuan/imgs/无数据.png" alt="无数据" style="height:456px;width: 776px">
+
+    </div>
+    <p style="position: absolute; top: 80%; left: 50%; transform: translate(-50%, -50%);color: #a6a9ad">データなし</p>
+
+
+</div>
+
+<!-- 引入组件库 -->
+<script src="ziyuan/js/vue.js"></script>
+<script type="text/javascript" src="ziyuan/js/jquery.min.js"></script>
+<script src="ziyuan/js/axios-0.18.0.js"></script>
+<link rel="stylesheet" type="text/css" href="ziyuan/plugins/elementui/index.css">
+<script src="ziyuan/plugins/elementui/index.js"></script>
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            tip: 'ヒント',
+            input: '',
+            select: '1',
+            placeholder: 'Please enter the name of the pesticide',
+            result: [],
+            information: 'arthropods',
+        },
+
+        //钩子函数，VUE对象初始化完成后自动执行
+        created() {
+            this.processedResult();
+        },
+
+        methods: {
+            tips() {
+                this.$alert(
+                    `<strong>ビジュアル・ナレッジグラフ検索機能</strong><br><br>` +
+                    `視覚的なナレッジグラフ検索機能により、ナレッジグラフを詳細に探索することができる。` +
+                    `ノードやエッジをクリックして、より詳細な情報にアクセスしてみてください。` +
+                    `試してみてほしい！`,
+                    'ひきまわす',
+                    {dangerouslyUseHTMLString: true, confirmButtonText: "了解",}
+                );
+            },
+
+            processedResult() {
+                this.result = this.result.map(item => {
+                    if (item.length > 10) {
+                        return item.substring(0, 15) + '...';
+                    } else {
+                        return item;
+                    }
+                });
+            },
+
+            updatePlaceholder() {
+                if (this.select === '3') {
+                    this.placeholder = '病名を入力してください';
+                } else {
+                    this.placeholder = '農薬名を入力してください';
+                }
+            },
+
+            submitForm() {
+                const searchInput = this.input;
+                const searchType = this.select;
+                let url = '';
+
+                if (searchType === '1') {
+                    url = '/apply2.html?searchInput=' + encodeURIComponent(searchInput);
+                } else if (searchType === '2') {
+                    url = '/prevent2.html?searchInput=' + encodeURIComponent(searchInput);
+                } else if (searchType === '3') {
+                    url = '/disease2.html?searchInput=' + encodeURIComponent(searchInput);
+                }
+
+                window.location.href = url;
+            },
+
+        },
+
+        mounted() {
+            this.updatePlaceholder();
+        },
+    })
+</script>
+
+
+</body>
+</html>

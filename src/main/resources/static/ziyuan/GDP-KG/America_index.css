@@ -1,0 +1,448 @@
+body {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.header {
+	width: 100vw;
+	height: 41.67vw;
+	background: url('../imgs/America/美国-封面.png') no-repeat;
+	background-size: contain;
+}
+.head {
+	width: 100vw;
+	height: 41.67vw;
+	transform: translateX(-10vw); /* 根据需要调整此值 */
+}
+
+.head_title {
+	width: 44vw;
+	height: 7.97vw;
+	font-size: 3.4vw;
+	font-family: Arial, Arial-Bold;
+	font-weight: 700;
+	text-align: left;
+	color: #333333;
+	line-height: 4.84vw;
+	margin-left: 9.89vw;
+	margin-top: 6.9vw;
+}
+
+.head_txt {
+	width: 40vw;
+	height: 2.86vw;
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Bold;
+	text-align: left;
+	color: #333333;
+	line-height: 2vw;
+	margin-left: 9.89vw;
+	margin-top: 3.54vw;
+
+}
+.head_button{
+	display: flex;
+}
+.head_button_start{
+	width: 8.85vw;
+	height: 2.6vw;
+	background: #00a971;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 9.89vw;
+	margin-top: 4.43vw;
+	border-style: none;
+	cursor: pointer;
+}
+.head_button_start_text{
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	text-align: center;
+	color: #ffffff;
+	line-height: 1.93vw;
+}
+.head_button_latest{
+	width: 8.85vw;
+	height: 2.4vw;
+	background: rgba(126,201,187,0.00);
+	border: 0.105vw solid #00a971;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 4.43vw;
+	margin-left: 1.04vw;
+	cursor: pointer;
+}
+.head_button_latest_text{
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	text-align: center;
+	color: #00a971;
+	line-height: 1.93vw;
+}
+.body-zero {
+	width: 100vw;
+	height: 10vw;
+	background: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.body-zero p {
+	font-size: 3vw;
+	font-family: Georgia, serif;
+	font-weight: 700;
+	color: #004d00; /* 深绿色 */
+	text-align: center;
+}
+.body-one{
+	width: 100vw;
+	height: 35vw;
+	background: #ffffff;
+	margin-top: -3vw;
+}
+.body-one-head{
+	display: flex;
+	/*flex-flow: column;*/
+	/*align-items: center;*/
+}
+
+.body-one-head-title{
+	width: 23.96vw;
+	height: 2.2vw;
+	font-size: 2.4vw;
+	font-family: Arial, Arial-Bold;
+	font-weight: 700;
+	text-align: center;
+	color: #333333;
+	margin-top: 3.91vw;
+	margin-bottom: 0;
+}
+.body-one-head-icon{
+	width: 3.07vw;
+	height: 0.26vw;
+	background: #36be69;
+	border-radius: 0.16vw;
+	margin-top: 1.51vw;
+}
+.body-one-head-body{
+	display: flex;
+	align-items: center;
+	justify-content: left;
+}
+.body-one-head-body-left{
+	width: 47.5vw;
+	height: 34.79vw;
+}
+
+.body-one-head-body-left-head{
+	width: 30.17vw;
+	height: 1.04vw;
+	margin-left: 11.09vw;
+	line-height: 3.8vw;
+}
+.body-one-head-body-left-head-text{
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Bold;
+	font-weight: 700;
+	text-align: left;
+	color: #333333;
+	margin-left: -2vw
+}
+
+.body-one-head-body-left-text{
+	width: 40.9vw;
+	height: 7.46vw;
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	color: #333333;
+	line-height: 1.88vw;
+	margin-top: 4.27vw;
+	margin-left: 9vw;
+	hyphens: auto;
+	text-align: justify; /* 设置文本对齐方式为两端对齐 */
+	text-justify: inter-word;
+}
+.body-one-head-body-left-bottom{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.body-one-head-body-left-bottom-margin1{
+	margin-left: 10.89vw;
+	margin-top: 3.02vw;
+	width: 11.6vw;
+	height: 3.59vw;
+	
+}
+.body-one-head-body-left-bottom-margin2{
+	margin-top: 3.02vw;
+	width: 11.6vw;
+	height: 3.59vw;
+}
+.body-one-head-body-left-bottom-margin3{
+
+	margin-top: 3.02vw;
+	width: 11.6vw;
+	height: 3.59vw;
+}
+.body-one-head-body-left-bottom-head{
+	width: 10.47vw;
+	height: 1.77vw;
+	font-size: 2.6vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	text-align: center;
+	color: #00a971;
+	line-height: 1.93vw;
+	margin-left: -2vw
+}
+.body-one-head-body-left-bottom-bottom{
+	width: 10.4vw;
+	height: 0.78vw;
+	font-size: 1vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	text-align:center;
+	color: #666666;
+	line-height: 1.93vw;
+	margin-top: 0.36vw;
+	margin-left: -2.5vw
+}
+.body-one-head-body-right{
+	width: 41.77vw;
+	height: 31.15vw;
+	margin-left: 5vw;
+}
+
+.body-two{
+	width: 100vw;
+	height: 58.43vw;
+	background: #eaf6f2;
+}
+.body-two-text {
+	width: 34.9vw;
+	height: 6.46vw;
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	color: #333333;
+	line-height: 1.88vw;
+	margin-top: 4.27vw;
+	margin-left: auto; /* 自动左边距，使文本居中对齐 */
+	margin-right: auto; /* 自动右边距，使文本居中对齐 */
+	hyphens: auto;
+	text-align: justify; /* 设置文本对齐方式为两端对齐 */
+	text-justify: inter-word;
+}
+
+
+.body-two-body{
+	width: 100vw;
+	height: 47.03vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.body-two-body-main{
+	/*width: 24.74vw;*/
+	width: 18.74vw;
+	height: 45.63vw;
+	background: #ffffff;
+	border-radius: 0.31px;
+	margin-right: 1.98vw;
+	display: flex;
+	float: left;
+	flex-flow: column;
+	align-items: center;
+}
+.body-two-body-main-img{
+	/*width: 20.21vw;*/
+	width: 17.8vw;
+	height: 17.72vw;
+	margin-top: 2.63vw;
+}
+.body-two-body-main-title{
+	font-size: 1.2vw;
+	height: 3.07vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	margin-top:0.83vw ;
+	margin-bottom: 1vw;
+	text-align: center;
+	justify-content: center;
+	/*color: #00a971;*/
+	color: #f7f7f7;
+}
+.body-two-body-main-text-kuang{
+	/*width: 20vw; !* 设置容器的宽度 *!; !* 设置容器的高度 *!*/
+	width: 18vw; /* 设置容器的宽度 */; /* 设置容器的高度 */
+	height: 20vw;
+	display: flex; /* 使用弹性布局使内容居中 */
+	justify-content: center;
+	align-items: center;
+}
+.body-two-body-main-text{
+	width: 20vw;
+	hyphens: auto;
+	/*width: 20vw;*/
+	height: 13.91vw;
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	/*text-align: center;*/
+	color: #666666;
+	line-height: 1.3vw;
+	text-align:justify;
+	justify-content: center;
+}
+.body-two-body-main-button{
+	width: 8.85vw;
+	height: 2.6vw;
+	background: #00a971;
+	display: flex; /* 使用弹性布局使内容居中 */
+	justify-content: center;
+	align-items: center;
+	margin-top: 2.71vw;
+	border-style: none;
+	cursor: pointer;
+}
+.body-two-body-main-button-text{
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	text-align: center;
+	color: #ffffff;
+	line-height: 1.93vw;
+}
+
+.flex-container {
+	display: flex;
+	height: 45.43vh;
+	width: 100vw;
+	background-color: #ffffff;
+}
+
+.middle-column {
+	width: 11vw;
+	height: 20vw;
+	background-color: #009E38;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 0px;
+}
+
+.right-column {
+	width: 39%;
+	height: 80.5%;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.text-white {
+	font-size: 1.2vw;
+	font-family: Arial;
+	color: white;
+	text-align: center;
+	margin: 0;
+}
+.text-green {
+	font-size: 1.2vw;
+	color: black;
+	text-align: center;
+}
+.large-text {
+	font-size: 2.5vw; /* 调整大字体大小 */
+	font-family: Georgia, serif;
+}
+
+.body-tree{
+	width: 100vw;
+	height: 23.07vw;
+	background-image: url('../img/index/promise(1).png');
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+.body-tree-head{
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.body-tree-head-title{
+	width: 23.96vw;
+	height: 2.2vw;
+	font-size: 2.4vw;
+	font-family: Arial, Arial-Bold;
+	font-weight: 700;
+	text-align: center;
+	color: #ffffff;
+	margin-top: 3.91vw;
+	margin-bottom: 0;
+}
+.body-tree-head-icon{
+	width: 3.07vw;
+	height: 0.26vw;
+	background: #ffffff;
+	border-radius: 0.16vw;
+	margin-top: 1.51vw;
+}
+.body-tree-head-text-kuang{
+	width: 77.19vw; /* 设置容器的宽度 */; /* 设置容器的高度 */
+	display: flex; /* 使用弹性布局使内容居中 */
+	justify-content: center;
+	align-items: center;
+	margin-top: 3vw;
+}
+.body-tree-head-text{
+	width: 78vw;
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	color: #ffffff;
+	hyphens: auto;
+	text-align: justify; /* 设置文本对齐方式为两端对齐 */
+	text-justify: inter-word;
+	text-align-last: center;
+	line-height: 1.3vw;
+}
+.body-four{
+	width: 100vw;
+	height: 28.54vw;
+	background: #ffffff;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+.body-four-img{
+	width: 14.74vw;
+	height: 6.72vw;
+	margin-top: 2.37vw;
+}
+.body-four-text-kuang{
+	width: 63.18vw; /* 设置容器的宽度 */; /* 设置容器的高度 */
+	display: flex; /* 使用弹性布局使内容居中 */
+	justify-content: center;
+	align-items: center;
+	margin-top: 2vw;
+}
+.body-four-text{
+	font-size: 1.2vw;
+	font-family: Arial, Arial-Regular;
+	font-weight: 400;
+	color: #666666;
+	hyphens: auto;
+	text-align: justify; /* 设置文本对齐方式为两端对齐 */
+	text-justify: inter-word;
+	text-align-last: center;
+	line-height: 1.3vw;
+}

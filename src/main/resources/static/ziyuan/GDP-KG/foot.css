@@ -1,0 +1,138 @@
+.foot {
+    width: 100vw;
+    height: 25.21vw;
+    /*background-color: #3d3e49;*/
+    display: flex;
+    float: left;
+}
+
+.foot-left {
+    width: 38.7vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot-left .box {
+    width: 100%;
+    height: 18.65vw;
+    border: 0.1vw solid #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-width: 0;
+    border-right-width: 0.1vw;
+}
+
+.foot-left .box .logo {
+    width: 3.49vw;
+    height: 6.51vw;
+}
+
+.foot-left .box .title {
+    width: 17.6vw;
+    height: 3.6vw;
+    font-size: 1.67vw;
+    font-family: Impact, Impact-Regular;
+    font-weight: 400;
+    text-align: center;
+    color: #00a971;
+    line-height: 3.6vw;
+    letter-spacing: 0.13vw;
+}
+
+.foot-left .box .code {
+    width: 6.46vw;
+    height: 6.51vw;
+}
+
+.foot-right {
+    width: 61.2vw;
+    /*height: 100%;*/
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+}
+
+.foot-right .box {
+    display: flex;
+}
+
+.foot-right .box .info {
+    margin-left: 7.14vw;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+.foot-right .box .letter {
+    width: 19.11vw;
+    margin-left: 9.11vw;
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+}
+
+.foot-right .box .info div:nth-child(n+2),
+.foot-right .box .letter div:nth-child(n+2) {
+    margin-top: 3.44vw;
+}
+
+.foot-right .box .title {
+
+    font-size: 1.04vw;
+    font-family: Arial, Arial-Bold;
+    font-weight: 700;
+    text-align: left;
+    color: #00a971;
+    line-height: 1.67vw;
+    text-transform: Uppercase
+}
+
+.foot-right .box .item {
+
+    font-size: 0.94vw;
+    font-family: Arial, Arial-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #ffffff;
+    line-height: 1.3vw;
+}
+.foot-right .box .item img{
+    margin-right: 1.41vw;
+}
+.foot-right .box .letter input {
+    margin-top: 1.4vw;
+    width: 100%;
+    height: 2.92vw;
+    background: #ffffff;
+    border-radius: 0.16vw;
+    font-size: 0.94vw;
+    font-family: Arial, Arial-Regular;
+    font-weight: 400;
+    text-align: left;
+    color: #999999;
+    line-height: 1.3vw;
+    border-style: none;
+
+    box-sizing: border-box;
+}
+
+.foot-right .box .letter button {
+    margin-top: 1.4vw;
+    width: 100%;
+    height: 2.92vw;
+    background: #ffffff;
+    border-radius: 0.16vw;
+    font-size: 0.94px;
+    font-weight: 700;
+    text-align: center;
+    color: #00a971;
+    line-height: 1.3vw;
+    box-sizing: border-box;
+}
+
