@@ -5,7 +5,16 @@
     "eval_queries_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/retrieval_eval_queries.json",
     "corpus_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/active_substance_docs.jsonl",
     "vector_model_name": "BAAI/bge-m3",
-    "vector_device": "cuda"
+    "vector_device": "cuda",
+    "hybrid": {
+      "method": "rrf",
+      "rrf_k": 60,
+      "weights": {
+        "bm25": 1.0,
+        "vector": 1.0
+      },
+      "candidate_k": 10
+    }
   },
   "bm25": {
     "overall": {
@@ -1921,6 +1930,965 @@
           "MRR@10": 1.0,
           "Recall@5": 0.5,
           "Recall@10": 0.75
+        }
+      }
+    ]
+  },
+  "hybrid_rrf": {
+    "overall": {
+      "query_count": 30,
+      "Hit@1": 0.8,
+      "Hit@3": 0.9666666666666667,
+      "Hit@5": 1.0,
+      "MRR@10": 0.8638888888888888,
+      "Recall@5": 0.8083802308802307,
+      "Recall@10": 0.9052272727272729
+    },
+    "by_category": {
+      "entity_explicit": {
+        "query_count": 8,
+        "Hit@1": 1.0,
+        "Hit@3": 1.0,
+        "Hit@5": 1.0,
+        "MRR@10": 1.0,
+        "Recall@5": 1.0,
+        "Recall@10": 1.0
+      },
+      "semantic": {
+        "query_count": 10,
+        "Hit@1": 0.8,
+        "Hit@3": 1.0,
+        "Hit@5": 1.0,
+        "MRR@10": 0.8666666666666666,
+        "Recall@5": 0.8210497835497836,
+        "Recall@10": 0.9617424242424242
+      },
+      "mechanism_or_resistance": {
+        "query_count": 6,
+        "Hit@1": 1.0,
+        "Hit@3": 1.0,
+        "Hit@5": 1.0,
+        "MRR@10": 1.0,
+        "Recall@5": 0.888888888888889,
+        "Recall@10": 1.0
+      },
+      "cross_lingual_zh": {
+        "query_count": 6,
+        "Hit@1": 0.3333333333333333,
+        "Hit@3": 0.8333333333333334,
+        "Hit@5": 1.0,
+        "MRR@10": 0.5416666666666666,
+        "Recall@5": 0.45126262626262625,
+        "Recall@10": 0.5898989898989898
+      }
+    },
+    "per_query": [
+      {
+        "id": "q001",
+        "query": "What is the mode of action and IRAC resistance group of abamectin?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:abamectin"
+        ],
+        "retrieved_ids": [
+          "active_substance:abamectin",
+          "active_substance:azadirachtin",
+          "active_substance:chlorpyrifos",
+          "active_substance:ametoctradin",
+          "active_substance:pirimicarb",
+          "active_substance:amisulbrom",
+          "active_substance:spinosad",
+          "active_substance:carbendazim",
+          "active_substance:indoxacarb",
+          "active_substance:buprofezin"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q002",
+        "query": "How does acephate affect acetylcholinesterase in pests?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:acephate"
+        ],
+        "retrieved_ids": [
+          "active_substance:acephate",
+          "active_substance:diazinon",
+          "active_substance:formetanate",
+          "active_substance:chlorpyrifos",
+          "active_substance:furathiocarb",
+          "active_substance:dichlorvos",
+          "active_substance:thiodicarb",
+          "active_substance:bromoxynil octanoate",
+          "active_substance:dimethoate",
+          "active_substance:bordeaux mixture"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q003",
+        "query": "What EPSPS-related mode of action is listed for glyphosate?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:glyphosate"
+        ],
+        "retrieved_ids": [
+          "active_substance:glyphosate",
+          "active_substance:phenmedipham",
+          "active_substance:glufosinate-ammonium",
+          "active_substance:paraquat",
+          "active_substance:diquat dibromide",
+          "active_substance:metsulfuron-methyl",
+          "active_substance:canola oil",
+          "active_substance:phosphorous acid",
+          "active_substance:paraquat dichloride",
+          "active_substance:halosulfuron-methyl"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q004",
+        "query": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:azoxystrobin"
+        ],
+        "retrieved_ids": [
+          "active_substance:azoxystrobin",
+          "active_substance:fenamidone",
+          "active_substance:trifloxystrobin",
+          "active_substance:pyraclostrobin",
+          "active_substance:picoxystrobin",
+          "active_substance:mandestrobin",
+          "active_substance:ametoctradin",
+          "active_substance:kresoxim-methyl",
+          "active_substance:amisulbrom",
+          "active_substance:cyazofamid"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q005",
+        "query": "What complex II target is described for boscalid?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:boscalid"
+        ],
+        "retrieved_ids": [
+          "active_substance:boscalid",
+          "active_substance:bixafen",
+          "active_substance:isoflucypram",
+          "active_substance:spinosad",
+          "active_substance:bromacil",
+          "active_substance:isofetamid",
+          "active_substance:imidacloprid",
+          "active_substance:penthiopyrad",
+          "active_substance:clothianidin",
+          "active_substance:pydiflumetofen"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q006",
+        "query": "What HPPD inhibition mechanism is listed for mesotrione?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:mesotrione"
+        ],
+        "retrieved_ids": [
+          "active_substance:mesotrione",
+          "active_substance:methabenzthiazuron",
+          "active_substance:topramezone",
+          "active_substance:buprofezin",
+          "active_substance:isoproturon",
+          "active_substance:calcium polysulfide",
+          "active_substance:metobromuron",
+          "active_substance:metalaxyl",
+          "active_substance:permethrin",
+          "active_substance:fludioxonil"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q007",
+        "query": "How does fipronil affect GABA-gated chloride channels?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:fipronil"
+        ],
+        "retrieved_ids": [
+          "active_substance:fipronil",
+          "active_substance:abamectin",
+          "active_substance:bifenthrin",
+          "active_substance:chlorantraniliprole",
+          "active_substance:emamectin benzoate",
+          "active_substance:chlorothalonil",
+          "active_substance:bromoxynil octanoate",
+          "active_substance:benzalkonium chloride",
+          "active_substance:cyprodinil",
+          "active_substance:acrinathrin"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q008",
+        "query": "What juvenile hormone-like effect is described for pyriproxyfen?",
+        "category": "entity_explicit",
+        "relevant_ids": [
+          "active_substance:pyriproxyfen"
+        ],
+        "retrieved_ids": [
+          "active_substance:pyriproxyfen",
+          "active_substance:dichlorprop-p",
+          "active_substance:tebufenozide",
+          "active_substance:pyriofenone",
+          "active_substance:2,4-d dimethylamine salt",
+          "active_substance:pymetrozine",
+          "active_substance:dicamba",
+          "active_substance:pyrethrins",
+          "active_substance:mecoprop",
+          "active_substance:pirimiphos-methyl"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q009",
+        "query": "Which active substances act as acetylcholinesterase inhibitors?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:acephate",
+          "active_substance:chlorpyrifos",
+          "active_substance:diazinon",
+          "active_substance:dichlorvos",
+          "active_substance:furathiocarb",
+          "active_substance:formetanate"
+        ],
+        "retrieved_ids": [
+          "active_substance:chlorpyrifos",
+          "active_substance:formetanate",
+          "active_substance:furathiocarb",
+          "active_substance:diazinon",
+          "active_substance:hydrogen peroxide",
+          "active_substance:acephate",
+          "active_substance:methyl bromide",
+          "active_substance:benzalkonium chloride",
+          "active_substance:chlorsulfuron",
+          "active_substance:thiophanate-methyl"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.6666666666666666,
+          "Recall@10": 0.8333333333333334
+        }
+      },
+      {
+        "id": "q010",
+        "query": "Which herbicide inhibits 5-enolpyruvyl shikimate-3-phosphate synthase?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:glyphosate"
+        ],
+        "retrieved_ids": [
+          "active_substance:pyroxsulam",
+          "active_substance:clomazone",
+          "active_substance:glyphosate",
+          "active_substance:nicosulfuron",
+          "active_substance:thifensulfuron-methyl",
+          "active_substance:prosulfocarb",
+          "active_substance:bromacil",
+          "active_substance:asulam",
+          "active_substance:tribenuron-methyl",
+          "active_substance:chlorsulfuron"
+        ],
+        "metrics": {
+          "Hit@1": 0.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q011",
+        "query": "Which active substances are nicotinic acetylcholine receptor competitive modulators?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:thiamethoxam",
+          "active_substance:imidacloprid",
+          "active_substance:thiacloprid",
+          "active_substance:clothianidin",
+          "active_substance:sulfoxaflor"
+        ],
+        "retrieved_ids": [
+          "active_substance:thiacloprid",
+          "active_substance:thiamethoxam",
+          "active_substance:clothianidin",
+          "active_substance:sulfoxaflor",
+          "active_substance:imidacloprid",
+          "active_substance:spinetoram",
+          "active_substance:spinosad",
+          "active_substance:formetanate",
+          "active_substance:hydrogen peroxide",
+          "active_substance:novaluron"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q012",
+        "query": "Which active substances inhibit protoporphyrinogen oxidase?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:carfentrazone-ethyl",
+          "active_substance:oxadiazon",
+          "active_substance:oxyfluorfen",
+          "active_substance:sulfentrazone",
+          "active_substance:saflufenacil",
+          "active_substance:fluthiacet-methyl",
+          "active_substance:flumioxazin"
+        ],
+        "retrieved_ids": [
+          "active_substance:oxadiazon",
+          "active_substance:sulfentrazone",
+          "active_substance:fluthiacet-methyl",
+          "active_substance:saflufenacil",
+          "active_substance:flumioxazin",
+          "active_substance:hydrogen peroxide",
+          "active_substance:oxyfluorfen",
+          "active_substance:pyriproxyfen",
+          "active_substance:carfentrazone-ethyl",
+          "active_substance:copper oxychloride"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.7142857142857143,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q013",
+        "query": "Which fungicide active substances target succinate dehydrogenase in complex II?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:carboxin",
+          "active_substance:boscalid",
+          "active_substance:bixafen",
+          "active_substance:isopyrazam",
+          "active_substance:fluxapyroxad",
+          "active_substance:penthiopyrad",
+          "active_substance:fluopyram",
+          "active_substance:pydiflumetofen",
+          "active_substance:benzovindiflupyr",
+          "active_substance:isoflucypram",
+          "active_substance:isofetamid"
+        ],
+        "retrieved_ids": [
+          "active_substance:isoflucypram",
+          "active_substance:isofetamid",
+          "active_substance:penthiopyrad",
+          "active_substance:bixafen",
+          "active_substance:isopyrazam",
+          "active_substance:pydiflumetofen",
+          "active_substance:fluopyram",
+          "active_substance:boscalid",
+          "active_substance:benzovindiflupyr",
+          "active_substance:carboxin"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.45454545454545453,
+          "Recall@10": 0.9090909090909091
+        }
+      },
+      {
+        "id": "q014",
+        "query": "Which active substances affect chitin synthase 1 and disrupt normal arthropod growth or development?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:diflubenzuron",
+          "active_substance:lufenuron",
+          "active_substance:novaluron",
+          "active_substance:etoxazole"
+        ],
+        "retrieved_ids": [
+          "active_substance:lufenuron",
+          "active_substance:etoxazole",
+          "active_substance:novaluron",
+          "active_substance:pyriproxyfen",
+          "active_substance:cyromazine",
+          "active_substance:buprofezin",
+          "active_substance:diflubenzuron",
+          "active_substance:chlorsulfuron",
+          "active_substance:clothianidin",
+          "active_substance:hydrogen peroxide"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.75,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q015",
+        "query": "Which active substances are p-hydroxyphenylpyruvate dioxygenase inhibitors?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:mesotrione",
+          "active_substance:topramezone"
+        ],
+        "retrieved_ids": [
+          "active_substance:haloxyfop-p-methyl",
+          "active_substance:copper hydroxide",
+          "active_substance:topramezone",
+          "active_substance:mesotrione",
+          "active_substance:pyriofenone",
+          "active_substance:methyl bromide",
+          "active_substance:sulfentrazone",
+          "active_substance:hydrogen peroxide",
+          "active_substance:oxadiazon",
+          "active_substance:copper oxychloride"
+        ],
+        "metrics": {
+          "Hit@1": 0.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q016",
+        "query": "Which fungicides act on the cytochrome bc1 Qo site in complex III?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:azoxystrobin",
+          "active_substance:kresoxim-methyl",
+          "active_substance:trifloxystrobin",
+          "active_substance:fenamidone",
+          "active_substance:pyraclostrobin",
+          "active_substance:picoxystrobin",
+          "active_substance:ametoctradin",
+          "active_substance:mandestrobin"
+        ],
+        "retrieved_ids": [
+          "active_substance:trifloxystrobin",
+          "active_substance:azoxystrobin",
+          "active_substance:fenamidone",
+          "active_substance:ametoctradin",
+          "active_substance:mandestrobin",
+          "active_substance:picoxystrobin",
+          "active_substance:fenpicoxamid",
+          "active_substance:cyazofamid",
+          "active_substance:amisulbrom",
+          "active_substance:pyraclostrobin"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.625,
+          "Recall@10": 0.875
+        }
+      },
+      {
+        "id": "q017",
+        "query": "Which active substances act on cellulose synthase and inhibit oomycete cell wall synthesis?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:dimethomorph",
+          "active_substance:mandipropamid"
+        ],
+        "retrieved_ids": [
+          "active_substance:mandipropamid",
+          "active_substance:dimethomorph",
+          "active_substance:fluopicolide",
+          "active_substance:octhilinone",
+          "active_substance:pyroxsulam",
+          "active_substance:nicosulfuron",
+          "active_substance:oxathiapiprolin",
+          "active_substance:hydrogen peroxide",
+          "active_substance:bacillus subtilis",
+          "active_substance:fosetyl-aluminium"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q018",
+        "query": "Which insecticide blocks GABA-activated chloride channels and causes convulsions?",
+        "category": "semantic",
+        "relevant_ids": [
+          "active_substance:fipronil"
+        ],
+        "retrieved_ids": [
+          "active_substance:fipronil",
+          "active_substance:abamectin",
+          "active_substance:emamectin benzoate",
+          "active_substance:acrinathrin",
+          "active_substance:imidacloprid",
+          "active_substance:dichlorvos",
+          "active_substance:tau-fluvalinate",
+          "active_substance:clothianidin",
+          "active_substance:pyrethrins",
+          "active_substance:bifenthrin"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q019",
+        "query": "Which QoI fungicides mention target-site mutations in cyt b genes as a resistance mechanism?",
+        "category": "mechanism_or_resistance",
+        "relevant_ids": [
+          "active_substance:azoxystrobin",
+          "active_substance:kresoxim-methyl",
+          "active_substance:trifloxystrobin",
+          "active_substance:fenamidone",
+          "active_substance:picoxystrobin",
+          "active_substance:mandestrobin"
+        ],
+        "retrieved_ids": [
+          "active_substance:azoxystrobin",
+          "active_substance:fenamidone",
+          "active_substance:mandestrobin",
+          "active_substance:picoxystrobin",
+          "active_substance:kresoxim-methyl",
+          "active_substance:trifloxystrobin",
+          "active_substance:ametoctradin",
+          "active_substance:isofetamid",
+          "active_substance:cyazofamid",
+          "active_substance:pyraclostrobin"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.8333333333333334,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q020",
+        "query": "Which active substance has resistance notes about glyphosate-resistant superweeds?",
+        "category": "mechanism_or_resistance",
+        "relevant_ids": [
+          "active_substance:glyphosate"
+        ],
+        "retrieved_ids": [
+          "active_substance:glyphosate",
+          "active_substance:canola oil",
+          "active_substance:paraquat dichloride",
+          "active_substance:quinoxyfen",
+          "active_substance:proquinazid",
+          "active_substance:bacillus subtilis",
+          "active_substance:sulfentrazone",
+          "active_substance:metalaxyl",
+          "active_substance:mefentrifluconazole",
+          "active_substance:glufosinate-ammonium"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q021",
+        "query": "Which CAA fungicides mention cross-resistance in Plasmopara viticola but not Phytophthora infestans?",
+        "category": "mechanism_or_resistance",
+        "relevant_ids": [
+          "active_substance:dimethomorph",
+          "active_substance:mandipropamid"
+        ],
+        "retrieved_ids": [
+          "active_substance:mandipropamid",
+          "active_substance:dimethomorph",
+          "active_substance:proquinazid",
+          "active_substance:quinoxyfen",
+          "active_substance:flusilazole",
+          "active_substance:dicloran",
+          "active_substance:fluopyram",
+          "active_substance:metalaxyl",
+          "active_substance:chlorothalonil",
+          "active_substance:thiabendazole"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q022",
+        "query": "Which benzimidazole fungicides mention beta-microtubulin mutations such as E198A or F200Y?",
+        "category": "mechanism_or_resistance",
+        "relevant_ids": [
+          "active_substance:carbendazim",
+          "active_substance:thiabendazole",
+          "active_substance:thiophanate-methyl"
+        ],
+        "retrieved_ids": [
+          "active_substance:thiabendazole",
+          "active_substance:carbendazim",
+          "active_substance:thiophanate-methyl",
+          "active_substance:benzovindiflupyr",
+          "active_substance:fluquinconazole",
+          "active_substance:hydrogen peroxide",
+          "active_substance:flusilazole",
+          "active_substance:fluxapyroxad",
+          "active_substance:epoxiconazole",
+          "active_substance:fluopyram"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q023",
+        "query": "Which multi-site fungicides react with sulfhydryl groups and are described as low resistance risk?",
+        "category": "mechanism_or_resistance",
+        "relevant_ids": [
+          "active_substance:mancozeb",
+          "active_substance:metiram"
+        ],
+        "retrieved_ids": [
+          "active_substance:metiram",
+          "active_substance:spiroxamine",
+          "active_substance:folpet",
+          "active_substance:penthiopyrad",
+          "active_substance:copper oxychloride",
+          "active_substance:fluopyram",
+          "active_substance:etridiazole",
+          "active_substance:mancozeb",
+          "active_substance:benzovindiflupyr",
+          "active_substance:copper hydroxide"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.5,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q024",
+        "query": "Which pyrethroid has reported resistance in Anopheles gambiae and Anopheles odoratus?",
+        "category": "mechanism_or_resistance",
+        "relevant_ids": [
+          "active_substance:deltamethrin"
+        ],
+        "retrieved_ids": [
+          "active_substance:deltamethrin",
+          "active_substance:cyprodinil",
+          "active_substance:pyrimethanil",
+          "active_substance:imidacloprid",
+          "active_substance:maldison",
+          "active_substance:dimethomorph",
+          "active_substance:permethrin",
+          "active_substance:pyraclostrobin",
+          "active_substance:cymoxanil",
+          "active_substance:quinoxyfen"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q025",
+        "query": "哪些活性成分是乙酰胆碱酯酶抑制剂？",
+        "category": "cross_lingual_zh",
+        "relevant_ids": [
+          "active_substance:acephate",
+          "active_substance:chlorpyrifos",
+          "active_substance:diazinon",
+          "active_substance:dichlorvos",
+          "active_substance:furathiocarb",
+          "active_substance:formetanate"
+        ],
+        "retrieved_ids": [
+          "active_substance:abamectin",
+          "active_substance:etoxazole",
+          "active_substance:acephate",
+          "active_substance:tetraniliprole",
+          "active_substance:acetochlor",
+          "active_substance:cyantraniliprole",
+          "active_substance:alachlor",
+          "active_substance:chlorantraniliprole",
+          "active_substance:aluminium phosphide",
+          "active_substance:fenpyrazamine"
+        ],
+        "metrics": {
+          "Hit@1": 0.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "Recall@5": 0.16666666666666666,
+          "Recall@10": 0.16666666666666666
+        }
+      },
+      {
+        "id": "q026",
+        "query": "哪种活性成分通过抑制 EPSPS 发挥除草作用？",
+        "category": "cross_lingual_zh",
+        "relevant_ids": [
+          "active_substance:glyphosate"
+        ],
+        "retrieved_ids": [
+          "active_substance:asulam",
+          "active_substance:fenoxaprop-p ethyl",
+          "active_substance:glyphosate",
+          "active_substance:abamectin",
+          "active_substance:fenoxaprop-p-ethyl",
+          "active_substance:acephate",
+          "active_substance:epoxiconazole",
+          "active_substance:acetochlor",
+          "active_substance:flumetsulam",
+          "active_substance:alachlor"
+        ],
+        "metrics": {
+          "Hit@1": 0.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q027",
+        "query": "哪些活性成分作用于烟碱型乙酰胆碱受体的竞争性调节位点？",
+        "category": "cross_lingual_zh",
+        "relevant_ids": [
+          "active_substance:thiamethoxam",
+          "active_substance:imidacloprid",
+          "active_substance:thiacloprid",
+          "active_substance:clothianidin",
+          "active_substance:sulfoxaflor"
+        ],
+        "retrieved_ids": [
+          "active_substance:abamectin",
+          "active_substance:tetraniliprole",
+          "active_substance:acephate",
+          "active_substance:sulfoxaflor",
+          "active_substance:acetochlor",
+          "active_substance:thiacloprid",
+          "active_substance:alachlor",
+          "active_substance:thiamethoxam",
+          "active_substance:aluminium phosphide",
+          "active_substance:cyantraniliprole"
+        ],
+        "metrics": {
+          "Hit@1": 0.0,
+          "Hit@3": 0.0,
+          "Hit@5": 1.0,
+          "MRR@10": 0.25,
+          "Recall@5": 0.2,
+          "Recall@10": 0.6
+        }
+      },
+      {
+        "id": "q028",
+        "query": "哪些杀菌剂活性成分靶向复合体 II 中的琥珀酸脱氢酶？",
+        "category": "cross_lingual_zh",
+        "relevant_ids": [
+          "active_substance:carboxin",
+          "active_substance:boscalid",
+          "active_substance:bixafen",
+          "active_substance:isopyrazam",
+          "active_substance:fluxapyroxad",
+          "active_substance:penthiopyrad",
+          "active_substance:fluopyram",
+          "active_substance:pydiflumetofen",
+          "active_substance:benzovindiflupyr",
+          "active_substance:isoflucypram",
+          "active_substance:isofetamid"
+        ],
+        "retrieved_ids": [
+          "active_substance:isofetamid",
+          "active_substance:isoproturon",
+          "active_substance:foramsulfuron",
+          "active_substance:methabenzthiazuron",
+          "active_substance:dazomet",
+          "active_substance:propazine",
+          "active_substance:isopyrazam",
+          "active_substance:terbacil",
+          "active_substance:bixafen",
+          "active_substance:terbuthylazine"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 0.09090909090909091,
+          "Recall@10": 0.2727272727272727
+        }
+      },
+      {
+        "id": "q029",
+        "query": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+        "category": "cross_lingual_zh",
+        "relevant_ids": [
+          "active_substance:fipronil"
+        ],
+        "retrieved_ids": [
+          "active_substance:fipronil",
+          "active_substance:abamectin",
+          "active_substance:furathiocarb",
+          "active_substance:acephate",
+          "active_substance:carbaryl",
+          "active_substance:acetochlor",
+          "active_substance:dichlorvos",
+          "active_substance:alachlor",
+          "active_substance:emamectin benzoate",
+          "active_substance:aluminium phosphide"
+        ],
+        "metrics": {
+          "Hit@1": 1.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 1.0,
+          "Recall@5": 1.0,
+          "Recall@10": 1.0
+        }
+      },
+      {
+        "id": "q030",
+        "query": "哪些活性成分通过影响几丁质合成酶 1 干扰节肢动物的正常生长或发育？",
+        "category": "cross_lingual_zh",
+        "relevant_ids": [
+          "active_substance:diflubenzuron",
+          "active_substance:lufenuron",
+          "active_substance:novaluron",
+          "active_substance:etoxazole"
+        ],
+        "retrieved_ids": [
+          "active_substance:diazinon",
+          "active_substance:chlorpyrifos",
+          "active_substance:etoxazole",
+          "active_substance:bifenthrin",
+          "active_substance:furathiocarb",
+          "active_substance:cyantraniliprole",
+          "active_substance:formetanate",
+          "active_substance:clethodim",
+          "active_substance:lufenuron",
+          "active_substance:pinoxaden"
+        ],
+        "metrics": {
+          "Hit@1": 0.0,
+          "Hit@3": 1.0,
+          "Hit@5": 1.0,
+          "MRR@10": 0.3333333333333333,
+          "Recall@5": 0.25,
+          "Recall@10": 0.5
         }
       }
     ]

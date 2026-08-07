@@ -9,12 +9,15 @@ sys.path.insert(0, str(ROOT))
 
 from evaluation.retrieval_evaluator import CATEGORY_ORDER, METRIC_KEYS, evaluate_retriever, load_eval_queries
 from retrieval.bm25_retriever import BM25Retriever
+from retrieval.hybrid_retriever import HybridRetriever
 from retrieval.vector_retriever import DEFAULT_MODEL_NAME, VectorRetriever
 
 
 CORPUS_PATH = ROOT / "data" / "active_substance_docs.jsonl"
 EVAL_QUERIES_PATH = ROOT / "data" / "retrieval_eval_queries.json"
 DEFAULT_RESULTS_PATH = ROOT / "evaluation" / "results" / "retrieval_eval_results.json"
+DEFAULT_RRF_K = 60
+DEFAULT_CANDIDATE_K = 10
 
 
 def _format_metric(value: float) -> str:
@@ -54,6 +57,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Evaluate BM25 and Vector retrieval.")
     parser.add_argument("--device", default="cpu", help="VectorRetriever device, e.g. cpu or cuda.")
     parser.add_argument("--top-k", type=int, default=10, help="Retrieval depth; must be at least 10.")
+    parser.add_argument("--rrf-k", type=int, default=DEFAULT_RRF_K, help="RRF rank constant.")
+    parser.add_argument(
+        "--candidate-k",
+        type=int,
+        default=DEFAULT_CANDIDATE_K,
+        help="Candidate depth per retriever before RRF fusion.",
+    )
     parser.add_argument(
         "--output",
         type=Path,
@@ -68,6 +78,12 @@ def main() -> int:
     if args.top_k < 10:
         print("验收失败: --top-k must be at least 10.", file=sys.stderr)
         return 1
+    if args.rrf_k <= 0:
+        print("验收失败: --rrf-k must be greater than 0.", file=sys.stderr)
+        return 1
+    if args.candidate_k <= 0:
+        print("验收失败: --candidate-k must be greater than 0.", file=sys.stderr)
+        return 1
 
     eval_queries = load_eval_queries(EVAL_QUERIES_PATH)
 
@@ -77,12 +93,20 @@ def main() -> int:
         corpus_path=CORPUS_PATH,
         device=args.device,
     )
+    hybrid_retriever = HybridRetriever(
+        bm25_retriever,
+        vector_retriever,
+        rrf_k=args.rrf_k,
+        candidate_k=args.candidate_k,
+    )
 
     bm25_summary = evaluate_retriever(bm25_retriever, eval_queries, top_k=args.top_k)
     vector_summary = evaluate_retriever(vector_retriever, eval_queries, top_k=args.top_k)
+    hybrid_summary = evaluate_retriever(hybrid_retriever, eval_queries, top_k=args.top_k)
 
     print_evaluation("BM25", bm25_summary)
     print_evaluation("Vector", vector_summary)
+    print_evaluation("Hybrid RRF", hybrid_summary)
 
     output = {
         "metadata": {
@@ -92,9 +116,19 @@ def main() -> int:
             "corpus_path": str(CORPUS_PATH),
             "vector_model_name": vector_retriever.model_name,
             "vector_device": args.device,
+            "hybrid": {
+                "method": "rrf",
+                "rrf_k": args.rrf_k,
+                "weights": {
+                    "bm25": 1.0,
+                    "vector": 1.0,
+                },
+                "candidate_k": args.candidate_k,
+            },
         },
         "bm25": bm25_summary,
         "vector": vector_summary,
+        "hybrid_rrf": hybrid_summary,
     }
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
