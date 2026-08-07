@@ -1,0 +1,1831 @@
+{
+  "metadata": {
+    "dataset": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/rag_generation_eval_queries.json",
+    "requested_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+    "top_k": 5,
+    "retrieval_method": "RRF Hybrid",
+    "rrf_k": 60,
+    "candidate_k": 10,
+    "temperature": 0.0,
+    "max_attempts": 2,
+    "retry_delay_seconds": 5.0,
+    "query_count": 12,
+    "completed_query_count": 12
+  },
+  "overall": {
+    "total_queries": 12,
+    "answer_queries": 9,
+    "insufficient_queries": 3,
+    "citation_presence_rate": 1.0,
+    "valid_citation_rate": 1.0,
+    "retrieval_expected_entity_coverage_macro": 0.680976430976431,
+    "evidence_conditioned_entity_recall_macro": 0.5555555555555556,
+    "generation_evaluable_rate": 1.0,
+    "entity_as_citation_violation_rate": 0.0,
+    "insufficient_accuracy": 1.0,
+    "zh_language_match_rate": 1.0,
+    "automatic_rule_pass_rate": 0.6666666666666666
+  },
+  "category_breakdown": {
+    "single_entity_fact": {
+      "total_queries": 3,
+      "answer_queries": 3,
+      "insufficient_queries": 0,
+      "citation_presence_rate": 1.0,
+      "valid_citation_rate": 1.0,
+      "retrieval_expected_entity_coverage_macro": 1.0,
+      "evidence_conditioned_entity_recall_macro": 0.3333333333333333,
+      "generation_evaluable_rate": 1.0,
+      "entity_as_citation_violation_rate": 0.0,
+      "insufficient_accuracy": null,
+      "zh_language_match_rate": null,
+      "automatic_rule_pass_rate": 0.3333333333333333
+    },
+    "multi_entity_or_mechanism": {
+      "total_queries": 3,
+      "answer_queries": 3,
+      "insufficient_queries": 0,
+      "citation_presence_rate": 1.0,
+      "valid_citation_rate": 1.0,
+      "retrieval_expected_entity_coverage_macro": 0.6237373737373737,
+      "evidence_conditioned_entity_recall_macro": 0.3333333333333333,
+      "generation_evaluable_rate": 1.0,
+      "entity_as_citation_violation_rate": 0.0,
+      "insufficient_accuracy": null,
+      "zh_language_match_rate": null,
+      "automatic_rule_pass_rate": 0.3333333333333333
+    },
+    "cross_lingual_zh": {
+      "total_queries": 3,
+      "answer_queries": 3,
+      "insufficient_queries": 0,
+      "citation_presence_rate": 1.0,
+      "valid_citation_rate": 1.0,
+      "retrieval_expected_entity_coverage_macro": 0.41919191919191917,
+      "evidence_conditioned_entity_recall_macro": 1.0,
+      "generation_evaluable_rate": 1.0,
+      "entity_as_citation_violation_rate": 0.0,
+      "insufficient_accuracy": null,
+      "zh_language_match_rate": 1.0,
+      "automatic_rule_pass_rate": 1.0
+    },
+    "insufficient_evidence": {
+      "total_queries": 3,
+      "answer_queries": 0,
+      "insufficient_queries": 3,
+      "citation_presence_rate": null,
+      "valid_citation_rate": 1.0,
+      "retrieval_expected_entity_coverage_macro": null,
+      "evidence_conditioned_entity_recall_macro": null,
+      "generation_evaluable_rate": null,
+      "entity_as_citation_violation_rate": 0.0,
+      "insufficient_accuracy": 1.0,
+      "zh_language_match_rate": null,
+      "automatic_rule_pass_rate": 1.0
+    }
+  },
+  "per_query": [
+    {
+      "id": "gq001",
+      "query": "What is the mode of action and IRAC resistance group of abamectin?",
+      "category": "single_entity_fact",
+      "language": "en",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "abamectin"
+      ],
+      "source_retrieval_query_id": "q001",
+      "answer": "Abamectin acts as a glutamate‑gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action, causing paralysis [D1]. Its IRAC resistance classification is Group 6 (Avermectins) [D1].",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: abamectin\n\nIntroduction: Mixture of abamectin B1a (major component) and B1b (minor component). Widely used macrolide insecticide and acaricide in large quantities.\n\nMode of action: Glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. Glutamate is an important inhibitory neurotransmitter in insects.\n\nThe way of action: Poor poisoning by touch, stomach, and internal absorption\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 6; Avermectins.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03252247488101534
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:azadirachtin",
+          "name": "azadirachtin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: azadirachtin\n\nResistance: IRAC UN Group; compounds with unknown or undetermined mechanism of action Neem (Azadirachtin)",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.01639344262295082
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:chlorpyrifos",
+          "name": "chlorpyrifos",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: chlorpyrifos\n\nIntroduction: The common name for the analog dimethyl ester is chlorpyrifos-methyl.\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nThe way of action: Touch, stomach and fumigation\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1B, Organophosphates.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:ametoctradin",
+          "name": "ametoctradin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: ametoctradin\n\nMode of action: Acts on complex III: cytochrome bc1 (ubiquinone reductase) at the Qo site, labeled pepstatin-binding subsite (FRAC 2022)\n\nResistance: Fungicide Resistance Action Committee International FRAC 45, C8, QoSI-Fungicide Group (Quinone Outside Inhibitor, stigmatellin binding type). There was no cross-resistance with the Quinone Outside Inhibitor QoI fungicide. Resistance risk is considered moderate to high (Unit Point Inhibitor) and requires resistance management.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.015873015873015872
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:pirimicarb",
+          "name": "pirimicarb",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: pirimicarb\n\nIntroduction: In France, the common name is spelled \"pyrimicarbe\". Aphicide with a positive temperature coefficient of carbamate. It is fast-acting and has a short residual period.\n\nMode of action: Inhibitor of acetolactate synthase (ALS; EC 2.2.1.6). Acts on the nervous system of pests. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. Inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nThe way of action: Touch, fumigation and penetration\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1A, carbamates (Carbamates).",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.015873015873015872
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "score": 0.03252247488101534,
+          "bm25_rank": 1,
+          "vector_rank": 2,
+          "bm25_score": 25.235451566484386,
+          "vector_score": 0.5726490020751953
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:azadirachtin",
+          "name": "azadirachtin",
+          "score": 0.01639344262295082,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "bm25_score": null,
+          "vector_score": 0.57391357421875
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:chlorpyrifos",
+          "name": "chlorpyrifos",
+          "score": 0.016129032258064516,
+          "bm25_rank": 2,
+          "vector_rank": null,
+          "bm25_score": 17.366206335193148,
+          "vector_score": null
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:ametoctradin",
+          "name": "ametoctradin",
+          "score": 0.015873015873015872,
+          "bm25_rank": null,
+          "vector_rank": 3,
+          "bm25_score": null,
+          "vector_score": 0.5573667287826538
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:pirimicarb",
+          "name": "pirimicarb",
+          "score": 0.015873015873015872,
+          "bm25_rank": 3,
+          "vector_rank": null,
+          "bm25_score": 17.35364323625195,
+          "vector_score": null
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "abamectin"
+        ],
+        "unretrieved_expected_entities": [],
+        "retrieval_expected_entity_coverage": 1.0,
+        "matched_supported_entities": [],
+        "missing_supported_entities": [
+          "abamectin"
+        ],
+        "evidence_conditioned_entity_recall": 0.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": false
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq002",
+      "query": "How does fipronil affect GABA-gated chloride channels?",
+      "category": "single_entity_fact",
+      "language": "en",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "fipronil"
+      ],
+      "source_retrieval_query_id": "q007",
+      "answer": "Fipronil acts as a blocker of GABA‑gated chloride channels; it blocks GABA‑activated chloride channels, leading to hyperexcitability and convulsions in insects [D1].",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:fipronil",
+          "name": "fipronil",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: fipronil\n\nIntroduction: A racemate. The chemical structure is characterized by a central pyrazole ring with a phenyl group attached to one of the nitrogen atoms of the pyrazole. When the phenyl group is attached to one of the carbon atoms of the pyrazole ring, many of the molecules have excellent herbicidal activity.\n\nMode of action: Gamma-aminobutyric acid (GABA) gated chloride channel blocker that acts on the insect nervous system. It blocks GABA-activated chloride channels, thereby causing hyperexcitability and convulsions in insects.GABA is the main inhibitory neurotransmitter in neural excitatory transmission in insects.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 2; 2B, Phenylpyrazoles (Phenylpyrazoles).",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03278688524590164
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: abamectin\n\nIntroduction: Mixture of abamectin B1a (major component) and B1b (minor component). Widely used macrolide insecticide and acaricide in large quantities.\n\nMode of action: Glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. Glutamate is an important inhibitory neurotransmitter in insects.\n\nThe way of action: Poor poisoning by touch, stomach, and internal absorption\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 6; Avermectins.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.03149801587301587
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:bifenthrin",
+          "name": "bifenthrin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: bifenthrin\n\nIntroduction: A racemate. (1R,3R)-bifenthrin, or κ-bifenthrin, the international common name for the left-handed single enantiomer is kappa-bifenthrin.\n\nMode of action: Sodium channel modulator that acts on the insect nervous system. It keeps sodium channels open and causes hyperexcitability in insects. In some cases, it also causes a block in nerve conduction. Sodium channels are involved in the conduction of action potentials along nerve axons.\n\nThe way of action: Touch and stomach poison\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 3; 3A, Pyrethroids.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.02919863597612958
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:chlorantraniliprole",
+          "name": "chlorantraniliprole",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: chlorantraniliprole\n\nMode of action: Fisnidin receptor modulator. Activation of muscle fisnidin receptors leads to contraction and paralysis. Fisnidin receptors mediate the release of calcium from intracellular stores into the cytoplasm.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 28; Diamides.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:emamectin benzoate",
+          "name": "emamectin benzoate",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: emamectin benzoate\n\nMode of action: Glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. Glutamate is an important inhibitory neurotransmitter in insects.\n\nThe way of action: Gastric poisoning, poisoning by touch\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 6; Avermectins.",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.016129032258064516
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:fipronil",
+          "name": "fipronil",
+          "score": 0.03278688524590164,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "bm25_score": 27.019020738434346,
+          "vector_score": 0.6478835344314575
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "score": 0.03149801587301587,
+          "bm25_rank": 3,
+          "vector_rank": 4,
+          "bm25_score": 15.073145058811608,
+          "vector_score": 0.4544543921947479
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:bifenthrin",
+          "name": "bifenthrin",
+          "score": 0.02919863597612958,
+          "bm25_rank": 9,
+          "vector_rank": 8,
+          "bm25_score": 4.214379039730944,
+          "vector_score": 0.4445168375968933
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:chlorantraniliprole",
+          "name": "chlorantraniliprole",
+          "score": 0.016129032258064516,
+          "bm25_rank": null,
+          "vector_rank": 2,
+          "bm25_score": null,
+          "vector_score": 0.4724833369255066
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:emamectin benzoate",
+          "name": "emamectin benzoate",
+          "score": 0.016129032258064516,
+          "bm25_rank": 2,
+          "vector_rank": null,
+          "bm25_score": 16.402571189021565,
+          "vector_score": null
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "fipronil"
+        ],
+        "unretrieved_expected_entities": [],
+        "retrieval_expected_entity_coverage": 1.0,
+        "matched_supported_entities": [],
+        "missing_supported_entities": [
+          "fipronil"
+        ],
+        "evidence_conditioned_entity_recall": 0.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": false
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq003",
+      "query": "What EPSPS-related mode of action is listed for glyphosate?",
+      "category": "single_entity_fact",
+      "language": "en",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "glyphosate"
+      ],
+      "source_retrieval_query_id": "q003",
+      "answer": "The mode of action listed for glyphosate is “Inhibitor of 5‑enolpyruvyl mangiferyl‑3‑phosphate synthase (EPSPS)” [D1].",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:glyphosate",
+          "name": "glyphosate",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: glyphosate\n\nIntroduction: Glyphosate is registered in more than 130 countries and is one of the most produced, used and sold herbicides in the world. Described by some as an \"almost ideal\" herbicide and a once-in-a-century discovery, glyphosate is as important to reliable global food production as penicillin is to the treatment of human disease. However, in March 2015, the International Agency for Research on Cancer (IARC), a division of the World Health Organization, classified glyphosate as \"probably carcinogenic to humans\" (Group 2A) based on the results of epidemiological, animal and in vitro studies. Sites of carcinogenicity in humans: limited evidence for leukemia and/or lymphoma. Show more (Introduction to Glyphosate)\n\nMode of action: Inhibitor of 5-enolpyruvyl mangiferyl-3-phosphate synthase (EPSPS).\n\nThe way of action: Inactivation, endocytosis conduction\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 9. Glyphosate-resistant weeds had not yet been identified when the first genetically modified crops such as corn, oilseed rape, soybeans, and cotton were introduced in the 1990s. By 2014, glyphosate-resistant weeds dominated herbicide resistance research, with 23 resistant weeds, often referred to as \"superweeds,\" identified in 18 countries. The most common resistant weeds are oxalis, matang, multiflora ryegrass, hard ryegrass, small whitebrier, balsam fescue, ragweed, groundsel, morningglory, tumbleweed, orang-utan, false sorghum, firleaf algae, fleabane and Palmer amaranth.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03278688524590164
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:phenmedipham",
+          "name": "phenmedipham",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: phenmedipham\n\nIntroduction: The generic name for the ethyl analog is \"phenmedipham-ethyl\".\n\nMode of action: Inhibition of photosynthesis photosystem II - Serine 264 binders (photosynthesis PS Ⅱ - Serine 264 binders)\n\nThe way of action: selectiveness\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 5",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.030090497737556562
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:glufosinate-ammonium",
+          "name": "glufosinate-ammonium",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: glufosinate-ammonium\n\nIntroduction: A racemate. Touch type (with a certain degree of systemic) inactivating organophosphorus herbicide. After application, the ammonium metabolism in the weed body is put into disorder in a short time, and the cytotoxic agent ammonium ion accumulates in the plant body, resulting in serious inhibition of photosynthesis. It is a broad-spectrum, post-emergence herbicide, widely used in orchards, vineyards, non-cultivated land to prevent and eliminate annual and perennial dicotyledonous and grass weeds.\n\nMode of action: Inhibition of glutamine synthetase (GS; EC 6.3.1.2)\n\nThe way of action: annihilation (of soul, Sanskrit ?ā?vata-vāda)\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 10",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:paraquat",
+          "name": "paraquat",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: paraquat\n\nIntroduction: Paraquat is defined in ISO 1750-1981 as 1,1'-dimethyl-4,4'-bipyridinium, while the anion contained is required to be indicated in commercial formulations. There are 2 face-to-face commercial salts, paraquat dichloride and paraquat bisulfate methyl ester, with its dichloride being widely used. Regardless of the salt, the active ingredient content is indicated by paraquat. Paraquat and paraquat dichloride are two compounds. Queries revealed that its toxicity and treatment accounted for the vast majority of the literature, indicating a great threat to the safety of human life. Despite all the efforts of pesticide producers (development of solid dosage forms; addition of the emetic triazolopyrimidinone to aqueous dosage forms, blue or green coloring agents, odorants and thickeners), they have not escaped the fate of being banned.\n\nMode of action: Photosystem I electron transport inhibitor\n\nThe way of action: Extinguishability, touch kills\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 22. Resistant weeds have emerged in Western Australia. Alternating or rotating with glyphosate may delay the development of weed resistance.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:diquat dibromide",
+          "name": "diquat dibromide",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: diquat dibromide\n\nIntroduction: The product when dibromoethane is used in the second cyclization step of the synthesis of diquat. Bromine or chloride ions can be readily identified by ion chromatography with anion column separation and conductivity detection. Diquat dibromide is a strong irritant and can somewhat dissuade suicidal people from taking it orally. Due to the placement of a bromine atom in the bipyridine system, it has a certain degree of internal absorption, but will not hurt the root system. Bipyridine herbicide, which is the world's third largest inoculative herbicide after glyphosate and paraquat, can be rapidly absorbed by the green tissue of plants, and quickly passivated after contact with the soil. It is mainly used in plots where broadleaf weeds are predominant, and is effective against malignant broadleaf weeds, with fast effect, strong conductivity and low-temperature resistance, and it can also be used for blighting and drying of rice and potato before harvesting.\n\nMode of action: Inhibitor of photosynthetic electron transport. Peroxides produced during photosynthesis that damage cell membranes and cytoplasm.\n\nThe way of action: Extinguishability, touch kills",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.015873015873015872
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:glyphosate",
+          "name": "glyphosate",
+          "score": 0.03278688524590164,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "bm25_score": 16.353145954740686,
+          "vector_score": 0.5406650304794312
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:phenmedipham",
+          "name": "phenmedipham",
+          "score": 0.030090497737556562,
+          "bm25_rank": 8,
+          "vector_rank": 5,
+          "bm25_score": 8.263580090409503,
+          "vector_score": 0.5078451633453369
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:glufosinate-ammonium",
+          "name": "glufosinate-ammonium",
+          "score": 0.016129032258064516,
+          "bm25_rank": null,
+          "vector_rank": 2,
+          "bm25_score": null,
+          "vector_score": 0.5170403718948364
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:paraquat",
+          "name": "paraquat",
+          "score": 0.016129032258064516,
+          "bm25_rank": 2,
+          "vector_rank": null,
+          "bm25_score": 9.287167024999475,
+          "vector_score": null
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:diquat dibromide",
+          "name": "diquat dibromide",
+          "score": 0.015873015873015872,
+          "bm25_rank": 3,
+          "vector_rank": null,
+          "bm25_score": 9.210920224813215,
+          "vector_score": null
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "glyphosate"
+        ],
+        "unretrieved_expected_entities": [],
+        "retrieval_expected_entity_coverage": 1.0,
+        "matched_supported_entities": [
+          "glyphosate"
+        ],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": 1.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq004",
+      "query": "Which active substances act as acetylcholinesterase inhibitors?",
+      "category": "multi_entity_or_mechanism",
+      "language": "en",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "acephate",
+        "chlorpyrifos",
+        "diazinon",
+        "dichlorvos",
+        "furathiocarb",
+        "formetanate"
+      ],
+      "source_retrieval_query_id": "q009",
+      "answer": "chlorpyrifos acts as an acetylcholinesterase inhibitor [D1]. formetanate acts as an acetylcholinesterase inhibitor [D2]. furathiocarb acts as an acetylcholinesterase inhibitor [D3]. diazinon acts as an acetylcholinesterase inhibitor [D4].",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:chlorpyrifos",
+          "name": "chlorpyrifos",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: chlorpyrifos\n\nIntroduction: The common name for the analog dimethyl ester is chlorpyrifos-methyl.\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nThe way of action: Touch, stomach and fumigation\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1B, Organophosphates.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.030679156908665108
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:formetanate",
+          "name": "formetanate",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: formetanate\n\nIntroduction: Organic nitrogen insecticide and acaricide.\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests, nerve agent. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nThe way of action: Touch and stomach poison\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1A, carbamates (Carbamates).",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.030117753623188408
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:furathiocarb",
+          "name": "furathiocarb",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: furathiocarb\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests, nerve agent. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1A, carbamates (Carbamates).",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.029857397504456328
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:diazinon",
+          "name": "diazinon",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: diazinon\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1B, Organophosphates.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.029211087420042643
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:hydrogen peroxide",
+          "name": "hydrogen peroxide",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: hydrogen peroxide\n\nIntroduction: Hydrogen peroxide is a strong oxidizing agent that is easily explosive. It is usually commercially available as an aqueous solution and is subject to different regulations depending on its concentration. The main commercial products are aqueous solutions containing 30, 50, 70 or 90 per cent hydrogen peroxide and stabilizers to inhibit its decomposition. It combines with a number of compounds to form crystals that can be used as mild oxidizing agents, the best known of which is sodium perborate (NaBO2-H2O2-3H2O or NaBO3-4H2O). It reacts with certain organic compounds to form hydroperoxides or peroxides, several of which can be used to trigger polymerization reactions. Although it can be oxidized by a few compounds such as potassium permanganate, in most reactions it oxidizes other substances.",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.01639344262295082
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:chlorpyrifos",
+          "name": "chlorpyrifos",
+          "score": 0.030679156908665108,
+          "bm25_rank": 10,
+          "vector_rank": 1,
+          "bm25_score": 4.745058359958855,
+          "vector_score": 0.6094539165496826
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:formetanate",
+          "name": "formetanate",
+          "score": 0.030117753623188408,
+          "bm25_rank": 9,
+          "vector_rank": 4,
+          "bm25_score": 4.812583091162239,
+          "vector_score": 0.5894957780838013
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:furathiocarb",
+          "name": "furathiocarb",
+          "score": 0.029857397504456328,
+          "bm25_rank": 8,
+          "vector_rank": 6,
+          "bm25_score": 5.154916869007078,
+          "vector_score": 0.5777984857559204
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:diazinon",
+          "name": "diazinon",
+          "score": 0.029211087420042643,
+          "bm25_rank": 7,
+          "vector_rank": 10,
+          "bm25_score": 5.234708479687842,
+          "vector_score": 0.5616376996040344
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:hydrogen peroxide",
+          "name": "hydrogen peroxide",
+          "score": 0.01639344262295082,
+          "bm25_rank": 1,
+          "vector_rank": null,
+          "bm25_score": 9.257096292587281,
+          "vector_score": null
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "chlorpyrifos",
+          "diazinon",
+          "furathiocarb",
+          "formetanate"
+        ],
+        "unretrieved_expected_entities": [
+          "acephate",
+          "dichlorvos"
+        ],
+        "retrieval_expected_entity_coverage": 0.6666666666666666,
+        "matched_supported_entities": [
+          "chlorpyrifos",
+          "diazinon",
+          "furathiocarb",
+          "formetanate"
+        ],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": 1.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq005",
+      "query": "Which fungicide active substances target succinate dehydrogenase in complex II?",
+      "category": "multi_entity_or_mechanism",
+      "language": "en",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "carboxin",
+        "boscalid",
+        "bixafen",
+        "isopyrazam",
+        "fluxapyroxad",
+        "penthiopyrad",
+        "fluopyram",
+        "pydiflumetofen",
+        "benzovindiflupyr",
+        "isoflucypram",
+        "isofetamid"
+      ],
+      "source_retrieval_query_id": "q013",
+      "answer": "Isoflucypram targets succinate dehydrogenase in complex II [D1]. Isofetamid targets succinate dehydrogenase in complex II [D2]. Penthiopyrad targets succinate dehydrogenase in complex II [D3]. Bixafen targets succinate dehydrogenase in complex II [D4]. Isopyrazam targets succinate dehydrogenase in complex II [D5].",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:isoflucypram",
+          "name": "isoflucypram",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: isoflucypram\n\nMode of action: Acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) (FRAC 2022)\n\nResistance: International Fungicide Resistance Action Committee FRAC 7, C2, Succinate-dehydrogenase inhibitors (SDHI) group. Several fungi are known to be resistant in field populations and laboratory mutants. target site mutations in the sdh gene, e.g., H/Y (or H/L) of 257, 267, 272, or P225L, depend on the fungal species. The risk of resistance is moderate to high and needs to be managed, see FRAC Guidelines for the Management of Resistance to Fungicides in the SDHI Class.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03278688524590164
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:isofetamid",
+          "name": "isofetamid",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: isofetamid\n\nMode of action: Acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) (FRAC 2022)\n\nResistance: International Fungicide Resistance Action Committee FRAC 7, C2, Succinate-dehydrogenase inhibitors (SDHI) group. Several fungi are known to be resistant in field populations and laboratory mutants. target site mutations in the sdh gene, e.g., H/Y (or H/L) of 257, 267, 272, or P225L, depend on the fungal species. The risk of resistance is moderate to high and needs to be managed, see FRAC Guidelines for the Management of Resistance to Fungicides in the SDHI Class.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.03200204813108039
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:penthiopyrad",
+          "name": "penthiopyrad",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: penthiopyrad\n\nIntroduction: A racemate.\n\nMode of action: Acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) (FRAC 2022)\n\nResistance: International Fungicide Resistance Action Committee FRAC 7, C2, Succinate-dehydrogenase inhibitors (SDHI) group. Several fungi are known to be resistant in field populations and laboratory mutants. target site mutations in the sdh gene, e.g., H/Y (or H/L) of 257, 267, 272, or P225L, depend on the fungal species. The risk of resistance is moderate to high and needs to be managed, see FRAC Guidelines for the Management of Resistance to Fungicides in the SDHI Class.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.03125763125763126
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:bixafen",
+          "name": "bixafen",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: bixafen\n\nIntroduction: Broad-spectrum fungicide that is effective against a wide range of pathogenic bacteria in cereal crops.\n\nMode of action: Acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) (FRAC 2022)\n\nThe way of action: systemic\n\nResistance: International Fungicide Resistance Action Committee FRAC 7, C2, Succinate-dehydrogenase inhibitors (SDHI) group. Several fungi are known to be resistant in field populations and laboratory mutants. target site mutations in the sdh gene, e.g., H/Y (or H/L) of 257, 267, 272, or P225L, depend on the fungal species. The risk of resistance is moderate to high and needs to be managed, see FRAC Guidelines for the Management of Resistance to Fungicides in the SDHI Class.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.031054405392392875
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:isopyrazam",
+          "name": "isopyrazam",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: isopyrazam\n\nIntroduction: A mixture of two external racemates in a specified ratio.\n\nMode of action: Acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) (FRAC 2022)\n\nResistance: International Fungicide Resistance Action Committee FRAC 7, C2, Succinate-dehydrogenase inhibitors (SDHI) group. Several fungi are known to be resistant in field populations and laboratory mutants. target site mutations in the sdh gene, e.g., H/Y (or H/L) of 257, 267, 272, or P225L, depend on the fungal species. The risk of resistance is moderate to high and needs to be managed, see FRAC Guidelines for the Management of Resistance to Fungicides in the SDHI Class.",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.031009615384615385
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:isoflucypram",
+          "name": "isoflucypram",
+          "score": 0.03278688524590164,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "bm25_score": 17.285744226511632,
+          "vector_score": 0.6536843776702881
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:isofetamid",
+          "name": "isofetamid",
+          "score": 0.03200204813108039,
+          "bm25_rank": 2,
+          "vector_rank": 3,
+          "bm25_score": 17.285744226511632,
+          "vector_score": 0.644416093826294
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:penthiopyrad",
+          "name": "penthiopyrad",
+          "score": 0.03125763125763126,
+          "bm25_rank": 3,
+          "vector_rank": 5,
+          "bm25_score": 17.09650213553575,
+          "vector_score": 0.6105736494064331
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:bixafen",
+          "name": "bixafen",
+          "score": 0.031054405392392875,
+          "bm25_rank": 7,
+          "vector_rank": 2,
+          "bm25_score": 16.391635131126893,
+          "vector_score": 0.6446256041526794
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:isopyrazam",
+          "name": "isopyrazam",
+          "score": 0.031009615384615385,
+          "bm25_rank": 5,
+          "vector_rank": 4,
+          "bm25_score": 16.735758507605375,
+          "vector_score": 0.6414161324501038
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "bixafen",
+          "isopyrazam",
+          "penthiopyrad",
+          "isoflucypram",
+          "isofetamid"
+        ],
+        "unretrieved_expected_entities": [
+          "carboxin",
+          "boscalid",
+          "fluxapyroxad",
+          "fluopyram",
+          "pydiflumetofen",
+          "benzovindiflupyr"
+        ],
+        "retrieval_expected_entity_coverage": 0.45454545454545453,
+        "matched_supported_entities": [],
+        "missing_supported_entities": [
+          "bixafen",
+          "isopyrazam",
+          "penthiopyrad",
+          "isoflucypram",
+          "isofetamid"
+        ],
+        "evidence_conditioned_entity_recall": 0.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": false
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq006",
+      "query": "Which active substances affect chitin synthase 1 and disrupt normal arthropod growth or development?",
+      "category": "multi_entity_or_mechanism",
+      "language": "en",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "diflubenzuron",
+        "lufenuron",
+        "novaluron",
+        "etoxazole"
+      ],
+      "source_retrieval_query_id": "q014",
+      "answer": "Lufenuron is an inhibitor of chitin biosynthesis that affects chitin synthase 1 and interferes with normal insect growth and development [D1].  \nEtoxazole is a mite growth inhibitor that affects chitin synthase 1 and interferes with normal mite growth and development [D2].  \nNovaluron is an inhibitor of chitin biosynthesis that affects chitin synthase 1 and interferes with normal insect growth and development [D3].",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:lufenuron",
+          "name": "lufenuron",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: lufenuron\n\nIntroduction: A racemate.\n\nMode of action: Inhibitor of chitin biosynthesis affecting chitin synthase 1. Inhibits the enzyme that catalyzes the polymerization of chitin and interferes with normal insect growth and development.\n\nThe way of action: Keeps pests from molting or pupating properly.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 15; benzoylureas.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03278688524590164
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:etoxazole",
+          "name": "etoxazole",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: etoxazole\n\nIntroduction: A racemate.\n\nMode of action: A mite growth inhibitor that affects chitin synthase 1. Inhibits the enzyme that catalyzes the polymerization of chitin and interferes with normal mite growth and development.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 10; 10B, Etoxazole.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.03200204813108039
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:novaluron",
+          "name": "novaluron",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: novaluron\n\nIntroduction: A racemate.\n\nMode of action: Inhibitor of chitin biosynthesis affecting chitin synthase 1. Inhibits the enzyme that catalyzes the polymerization of chitin and interferes with normal insect growth and development.\n\nThe way of action: Keeps pests from molting or pupating properly.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 15; benzoylureas.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.03200204813108039
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:pyriproxyfen",
+          "name": "pyriproxyfen",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: pyriproxyfen\n\nIntroduction: A racemate. Inhibitor of chitin synthesis of the juvenile hormone type. Used to control public health pests or tomato whiteflies and citrus tree lice.\n\nMode of action: Bionic juvenile preservation hormone, an insect growth regulator. Used at the pre-metamorphic age, it interferes with the normal growth and development of insects and inhibits metamorphosis.\n\nThe way of action: Inhibition of embryonic development, inhibition of metamorphosis and reproduction\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 7; 7C, Pyriproxyfen.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.031009615384615385
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:cyromazine",
+          "name": "cyromazine",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: cyromazine\n\nIntroduction: Specific triazine insect growth regulator against American spotted fly. It has a strong endocannabinoid conductive effect, and has a strong inhibitory effect on the development of egg larvae of Diptera insects (such as subterranean flies, gall midge, gophers, root maggots) and larvae of some Coleoptera insects. It can make the larvae deformed morphologically and unable to pupate normally.\n\nMode of action: Inhibits the activity of chitin synthase.\n\nThe way of action: Keeps pests from molting or pupating properly.",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.030309988518943745
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:lufenuron",
+          "name": "lufenuron",
+          "score": 0.03278688524590164,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "bm25_score": 23.80814279308411,
+          "vector_score": 0.5896375775337219
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:etoxazole",
+          "name": "etoxazole",
+          "score": 0.03200204813108039,
+          "bm25_rank": 3,
+          "vector_rank": 2,
+          "bm25_score": 22.679350360998658,
+          "vector_score": 0.5776533484458923
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:novaluron",
+          "name": "novaluron",
+          "score": 0.03200204813108039,
+          "bm25_rank": 2,
+          "vector_rank": 3,
+          "bm25_score": 23.80814279308411,
+          "vector_score": 0.5645745992660522
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:pyriproxyfen",
+          "name": "pyriproxyfen",
+          "score": 0.031009615384615385,
+          "bm25_rank": 5,
+          "vector_rank": 4,
+          "bm25_score": 18.412997003347893,
+          "vector_score": 0.5607671737670898
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:cyromazine",
+          "name": "cyromazine",
+          "score": 0.030309988518943745,
+          "bm25_rank": 7,
+          "vector_rank": 5,
+          "bm25_score": 15.038393831899725,
+          "vector_score": 0.5353167057037354
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "lufenuron",
+          "novaluron",
+          "etoxazole"
+        ],
+        "unretrieved_expected_entities": [
+          "diflubenzuron"
+        ],
+        "retrieval_expected_entity_coverage": 0.75,
+        "matched_supported_entities": [],
+        "missing_supported_entities": [
+          "lufenuron",
+          "novaluron",
+          "etoxazole"
+        ],
+        "evidence_conditioned_entity_recall": 0.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": false
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq007",
+      "query": "哪些活性成分是乙酰胆碱酯酶抑制剂？",
+      "category": "cross_lingual_zh",
+      "language": "zh",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "acephate",
+        "chlorpyrifos",
+        "diazinon",
+        "dichlorvos",
+        "furathiocarb",
+        "formetanate"
+      ],
+      "source_retrieval_query_id": "q025",
+      "answer": "根据检索到的证据，acephate 是乙酰胆碱酯酶抑制剂 [D3]。",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: abamectin\n\nIntroduction: Mixture of abamectin B1a (major component) and B1b (minor component). Widely used macrolide insecticide and acaricide in large quantities.\n\nMode of action: Glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. Glutamate is an important inhibitory neurotransmitter in insects.\n\nThe way of action: Poor poisoning by touch, stomach, and internal absorption\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 6; Avermectins.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.01639344262295082
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:etoxazole",
+          "name": "etoxazole",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: etoxazole\n\nIntroduction: A racemate.\n\nMode of action: A mite growth inhibitor that affects chitin synthase 1. Inhibits the enzyme that catalyzes the polymerization of chitin and interferes with normal mite growth and development.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 10; 10B, Etoxazole.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.01639344262295082
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:acephate",
+          "name": "acephate",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: acephate\n\nIntroduction: A racemate (R-isomer and its enantiomer), acetylated derivative of methamidophos, a moderately persistent foliar and soil insecticide, one of the varieties of organophosphorus insecticides replacing the highly toxic methamidophos.\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nThe way of action: Inhalation, poisoning by touch, gastric poisoning, fumigation\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1B, Organophosphates.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:tetraniliprole",
+          "name": "tetraniliprole",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: tetraniliprole\n\nMode of action: Fisnidin receptor modulator. Activation of muscle fisnidin receptors leads to contraction and paralysis. Fisnidin receptors mediate the release of calcium from intracellular stores into the cytoplasm.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 28; Diamides.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:acetochlor",
+          "name": "acetochlor",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: acetochlor\n\nIntroduction: It has special effect on annual grass weeds of Matang, dogweed, oxalis, barnyard grass, thousand golden seeds, look at the maiden, wild oats, early grass, hard grass, paintbrush, and it also has some preventive effect on quinoa, amaranth, polygonum, duckweed, cattle flourish, dodder broadleaf weeds, but the effect is poor, and is ineffective on perennial weeds.\n\nMode of action: Inhibition of very long-chain fatty acid synthesis (VLCFAs)\n\nThe way of action: systemic\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 15",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.015873015873015872
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "score": 0.01639344262295082,
+          "bm25_rank": 1,
+          "vector_rank": null,
+          "bm25_score": 0.0,
+          "vector_score": null
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:etoxazole",
+          "name": "etoxazole",
+          "score": 0.01639344262295082,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "bm25_score": null,
+          "vector_score": 0.5466746091842651
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:acephate",
+          "name": "acephate",
+          "score": 0.016129032258064516,
+          "bm25_rank": 2,
+          "vector_rank": null,
+          "bm25_score": 0.0,
+          "vector_score": null
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:tetraniliprole",
+          "name": "tetraniliprole",
+          "score": 0.016129032258064516,
+          "bm25_rank": null,
+          "vector_rank": 2,
+          "bm25_score": null,
+          "vector_score": 0.5459582209587097
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:acetochlor",
+          "name": "acetochlor",
+          "score": 0.015873015873015872,
+          "bm25_rank": 3,
+          "vector_rank": null,
+          "bm25_score": 0.0,
+          "vector_score": null
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "acephate"
+        ],
+        "unretrieved_expected_entities": [
+          "chlorpyrifos",
+          "diazinon",
+          "dichlorvos",
+          "furathiocarb",
+          "formetanate"
+        ],
+        "retrieval_expected_entity_coverage": 0.16666666666666666,
+        "matched_supported_entities": [
+          "acephate"
+        ],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": 1.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": true,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq008",
+      "query": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+      "category": "cross_lingual_zh",
+      "language": "zh",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "fipronil"
+      ],
+      "source_retrieval_query_id": "q029",
+      "answer": "fipronil 阻断 GABA 激活的氯离子通道，导致昆虫出现过度兴奋和抽搐 [D1]。",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:fipronil",
+          "name": "fipronil",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: fipronil\n\nIntroduction: A racemate. The chemical structure is characterized by a central pyrazole ring with a phenyl group attached to one of the nitrogen atoms of the pyrazole. When the phenyl group is attached to one of the carbon atoms of the pyrazole ring, many of the molecules have excellent herbicidal activity.\n\nMode of action: Gamma-aminobutyric acid (GABA) gated chloride channel blocker that acts on the insect nervous system. It blocks GABA-activated chloride channels, thereby causing hyperexcitability and convulsions in insects.GABA is the main inhibitory neurotransmitter in neural excitatory transmission in insects.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 2; 2B, Phenylpyrazoles (Phenylpyrazoles).",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03278688524590164
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: abamectin\n\nIntroduction: Mixture of abamectin B1a (major component) and B1b (minor component). Widely used macrolide insecticide and acaricide in large quantities.\n\nMode of action: Glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. Glutamate is an important inhibitory neurotransmitter in insects.\n\nThe way of action: Poor poisoning by touch, stomach, and internal absorption\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 6; Avermectins.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.031054405392392875
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:furathiocarb",
+          "name": "furathiocarb",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: furathiocarb\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests, nerve agent. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1A, carbamates (Carbamates).",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:acephate",
+          "name": "acephate",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: acephate\n\nIntroduction: A racemate (R-isomer and its enantiomer), acetylated derivative of methamidophos, a moderately persistent foliar and soil insecticide, one of the varieties of organophosphorus insecticides replacing the highly toxic methamidophos.\n\nMode of action: Inhibitor of acetylcholinesterase (AChE; EC 3.1.1.7). Acts on the nervous system of pests. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. The inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nThe way of action: Inhalation, poisoning by touch, gastric poisoning, fumigation\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1B, Organophosphates.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.015873015873015872
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:carbaryl",
+          "name": "carbaryl",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: carbaryl\n\nMode of action: Inhibitor of acetolactate synthase (ALS; EC 2.2.1.6). Acts on the nervous system of pests. The enzyme terminates the action of the excitatory neurotransmitter acetylcholine at the synapse. Inhibition of its activity leads to increased levels of acetylcholine accumulation and constant activation of receptors in the postsynaptic membrane, causing hyperexcitability, spasms, paralysis and death of the pest.\n\nThe way of action: Touch and stomach poison\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 1; 1A, carbamates (Carbamates).",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.015873015873015872
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:fipronil",
+          "name": "fipronil",
+          "score": 0.03278688524590164,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "bm25_score": 8.270334054934292,
+          "vector_score": 0.5771822929382324
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "score": 0.031054405392392875,
+          "bm25_rank": 2,
+          "vector_rank": 7,
+          "bm25_score": 0.0,
+          "vector_score": 0.5249230861663818
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:furathiocarb",
+          "name": "furathiocarb",
+          "score": 0.016129032258064516,
+          "bm25_rank": null,
+          "vector_rank": 2,
+          "bm25_score": null,
+          "vector_score": 0.5494676232337952
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:acephate",
+          "name": "acephate",
+          "score": 0.015873015873015872,
+          "bm25_rank": 3,
+          "vector_rank": null,
+          "bm25_score": 0.0,
+          "vector_score": null
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:carbaryl",
+          "name": "carbaryl",
+          "score": 0.015873015873015872,
+          "bm25_rank": null,
+          "vector_rank": 3,
+          "bm25_score": null,
+          "vector_score": 0.5343718528747559
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "fipronil"
+        ],
+        "unretrieved_expected_entities": [],
+        "retrieval_expected_entity_coverage": 1.0,
+        "matched_supported_entities": [
+          "fipronil"
+        ],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": 1.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": true,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq009",
+      "query": "哪些杀菌剂活性成分靶向复合体 II 中的琥珀酸脱氢酶？",
+      "category": "cross_lingual_zh",
+      "language": "zh",
+      "expected_behavior": "answer",
+      "expected_entities": [
+        "carboxin",
+        "boscalid",
+        "bixafen",
+        "isopyrazam",
+        "fluxapyroxad",
+        "penthiopyrad",
+        "fluopyram",
+        "pydiflumetofen",
+        "benzovindiflupyr",
+        "isoflucypram",
+        "isofetamid"
+      ],
+      "source_retrieval_query_id": "q028",
+      "answer": "isofetamid 靶向复合体 II 中的琥珀酸脱氢酶 [D1]。",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:isofetamid",
+          "name": "isofetamid",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: isofetamid\n\nMode of action: Acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) (FRAC 2022)\n\nResistance: International Fungicide Resistance Action Committee FRAC 7, C2, Succinate-dehydrogenase inhibitors (SDHI) group. Several fungi are known to be resistant in field populations and laboratory mutants. target site mutations in the sdh gene, e.g., H/Y (or H/L) of 257, 267, 272, or P225L, depend on the fungal species. The risk of resistance is moderate to high and needs to be managed, see FRAC Guidelines for the Management of Resistance to Fungicides in the SDHI Class.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.01639344262295082
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:isoproturon",
+          "name": "isoproturon",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: isoproturon\n\nMode of action: Inhibition of photosynthesis photosystem II - Serine 264 binders (photosynthesis PS Ⅱ - Serine 264 binders)\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 5",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.01639344262295082
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:foramsulfuron",
+          "name": "foramsulfuron",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: foramsulfuron\n\nMode of action: Acetolactate synthase (ALS; EC 2.2.1.6), also known as acetohydroxyacid synthase (AHAS; EC 2.2.1.6) inhibitor. It inhibits the biosynthesis of the branched-chain amino acids valine, leucine, and isoleucine and disrupts protein synthesis, thereby interfering with DNA synthesis and cell division and growth, ultimately leading to plant death.\n\nThe way of action: selectiveness\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 2",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:methabenzthiazuron",
+          "name": "methabenzthiazuron",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: methabenzthiazuron\n\nMode of action: Inhibition of photosynthesis photosystem II - Serine 264 binders (photosynthesis PS Ⅱ - Serine 264 binders)\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 5",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:dazomet",
+          "name": "dazomet",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: dazomet\n\nIntroduction: Soil disinfectant product, applied to moist soil, produces methyl isothiocyanate gas, which rapidly diffuses into the soil and is effective against nematodes.\n\nMode of action: Non-specific multisite inhibitors.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 8; 8F, Methyl isothiocyanate generators (Methyl isothiocyanate generators).",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.015873015873015872
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:isofetamid",
+          "name": "isofetamid",
+          "score": 0.01639344262295082,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "bm25_score": null,
+          "vector_score": 0.5358369946479797
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:isoproturon",
+          "name": "isoproturon",
+          "score": 0.01639344262295082,
+          "bm25_rank": 1,
+          "vector_rank": null,
+          "bm25_score": 2.6264452034310453,
+          "vector_score": null
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:foramsulfuron",
+          "name": "foramsulfuron",
+          "score": 0.016129032258064516,
+          "bm25_rank": null,
+          "vector_rank": 2,
+          "bm25_score": null,
+          "vector_score": 0.5338263511657715
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:methabenzthiazuron",
+          "name": "methabenzthiazuron",
+          "score": 0.016129032258064516,
+          "bm25_rank": 2,
+          "vector_rank": null,
+          "bm25_score": 2.6264452034310453,
+          "vector_score": null
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:dazomet",
+          "name": "dazomet",
+          "score": 0.015873015873015872,
+          "bm25_rank": null,
+          "vector_rank": 3,
+          "bm25_score": null,
+          "vector_score": 0.527824878692627
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": true,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [
+          "isofetamid"
+        ],
+        "unretrieved_expected_entities": [
+          "carboxin",
+          "boscalid",
+          "bixafen",
+          "isopyrazam",
+          "fluxapyroxad",
+          "penthiopyrad",
+          "fluopyram",
+          "pydiflumetofen",
+          "benzovindiflupyr",
+          "isoflucypram"
+        ],
+        "retrieval_expected_entity_coverage": 0.09090909090909091,
+        "matched_supported_entities": [
+          "isofetamid"
+        ],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": 1.0,
+        "generation_evaluable": true,
+        "entity_as_citation_violation": false,
+        "insufficient_success": null,
+        "unexpected_insufficient": false,
+        "zh_language_match": true,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq010",
+      "query": "What is the recommended field application dose and spray interval for abamectin on tomatoes?",
+      "category": "insufficient_evidence",
+      "language": "en",
+      "expected_behavior": "insufficient",
+      "expected_entities": [],
+      "source_retrieval_query_id": null,
+      "answer": "retrieved evidence is insufficient",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:imazethapyr",
+          "name": "imazethapyr",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: imazethapyr\n\nIntroduction: A racemate. Systemic conductive selective soybean field herbicide. For use in preemergence soil or early postemergence stem and leaf spray treatments to control amaranth, polygonum, quinoa, lobelia, abutilon, alewife, barnyard grass, dogwood, matang, and millet in spring soybean fields. It is harmless to soybean and other leguminous crops at the recommended dose.\n\nMode of action: Acetolactate synthase (ALS; EC 2.2.1.6), also known as acetohydroxyacid synthase (AHAS; EC 2.2.1.6) inhibitor. Inhibits the biosynthesis of the branched-chain amino acids valine, leucine, and isoleucine, disrupting protein synthesis and thereby interfering with DNA synthesis and cell division and growth, ultimately leading to plant death. Soybean and peanut selectively derive rapid detoxification from demethylation and glycosylation.\n\nThe way of action: selectiveness\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 2",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03177805800756621
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: abamectin\n\nIntroduction: Mixture of abamectin B1a (major component) and B1b (minor component). Widely used macrolide insecticide and acaricide in large quantities.\n\nMode of action: Glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. Glutamate is an important inhibitory neurotransmitter in insects.\n\nThe way of action: Poor poisoning by touch, stomach, and internal absorption\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 6; Avermectins.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.03125
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:thiram",
+          "name": "thiram",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: thiram\n\nIntroduction: Broad-spectrum organosulfur fungicide. Traditionally used in the US for apple and wine growing. Since 2010, most fumonisins have been used in soybean production. It is avoided by animals and applied to keep fruit trees, ornamentals, etc. safe from birds, rabbits, rodents and deer. Fumonisin has also been used to treat scabies in humans, as a sunscreen and as an antiseptic applied directly to the skin or incorporated into soap. Powdered mixtures containing benomyl at or above 7%, carbofuran at or above 10%, and thiram at or above 15% are controlled under the Rotterdam Convention.\n\nMode of action: Multi-site touch activity (FRAC 2022). Non-specific, multi-site of action, which e.g. binds to coenzyme A, thereby inhibiting the activity of a wide range of fungal enzymes, spore germination and mycelial growth.\n\nThe way of action: protective\n\nResistance: International Fungicide Resistance Action Committee FRAC M 03, Group of Dithiocarbamates and their Derivatives (Electrophilic Reagents). Pathogenic bacteria are usually considered to have a low risk of resistance and do not exhibit resistance.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.01639344262295082
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:2,4-d dimethylamine salt",
+          "name": "2,4-d dimethylamine salt",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: 2,4-d dimethylamine salt\n\nIntroduction: Hormone herbicide with strong systemic conductivity. It is used in wheat fields to prevent and eliminate annual broad-leaved weeds, such as Artemisia spp., quinoa, polygonum, mustard, ion grass, traditional witch hazel, antirrhinoceros, lawn grass, questioning herb, endive, prickly vetch, araucaria, field spinach, and amaranth.\n\nMode of action: Synthetic growth hormone (acts like indoleacetic acid)\n\nThe way of action: selectiveness",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:fenoxaprop-p-ethyl",
+          "name": "fenoxaprop-p-ethyl",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: fenoxaprop-p-ethyl\n\nIntroduction: A systemic selective stem and leaf treatment for postemergence control of common grass weeds in wheat fields. It can prevent and control common annual grass weeds in wheat fields, such as spectacled wheatgrass, clubmoss, hardgrass, bramblegrass, barnyardgrass, wild oats, dogwood, and candlenut grass. It is safe to use at the recommended dose for current and following crops.\n\nMode of action: Inhibitor of fatty acid synthesis. Inhibits acetyl coenzyme A carboxylase (ACCase) activity.\n\nThe way of action: selectiveness",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.016129032258064516
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:imazethapyr",
+          "name": "imazethapyr",
+          "score": 0.03177805800756621,
+          "bm25_rank": 1,
+          "vector_rank": 5,
+          "bm25_score": 18.29309582667987,
+          "vector_score": 0.480188250541687
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:abamectin",
+          "name": "abamectin",
+          "score": 0.03125,
+          "bm25_rank": 4,
+          "vector_rank": 4,
+          "bm25_score": 13.402680625397302,
+          "vector_score": 0.4830935597419739
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:thiram",
+          "name": "thiram",
+          "score": 0.01639344262295082,
+          "bm25_rank": null,
+          "vector_rank": 1,
+          "bm25_score": null,
+          "vector_score": 0.535219669342041
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:2,4-d dimethylamine salt",
+          "name": "2,4-d dimethylamine salt",
+          "score": 0.016129032258064516,
+          "bm25_rank": null,
+          "vector_rank": 2,
+          "bm25_score": null,
+          "vector_score": 0.48851537704467773
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:fenoxaprop-p-ethyl",
+          "name": "fenoxaprop-p-ethyl",
+          "score": 0.016129032258064516,
+          "bm25_rank": 2,
+          "vector_rank": null,
+          "bm25_score": 14.500974954338421,
+          "vector_score": null
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": null,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [],
+        "unretrieved_expected_entities": [],
+        "retrieval_expected_entity_coverage": null,
+        "matched_supported_entities": [],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": null,
+        "generation_evaluable": null,
+        "entity_as_citation_violation": false,
+        "insufficient_success": true,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq011",
+      "query": "What is the oral LD50 value for fipronil in rats according to this corpus?",
+      "category": "insufficient_evidence",
+      "language": "en",
+      "expected_behavior": "insufficient",
+      "expected_entities": [],
+      "source_retrieval_query_id": null,
+      "answer": "retrieved evidence is insufficient",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:fipronil",
+          "name": "fipronil",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: fipronil\n\nIntroduction: A racemate. The chemical structure is characterized by a central pyrazole ring with a phenyl group attached to one of the nitrogen atoms of the pyrazole. When the phenyl group is attached to one of the carbon atoms of the pyrazole ring, many of the molecules have excellent herbicidal activity.\n\nMode of action: Gamma-aminobutyric acid (GABA) gated chloride channel blocker that acts on the insect nervous system. It blocks GABA-activated chloride channels, thereby causing hyperexcitability and convulsions in insects.GABA is the main inhibitory neurotransmitter in neural excitatory transmission in insects.\n\nResistance: International Insecticide Resistance Action Committee IRAC Group 2; 2B, Phenylpyrazoles (Phenylpyrazoles).",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03278688524590164
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:aluminium phosphide",
+          "name": "aluminium phosphide",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: aluminium phosphide\n\nIntroduction: Metal phosphide insecticide. Broad-spectrum fumigation insecticide, rodenticide, mainly used for fumigation of goods storage pests, grain and seed storage pests, outdoor rodents. Under dry conditions, it is safer for humans and animals, and plays a role in releasing phosphine gas by decomposing on its own after absorbing moisture, which is highly toxic to human beings. The potential danger of phosphide-based pesticides is relatively high. Therefore, in recent years, in order to reduce public exposure to phosphine-based fumigants, countries have strengthened the management of phosphine-based pesticides.\n\nMode of action: Mitochondrial complex IV electron transport inhibitor\n\nThe way of action: phosphine fumigation\n\nResistance: International Rodenticide Resistance Action Committee Fumigant. Effective in anticoagulant-resistant pest rats.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:fluoxapiprolin",
+          "name": "fluoxapiprolin",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: fluoxapiprolin\n\nIntroduction: A racemate. The (R)- and (S)-isomers have almost identical biological activities.\n\nMode of action: Affects lipid homeostasis and translocation/storage (FRAC 2022). Inhibition of oxidized sterol-binding protein (OSBP) has bactericidal activity.\n\nResistance: International Fungicide Resistance Action Committee FRAC 49, F9, Oxidized sterol-binding protein homologue inhibition group. Resistance risk considered moderate to high (unit point inhibitor). Resistance management is required.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.016129032258064516
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:cyflufenamid",
+          "name": "cyflufenamid",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: cyflufenamid\n\nIntroduction: IUPAC names and structural formulas in ISO 1750 correspond to the information provided by the manufacturer; CAS names and accession numbers are preferred isomers according to CAS nomenclature rules.\n\nMode of action: Target site unknown (FRAC 2022)\n\nThe way of action: protective\n\nResistance: International Fungicide Resistance Action Committee FRAC U 06, Phenylacetamide Group. Powdery mildew fungus (Sphaerotheca) is known to be resistant and requires resistance management.",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.015873015873015872
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:cyprodinil",
+          "name": "cyprodinil",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: cyprodinil\n\nMode of action: Interferes with methionine biosynthesis (proposed) (cgs gene) (FRAC 2022). Inhibitor of methionine biosynthesis and fungal hydrolase secretion.\n\nThe way of action: systemic\n\nResistance: International Fungicide Resistance Action Committee FRAC 9, D1, AP-Fungicide Group (Anilino-Pyrimidines). Resistance is known for Botrytis (Botrytis) and Venturia (Venturia), and sporadic resistance has been reported for Oculimacula (Oculus). Of the risk of resistance, see FRAC Aniline Pyrimidine Fungicide Resistance Management Guidelines (FRAC 2022). There is no cross-resistance with benzimidazoles, carbamates, dicarboximides, imidazoles, morpholines, quinolines, methoxyacrylates, or triazoles.",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.015873015873015872
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:fipronil",
+          "name": "fipronil",
+          "score": 0.03278688524590164,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "bm25_score": 14.45674469033931,
+          "vector_score": 0.4690093398094177
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:aluminium phosphide",
+          "name": "aluminium phosphide",
+          "score": 0.016129032258064516,
+          "bm25_rank": 2,
+          "vector_rank": null,
+          "bm25_score": 12.318038001836317,
+          "vector_score": null
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:fluoxapiprolin",
+          "name": "fluoxapiprolin",
+          "score": 0.016129032258064516,
+          "bm25_rank": null,
+          "vector_rank": 2,
+          "bm25_score": null,
+          "vector_score": 0.4685664176940918
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:cyflufenamid",
+          "name": "cyflufenamid",
+          "score": 0.015873015873015872,
+          "bm25_rank": 3,
+          "vector_rank": null,
+          "bm25_score": 12.30727182249099,
+          "vector_score": null
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:cyprodinil",
+          "name": "cyprodinil",
+          "score": 0.015873015873015872,
+          "bm25_rank": null,
+          "vector_rank": 3,
+          "bm25_score": null,
+          "vector_score": 0.4644230008125305
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": null,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [],
+        "unretrieved_expected_entities": [],
+        "retrieval_expected_entity_coverage": null,
+        "matched_supported_entities": [],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": null,
+        "generation_evaluable": null,
+        "entity_as_citation_violation": false,
+        "insufficient_success": true,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    },
+    {
+      "id": "gq012",
+      "query": "Which company manufactures glyphosate and what is its current market price?",
+      "category": "insufficient_evidence",
+      "language": "en",
+      "expected_behavior": "insufficient",
+      "expected_entities": [],
+      "source_retrieval_query_id": null,
+      "answer": "retrieved evidence is insufficient",
+      "evidence": [
+        {
+          "label": "D1",
+          "id": "active_substance:glyphosate",
+          "name": "glyphosate",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: glyphosate\n\nIntroduction: Glyphosate is registered in more than 130 countries and is one of the most produced, used and sold herbicides in the world. Described by some as an \"almost ideal\" herbicide and a once-in-a-century discovery, glyphosate is as important to reliable global food production as penicillin is to the treatment of human disease. However, in March 2015, the International Agency for Research on Cancer (IARC), a division of the World Health Organization, classified glyphosate as \"probably carcinogenic to humans\" (Group 2A) based on the results of epidemiological, animal and in vitro studies. Sites of carcinogenicity in humans: limited evidence for leukemia and/or lymphoma. Show more (Introduction to Glyphosate)\n\nMode of action: Inhibitor of 5-enolpyruvyl mangiferyl-3-phosphate synthase (EPSPS).\n\nThe way of action: Inactivation, endocytosis conduction\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 9. Glyphosate-resistant weeds had not yet been identified when the first genetically modified crops such as corn, oilseed rape, soybeans, and cotton were introduced in the 1990s. By 2014, glyphosate-resistant weeds dominated herbicide resistance research, with 23 resistant weeds, often referred to as \"superweeds,\" identified in 18 countries. The most common resistant weeds are oxalis, matang, multiflora ryegrass, hard ryegrass, small whitebrier, balsam fescue, ragweed, groundsel, morningglory, tumbleweed, orang-utan, false sorghum, firleaf algae, fleabane and Palmer amaranth.",
+          "retrieval_rank": 1,
+          "retrieval_score": 0.03278688524590164
+        },
+        {
+          "label": "D2",
+          "id": "active_substance:paraquat dichloride",
+          "name": "paraquat dichloride",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: paraquat dichloride\n\nIntroduction: It is the last step of paraquat production in the aminocyanine method, and is the most important paraquatium salt compound used in agricultural production. After glyphosate, it is the second largest herbicide in the world. It has the characteristics of quick-acting, touching, non-selective, low cost and low resistance of weeds, and is widely used in non-cultivated land, no-tillage land, and inter-row weed control of row crops. It has strong destructive effect on the green tissue of both monocotyledonous and dicotyledonous plants, no endosorption conduction effect, and can only whiten the drugged part. It can't destroy the roots of weeds and the seeds hidden in the soil, and there is regeneration of weeds after applying the medicine. It has poor preventive effect on plantain, polygonum, pellitory, thatching grass, duckweed and fragrant plantain. Loses activity after contact with soil.\n\nMode of action: Photosynthetic system Ⅰ Inhibitor. Peroxides produced during photosynthesis that damage cell membranes and cytoplasm. Specifically, bipyridine cation is rapidly absorbed by plant leaves, and then reduced to bipyridine free radicals through photosynthesis and respiration in green tissues, and then hydrogen peroxide and peroxide free radicals are formed from water and oxygen in leaf tissues by autoxidation, which are extremely destructive to the chloroplast layer membrane, so that photosynthesis and chlorophyll synthesis are stopped, and the leaves start to suffer from discoloration in 2-3 h after being drugged.\n\nThe way of action: Extinguishability, touch kills\n\nResistance: Resistant weeds have emerged in Western Australia. Alternating or rotating with glyphosate can delay the development of weed resistance.",
+          "retrieval_rank": 2,
+          "retrieval_score": 0.031754032258064516
+        },
+        {
+          "label": "D3",
+          "id": "active_substance:canola oil",
+          "name": "canola oil",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: canola oil\n\nIntroduction: It is the last step of paraquat production in the aminocyanine method, and is the most important paraquatium salt compound used in agricultural production. After glyphosate, it is the second largest herbicide in the world. It has the characteristics of quick-acting, touching, non-selective, low cost and low resistance of weeds, and is widely used in non-cultivated land, no-tillage land, and inter-row weed control of row crops. It has strong destructive effect on the green tissue of both monocotyledonous and dicotyledonous plants, no endosorption conduction effect, and can only whiten the drugged part. It can't destroy the roots of weeds and the seeds hidden in the soil, and there is regeneration of weeds after applying the medicine. It has poor preventive effect on plantain, polygonum, pellitory, thatching grass, duckweed and fragrant plantain. Loses activity after contact with soil.\n\nMode of action: Photosynthetic system Ⅰ Inhibitor. Peroxides produced during photosynthesis that damage cell membranes and cytoplasm. Specifically, bipyridine cation is rapidly absorbed by plant leaves, and then reduced to bipyridine free radicals through photosynthesis and respiration in green tissues, and then hydrogen peroxide and peroxide free radicals are formed from water and oxygen in leaf tissues by autoxidation, which are extremely destructive to the chloroplast layer membrane, so that photosynthesis and chlorophyll synthesis are stopped, and the leaves start to suffer from discoloration in 2-3 h after being drugged.\n\nThe way of action: Extinguishability, touch kills\n\nResistance: Resistant weeds have emerged in Western Australia. Alternating or rotating with glyphosate can delay the development of weed resistance.",
+          "retrieval_rank": 3,
+          "retrieval_score": 0.031746031746031744
+        },
+        {
+          "label": "D4",
+          "id": "active_substance:diquat",
+          "name": "diquat",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: diquat\n\nIntroduction: ISO 1750-1981 defines diquat as 1,1'-ethylidene-2,2'-bipyridinium and requires that the anion contained in the commercial formulation be indicated. There are two main commercial salts on the market, diquat dibromide and diquat dichloride, with diquat dibromide being the most widely used. Its dibromide is widely used. In recent years, its dichloride has also been registered in China. Regardless of the salts, the active ingredient content is expressed in terms of diquat. Diquat and Diquat dibromide or dichloride are different compounds. The spectrum and efficacy of Diquat are not as good as Paraquat, and if the problem of emergency treatment of serious human poisoning brought about by its sale and use is not solved, it will sooner or later, like Paraquat, be hard to escape the fate of being banned.\n\nMode of action: Photosystem I electron transport inhibitor\n\nThe way of action: Extinguishability, touch kills\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 22",
+          "retrieval_rank": 4,
+          "retrieval_score": 0.031054405392392875
+        },
+        {
+          "label": "D5",
+          "id": "active_substance:paraquat",
+          "name": "paraquat",
+          "source": "New Zealand pesticide dataset",
+          "content": "Active Substance: paraquat\n\nIntroduction: Paraquat is defined in ISO 1750-1981 as 1,1'-dimethyl-4,4'-bipyridinium, while the anion contained is required to be indicated in commercial formulations. There are 2 face-to-face commercial salts, paraquat dichloride and paraquat bisulfate methyl ester, with its dichloride being widely used. Regardless of the salt, the active ingredient content is indicated by paraquat. Paraquat and paraquat dichloride are two compounds. Queries revealed that its toxicity and treatment accounted for the vast majority of the literature, indicating a great threat to the safety of human life. Despite all the efforts of pesticide producers (development of solid dosage forms; addition of the emetic triazolopyrimidinone to aqueous dosage forms, blue or green coloring agents, odorants and thickeners), they have not escaped the fate of being banned.\n\nMode of action: Photosystem I electron transport inhibitor\n\nThe way of action: Extinguishability, touch kills\n\nResistance: International Herbicide Resistance Action Committee/Weed Science Society of America HRAC/WSSA Group 22. Resistant weeds have emerged in Western Australia. Alternating or rotating with glyphosate may delay the development of weed resistance.",
+          "retrieval_rank": 5,
+          "retrieval_score": 0.02967032967032967
+        }
+      ],
+      "retrieval_trace": [
+        {
+          "rank": 1,
+          "id": "active_substance:glyphosate",
+          "name": "glyphosate",
+          "score": 0.03278688524590164,
+          "bm25_rank": 1,
+          "vector_rank": 1,
+          "bm25_score": 10.127872860552165,
+          "vector_score": 0.5817685127258301
+        },
+        {
+          "rank": 2,
+          "id": "active_substance:paraquat dichloride",
+          "name": "paraquat dichloride",
+          "score": 0.031754032258064516,
+          "bm25_rank": 4,
+          "vector_rank": 2,
+          "bm25_score": 8.608262238226214,
+          "vector_score": 0.471972793340683
+        },
+        {
+          "rank": 3,
+          "id": "active_substance:canola oil",
+          "name": "canola oil",
+          "score": 0.031746031746031744,
+          "bm25_rank": 3,
+          "vector_rank": 3,
+          "bm25_score": 8.608262238226214,
+          "vector_score": 0.4649461507797241
+        },
+        {
+          "rank": 4,
+          "id": "active_substance:diquat",
+          "name": "diquat",
+          "score": 0.031054405392392875,
+          "bm25_rank": 2,
+          "vector_rank": 7,
+          "bm25_score": 9.869230638795099,
+          "vector_score": 0.44439369440078735
+        },
+        {
+          "rank": 5,
+          "id": "active_substance:paraquat",
+          "name": "paraquat",
+          "score": 0.02967032967032967,
+          "bm25_rank": 10,
+          "vector_rank": 5,
+          "bm25_score": 7.776394632787646,
+          "vector_score": 0.45214343070983887
+        }
+      ],
+      "invalid_citations": [],
+      "automatic_metrics": {
+        "citation_presence": null,
+        "citations_valid": true,
+        "invalid_citations": [],
+        "supported_expected_entities": [],
+        "unretrieved_expected_entities": [],
+        "retrieval_expected_entity_coverage": null,
+        "matched_supported_entities": [],
+        "missing_supported_entities": [],
+        "evidence_conditioned_entity_recall": null,
+        "generation_evaluable": null,
+        "entity_as_citation_violation": false,
+        "insufficient_success": true,
+        "unexpected_insufficient": false,
+        "zh_language_match": null,
+        "automatic_rule_pass": true
+      },
+      "manual_review": {
+        "groundedness": 2,
+        "correctness": 2,
+        "completeness": 2,
+        "unsupported_claims": false,
+        "notes": "Manually reviewed against the retrieved evidence. Scores reflect evidence-conditioned generation quality."
+      }
+    }
+  ]
+}

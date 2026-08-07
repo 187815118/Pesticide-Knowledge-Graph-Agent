@@ -31,7 +31,14 @@ CITATION_PATTERN = re.compile(r"\[D(\d+)\]")
 
 
 class GroundedRAG:
-    def __init__(self, retriever, llm_client, model: str = "openrouter/free", top_k: int = 5):
+    def __init__(
+        self,
+        retriever,
+        llm_client,
+        model: str = "openrouter/free",
+        top_k: int = 5,
+        temperature=None,
+    ):
         if top_k <= 0:
             raise ValueError("top_k 必须大于 0。")
 
@@ -39,6 +46,7 @@ class GroundedRAG:
         self.llm_client = llm_client
         self.model = model
         self.top_k = top_k
+        self.temperature = temperature
 
     def answer(self, question: str) -> Dict:
         if not isinstance(question, str) or not question.strip():
@@ -60,10 +68,14 @@ class GroundedRAG:
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": self._build_user_prompt(question, evidence)},
         ]
-        response = self.llm_client.chat.completions.create(
-            model=self.model,
-            messages=messages,
-        )
+        completion_kwargs = {
+            "model": self.model,
+            "messages": messages,
+        }
+        if self.temperature is not None:
+            completion_kwargs["temperature"] = self.temperature
+
+        response = self.llm_client.chat.completions.create(**completion_kwargs)
         answer_text = response.choices[0].message.content or ""
 
         return {

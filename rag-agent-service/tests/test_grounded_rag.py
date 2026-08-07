@@ -39,10 +39,11 @@ class FakeCompletions:
     def __init__(self, parent):
         self.parent = parent
 
-    def create(self, model, messages):
+    def create(self, model, messages, temperature=None):
         self.parent.called = True
         self.parent.model = model
         self.parent.messages = messages
+        self.parent.temperature = temperature
         return FakeResponse(self.parent.answer_text)
 
 
@@ -57,6 +58,7 @@ class FakeClient:
         self.called = False
         self.model = None
         self.messages = None
+        self.temperature = None
         self.chat = FakeChat(self)
 
 
@@ -110,6 +112,8 @@ def main() -> int:
         raise AssertionError("answer 返回不正确")
     if result["invalid_citations"]:
         raise AssertionError("合法 [D1] 不应产生 invalid_citations")
+    if fake_client.temperature is not None:
+        raise AssertionError("未传 temperature 时不应向 fake client 传 temperature")
 
     evidence = result["evidence"]
     if evidence[0]["label"] != "D1" or evidence[1]["label"] != "D2":
@@ -166,6 +170,17 @@ def main() -> int:
     d0_result = d0_rag.answer("What is the mode of action of abamectin?")
     if d0_result["invalid_citations"] != ["D0"]:
         raise AssertionError("非法 citation [D0] 未被识别")
+
+    temperature_client = FakeClient("Abamectin acts on glutamate-gated chloride channels. [D1]")
+    temperature_rag = GroundedRAG(
+        retriever=retriever,
+        llm_client=temperature_client,
+        top_k=2,
+        temperature=0.0,
+    )
+    temperature_rag.answer("What is the mode of action of abamectin?")
+    if temperature_client.temperature != 0.0:
+        raise AssertionError("temperature=0.0 未传递给 LLM client")
 
     empty_client = FakeClient("This should not be called.")
     empty_rag = GroundedRAG(
