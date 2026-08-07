@@ -354,19 +354,26 @@ public class Naive_Bayes {
         double[] vector = new double[vocabulary.size()];
         Arrays.fill(vector, 0.0);
 
-        // 预处理句子，去掉末尾的标点符号
-        sentence = sentence.replaceAll("[,，.。!！?？;；:：]$", "");
-        // 使用空格分割句子
-        String[] words = sentence.split(" ");
-        for (String word : words) {
-            if (vocabulary.containsKey(word)) {
-                int index = vocabulary.get(word);
-                vector[index] = 1.0;
+        // 清理中英文标点，但保留句子原有内容
+        String normalizedSentence = sentence
+                .replaceAll("[,，.。!！?？;；:：]", "")
+                .trim();
+
+        /*
+        * 旧实现只能按空格切词，但中文问题通常没有空格，
+        * 会导致整个句子被视为一个词，最终特征向量几乎全为 0。
+        *
+        * 这里直接检查词典中的特征是否出现在句子中，
+        * 同时兼容中文词语、英文占位符和原有空格分词语料。
+        */
+        for (Map.Entry<String, Integer> entry : vocabulary.entrySet()) {
+            String word = entry.getKey().trim();
+
+            if (!word.isEmpty() && normalizedSentence.contains(word)) {
+                vector[entry.getValue()] = 1.0;
             }
-//            else {
-//                System.out.println("Word not found in vocabulary: " + word);
-//            }
         }
+
         return vector;
     }
 

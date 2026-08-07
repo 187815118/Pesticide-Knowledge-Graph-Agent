@@ -1,0 +1,4 @@
+What is the CHEMICAL_PROPERTY of INGREDIENT?
+Can you describe the CHEMICAL_PROPERTY of INGREDIENT?
+Tell me about the CHEMICAL_PROPERTY of INGREDIENT.
+What are the specific CHEMICAL_PROPERTY of INGREDIENT?

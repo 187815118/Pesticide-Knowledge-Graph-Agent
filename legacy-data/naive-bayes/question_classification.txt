@@ -1,0 +1,13 @@
+0:What is the ATTRIBUTE of PESTICIDE？
+1:How is PESTICIDE used to combat DISEASE?
+2:Is there any effect of PESTICIDE on DISEASE?
+3:Is PESTICIDE used on CROP?
+4:How does PESTICIDE interact with CROP?
+5:Which crops can PESTICIDE treat?
+6:Which diseases can PESTICIDE prevent?
+7:What active substances does PESTICIDE contain?
+8:How can I treat CROP infected with DISEASE?
+9:What diseases can affect CROP?
+10:Which pesticide can control DISEASE?
+11:What is the CHEMICAL_PROPERTY of INGREDIENT?
+12:What is the DISEASE_ATTRIBUTE of DISEASE?
