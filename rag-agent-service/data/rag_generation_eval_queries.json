@@ -1,0 +1,173 @@
+[
+  {
+    "id": "gq001",
+    "query": "What is the mode of action and IRAC resistance group of abamectin?",
+    "category": "single_entity_fact",
+    "source_retrieval_query_id": "q001",
+    "expected_entities": [
+      "abamectin"
+    ],
+    "expected_behavior": "answer",
+    "language": "en",
+    "notes": "Single-entity grounded answer; tests mode-of-action and resistance facts with citation."
+  },
+  {
+    "id": "gq002",
+    "query": "How does fipronil affect GABA-gated chloride channels?",
+    "category": "single_entity_fact",
+    "source_retrieval_query_id": "q007",
+    "expected_entities": [
+      "fipronil"
+    ],
+    "expected_behavior": "answer",
+    "language": "en",
+    "notes": "Single-entity GABA mechanism query; tests avoiding unsupported statements about distractor documents."
+  },
+  {
+    "id": "gq003",
+    "query": "What EPSPS-related mode of action is listed for glyphosate?",
+    "category": "single_entity_fact",
+    "source_retrieval_query_id": "q003",
+    "expected_entities": [
+      "glyphosate"
+    ],
+    "expected_behavior": "answer",
+    "language": "en",
+    "notes": "Single-entity mechanism query; tests exact entity preservation and evidence citation."
+  },
+  {
+    "id": "gq004",
+    "query": "Which active substances act as acetylcholinesterase inhibitors?",
+    "category": "multi_entity_or_mechanism",
+    "source_retrieval_query_id": "q009",
+    "expected_entities": [
+      "acephate",
+      "chlorpyrifos",
+      "diazinon",
+      "dichlorvos",
+      "furathiocarb",
+      "formetanate"
+    ],
+    "expected_behavior": "answer",
+    "language": "en",
+    "notes": "Multi-entity mechanism query; tests listing only entities with positive evidence and proper citations."
+  },
+  {
+    "id": "gq005",
+    "query": "Which fungicide active substances target succinate dehydrogenase in complex II?",
+    "category": "multi_entity_or_mechanism",
+    "source_retrieval_query_id": "q013",
+    "expected_entities": [
+      "carboxin",
+      "boscalid",
+      "bixafen",
+      "isopyrazam",
+      "fluxapyroxad",
+      "penthiopyrad",
+      "fluopyram",
+      "pydiflumetofen",
+      "benzovindiflupyr",
+      "isoflucypram",
+      "isofetamid"
+    ],
+    "expected_behavior": "answer",
+    "language": "en",
+    "notes": "Large multi-entity mechanism query; tests grounded multi-document synthesis without overclaiming."
+  },
+  {
+    "id": "gq006",
+    "query": "Which active substances affect chitin synthase 1 and disrupt normal arthropod growth or development?",
+    "category": "multi_entity_or_mechanism",
+    "source_retrieval_query_id": "q014",
+    "expected_entities": [
+      "diflubenzuron",
+      "lufenuron",
+      "novaluron",
+      "etoxazole"
+    ],
+    "expected_behavior": "answer",
+    "language": "en",
+    "notes": "Multi-entity mechanism query; tests neutral wording that covers insect and mite growth evidence."
+  },
+  {
+    "id": "gq007",
+    "query": "哪些活性成分是乙酰胆碱酯酶抑制剂？",
+    "category": "cross_lingual_zh",
+    "source_retrieval_query_id": "q025",
+    "expected_entities": [
+      "acephate",
+      "chlorpyrifos",
+      "diazinon",
+      "dichlorvos",
+      "furathiocarb",
+      "formetanate"
+    ],
+    "expected_behavior": "answer",
+    "language": "zh",
+    "notes": "Chinese cross-lingual multi-entity query; tests Chinese answer with English entity names preserved."
+  },
+  {
+    "id": "gq008",
+    "query": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+    "category": "cross_lingual_zh",
+    "source_retrieval_query_id": "q029",
+    "expected_entities": [
+      "fipronil"
+    ],
+    "expected_behavior": "answer",
+    "language": "zh",
+    "notes": "Chinese cross-lingual GABA mechanism query; tests citation format and no negative claims about distractors."
+  },
+  {
+    "id": "gq009",
+    "query": "哪些杀菌剂活性成分靶向复合体 II 中的琥珀酸脱氢酶？",
+    "category": "cross_lingual_zh",
+    "source_retrieval_query_id": "q028",
+    "expected_entities": [
+      "carboxin",
+      "boscalid",
+      "bixafen",
+      "isopyrazam",
+      "fluxapyroxad",
+      "penthiopyrad",
+      "fluopyram",
+      "pydiflumetofen",
+      "benzovindiflupyr",
+      "isoflucypram",
+      "isofetamid"
+    ],
+    "expected_behavior": "answer",
+    "language": "zh",
+    "notes": "Chinese cross-lingual complex II mechanism query; tests Chinese generation while preserving English entity names."
+  },
+  {
+    "id": "gq010",
+    "query": "What is the recommended field application dose and spray interval for abamectin on tomatoes?",
+    "category": "insufficient_evidence",
+    "source_retrieval_query_id": null,
+    "expected_entities": [],
+    "expected_behavior": "insufficient",
+    "language": "en",
+    "notes": "Tests refusal when dosage and application frequency evidence is absent from the active-substance corpus."
+  },
+  {
+    "id": "gq011",
+    "query": "What is the oral LD50 value for fipronil in rats according to this corpus?",
+    "category": "insufficient_evidence",
+    "source_retrieval_query_id": null,
+    "expected_entities": [],
+    "expected_behavior": "insufficient",
+    "language": "en",
+    "notes": "Tests refusal when specific toxicology metric evidence such as rat oral LD50 is not provided."
+  },
+  {
+    "id": "gq012",
+    "query": "Which company manufactures glyphosate and what is its current market price?",
+    "category": "insufficient_evidence",
+    "source_retrieval_query_id": null,
+    "expected_entities": [],
+    "expected_behavior": "insufficient",
+    "language": "en",
+    "notes": "Tests refusal when manufacturer and price evidence is absent from the corpus."
+  }
+]
