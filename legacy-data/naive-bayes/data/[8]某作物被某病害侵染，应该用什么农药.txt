@@ -1,0 +1,9 @@
+Which pesticide should I use if CROP is infected with DISEASE?
+What pesticide works best for CROP infected with DISEASE?
+How can I treat CROP infected with DISEASE?
+What should I use to protect CROP from DISEASE?
+Can you recommend a pesticide for CROP infected with DISEASE?
+Is there a specific pesticide for DISEASE on CROP?
+How do I control DISEASE on CROP?
+What treatment is effective for CROP infected with DISEASE?
+What pesticide can prevent DISEASE on CROP?

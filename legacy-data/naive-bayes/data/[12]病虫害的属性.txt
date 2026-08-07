@@ -1,0 +1,5 @@
+What is the DISEASE_ATTRIBUTE of DISEASE?
+Can you tell me the DISEASE_ATTRIBUTE of DISEASE?
+Describe the DISEASE_ATTRIBUTE of DISEASE.
+Can you provide details about the DISEASE_ATTRIBUTE of DISEASE?
+I need to know the DISEASE_ATTRIBUTE of DISEASE.

@@ -128,7 +128,9 @@ public class NewAnswerService {
         int index = -1;
         try {
             // 指定根目录路径
-            String rootDirPath = "E:/LearningMaterials/实训/问答系统/"; // 这里需要替换成实际路径
+            String rootDirPath = java.nio.file.Paths
+                .get(System.getProperty("user.dir"), "legacy-data", "naive-bayes")
+                .toString() + java.io.File.separator;
 
             // 初始化NaiveBayes分类器
             Naive_Bayes naiveBayesClassifier = new Naive_Bayes(rootDirPath);
