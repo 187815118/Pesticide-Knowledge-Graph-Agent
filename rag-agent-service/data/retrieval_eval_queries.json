@@ -1,0 +1,340 @@
+[
+  {
+    "id": "q001",
+    "query": "What is the mode of action and IRAC resistance group of abamectin?",
+    "relevant_ids": [
+      "active_substance:abamectin"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on Mode of action and Resistance fields; entity name is explicit for sanity checking."
+  },
+  {
+    "id": "q002",
+    "query": "How does acephate affect acetylcholinesterase in pests?",
+    "relevant_ids": [
+      "active_substance:acephate"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on acephate Mode of action; asks about the AChE mechanism with entity name present."
+  },
+  {
+    "id": "q003",
+    "query": "What EPSPS-related mode of action is listed for glyphosate?",
+    "relevant_ids": [
+      "active_substance:glyphosate"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on glyphosate Mode of action mentioning EPSPS inhibition; entity-explicit query."
+  },
+  {
+    "id": "q004",
+    "query": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+    "relevant_ids": [
+      "active_substance:azoxystrobin"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on azoxystrobin Mode of action and Resistance fields mentioning complex III Qo site and FRAC 11."
+  },
+  {
+    "id": "q005",
+    "query": "What complex II target is described for boscalid?",
+    "relevant_ids": [
+      "active_substance:boscalid"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on boscalid Mode of action describing succinate dehydrogenase in complex II."
+  },
+  {
+    "id": "q006",
+    "query": "What HPPD inhibition mechanism is listed for mesotrione?",
+    "relevant_ids": [
+      "active_substance:mesotrione"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on mesotrione Mode of action and Introduction; entity name is explicit."
+  },
+  {
+    "id": "q007",
+    "query": "How does fipronil affect GABA-gated chloride channels?",
+    "relevant_ids": [
+      "active_substance:fipronil"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on fipronil Mode of action describing GABA-gated chloride channel blocking."
+  },
+  {
+    "id": "q008",
+    "query": "What juvenile hormone-like effect is described for pyriproxyfen?",
+    "relevant_ids": [
+      "active_substance:pyriproxyfen"
+    ],
+    "category": "entity_explicit",
+    "notes": "Based on pyriproxyfen Introduction, Mode of action, and The way of action; entity-explicit sanity query."
+  },
+  {
+    "id": "q009",
+    "query": "Which active substances act as acetylcholinesterase inhibitors?",
+    "relevant_ids": [
+      "active_substance:acephate",
+      "active_substance:chlorpyrifos",
+      "active_substance:diazinon",
+      "active_substance:dichlorvos",
+      "active_substance:furathiocarb",
+      "active_substance:formetanate"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields that explicitly mention acetylcholinesterase inhibition; entity names are omitted."
+  },
+  {
+    "id": "q010",
+    "query": "Which herbicide inhibits 5-enolpyruvyl shikimate-3-phosphate synthase?",
+    "relevant_ids": [
+      "active_substance:glyphosate"
+    ],
+    "category": "semantic",
+    "notes": "Based on glyphosate Mode of action mentioning EPSPS inhibition; entity name omitted."
+  },
+  {
+    "id": "q011",
+    "query": "Which active substances are nicotinic acetylcholine receptor competitive modulators?",
+    "relevant_ids": [
+      "active_substance:thiamethoxam",
+      "active_substance:imidacloprid",
+      "active_substance:thiacloprid",
+      "active_substance:clothianidin",
+      "active_substance:sulfoxaflor"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields mentioning nAChR competitive modulation; tests mechanism-level semantic retrieval."
+  },
+  {
+    "id": "q012",
+    "query": "Which active substances inhibit protoporphyrinogen oxidase?",
+    "relevant_ids": [
+      "active_substance:carfentrazone-ethyl",
+      "active_substance:oxadiazon",
+      "active_substance:oxyfluorfen",
+      "active_substance:sulfentrazone",
+      "active_substance:saflufenacil",
+      "active_substance:fluthiacet-methyl",
+      "active_substance:flumioxazin"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields containing PPO/protoporphyrinogen oxidase inhibition; entity names omitted."
+  },
+  {
+    "id": "q013",
+    "query": "Which fungicide active substances target succinate dehydrogenase in complex II?",
+    "relevant_ids": [
+      "active_substance:carboxin",
+      "active_substance:boscalid",
+      "active_substance:bixafen",
+      "active_substance:isopyrazam",
+      "active_substance:fluxapyroxad",
+      "active_substance:penthiopyrad",
+      "active_substance:fluopyram",
+      "active_substance:pydiflumetofen",
+      "active_substance:benzovindiflupyr",
+      "active_substance:isoflucypram",
+      "active_substance:isofetamid"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields mentioning complex II succinate dehydrogenase; multi-relevant semantic query."
+  },
+  {
+    "id": "q014",
+    "query": "Which active substances affect chitin synthase 1 and disrupt normal arthropod growth or development?",
+    "relevant_ids": [
+      "active_substance:diflubenzuron",
+      "active_substance:lufenuron",
+      "active_substance:novaluron",
+      "active_substance:etoxazole"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields mentioning effects on chitin synthase 1 and disruption of normal insect or mite growth and development."
+  },
+  {
+    "id": "q015",
+    "query": "Which active substances are p-hydroxyphenylpyruvate dioxygenase inhibitors?",
+    "relevant_ids": [
+      "active_substance:mesotrione",
+      "active_substance:topramezone"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields mentioning HPPD inhibition; entity names omitted."
+  },
+  {
+    "id": "q016",
+    "query": "Which fungicides act on the cytochrome bc1 Qo site in complex III?",
+    "relevant_ids": [
+      "active_substance:azoxystrobin",
+      "active_substance:kresoxim-methyl",
+      "active_substance:trifloxystrobin",
+      "active_substance:fenamidone",
+      "active_substance:pyraclostrobin",
+      "active_substance:picoxystrobin",
+      "active_substance:ametoctradin",
+      "active_substance:mandestrobin"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields for Qo-site/complex III fungicides; multi-relevant semantic query."
+  },
+  {
+    "id": "q017",
+    "query": "Which active substances act on cellulose synthase and inhibit oomycete cell wall synthesis?",
+    "relevant_ids": [
+      "active_substance:dimethomorph",
+      "active_substance:mandipropamid"
+    ],
+    "category": "semantic",
+    "notes": "Based on Mode of action fields mentioning cellulose synthase and cell wall synthesis in oomycete-related fungicides."
+  },
+  {
+    "id": "q018",
+    "query": "Which insecticide blocks GABA-activated chloride channels and causes convulsions?",
+    "relevant_ids": [
+      "active_substance:fipronil"
+    ],
+    "category": "semantic",
+    "notes": "Based on fipronil Mode of action; entity name omitted to test semantic retrieval."
+  },
+  {
+    "id": "q019",
+    "query": "Which QoI fungicides mention target-site mutations in cyt b genes as a resistance mechanism?",
+    "relevant_ids": [
+      "active_substance:azoxystrobin",
+      "active_substance:kresoxim-methyl",
+      "active_substance:trifloxystrobin",
+      "active_substance:fenamidone",
+      "active_substance:picoxystrobin",
+      "active_substance:mandestrobin"
+    ],
+    "category": "mechanism_or_resistance",
+    "notes": "Based on Resistance fields mentioning target site mutations in cyt b genes for QoI fungicides."
+  },
+  {
+    "id": "q020",
+    "query": "Which active substance has resistance notes about glyphosate-resistant superweeds?",
+    "relevant_ids": [
+      "active_substance:glyphosate"
+    ],
+    "category": "mechanism_or_resistance",
+    "notes": "Based on glyphosate Resistance field mentioning glyphosate-resistant weeds and superweeds."
+  },
+  {
+    "id": "q021",
+    "query": "Which CAA fungicides mention cross-resistance in Plasmopara viticola but not Phytophthora infestans?",
+    "relevant_ids": [
+      "active_substance:dimethomorph",
+      "active_substance:mandipropamid"
+    ],
+    "category": "mechanism_or_resistance",
+    "notes": "Based on Resistance fields for CAA fungicides mentioning Plasmopara viticola, Phytophthora infestans, and cross-resistance."
+  },
+  {
+    "id": "q022",
+    "query": "Which benzimidazole fungicides mention beta-microtubulin mutations such as E198A or F200Y?",
+    "relevant_ids": [
+      "active_substance:carbendazim",
+      "active_substance:thiabendazole",
+      "active_substance:thiophanate-methyl"
+    ],
+    "category": "mechanism_or_resistance",
+    "notes": "Based on Resistance fields mentioning beta-microtubulin target-site mutations E198A/G/K and F200Y."
+  },
+  {
+    "id": "q023",
+    "query": "Which multi-site fungicides react with sulfhydryl groups and are described as low resistance risk?",
+    "relevant_ids": [
+      "active_substance:mancozeb",
+      "active_substance:metiram"
+    ],
+    "category": "mechanism_or_resistance",
+    "notes": "Based on Mode of action fields mentioning sulfhydryl groups and Resistance fields describing low resistance risk."
+  },
+  {
+    "id": "q024",
+    "query": "Which pyrethroid has reported resistance in Anopheles gambiae and Anopheles odoratus?",
+    "relevant_ids": [
+      "active_substance:deltamethrin"
+    ],
+    "category": "mechanism_or_resistance",
+    "notes": "Based on deltamethrin Resistance field mentioning Anopheles gambiae and Anopheles odoratus."
+  },
+  {
+    "id": "q025",
+    "query": "哪些活性成分是乙酰胆碱酯酶抑制剂？",
+    "relevant_ids": [
+      "active_substance:acephate",
+      "active_substance:chlorpyrifos",
+      "active_substance:diazinon",
+      "active_substance:dichlorvos",
+      "active_substance:furathiocarb",
+      "active_substance:formetanate"
+    ],
+    "category": "cross_lingual_zh",
+    "notes": "中文跨语言 query；依据 Mode of action 中的 acetylcholinesterase inhibitor。"
+  },
+  {
+    "id": "q026",
+    "query": "哪种活性成分通过抑制 EPSPS 发挥除草作用？",
+    "relevant_ids": [
+      "active_substance:glyphosate"
+    ],
+    "category": "cross_lingual_zh",
+    "notes": "中文跨语言 query；依据 glyphosate Mode of action 中的 EPSPS inhibition。"
+  },
+  {
+    "id": "q027",
+    "query": "哪些活性成分作用于烟碱型乙酰胆碱受体的竞争性调节位点？",
+    "relevant_ids": [
+      "active_substance:thiamethoxam",
+      "active_substance:imidacloprid",
+      "active_substance:thiacloprid",
+      "active_substance:clothianidin",
+      "active_substance:sulfoxaflor"
+    ],
+    "category": "cross_lingual_zh",
+    "notes": "中文跨语言 query；依据 Mode of action 中的 nicotinic acetylcholine receptor competitive modulator。"
+  },
+  {
+    "id": "q028",
+    "query": "哪些杀菌剂活性成分靶向复合体 II 中的琥珀酸脱氢酶？",
+    "relevant_ids": [
+      "active_substance:carboxin",
+      "active_substance:boscalid",
+      "active_substance:bixafen",
+      "active_substance:isopyrazam",
+      "active_substance:fluxapyroxad",
+      "active_substance:penthiopyrad",
+      "active_substance:fluopyram",
+      "active_substance:pydiflumetofen",
+      "active_substance:benzovindiflupyr",
+      "active_substance:isoflucypram",
+      "active_substance:isofetamid"
+    ],
+    "category": "cross_lingual_zh",
+    "notes": "中文跨语言 query；依据 Mode of action 中的 complex II succinate dehydrogenase。"
+  },
+  {
+    "id": "q029",
+    "query": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+    "relevant_ids": [
+      "active_substance:fipronil"
+    ],
+    "category": "cross_lingual_zh",
+    "notes": "中文跨语言 query；依据 fipronil Mode of action 中的 GABA-activated chloride channel blocker。"
+  },
+  {
+    "id": "q030",
+    "query": "哪些活性成分通过影响几丁质合成酶 1 干扰节肢动物的正常生长或发育？",
+    "relevant_ids": [
+      "active_substance:diflubenzuron",
+      "active_substance:lufenuron",
+      "active_substance:novaluron",
+      "active_substance:etoxazole"
+    ],
+    "category": "cross_lingual_zh",
+    "notes": "中文跨语言 query；依据 Mode of action 中关于影响 chitin synthase 1 并干扰昆虫或螨类正常生长发育的描述。"
+  }
+]
