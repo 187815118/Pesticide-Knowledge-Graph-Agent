@@ -11,6 +11,7 @@ from tools.pesticide_query import (
     query_active_substance,
     query_pesticides_by_active_substance,
 )
+from tools.rag_query import hybrid_rag_query
 
 
 def _make_tool(name: str, description: str, params_schema: Dict[str, Any], func):
@@ -42,6 +43,20 @@ TOOLS = {
             "required": ["active_substance_name"],
         },
         func=query_pesticides_by_active_substance,
+    ),
+    "hybrid_rag_query": _make_tool(
+        name="hybrid_rag_query",
+        description=(
+            "使用 Hybrid RAG 回答语料中的长文本知识问题，适合活性成分 Introduction、"
+            "mode of action、way of action、resistance 以及其他需要从文档证据生成答案的问题。"
+            "不用于“农药商品名 ↔ 活性成分”的结构化关系查询；这类关系查询仍应使用 Neo4j tools。"
+        ),
+        params_schema={
+            "type": "object",
+            "properties": {"question": {"type": "string"}},
+            "required": ["question"],
+        },
+        func=hybrid_rag_query,
     ),
 }
 
