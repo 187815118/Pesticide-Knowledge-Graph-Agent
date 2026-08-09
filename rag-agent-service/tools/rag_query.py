@@ -4,8 +4,8 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 
-OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
+DEFAULT_LLM_BASE_URL = "https://openrouter.ai/api/v1"
+DEFAULT_LLM_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 TEMPERATURE = 0.0
 SERVICE_ROOT = Path(__file__).resolve().parents[1]
 CORPUS_PATH = SERVICE_ROOT / "data" / "active_substance_docs.jsonl"
@@ -20,15 +20,20 @@ _RAG_INSTANCE = None
 
 
 def _make_client():
-    if not os.environ.get("OPENROUTER_API_KEY"):
-        raise RuntimeError("缺少 OPENROUTER_API_KEY 环境变量，无法调用 OpenRouter。")
+    api_key = os.environ.get("LLM_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
+    if not api_key:
+        raise RuntimeError("缺少 LLM_API_KEY 或 OPENROUTER_API_KEY 环境变量，无法调用 LLM backend。")
 
     from openai import OpenAI
 
     return OpenAI(
-        base_url=OPENROUTER_BASE_URL,
-        api_key=os.environ["OPENROUTER_API_KEY"],
+        base_url=os.environ.get("LLM_BASE_URL", DEFAULT_LLM_BASE_URL),
+        api_key=api_key,
     )
+
+
+def _get_llm_model() -> str:
+    return os.environ.get("LLM_MODEL", DEFAULT_LLM_MODEL)
 
 
 def _get_rag() -> Any:
@@ -55,7 +60,7 @@ def _get_rag() -> Any:
         _RAG_INSTANCE = GroundedRAG(
             retriever=hybrid_retriever,
             llm_client=_make_client(),
-            model=MODEL,
+            model=_get_llm_model(),
             top_k=DEFAULT_TOP_K,
             temperature=TEMPERATURE,
         )
