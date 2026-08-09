@@ -1,0 +1,209 @@
+[
+  {
+    "id": "aq001",
+    "category": "single_kg_forward",
+    "question": "What is the active substance of Sparta?",
+    "expected_tools": ["query_active_substance"],
+    "expected_entities": ["Sparta", "spinetoram"],
+    "requires_citation": false,
+    "notes": "KG forward query verified by prior real smoke test: Sparta -> spinetoram."
+  },
+  {
+    "id": "aq002",
+    "category": "single_kg_forward",
+    "question": "What active substance does Kenja 400 SC contain?",
+    "expected_tools": ["query_active_substance"],
+    "expected_entities": ["Kenja 400 SC", "isofetamid"],
+    "requires_citation": false,
+    "notes": "KG forward query verified by tests/test_query_active_substance.py."
+  },
+  {
+    "id": "aq003",
+    "category": "single_kg_forward",
+    "question": "Identify the active substance in Yates Success Ultra Insect Control.",
+    "expected_tools": ["query_active_substance"],
+    "expected_entities": ["Yates Success Ultra Insect Control", "spinetoram"],
+    "requires_citation": false,
+    "notes": "Product is verified in Product Name.xlsx; relation is inferred from the verified reverse spinetoram test that includes this product."
+  },
+  {
+    "id": "aq004",
+    "category": "single_kg_reverse",
+    "question": "Which pesticide products contain spinetoram?",
+    "expected_tools": ["query_pesticides_by_active_substance"],
+    "expected_entities": ["spinetoram", "Sparta", "Yates Success Ultra Insect Control"],
+    "requires_citation": false,
+    "notes": "KG reverse query verified by tests/test_query_pesticides_by_active_substance.py."
+  },
+  {
+    "id": "aq005",
+    "category": "single_kg_reverse",
+    "question": "Which pesticide products contain isofetamid?",
+    "expected_tools": ["query_pesticides_by_active_substance"],
+    "expected_entities": ["isofetamid", "Kenja 400 SC"],
+    "requires_citation": false,
+    "notes": "isofetamid and Kenja 400 SC relation is verified by the forward KG test; reverse query uses the same INCLUDES3 relationship."
+  },
+  {
+    "id": "aq006",
+    "category": "single_rag",
+    "question": "What is the mode of action and IRAC resistance group of abamectin?",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["abamectin"],
+    "requires_citation": true,
+    "notes": "Based on frozen generation benchmark gq001 and active_substance:abamectin corpus document."
+  },
+  {
+    "id": "aq007",
+    "category": "single_rag",
+    "question": "How does fipronil affect GABA-gated chloride channels?",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["fipronil"],
+    "requires_citation": true,
+    "notes": "Based on frozen generation benchmark gq002 and active_substance:fipronil corpus document."
+  },
+  {
+    "id": "aq008",
+    "category": "single_rag",
+    "question": "What EPSPS-related mode of action is listed for glyphosate?",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["glyphosate"],
+    "requires_citation": true,
+    "notes": "Based on frozen generation benchmark gq003 and active_substance:glyphosate corpus document."
+  },
+  {
+    "id": "aq009",
+    "category": "single_rag",
+    "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["azoxystrobin"],
+    "requires_citation": true,
+    "notes": "Based on frozen retrieval benchmark q004 and active_substance:azoxystrobin corpus document."
+  },
+  {
+    "id": "aq010",
+    "category": "single_rag",
+    "question": "What complex II target is described for boscalid?",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["boscalid"],
+    "requires_citation": true,
+    "notes": "Based on frozen retrieval benchmark q005 and active_substance:boscalid corpus document."
+  },
+  {
+    "id": "aq011",
+    "category": "single_rag",
+    "question": "What HPPD inhibition mechanism is listed for mesotrione?",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["mesotrione"],
+    "requires_citation": true,
+    "notes": "Based on frozen retrieval benchmark q006 and active_substance:mesotrione corpus document."
+  },
+  {
+    "id": "aq012",
+    "category": "kg_to_rag_multistep",
+    "question": "What is the active substance of Sparta, and what is its mode of action?",
+    "expected_tools": ["query_active_substance", "hybrid_rag_query"],
+    "expected_entities": ["Sparta", "spinetoram"],
+    "requires_citation": true,
+    "notes": "Current most important baseline path, verified by real Agent smoke test."
+  },
+  {
+    "id": "aq013",
+    "category": "kg_to_rag_multistep",
+    "question": "Find the active substance in Kenja 400 SC and explain its mode of action.",
+    "expected_tools": ["query_active_substance", "hybrid_rag_query"],
+    "expected_entities": ["Kenja 400 SC", "isofetamid"],
+    "requires_citation": true,
+    "notes": "Kenja 400 SC -> isofetamid is verified by KG test; isofetamid exists in active-substance corpus."
+  },
+  {
+    "id": "aq014",
+    "category": "kg_to_rag_multistep",
+    "question": "What active substance is in Yates Success Ultra Insect Control, and what resistance information is available for it?",
+    "expected_tools": ["query_active_substance", "hybrid_rag_query"],
+    "expected_entities": ["Yates Success Ultra Insect Control", "spinetoram"],
+    "requires_citation": true,
+    "notes": "Product exists in Product Name.xlsx; spinetoram relation is verified by reverse KG test and spinetoram exists in corpus."
+  },
+  {
+    "id": "aq015",
+    "category": "kg_to_rag_multistep",
+    "question": "Sparta contains which active substance, and what introduction does the corpus give for that substance?",
+    "expected_tools": ["query_active_substance", "hybrid_rag_query"],
+    "expected_entities": ["Sparta", "spinetoram"],
+    "requires_citation": true,
+    "notes": "Tests KG forward followed by RAG Introduction field for a verified active substance."
+  },
+  {
+    "id": "aq016",
+    "category": "kg_to_kg_multistep",
+    "question": "What is the active substance of Sparta, and which pesticide products contain that same active substance?",
+    "expected_tools": ["query_active_substance", "query_pesticides_by_active_substance"],
+    "expected_entities": ["Sparta", "spinetoram", "Yates Success Ultra Insect Control"],
+    "requires_citation": false,
+    "notes": "Natural two-KG-tool question using verified Sparta -> spinetoram and spinetoram reverse products."
+  },
+  {
+    "id": "aq017",
+    "category": "kg_to_kg_multistep",
+    "question": "What active substance does Kenja 400 SC contain, and what products contain that active substance?",
+    "expected_tools": ["query_active_substance", "query_pesticides_by_active_substance"],
+    "expected_entities": ["Kenja 400 SC", "isofetamid"],
+    "requires_citation": false,
+    "notes": "Natural two-KG-tool question based on verified Kenja 400 SC -> isofetamid relationship."
+  },
+  {
+    "id": "aq018",
+    "category": "cross_lingual_zh",
+    "question": "Sparta 的活性成分是什么？",
+    "expected_tools": ["query_active_substance"],
+    "expected_entities": ["Sparta", "spinetoram"],
+    "requires_citation": false,
+    "notes": "Chinese KG forward query with English entity names preserved."
+  },
+  {
+    "id": "aq019",
+    "category": "cross_lingual_zh",
+    "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["fipronil"],
+    "requires_citation": true,
+    "notes": "Based on frozen generation benchmark gq008."
+  },
+  {
+    "id": "aq020",
+    "category": "cross_lingual_zh",
+    "question": "Kenja 400 SC 的活性成分是什么？并说明该活性成分的作用机制。",
+    "expected_tools": ["query_active_substance", "hybrid_rag_query"],
+    "expected_entities": ["Kenja 400 SC", "isofetamid"],
+    "requires_citation": true,
+    "notes": "Chinese KG-to-RAG query using verified KG relation and corpus-covered active substance."
+  },
+  {
+    "id": "aq021",
+    "category": "empty_or_unknown",
+    "question": "What is the active substance of Nonexistent Product XYZ?",
+    "expected_tools": ["query_active_substance"],
+    "expected_entities": ["Nonexistent Product XYZ"],
+    "requires_citation": false,
+    "notes": "Product name was checked absent from Product Name.xlsx; Agent should not invent an active substance."
+  },
+  {
+    "id": "aq022",
+    "category": "empty_or_unknown",
+    "question": "Which pesticide products contain nonexistentium?",
+    "expected_tools": ["query_pesticides_by_active_substance"],
+    "expected_entities": ["nonexistentium"],
+    "requires_citation": false,
+    "notes": "Active substance was checked absent from Active Substance.xlsx and active_substance_docs.jsonl."
+  },
+  {
+    "id": "aq023",
+    "category": "empty_or_unknown",
+    "question": "What is the mode of action of nonexistentium according to the corpus?",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["nonexistentium"],
+    "requires_citation": false,
+    "notes": "Active substance was checked absent from active_substance_docs.jsonl; Agent should not rely on outside knowledge."
+  }
+]
