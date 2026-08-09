@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from typing import Any, Dict, List
 
 from openai import OpenAI
@@ -8,8 +9,11 @@ from .tool_registry import TOOLS, execute_tool
 
 
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-MODEL = "openrouter/free"
+MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
+TEMPERATURE = 0.0
 MAX_AGENT_STEPS = 5
+MAX_LLM_ATTEMPTS = 2
+RETRY_DELAY_SECONDS = 5.0
 
 SYSTEM_PROMPT = """你是一个农药知识查询助手。
 - 农药事实必须优先通过提供的工具查询，不要凭模型自身知识猜测。
@@ -19,6 +23,12 @@ SYSTEM_PROMPT = """你是一个农药知识查询助手。
 - 不允许翻译、纠正、补全、变形、规范化或猜测实体名称。
 - 最终答案中的事实和实体必须严格来自 Tool 返回结果。
 - 如果需要引用某个 Tool 返回的名称，应直接复制该字符串，不自行修改。
+- 当 hybrid_rag_query Tool 返回的 answer 包含 [D1]、[D2] 等 evidence citation 时，最终答案必须保留这些 citation。
+- citation 应跟随它原本支持的 factual claim。
+- 禁止删除 hybrid_rag_query Tool answer 中已有的 citation。
+- 禁止自行创建 Tool 返回中不存在的 [D#] citation。
+- 禁止修改 citation label，例如 [D1] 不能变成 [abamectin]、[1] 等。
+- 如果最终答案使用了 hybrid_rag_query 返回的事实，则必须保留相应 Tool answer 中已有的 citation。
 """
 
 
@@ -77,17 +87,34 @@ def run_agent(user_query: str) -> Dict[str, Any]:
     tool_trace: List[Dict[str, Any]] = []
 
     for _ in range(MAX_AGENT_STEPS):
-        try:
-            response = client.chat.completions.create(
-                model=MODEL,
-                messages=messages,
-                tools=tools,
-                tool_choice="auto",
-            )
-        except Exception as exc:
-            raise RuntimeError(f"LLM/API 请求失败: {exc}") from exc
+        last_error = None
+        for attempt in range(1, MAX_LLM_ATTEMPTS + 1):
+            try:
+                response = client.chat.completions.create(
+                    model=MODEL,
+                    messages=messages,
+                    tools=tools,
+                    tool_choice="auto",
+                    temperature=TEMPERATURE,
+                )
+                if response is None:
+                    raise RuntimeError("LLM/API 返回 response is None")
+                if response.choices is None:
+                    raise RuntimeError("LLM/API 返回 response.choices is None")
+                if not response.choices:
+                    raise RuntimeError("LLM/API 返回 response.choices 为空")
 
-        message = response.choices[0].message
+                message = response.choices[0].message
+                break
+            except Exception as exc:
+                last_error = exc
+                if attempt < MAX_LLM_ATTEMPTS:
+                    time.sleep(RETRY_DELAY_SECONDS)
+                    continue
+                raise RuntimeError(
+                    f"LLM/API 请求失败，已尝试 {MAX_LLM_ATTEMPTS} 次: {last_error}"
+                ) from exc
+
         tool_calls = message.tool_calls or []
 
         if not tool_calls:
