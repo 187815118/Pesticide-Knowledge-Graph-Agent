@@ -8,8 +8,8 @@ from openai import OpenAI
 from .tool_registry import TOOLS, execute_tool
 
 
-OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
-MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
+DEFAULT_LLM_BASE_URL = "https://openrouter.ai/api/v1"
+DEFAULT_LLM_MODEL = "nvidia/nemotron-3-ultra-550b-a55b:free"
 TEMPERATURE = 0.0
 MAX_AGENT_STEPS = 5
 MAX_LLM_ATTEMPTS = 2
@@ -31,6 +31,18 @@ SYSTEM_PROMPT = """你是一个农药知识查询助手。
 - 如果最终答案使用了 hybrid_rag_query 返回的事实，则必须保留相应 Tool answer 中已有的 citation。
 """
 
+FINAL_SYNTHESIS_SYSTEM_PROMPT = """你是一个农药知识查询助手，负责基于工具执行结果生成最终答案。
+- 完整回答原始用户问题中的所有子问题。
+- 必须保留 structured execution state 中重要的 KG 中间事实。
+- 不得虚构 observations 中没有的信息。
+- 如果使用 hybrid_rag_query 返回的事实，必须保留其 answer 中已有的 [D#] citation。
+- 禁止创建 observation 中不存在的 [D#] citation。
+- 禁止修改 citation label，例如 [D1] 不能变成 [abamectin]、[1] 等。
+- KG 查询结果本身不强制添加 [D#] citation。
+- 如果 Tool 返回空结果，明确说明没有查到，不自行猜测。
+- 回答语言跟随用户问题语言。
+"""
+
 
 def _build_openai_tools_schema() -> List[Dict[str, Any]]:
     """Expose only model-safe tool metadata to the LLM."""
@@ -50,13 +62,18 @@ def _build_openai_tools_schema() -> List[Dict[str, Any]]:
 
 
 def _make_client() -> OpenAI:
-    if not os.environ.get("OPENROUTER_API_KEY"):
-        raise RuntimeError("缺少 OPENROUTER_API_KEY 环境变量，无法调用 OpenRouter。")
+    api_key = os.environ.get("LLM_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
+    if not api_key:
+        raise RuntimeError("缺少 LLM_API_KEY 或 OPENROUTER_API_KEY 环境变量，无法调用 LLM backend。")
 
     return OpenAI(
-        base_url=OPENROUTER_BASE_URL,
-        api_key=os.environ["OPENROUTER_API_KEY"],
+        base_url=os.environ.get("LLM_BASE_URL", DEFAULT_LLM_BASE_URL),
+        api_key=api_key,
     )
+
+
+def _get_llm_model() -> str:
+    return os.environ.get("LLM_MODEL", DEFAULT_LLM_MODEL)
 
 
 def _decode_tool_arguments(tool_name: str, raw_arguments: str) -> Dict[str, Any]:
@@ -77,6 +94,82 @@ def _to_tool_content(result: Any) -> str:
     return json.dumps(result, ensure_ascii=False, default=str)
 
 
+def _request_llm_message(
+    client: OpenAI,
+    messages: List[Dict[str, Any]],
+    tools=None,
+    tool_choice=None,
+):
+    last_error = None
+    for attempt in range(1, MAX_LLM_ATTEMPTS + 1):
+        try:
+            completion_kwargs = {
+                "model": _get_llm_model(),
+                "messages": messages,
+                "temperature": TEMPERATURE,
+            }
+            if tools is not None:
+                completion_kwargs["tools"] = tools
+            if tool_choice is not None:
+                completion_kwargs["tool_choice"] = tool_choice
+
+            response = client.chat.completions.create(**completion_kwargs)
+            if response is None:
+                raise RuntimeError("LLM/API 返回 response is None")
+            if response.choices is None:
+                raise RuntimeError("LLM/API 返回 response.choices is None")
+            if not response.choices:
+                raise RuntimeError("LLM/API 返回 response.choices 为空")
+
+            return response.choices[0].message
+        except Exception as exc:
+            last_error = exc
+            if attempt < MAX_LLM_ATTEMPTS:
+                time.sleep(RETRY_DELAY_SECONDS)
+                continue
+            raise RuntimeError(
+                f"LLM/API 请求失败，已尝试 {MAX_LLM_ATTEMPTS} 次: {last_error}"
+            ) from exc
+
+
+def _build_final_synthesis_messages(
+    user_query: str,
+    execution_state: Dict[str, Any],
+    candidate_answer: str,
+) -> List[Dict[str, Any]]:
+    synthesis_payload = {
+        "user_question": user_query,
+        "execution_state": execution_state,
+        "candidate_answer": candidate_answer,
+    }
+    return [
+        {"role": "system", "content": FINAL_SYNTHESIS_SYSTEM_PROMPT},
+        {
+            "role": "user",
+            "content": (
+                "Use only this structured execution state and candidate answer "
+                "to produce the final answer:\n"
+                f"{json.dumps(synthesis_payload, ensure_ascii=False, indent=2, default=str)}"
+            ),
+        },
+    ]
+
+
+def _synthesize_final_answer(
+    client: OpenAI,
+    user_query: str,
+    execution_state: Dict[str, Any],
+    candidate_answer: str,
+) -> str:
+    synthesis_messages = _build_final_synthesis_messages(
+        user_query,
+        execution_state,
+        candidate_answer,
+    )
+    message = _request_llm_message(client, synthesis_messages)
+    return message.content or ""
+
+
 def run_agent(user_query: str) -> Dict[str, Any]:
     client = _make_client()
     tools = _build_openai_tools_schema()
@@ -85,42 +178,33 @@ def run_agent(user_query: str) -> Dict[str, Any]:
         {"role": "user", "content": user_query},
     ]
     tool_trace: List[Dict[str, Any]] = []
+    execution_state: Dict[str, Any] = {
+        "user_question": user_query,
+        "observations": [],
+    }
 
     for _ in range(MAX_AGENT_STEPS):
-        last_error = None
-        for attempt in range(1, MAX_LLM_ATTEMPTS + 1):
-            try:
-                response = client.chat.completions.create(
-                    model=MODEL,
-                    messages=messages,
-                    tools=tools,
-                    tool_choice="auto",
-                    temperature=TEMPERATURE,
-                )
-                if response is None:
-                    raise RuntimeError("LLM/API 返回 response is None")
-                if response.choices is None:
-                    raise RuntimeError("LLM/API 返回 response.choices is None")
-                if not response.choices:
-                    raise RuntimeError("LLM/API 返回 response.choices 为空")
-
-                message = response.choices[0].message
-                break
-            except Exception as exc:
-                last_error = exc
-                if attempt < MAX_LLM_ATTEMPTS:
-                    time.sleep(RETRY_DELAY_SECONDS)
-                    continue
-                raise RuntimeError(
-                    f"LLM/API 请求失败，已尝试 {MAX_LLM_ATTEMPTS} 次: {last_error}"
-                ) from exc
+        message = _request_llm_message(
+            client,
+            messages,
+            tools=tools,
+            tool_choice="auto",
+        )
 
         tool_calls = message.tool_calls or []
 
         if not tool_calls:
+            candidate_answer = message.content or ""
+            final_answer = _synthesize_final_answer(
+                client,
+                user_query,
+                execution_state,
+                candidate_answer,
+            )
             return {
-                "answer": message.content or "",
+                "answer": final_answer,
                 "tool_trace": tool_trace,
+                "execution_state": execution_state,
             }
 
         messages.append(message.model_dump(exclude_none=True))
@@ -146,6 +230,13 @@ def run_agent(user_query: str) -> Dict[str, Any]:
                 ) from exc
 
             tool_trace.append(
+                {
+                    "tool": tool_name,
+                    "arguments": arguments,
+                    "result": result,
+                }
+            )
+            execution_state["observations"].append(
                 {
                     "tool": tool_name,
                     "arguments": arguments,
