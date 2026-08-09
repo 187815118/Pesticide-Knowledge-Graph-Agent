@@ -1,4 +1,5 @@
 import os
+import time
 from pathlib import Path
 from typing import Any, Dict, List
 
@@ -12,6 +13,8 @@ DEFAULT_RRF_K = 60
 DEFAULT_CANDIDATE_K = 10
 DEFAULT_TOP_K = 5
 DEFAULT_DEVICE = "cuda"
+MAX_RAG_ATTEMPTS = 2
+RAG_RETRY_DELAY_SECONDS = 5.0
 
 _RAG_INSTANCE = None
 
@@ -79,7 +82,21 @@ def hybrid_rag_query(question: str) -> Dict[str, Any]:
     if not isinstance(question, str) or not question.strip():
         raise ValueError("question 必须是非空字符串。")
 
-    result = _get_rag().answer(question)
+    rag = _get_rag()
+    last_error = None
+    for attempt in range(1, MAX_RAG_ATTEMPTS + 1):
+        try:
+            result = rag.answer(question)
+            break
+        except Exception as exc:
+            last_error = exc
+            if attempt < MAX_RAG_ATTEMPTS:
+                time.sleep(RAG_RETRY_DELAY_SECONDS)
+                continue
+            raise RuntimeError(
+                f"GroundedRAG answer 调用失败，已尝试 {MAX_RAG_ATTEMPTS} 次: {last_error}"
+            ) from exc
+
     return {
         "answer": result.get("answer", ""),
         "evidence": _compact_evidence(result.get("evidence", [])),
