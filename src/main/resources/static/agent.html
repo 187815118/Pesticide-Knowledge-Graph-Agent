@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Pesticide Agent Assistant</title>
+    <link rel="icon" type="image/png" href="ziyuan/imgs/logo.png">
+    <style>
+        @font-face {
+            font-family: 'element-icons';
+            src: url('ziyuan/plugins/elementui/fonts/element-icons.woff') format('woff');
+        }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
+            font-family: Arial, sans-serif;
+            color: #263238;
+            background: #f3f6f5;
+        }
+
+        .top-bar {
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 42px;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(21, 54, 45, 0.08);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #174d36;
+        }
+
+        .brand img {
+            height: 32px;
+        }
+
+        .nav-link {
+            margin-left: 22px;
+            color: #395047;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 36px 28px 70px;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            gap: 36px;
+            align-items: flex-end;
+            margin-bottom: 26px;
+        }
+
+        .hero h1 {
+            margin: 0 0 10px;
+            font-size: 36px;
+            color: #174d36;
+            letter-spacing: 0;
+        }
+
+        .hero p {
+            margin: 0;
+            font-size: 17px;
+            color: #526963;
+        }
+
+        .panel {
+            background: #ffffff;
+            border: 1px solid #dde8e4;
+            border-radius: 8px;
+            box-shadow: 0 8px 24px rgba(41, 75, 63, 0.08);
+            padding: 24px;
+            margin-bottom: 22px;
+        }
+
+        .question-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 16px;
+            align-items: start;
+        }
+
+        .examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .example-btn {
+            border: 1px solid #bcd7cd;
+            background: #f4fbf8;
+            color: #24533e;
+            border-radius: 18px;
+            padding: 7px 12px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 16px;
+            font-size: 22px;
+            color: #1f4d39;
+        }
+
+        .section-marker {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0f9d58;
+        }
+
+        .answer-text {
+            white-space: pre-wrap;
+            line-height: 1.65;
+            font-size: 16px;
+            color: #243b35;
+        }
+
+        .trace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .step-card {
+            border: 1px solid #d9e8e2;
+            border-radius: 8px;
+            padding: 16px;
+            background: #fbfdfc;
+        }
+
+        .step-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .step-title {
+            font-weight: 700;
+            color: #1f4d39;
+        }
+
+        .tool-kind {
+            padding: 4px 9px;
+            border-radius: 14px;
+            font-size: 12px;
+            color: #ffffff;
+            background: #0f9d58;
+        }
+
+        .tool-kind.rag {
+            background: #2f6fee;
+        }
+
+        .tool-name {
+            font-family: Consolas, Monaco, monospace;
+            color: #415a52;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .kv-block {
+            margin-top: 10px;
+        }
+
+        .kv-title {
+            color: #6a7c76;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .kv-content {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            line-height: 1.5;
+            font-size: 14px;
+            color: #263238;
+            background: #f2f7f5;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .evidence-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .evidence-card {
+            border-left: 4px solid #2f6fee;
+            background: #f8fbff;
+            border-radius: 6px;
+            padding: 14px;
+        }
+
+        .evidence-label {
+            font-weight: 700;
+            color: #1d4fa3;
+            margin-bottom: 6px;
+        }
+
+        .muted {
+            color: #6f817b;
+        }
+
+        .error {
+            border-color: #f1c0ba;
+            background: #fff7f5;
+            color: #9d2f20;
+        }
+
+        @media (max-width: 760px) {
+            .top-bar {
+                padding: 0 18px;
+            }
+
+            .hero {
+                display: block;
+            }
+
+            .question-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="top-bar">
+        <div class="brand">
+            <img src="ziyuan/imgs/logo.png" alt="logo">
+            <span>Pesticide Knowledge Graph</span>
+        </div>
+        <div>
+            <span class="nav-link" onclick="window.location.href='/home.html'">Home</span>
+            <span class="nav-link" onclick="window.location.href='/gragh.html'">Graph</span>
+        </div>
+    </div>
+
+    <main class="page">
+        <section class="hero">
+            <div>
+                <h1>Pesticide Agent Assistant</h1>
+                <p>Knowledge Graph + Hybrid RAG powered pesticide assistant</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <div class="question-row">
+                <el-input
+                        type="textarea"
+                        :rows="5"
+                        v-model="question"
+                        placeholder="Ask about pesticide products, active substances, mode of action, resistance..."
+                        @keyup.enter.native="submitOnEnter">
+                </el-input>
+                <el-button
+                        type="success"
+                        style="height: 48px; min-width: 132px;"
+                        :loading="loading"
+                        :disabled="loading"
+                        @click="askAgent">
+                    Ask Agent
+                </el-button>
+            </div>
+            <div class="examples">
+                <button class="example-btn" v-for="item in examples" :key="item" @click="useExample(item)">
+                    {{ item }}
+                </button>
+            </div>
+        </section>
+
+        <section v-if="loading" class="panel">
+            <div class="answer-text">Running Knowledge Graph + Hybrid RAG Agent...</div>
+        </section>
+
+        <section v-if="error" class="panel error">
+            {{ error }}
+        </section>
+
+        <section v-if="answer" class="panel">
+            <h2 class="section-title"><span class="section-marker"></span>Final Answer</h2>
+            <div class="answer-text">{{ answer }}</div>
+        </section>
+
+        <section v-if="toolTrace.length" class="panel">
+            <h2 class="section-title"><span class="section-marker"></span>Agent Execution Trace</h2>
+            <div class="trace-grid">
+                <div class="step-card" v-for="(step, index) in toolTrace" :key="index">
+                    <div class="step-head">
+                        <div class="step-title">Step {{ index + 1 }}</div>
+                        <div class="tool-kind" :class="{ rag: toolKind(step.tool) === 'Hybrid RAG' }">
+                            {{ toolKind(step.tool) }}
+                        </div>
+                    </div>
+                    <div class="tool-name">{{ step.tool }}</div>
+                    <div class="kv-block">
+                        <div class="kv-title">Input</div>
+                        <div class="kv-content">{{ formatArguments(step) }}</div>
+                    </div>
+                    <div class="kv-block">
+                        <div class="kv-title">Result</div>
+                        <div class="kv-content">{{ formatResult(step) }}</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section v-if="visibleEvidence.length" class="panel">
+            <h2 class="section-title"><span class="section-marker"></span>Evidence / Sources</h2>
+            <div class="evidence-list">
+                <div class="evidence-card" v-for="item in visibleEvidence" :key="item.label + item.id">
+                    <div class="evidence-label">[{{ item.label }}] {{ item.name || item.id }}</div>
+                    <div>Source: {{ item.source || 'Unknown' }}</div>
+                    <div class="muted">Retrieval rank: {{ item.retrieval_rank || '-' }}</div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="ziyuan/js/vue.js"></script>
+<script type="text/javascript" src="ziyuan/js/jquery.min.js"></script>
+<script src="ziyuan/js/axios-0.18.0.js"></script>
+<link rel="stylesheet" type="text/css" href="ziyuan/plugins/elementui/index.css">
+<script src="ziyuan/plugins/elementui/index.js"></script>
+
+<script>
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            question: '',
+            answer: '',
+            toolTrace: [],
+            error: '',
+            loading: false,
+            examples: [
+                'What is the active substance of Sparta?',
+                'What is the mode of action of abamectin?',
+                'What is the active substance of Sparta, and what is its mode of action?'
+            ]
+        },
+        computed: {
+            visibleEvidence: function () {
+                var evidenceByLabel = {};
+                var citedLabels = this.extractCitedLabels(this.answer);
+
+                this.toolTrace.forEach(function (step) {
+                    var result = step.result || {};
+                    var evidence = result.evidence || [];
+                    evidence.forEach(function (item) {
+                        if (item && item.label) {
+                            evidenceByLabel[item.label] = item;
+                        }
+                    });
+                });
+
+                var labels = citedLabels.length ? citedLabels : Object.keys(evidenceByLabel);
+                return labels
+                    .filter(function (label) {
+                        return evidenceByLabel[label];
+                    })
+                    .map(function (label) {
+                        return evidenceByLabel[label];
+                    });
+            }
+        },
+        methods: {
+            useExample: function (text) {
+                this.question = text;
+            },
+            submitOnEnter: function (event) {
+                if (event.ctrlKey || event.metaKey) {
+                    this.askAgent();
+                }
+            },
+            askAgent: function () {
+                var trimmed = (this.question || '').trim();
+                if (!trimmed) {
+                    this.error = 'Please enter a question.';
+                    return;
+                }
+
+                this.loading = true;
+                this.error = '';
+                this.answer = '';
+                this.toolTrace = [];
+
+                axios.post('/api/agent/query', {question: trimmed})
+                    .then(function (response) {
+                        var data = response.data || {};
+                        vue.answer = data.answer || '';
+                        vue.toolTrace = data.tool_trace || [];
+                    })
+                    .catch(function (error) {
+                        var detail = 'Agent request failed. Please check that the Agent service is running.';
+                        if (error.response && error.response.data) {
+                            detail = error.response.data.error || error.response.data.detail || detail;
+                        }
+                        vue.error = detail;
+                    })
+                    .then(function () {
+                        vue.loading = false;
+                    });
+            },
+            toolKind: function (toolName) {
+                if (toolName === 'hybrid_rag_query') {
+                    return 'Hybrid RAG';
+                }
+                if (toolName === 'query_active_substance' || toolName === 'query_pesticides_by_active_substance') {
+                    return 'Knowledge Graph';
+                }
+                return 'Tool';
+            },
+            formatArguments: function (step) {
+                var args = step.arguments || {};
+                if (step.tool === 'query_active_substance') {
+                    return 'pesticide_name = ' + (args.pesticide_name || '');
+                }
+                if (step.tool === 'query_pesticides_by_active_substance') {
+                    return 'active_substance_name = ' + (args.active_substance_name || '');
+                }
+                if (step.tool === 'hybrid_rag_query') {
+                    return 'Question:\n' + (args.question || '');
+                }
+                return JSON.stringify(args, null, 2);
+            },
+            formatResult: function (step) {
+                var result = step.result;
+                if (Array.isArray(result)) {
+                    return result.join(', ');
+                }
+                if (result && typeof result === 'object') {
+                    if (result.answer) {
+                        return result.answer;
+                    }
+                    return JSON.stringify(result, null, 2);
+                }
+                return result || '';
+            },
+            extractCitedLabels: function (text) {
+                var labels = [];
+                var pattern = /\[D([1-9]\d*)\]/g;
+                var match;
+                while ((match = pattern.exec(text || '')) !== null) {
+                    var label = 'D' + match[1];
+                    if (labels.indexOf(label) === -1) {
+                        labels.push(label);
+                    }
+                }
+                return labels;
+            }
+        }
+    });
+</script>
+</body>
+</html>
