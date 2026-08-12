@@ -39,3 +39,5 @@ rag-agent-service/evaluation/results/rag_generation_eval_results.json
 rag-agent-service/evaluation/results/rag_generation_eval_results_initial_failed.json
 rag-agent-service/evaluation/results/rag_generation_eval_results_invalid_zh_encoding.json
 rag-agent-service/STARTUP_LOCAL.md
+/logs/
+/run/
