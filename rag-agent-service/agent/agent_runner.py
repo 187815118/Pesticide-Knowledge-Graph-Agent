@@ -29,6 +29,9 @@ SYSTEM_PROMPT = """你是一个农药知识查询助手。
 - 禁止自行创建 Tool 返回中不存在的 [D#] citation。
 - 禁止修改 citation label，例如 [D1] 不能变成 [abamectin]、[1] 等。
 - 如果最终答案使用了 hybrid_rag_query 返回的事实，则必须保留相应 Tool answer 中已有的 citation。
+- 当一个 Tool 返回了具体实体，并且后续 Tool 需要使用该实体时，必须把 Tool 返回的精确实体字符串写入下一步 Tool arguments。
+- 禁止使用 "its active substance"、"the active substance"、"the previous result"、"that substance" 等模糊指代表达作为下游检索问题中的实体。
+- 例如 query_active_substance("Sparta") -> ["spinetoram"] 后，下一步必须调用 hybrid_rag_query({"question":"What is the mode of action of spinetoram?"})。
 """
 
 FINAL_SYNTHESIS_SYSTEM_PROMPT = """你是一个农药知识查询助手，负责基于工具执行结果生成最终答案。
@@ -92,6 +95,49 @@ def _decode_tool_arguments(tool_name: str, raw_arguments: str) -> Dict[str, Any]
 
 def _to_tool_content(result: Any) -> str:
     return json.dumps(result, ensure_ascii=False, default=str)
+
+
+def _compact_result_for_planning(tool_name: str, result: Any) -> Any:
+    if tool_name == "hybrid_rag_query" and isinstance(result, dict):
+        compact_result = {
+            "answer": result.get("answer", ""),
+            "invalid_citations": result.get("invalid_citations", []),
+        }
+        evidence = []
+        for item in result.get("evidence", []):
+            if isinstance(item, dict):
+                evidence.append(
+                    {
+                        "label": item.get("label", ""),
+                        "id": item.get("id", ""),
+                        "name": item.get("name", ""),
+                        "source": item.get("source", ""),
+                        "retrieval_rank": item.get("retrieval_rank"),
+                    }
+                )
+        if evidence:
+            compact_result["evidence"] = evidence
+        return compact_result
+
+    return result
+
+
+def _build_planning_state_message(planning_observations: List[Dict[str, Any]]) -> Dict[str, str]:
+    payload = {
+        "resolved_observations": planning_observations,
+        "instruction": (
+            "For any later tool call, use exact entity strings from resolved_observations "
+            "inside tool arguments. Do not use vague references such as its active substance, "
+            "the active substance, the previous result, or that substance."
+        ),
+    }
+    return {
+        "role": "user",
+        "content": (
+            "Structured execution state for subsequent tool planning:\n"
+            f"{json.dumps(payload, ensure_ascii=False, indent=2, default=str)}"
+        ),
+    }
 
 
 def _request_llm_message(
@@ -182,6 +228,7 @@ def run_agent(user_query: str) -> Dict[str, Any]:
         "user_question": user_query,
         "observations": [],
     }
+    planning_observations: List[Dict[str, Any]] = []
 
     for _ in range(MAX_AGENT_STEPS):
         message = _request_llm_message(
@@ -209,6 +256,7 @@ def run_agent(user_query: str) -> Dict[str, Any]:
 
         messages.append(message.model_dump(exclude_none=True))
 
+        new_planning_observations = []
         for tool_call in tool_calls:
             if tool_call.type != "function":
                 raise ValueError(f"不支持的 tool_call 类型: {tool_call.type}")
@@ -243,6 +291,13 @@ def run_agent(user_query: str) -> Dict[str, Any]:
                     "result": result,
                 }
             )
+            planning_observation = {
+                "tool": tool_name,
+                "arguments": arguments,
+                "result": _compact_result_for_planning(tool_name, result),
+            }
+            planning_observations.append(planning_observation)
+            new_planning_observations.append(planning_observation)
             messages.append(
                 {
                     "role": "tool",
@@ -250,5 +305,8 @@ def run_agent(user_query: str) -> Dict[str, Any]:
                     "content": _to_tool_content(result),
                 }
             )
+
+        if new_planning_observations:
+            messages.append(_build_planning_state_message(planning_observations))
 
     raise RuntimeError(f"超过最大 Agent 步数限制: {MAX_AGENT_STEPS}")
