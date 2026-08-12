@@ -76,6 +76,11 @@ class FakeCompletions:
                 )
             )
         if call_number == 2:
+            planning_context = kwargs["messages"][-1]["content"]
+            if "Structured execution state for subsequent tool planning" not in planning_context:
+                raise AssertionError("后续 Tool planning 缺少 structured execution state")
+            if "spinetoram" not in planning_context:
+                raise AssertionError("后续 Tool planning 看不到第一步 resolved entity: spinetoram")
             return FakeResponse(
                 FakeMessage(
                     tool_calls=[
@@ -124,6 +129,17 @@ def fake_execute_tool(tool_name, arguments):
     if tool_name == "query_active_substance":
         return ["spinetoram"]
     if tool_name == "hybrid_rag_query":
+        question = arguments.get("question", "")
+        if "spinetoram" not in question:
+            raise AssertionError("hybrid_rag_query 的 question 必须显式包含 spinetoram")
+        vague_terms = [
+            "its active substance",
+            "the active substance",
+            "the previous result",
+            "that substance",
+        ]
+        if any(term in question.lower() for term in vague_terms):
+            raise AssertionError("hybrid_rag_query 的 question 不应使用模糊指代")
         return {
             "answer": "spinetoram affects insect nervous systems. [D1]",
             "evidence": [
