@@ -9,7 +9,10 @@ if str(SERVICE_ROOT) not in sys.path:
 
 from tools.pesticide_query import (
     query_active_substance,
+    query_chemical_classes,
+    query_modes_of_action,
     query_pesticides_by_active_substance,
+    query_target_sites,
 )
 from tools.rag_query import hybrid_rag_query
 
@@ -43,6 +46,18 @@ TOOLS = {
             "required": ["active_substance_name"],
         },
         func=query_pesticides_by_active_substance,
+    ),
+    "query_chemical_classes": _make_tool(
+        "query_chemical_classes", "仅当用户明确询问 knowledge graph 中的 structured chemical class 时，根据活性成分查询化学或生物类别；普通机制问题使用 hybrid_rag_query。",
+        {"type": "object", "properties": {"active_substance_name": {"type": "string"}}, "required": ["active_substance_name"]}, query_chemical_classes,
+    ),
+    "query_target_sites": _make_tool(
+        "query_target_sites", "仅当用户明确询问 knowledge graph 中的 structured target site 时，根据活性成分查询结构化作用靶点；机制解释使用 hybrid_rag_query。",
+        {"type": "object", "properties": {"active_substance_name": {"type": "string"}}, "required": ["active_substance_name"]}, query_target_sites,
+    ),
+    "query_modes_of_action": _make_tool(
+        "query_modes_of_action", "仅当用户明确询问 knowledge graph 中的 structured mode-of-action category 时使用；普通 mode of action、机制、抗性或文档问题必须使用 hybrid_rag_query。",
+        {"type": "object", "properties": {"active_substance_name": {"type": "string"}}, "required": ["active_substance_name"]}, query_modes_of_action,
     ),
     "hybrid_rag_query": _make_tool(
         name="hybrid_rag_query",

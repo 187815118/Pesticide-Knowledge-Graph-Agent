@@ -199,5 +199,9 @@ def main() -> int:
     return 0
 
 
+def test_structured_state_and_grounded_final_synthesis():
+    assert main() == 0
+
+
 if __name__ == "__main__":
     raise SystemExit(main())
