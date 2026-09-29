@@ -51,6 +51,7 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["abamectin"],
     "requires_citation": true,
+    "expected_keywords": ["glutamate-gated chloride", "IRAC Group 6"],
     "notes": "Based on frozen generation benchmark gq001 and active_substance:abamectin corpus document."
   },
   {
@@ -60,6 +61,7 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["fipronil"],
     "requires_citation": true,
+    "expected_keywords": ["GABA", "chloride channel"],
     "notes": "Based on frozen generation benchmark gq002 and active_substance:fipronil corpus document."
   },
   {
@@ -69,6 +71,7 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["glyphosate"],
     "requires_citation": true,
+    "expected_keywords": ["EPSPS"],
     "notes": "Based on frozen generation benchmark gq003 and active_substance:glyphosate corpus document."
   },
   {
@@ -78,6 +81,7 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["azoxystrobin"],
     "requires_citation": true,
+    "expected_keywords": ["QoI", "FRAC 11"],
     "notes": "Based on frozen retrieval benchmark q004 and active_substance:azoxystrobin corpus document."
   },
   {
@@ -87,6 +91,7 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["boscalid"],
     "requires_citation": true,
+    "expected_keywords": ["complex II", "succinate dehydrogenase"],
     "notes": "Based on frozen retrieval benchmark q005 and active_substance:boscalid corpus document."
   },
   {
@@ -96,6 +101,7 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["mesotrione"],
     "requires_citation": true,
+    "expected_keywords": ["HPPD"],
     "notes": "Based on frozen retrieval benchmark q006 and active_substance:mesotrione corpus document."
   },
   {
@@ -105,6 +111,10 @@
     "expected_tools": ["query_active_substance", "hybrid_rag_query"],
     "expected_entities": ["Sparta", "spinetoram"],
     "requires_citation": true,
+    "expected_tool_sequence": ["query_active_substance", "hybrid_rag_query"],
+    "propagation_entities": ["spinetoram"],
+    "expected_keywords": ["nicotinic acetylcholine receptor"],
+    "requires_multistep": true,
     "notes": "Current most important baseline path, verified by real Agent smoke test."
   },
   {
@@ -114,6 +124,10 @@
     "expected_tools": ["query_active_substance", "hybrid_rag_query"],
     "expected_entities": ["Kenja 400 SC", "isofetamid"],
     "requires_citation": true,
+    "expected_tool_sequence": ["query_active_substance", "hybrid_rag_query"],
+    "propagation_entities": ["isofetamid"],
+    "expected_keywords": ["SDH"],
+    "requires_multistep": true,
     "notes": "Kenja 400 SC -> isofetamid is verified by KG test; isofetamid exists in active-substance corpus."
   },
   {
@@ -123,6 +137,10 @@
     "expected_tools": ["query_active_substance", "hybrid_rag_query"],
     "expected_entities": ["Yates Success Ultra Insect Control", "spinetoram"],
     "requires_citation": true,
+    "expected_tool_sequence": ["query_active_substance", "hybrid_rag_query"],
+    "propagation_entities": ["spinetoram"],
+    "expected_keywords": ["IRAC Group 5"],
+    "requires_multistep": true,
     "notes": "Product exists in Product Name.xlsx; spinetoram relation is verified by reverse KG test and spinetoram exists in corpus."
   },
   {
@@ -132,6 +150,10 @@
     "expected_tools": ["query_active_substance", "hybrid_rag_query"],
     "expected_entities": ["Sparta", "spinetoram"],
     "requires_citation": true,
+    "expected_tool_sequence": ["query_active_substance", "hybrid_rag_query"],
+    "propagation_entities": ["spinetoram"],
+    "expected_keywords": ["Saccharopolyspora spinosa"],
+    "requires_multistep": true,
     "notes": "Tests KG forward followed by RAG Introduction field for a verified active substance."
   },
   {
@@ -141,6 +163,9 @@
     "expected_tools": ["query_active_substance", "query_pesticides_by_active_substance"],
     "expected_entities": ["Sparta", "spinetoram", "Yates Success Ultra Insect Control"],
     "requires_citation": false,
+    "expected_tool_sequence": ["query_active_substance", "query_pesticides_by_active_substance"],
+    "propagation_entities": ["spinetoram"],
+    "requires_multistep": true,
     "notes": "Natural two-KG-tool question using verified Sparta -> spinetoram and spinetoram reverse products."
   },
   {
@@ -150,6 +175,9 @@
     "expected_tools": ["query_active_substance", "query_pesticides_by_active_substance"],
     "expected_entities": ["Kenja 400 SC", "isofetamid"],
     "requires_citation": false,
+    "expected_tool_sequence": ["query_active_substance", "query_pesticides_by_active_substance"],
+    "propagation_entities": ["isofetamid"],
+    "requires_multistep": true,
     "notes": "Natural two-KG-tool question based on verified Kenja 400 SC -> isofetamid relationship."
   },
   {
@@ -168,6 +196,7 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["fipronil"],
     "requires_citation": true,
+    "expected_keywords": ["GABA"],
     "notes": "Based on frozen generation benchmark gq008."
   },
   {
@@ -177,6 +206,10 @@
     "expected_tools": ["query_active_substance", "hybrid_rag_query"],
     "expected_entities": ["Kenja 400 SC", "isofetamid"],
     "requires_citation": true,
+    "expected_tool_sequence": ["query_active_substance", "hybrid_rag_query"],
+    "propagation_entities": ["isofetamid"],
+    "expected_keywords": ["SDH"],
+    "requires_multistep": true,
     "notes": "Chinese KG-to-RAG query using verified KG relation and corpus-covered active substance."
   },
   {
@@ -186,6 +219,7 @@
     "expected_tools": ["query_active_substance"],
     "expected_entities": ["Nonexistent Product XYZ"],
     "requires_citation": false,
+    "requires_no_answer": true,
     "notes": "Product name was checked absent from Product Name.xlsx; Agent should not invent an active substance."
   },
   {
@@ -195,6 +229,7 @@
     "expected_tools": ["query_pesticides_by_active_substance"],
     "expected_entities": ["nonexistentium"],
     "requires_citation": false,
+    "requires_no_answer": true,
     "notes": "Active substance was checked absent from Active Substance.xlsx and active_substance_docs.jsonl."
   },
   {
@@ -204,6 +239,230 @@
     "expected_tools": ["hybrid_rag_query"],
     "expected_entities": ["nonexistentium"],
     "requires_citation": false,
+    "requires_no_answer": true,
     "notes": "Active substance was checked absent from active_substance_docs.jsonl; Agent should not rely on outside knowledge."
+  },
+  {
+    "id": "aq024", "category": "single_rag",
+    "question": "How does acephate affect acetylcholinesterase in pests?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": ["acephate"],
+    "expected_keywords": ["acetylcholinesterase"], "requires_citation": true,
+    "notes": "Frozen retrieval q002; verified in active_substance:acephate."
+  },
+  {
+    "id": "aq025", "category": "single_rag",
+    "question": "What juvenile hormone-like effect is described for pyriproxyfen?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": ["pyriproxyfen"],
+    "expected_keywords": ["juvenile hormone"], "requires_citation": true,
+    "notes": "Frozen retrieval q008."
+  },
+  {
+    "id": "aq026", "category": "single_rag",
+    "question": "Which active substances act on cellulose synthase and inhibit oomycete cell wall synthesis?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": ["dimethomorph", "mandipropamid"],
+    "expected_keywords": ["cellulose synthase"], "requires_citation": true,
+    "notes": "Frozen retrieval q017; both entities fit within RAG top_k=5."
+  },
+  {
+    "id": "aq027", "category": "single_rag",
+    "question": "What resistance issue involving resistant superweeds is documented for glyphosate?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": ["glyphosate"],
+    "expected_keywords": ["superweeds"], "requires_citation": true,
+    "notes": "Frozen retrieval q020."
+  },
+  {
+    "id": "aq028", "category": "single_rag",
+    "question": "Which pyrethroid has reported resistance in Anopheles gambiae and Anopheles odoratus?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": ["deltamethrin"],
+    "expected_keywords": ["Anopheles gambiae"], "requires_citation": true,
+    "notes": "Frozen retrieval q024."
+  },
+  {
+    "id": "aq029", "category": "single_rag",
+    "question": "Which multi-site fungicides react with sulfhydryl groups and are described as low resistance risk?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": ["mancozeb", "metiram"],
+    "expected_keywords": ["sulfhydryl", "low resistance risk"], "requires_citation": true,
+    "notes": "Frozen retrieval q023."
+  },
+  {
+    "id": "aq030", "category": "cross_lingual_zh",
+    "question": "哪种活性成分通过抑制 EPSPS 发挥除草作用？",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": ["glyphosate"],
+    "expected_keywords": ["EPSPS"], "requires_citation": true,
+    "notes": "Frozen retrieval q026."
+  },
+  {
+    "id": "aq031", "category": "cross_lingual_zh",
+    "question": "哪些活性成分通过影响几丁质合成酶 1 干扰节肢动物的正常生长或发育？",
+    "expected_tools": ["hybrid_rag_query"],
+    "expected_entities": ["diflubenzuron", "lufenuron", "novaluron", "etoxazole"],
+    "expected_keywords": ["几丁质合成酶"], "requires_citation": true,
+    "notes": "Frozen retrieval q030; four relevant entities fit within top_k=5."
+  },
+  {
+    "id": "aq032", "category": "no_answer",
+    "question": "What is the recommended field application dose and spray interval for abamectin on tomatoes?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": [],
+    "requires_citation": false, "requires_no_answer": true,
+    "notes": "Frozen generation gq010 insufficient-evidence case."
+  },
+  {
+    "id": "aq033", "category": "no_answer",
+    "question": "What is the oral LD50 value for fipronil in rats according to this corpus?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": [],
+    "requires_citation": false, "requires_no_answer": true,
+    "notes": "Frozen generation gq011 insufficient-evidence case."
+  },
+  {
+    "id": "aq034", "category": "no_answer",
+    "question": "Which company manufactures glyphosate and what is its current market price?",
+    "expected_tools": ["hybrid_rag_query"], "expected_entities": [],
+    "requires_citation": false, "requires_no_answer": true,
+    "notes": "Frozen generation gq012 insufficient-evidence case."
+  },
+  {
+    "id": "aq035", "category": "single_kg_classification",
+    "question": "According to the knowledge graph, what chemical class contains abamectin?",
+    "expected_tools": ["query_chemical_classes"],
+    "expected_entities": ["abamectin", "Avermectins, Milbemycins"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j via INCLUDES2."
+  },
+  {
+    "id": "aq036", "category": "single_kg_target_site",
+    "question": "According to the knowledge graph, what structured target site is linked to abamectin?",
+    "expected_tools": ["query_target_sites"],
+    "expected_entities": ["abamectin", "Glutamate-gated chloride channel (GluCl) allosteric modulators"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j via INCLUDES2 and DETERMINES1."
+  },
+  {
+    "id": "aq037", "category": "single_kg_mode_of_action",
+    "question": "What structured mode-of-action category does the knowledge graph assign to abamectin?",
+    "expected_tools": ["query_modes_of_action"],
+    "expected_entities": ["abamectin", "Nerve and muscle action {Strong evidence that action at one or more of this class of protein is responsible for insecticidal effects}"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j through the complete classification chain."
+  },
+  {
+    "id": "aq038", "category": "single_kg_classification",
+    "question": "Which chemical class is isofetamid in according to the knowledge graph?",
+    "expected_tools": ["query_chemical_classes"],
+    "expected_entities": ["isofetamid", "phenyl-oxo-ethyl thiophene amide"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq039", "category": "single_kg_target_site",
+    "question": "What structured target site is linked to isofetamid in the knowledge graph?",
+    "expected_tools": ["query_target_sites"],
+    "expected_entities": ["isofetamid", "C2 complex II: succinate-dehydro-genase"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq040", "category": "single_kg_mode_of_action",
+    "question": "What structured mode-of-action category is linked to isofetamid in the knowledge graph?",
+    "expected_tools": ["query_modes_of_action"],
+    "expected_entities": ["isofetamid", "C. respiration"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq041", "category": "single_kg_classification",
+    "question": "Which chemical class is triticonazole in according to the knowledge graph?",
+    "expected_tools": ["query_chemical_classes"],
+    "expected_entities": ["triticonazole", "triazoles triazolinthiones"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq042", "category": "single_kg_target_site",
+    "question": "What structured target site is linked to triticonazole in the knowledge graph?",
+    "expected_tools": ["query_target_sites"],
+    "expected_entities": ["triticonazole", "G1 C14-demethylase in sterol biosynthesis (erg11/cyp51)"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq043", "category": "single_kg_mode_of_action",
+    "question": "What structured mode-of-action category is linked to triticonazole in the knowledge graph?",
+    "expected_tools": ["query_modes_of_action"],
+    "expected_entities": ["triticonazole", "G: sterol biosynthesis in membranes"], "requires_citation": false,
+    "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq044", "category": "single_kg_forward",
+    "question": "What is the active substance of ABBA?",
+    "expected_tools": ["query_active_substance"], "expected_entities": ["ABBA", "abamectin"],
+    "requires_citation": false, "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq045", "category": "single_kg_forward",
+    "question": "What active substance does BioNeem contain?",
+    "expected_tools": ["query_active_substance"], "expected_entities": ["BioNeem", "azadirachtin"],
+    "requires_citation": false, "notes": "Verified directly in Neo4j."
+  },
+  {
+    "id": "aq046", "category": "single_kg_forward",
+    "question": "What active substance does Revylution contain?",
+    "expected_tools": ["query_active_substance"], "expected_entities": ["Revylution", "mefentrifluconazole"],
+    "requires_citation": false, "notes": "Verified by real Neo4j connection test."
+  },
+  {
+    "id": "aq047", "category": "single_kg_reverse",
+    "question": "Which pesticide products contain mefentrifluconazole?",
+    "expected_tools": ["query_pesticides_by_active_substance"],
+    "expected_entities": ["mefentrifluconazole", "Revylution", "Revystar", "Belanty"],
+    "requires_citation": false, "notes": "Verified by real Neo4j connection test."
+  },
+  {
+    "id": "aq048", "category": "kg_to_kg_multistep",
+    "question": "What is the active substance of ABBA, and what chemical class is that substance in?",
+    "expected_tools": ["query_active_substance", "query_chemical_classes"],
+    "expected_tool_sequence": ["query_active_substance", "query_chemical_classes"],
+    "expected_entities": ["ABBA", "abamectin", "Avermectins, Milbemycins"],
+    "propagation_entities": ["abamectin"], "requires_multistep": true, "requires_citation": false,
+    "notes": "Both relations verified directly in Neo4j."
+  },
+  {
+    "id": "aq049", "category": "kg_to_kg_multistep",
+    "question": "Find the active substance in Kenja 400 SC and its structured target site in the knowledge graph.",
+    "expected_tools": ["query_active_substance", "query_target_sites"],
+    "expected_tool_sequence": ["query_active_substance", "query_target_sites"],
+    "expected_entities": ["Kenja 400 SC", "isofetamid", "C2 complex II: succinate-dehydro-genase"],
+    "propagation_entities": ["isofetamid"], "requires_multistep": true, "requires_citation": false,
+    "notes": "Both relations verified directly in Neo4j."
+  },
+  {
+    "id": "aq050", "category": "kg_to_kg_multistep",
+    "question": "What active substance is in BioNeem, and what structured mode-of-action category does the graph assign to it?",
+    "expected_tools": ["query_active_substance", "query_modes_of_action"],
+    "expected_tool_sequence": ["query_active_substance", "query_modes_of_action"],
+    "expected_entities": ["BioNeem", "azadirachtin", "{Target protein responsible for biological activity is unknown, or uncharacterized}"],
+    "propagation_entities": ["azadirachtin"], "requires_multistep": true, "requires_citation": false,
+    "notes": "Both relations verified directly in Neo4j."
+  },
+  {
+    "id": "aq051", "category": "kg_to_kg_to_rag",
+    "question": "Identify the active substance in Kenja 400 SC, give its chemical class, and explain its resistance risk from the corpus.",
+    "expected_tools": ["query_active_substance", "query_chemical_classes", "hybrid_rag_query"],
+    "expected_tool_sequence": ["query_active_substance", "query_chemical_classes", "hybrid_rag_query"],
+    "expected_entities": ["Kenja 400 SC", "isofetamid", "phenyl-oxo-ethyl thiophene amide"],
+    "propagation_entities": ["isofetamid"], "expected_keywords": ["moderate to high"],
+    "requires_multistep": true, "requires_citation": true,
+    "notes": "Neo4j mappings and active_substance:isofetamid corpus document verified."
+  },
+  {
+    "id": "aq052", "category": "kg_to_kg_to_rag",
+    "question": "Find ABBA's active substance, report its structured target site, and explain its resistance group from the corpus.",
+    "expected_tools": ["query_active_substance", "query_target_sites", "hybrid_rag_query"],
+    "expected_tool_sequence": ["query_active_substance", "query_target_sites", "hybrid_rag_query"],
+    "expected_entities": ["ABBA", "abamectin", "Glutamate-gated chloride channel (GluCl) allosteric modulators"],
+    "propagation_entities": ["abamectin"], "expected_keywords": ["IRAC Group 6"],
+    "requires_multistep": true, "requires_citation": true,
+    "notes": "Neo4j mappings and active_substance:abamectin corpus document verified."
+  },
+  {
+    "id": "aq053", "category": "kg_to_kg_to_rag",
+    "question": "For Kenja 400 SC, identify the active substance, its chemical class and structured target site, then explain its mode of action from corpus evidence.",
+    "expected_tools": ["query_active_substance", "query_chemical_classes", "query_target_sites", "hybrid_rag_query"],
+    "expected_tool_sequence": ["query_active_substance", "query_chemical_classes", "query_target_sites", "hybrid_rag_query"],
+    "expected_entities": ["Kenja 400 SC", "isofetamid", "phenyl-oxo-ethyl thiophene amide", "C2 complex II: succinate-dehydro-genase"],
+    "propagation_entities": ["isofetamid"], "expected_keywords": ["succinate dehydrogenase"],
+    "requires_multistep": true, "requires_citation": true,
+    "notes": "All Neo4j mappings and corpus fact verified; natural three-layer KG-to-RAG task."
   }
 ]

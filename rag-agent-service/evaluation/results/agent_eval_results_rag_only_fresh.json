@@ -1,0 +1,4512 @@
+{
+  "metadata": {
+    "eval_queries_path": "/tmp/agent_eval_rag_only.json",
+    "retrieval_results_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/evaluation/results/retrieval_eval_results.json",
+    "completed_query_count": 8,
+    "answer_evaluation": "deterministic_entities_and_required_keywords",
+    "llm_judge": "disabled"
+  },
+  "summary": {
+    "num_cases": 8,
+    "retrieval_hit1": 0.8,
+    "retrieval_hit3": 0.9666666666666667,
+    "retrieval_hit5": 1.0,
+    "tool_selection_accuracy": 1.0,
+    "tool_sequence_accuracy": 1.0,
+    "entity_propagation_accuracy": 1.0,
+    "citation_presence_accuracy": 1.0,
+    "citation_validity_accuracy": 1.0,
+    "answer_entity_accuracy": 1.0,
+    "required_fact_accuracy": 0.9285714285714286,
+    "answer_accuracy": 0.875,
+    "error_rate": 0.0
+  },
+  "by_category": {
+    "single_rag": {
+      "query_count": 6,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 0.9166666666666666,
+      "answer_accuracy": 0.8333333333333334,
+      "task_completed_rule": 0.8333333333333334,
+      "error_rate": 0.0
+    },
+    "cross_lingual_zh": {
+      "query_count": 1,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 1.0,
+      "task_completed_rule": 1.0,
+      "error_rate": 0.0
+    },
+    "empty_or_unknown": {
+      "query_count": 1,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 1.0,
+      "task_completed_rule": 1.0,
+      "error_rate": 0.0
+    }
+  },
+  "cases": [
+    {
+      "id": "aq006",
+      "category": "single_rag",
+      "question": "What is the mode of action and IRAC resistance group of abamectin?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "abamectin"
+      ],
+      "expected_keywords": [
+        "glutamate-gated chloride",
+        "IRAC Group 6"
+      ],
+      "requires_citation": true,
+      "answer": "Based on the information provided, the mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. The IRAC resistance group of abamectin is IRAC Group 6; Avermectins. [D1]\n\n[D1] citation refers to the evidence from the New Zealand pesticide dataset.",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What is the mode of action and IRAC resistance group of abamectin?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.03252247488101534,
+                "bm25_rank": 1,
+                "vector_rank": 2,
+                "bm25_score": 25.235451566484386,
+                "vector_score": 0.5726490020751953
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "score": 0.01639344262295082,
+                "bm25_rank": null,
+                "vector_rank": 1,
+                "bm25_score": null,
+                "vector_score": 0.57391357421875
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 17.366206335193148,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5573667287826538
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 17.35364323625195,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+          "extracted_entities": [
+            "abamectin"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:abamectin",
+              "name": "abamectin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:azadirachtin",
+              "name": "azadirachtin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:chlorpyrifos",
+              "name": "chlorpyrifos",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:ametoctradin",
+              "name": "ametoctradin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:pirimicarb",
+              "name": "pirimicarb",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 14388.435,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "What is the mode of action and IRAC resistance group of abamectin?",
+        "original_query": "What is the mode of action and IRAC resistance group of abamectin?",
+        "current_query": "What is the mode of action and IRAC resistance group of abamectin?",
+        "resolved_entities": [
+          "abamectin"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03252247488101534,
+                  "bm25_rank": 1,
+                  "vector_rank": 2,
+                  "bm25_score": 25.235451566484386,
+                  "vector_score": 0.5726490020751953
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.57391357421875
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 17.366206335193148,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5573667287826538
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 17.35364323625195,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+            "extracted_entities": [
+              "abamectin"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [
+              "[D1]"
+            ],
+            "latency_ms": 14388.435,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"What is the mode of action and IRAC resistance group of abamectin?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:abamectin",
+            "name": "abamectin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:azadirachtin",
+            "name": "azadirachtin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:chlorpyrifos",
+            "name": "chlorpyrifos",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:ametoctradin",
+            "name": "ametoctradin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:pirimicarb",
+            "name": "pirimicarb",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [
+          "[D1]"
+        ],
+        "step_count": 2,
+        "final_answer": "Based on the information provided, the mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. The IRAC resistance group of abamectin is IRAC Group 6; Avermectins. [D1]\n\n[D1] citation refers to the evidence from the New Zealand pesticide dataset.",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            },
+            "result": {
+              "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03252247488101534,
+                  "bm25_rank": 1,
+                  "vector_rank": 2,
+                  "bm25_score": 25.235451566484386,
+                  "vector_score": 0.5726490020751953
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.57391357421875
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 17.366206335193148,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5573667287826538
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 17.35364323625195,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq006",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "abamectin"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "abamectin"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "glutamate-gated chloride",
+            "IRAC Group 6"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq007",
+      "category": "single_rag",
+      "question": "How does fipronil affect GABA-gated chloride channels?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "fipronil"
+      ],
+      "expected_keywords": [
+        "GABA",
+        "chloride channel"
+      ],
+      "requires_citation": true,
+      "answer": "Based on the information provided, fipronil blocks GABA-activated chloride channels [D1].\n\n[D1] citation refers to the evidence from the New Zealand pesticide dataset.",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "How does fipronil affect GABA-gated chloride channels?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "fipronil blocks GABA-activated chloride channels [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:bifenthrin",
+                "name": "bifenthrin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:chlorantraniliprole",
+                "name": "chlorantraniliprole",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:emamectin benzoate",
+                "name": "emamectin benzoate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 27.019020738434346,
+                "vector_score": 0.6478835344314575
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.03149801587301587,
+                "bm25_rank": 3,
+                "vector_rank": 4,
+                "bm25_score": 15.073145058811608,
+                "vector_score": 0.4544543921947479
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:bifenthrin",
+                "name": "bifenthrin",
+                "score": 0.02919863597612958,
+                "bm25_rank": 9,
+                "vector_rank": 8,
+                "bm25_score": 4.214379039730944,
+                "vector_score": 0.4445168375968933
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:chlorantraniliprole",
+                "name": "chlorantraniliprole",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.4724833369255066
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:emamectin benzoate",
+                "name": "emamectin benzoate",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 16.402571189021565,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "fipronil blocks GABA-activated chloride channels [D1].",
+          "extracted_entities": [
+            "fipronil"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:fipronil",
+              "name": "fipronil",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:abamectin",
+              "name": "abamectin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:bifenthrin",
+              "name": "bifenthrin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:chlorantraniliprole",
+              "name": "chlorantraniliprole",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:emamectin benzoate",
+              "name": "emamectin benzoate",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 364.741,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "How does fipronil affect GABA-gated chloride channels?",
+        "original_query": "How does fipronil affect GABA-gated chloride channels?",
+        "current_query": "How does fipronil affect GABA-gated chloride channels?",
+        "resolved_entities": [
+          "fipronil"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "How does fipronil affect GABA-gated chloride channels?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "fipronil blocks GABA-activated chloride channels [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:bifenthrin",
+                  "name": "bifenthrin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:chlorantraniliprole",
+                  "name": "chlorantraniliprole",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:emamectin benzoate",
+                  "name": "emamectin benzoate",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 27.019020738434346,
+                  "vector_score": 0.6478835344314575
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03149801587301587,
+                  "bm25_rank": 3,
+                  "vector_rank": 4,
+                  "bm25_score": 15.073145058811608,
+                  "vector_score": 0.4544543921947479
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:bifenthrin",
+                  "name": "bifenthrin",
+                  "score": 0.02919863597612958,
+                  "bm25_rank": 9,
+                  "vector_rank": 8,
+                  "bm25_score": 4.214379039730944,
+                  "vector_score": 0.4445168375968933
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:chlorantraniliprole",
+                  "name": "chlorantraniliprole",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.4724833369255066
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:emamectin benzoate",
+                  "name": "emamectin benzoate",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 16.402571189021565,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "fipronil blocks GABA-activated chloride channels [D1].",
+            "extracted_entities": [
+              "fipronil"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:bifenthrin",
+                "name": "bifenthrin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:chlorantraniliprole",
+                "name": "chlorantraniliprole",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:emamectin benzoate",
+                "name": "emamectin benzoate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [
+              "[D1]"
+            ],
+            "latency_ms": 364.741,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"How does fipronil affect GABA-gated chloride channels?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "How does fipronil affect GABA-gated chloride channels?"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:fipronil",
+            "name": "fipronil",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:abamectin",
+            "name": "abamectin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:bifenthrin",
+            "name": "bifenthrin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:chlorantraniliprole",
+            "name": "chlorantraniliprole",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:emamectin benzoate",
+            "name": "emamectin benzoate",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [
+          "[D1]"
+        ],
+        "step_count": 2,
+        "final_answer": "Based on the information provided, fipronil blocks GABA-activated chloride channels [D1].\n\n[D1] citation refers to the evidence from the New Zealand pesticide dataset.",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "How does fipronil affect GABA-gated chloride channels?"
+            },
+            "result": {
+              "answer": "fipronil blocks GABA-activated chloride channels [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:bifenthrin",
+                  "name": "bifenthrin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:chlorantraniliprole",
+                  "name": "chlorantraniliprole",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:emamectin benzoate",
+                  "name": "emamectin benzoate",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 27.019020738434346,
+                  "vector_score": 0.6478835344314575
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03149801587301587,
+                  "bm25_rank": 3,
+                  "vector_rank": 4,
+                  "bm25_score": 15.073145058811608,
+                  "vector_score": 0.4544543921947479
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:bifenthrin",
+                  "name": "bifenthrin",
+                  "score": 0.02919863597612958,
+                  "bm25_rank": 9,
+                  "vector_rank": 8,
+                  "bm25_score": 4.214379039730944,
+                  "vector_score": 0.4445168375968933
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:chlorantraniliprole",
+                  "name": "chlorantraniliprole",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.4724833369255066
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:emamectin benzoate",
+                  "name": "emamectin benzoate",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 16.402571189021565,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq007",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "fipronil"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "fipronil"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "GABA",
+            "chloride channel"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq008",
+      "category": "single_rag",
+      "question": "What EPSPS-related mode of action is listed for glyphosate?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "glyphosate"
+      ],
+      "expected_keywords": [
+        "EPSPS"
+      ],
+      "requires_citation": true,
+      "answer": "The EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. This information is supported by evidence citation [D1].\n\n[D1] mentions that glyphosate inhibits 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS). Therefore, the EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. [D1]",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What EPSPS-related mode of action is listed for glyphosate?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "retrieved evidence is insufficient.\n\n[D1] mentions that glyphosate inhibits 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS). Therefore, the EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:glyphosate",
+                "name": "glyphosate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:phenmedipham",
+                "name": "phenmedipham",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:glufosinate-ammonium",
+                "name": "glufosinate-ammonium",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:paraquat",
+                "name": "paraquat",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:diquat dibromide",
+                "name": "diquat dibromide",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:glyphosate",
+                "name": "glyphosate",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 16.353145954740686,
+                "vector_score": 0.5406650304794312
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:phenmedipham",
+                "name": "phenmedipham",
+                "score": 0.030090497737556562,
+                "bm25_rank": 8,
+                "vector_rank": 5,
+                "bm25_score": 8.263580090409503,
+                "vector_score": 0.5078451633453369
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:glufosinate-ammonium",
+                "name": "glufosinate-ammonium",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.5170403718948364
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:paraquat",
+                "name": "paraquat",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 9.287167024999475,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:diquat dibromide",
+                "name": "diquat dibromide",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 9.210920224813215,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "retrieved evidence is insufficient.\n\n[D1] mentions that glyphosate inhibits 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS). Therefore, the EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. [D1]",
+          "extracted_entities": [
+            "glyphosate"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:glyphosate",
+              "name": "glyphosate",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:phenmedipham",
+              "name": "phenmedipham",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:glufosinate-ammonium",
+              "name": "glufosinate-ammonium",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:paraquat",
+              "name": "paraquat",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:diquat dibromide",
+              "name": "diquat dibromide",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 825.567,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "What EPSPS-related mode of action is listed for glyphosate?",
+        "original_query": "What EPSPS-related mode of action is listed for glyphosate?",
+        "current_query": "What EPSPS-related mode of action is listed for glyphosate?",
+        "resolved_entities": [
+          "glyphosate"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What EPSPS-related mode of action is listed for glyphosate?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "retrieved evidence is insufficient.\n\n[D1] mentions that glyphosate inhibits 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS). Therefore, the EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. [D1]",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:glyphosate",
+                  "name": "glyphosate",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:phenmedipham",
+                  "name": "phenmedipham",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:glufosinate-ammonium",
+                  "name": "glufosinate-ammonium",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:paraquat",
+                  "name": "paraquat",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:diquat dibromide",
+                  "name": "diquat dibromide",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:glyphosate",
+                  "name": "glyphosate",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 16.353145954740686,
+                  "vector_score": 0.5406650304794312
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:phenmedipham",
+                  "name": "phenmedipham",
+                  "score": 0.030090497737556562,
+                  "bm25_rank": 8,
+                  "vector_rank": 5,
+                  "bm25_score": 8.263580090409503,
+                  "vector_score": 0.5078451633453369
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:glufosinate-ammonium",
+                  "name": "glufosinate-ammonium",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.5170403718948364
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:paraquat",
+                  "name": "paraquat",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 9.287167024999475,
+                  "vector_score": null
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:diquat dibromide",
+                  "name": "diquat dibromide",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 9.210920224813215,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "retrieved evidence is insufficient.\n\n[D1] mentions that glyphosate inhibits 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS). Therefore, the EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. [D1]",
+            "extracted_entities": [
+              "glyphosate"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:glyphosate",
+                "name": "glyphosate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:phenmedipham",
+                "name": "phenmedipham",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:glufosinate-ammonium",
+                "name": "glufosinate-ammonium",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:paraquat",
+                "name": "paraquat",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:diquat dibromide",
+                "name": "diquat dibromide",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [
+              "[D1]"
+            ],
+            "latency_ms": 825.567,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"What EPSPS-related mode of action is listed for glyphosate?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What EPSPS-related mode of action is listed for glyphosate?"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:glyphosate",
+            "name": "glyphosate",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:phenmedipham",
+            "name": "phenmedipham",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:glufosinate-ammonium",
+            "name": "glufosinate-ammonium",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:paraquat",
+            "name": "paraquat",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:diquat dibromide",
+            "name": "diquat dibromide",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [
+          "[D1]"
+        ],
+        "step_count": 2,
+        "final_answer": "The EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. This information is supported by evidence citation [D1].\n\n[D1] mentions that glyphosate inhibits 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS). Therefore, the EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. [D1]",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What EPSPS-related mode of action is listed for glyphosate?"
+            },
+            "result": {
+              "answer": "retrieved evidence is insufficient.\n\n[D1] mentions that glyphosate inhibits 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS). Therefore, the EPSPS-related mode of action listed for glyphosate is inhibition of EPSPS. [D1]",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:glyphosate",
+                  "name": "glyphosate",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:phenmedipham",
+                  "name": "phenmedipham",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:glufosinate-ammonium",
+                  "name": "glufosinate-ammonium",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:paraquat",
+                  "name": "paraquat",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:diquat dibromide",
+                  "name": "diquat dibromide",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:glyphosate",
+                  "name": "glyphosate",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 16.353145954740686,
+                  "vector_score": 0.5406650304794312
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:phenmedipham",
+                  "name": "phenmedipham",
+                  "score": 0.030090497737556562,
+                  "bm25_rank": 8,
+                  "vector_rank": 5,
+                  "bm25_score": 8.263580090409503,
+                  "vector_score": 0.5078451633453369
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:glufosinate-ammonium",
+                  "name": "glufosinate-ammonium",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.5170403718948364
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:paraquat",
+                  "name": "paraquat",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 9.287167024999475,
+                  "vector_score": null
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:diquat dibromide",
+                  "name": "diquat dibromide",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 9.210920224813215,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq008",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "glyphosate"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "glyphosate"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "EPSPS"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq009",
+      "category": "single_rag",
+      "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "azoxystrobin"
+      ],
+      "expected_keywords": [
+        "QoI",
+        "FRAC 11"
+      ],
+      "requires_citation": true,
+      "answer": "Based on the information provided:\n\n- The QoI (Quinone Outside Inhibitor) mechanism for azoxystrobin acts on cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III at the Qo site (cyt b gene) [D1].\n- The FRAC (Fungicide Resistance Action Committee) group for azoxystrobin is FRAC 11, C3, QoI-Fungicide Group (Quinone outside Inhibitors, QoI) [D1].\n\n[D1] citation refers to the New Zealand pesticide dataset.",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "The QoI mechanism and FRAC group described for azoxystrobin are:\n\n- QoI mechanism: Acts on cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III: Qo site (cyt b gene) [D1].\n\n- FRAC group: International Fungicide Resistance Action Committee FRAC 11, C3, QoI-Fungicide Group (Quinone outside Inhibitors, QoI) [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:azoxystrobin",
+                "name": "azoxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:fenamidone",
+                "name": "fenamidone",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:trifloxystrobin",
+                "name": "trifloxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:pyraclostrobin",
+                "name": "pyraclostrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:picoxystrobin",
+                "name": "picoxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:azoxystrobin",
+                "name": "azoxystrobin",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 17.50022743611695,
+                "vector_score": 0.614010751247406
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:fenamidone",
+                "name": "fenamidone",
+                "score": 0.031024531024531024,
+                "bm25_rank": 3,
+                "vector_rank": 6,
+                "bm25_score": 9.899122788363773,
+                "vector_score": 0.4733743667602539
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:trifloxystrobin",
+                "name": "trifloxystrobin",
+                "score": 0.031024531024531024,
+                "bm25_rank": 6,
+                "vector_rank": 3,
+                "bm25_score": 9.280676982641102,
+                "vector_score": 0.5093748569488525
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:pyraclostrobin",
+                "name": "pyraclostrobin",
+                "score": 0.03076923076923077,
+                "bm25_rank": 5,
+                "vector_rank": 5,
+                "bm25_score": 9.286293357840885,
+                "vector_score": 0.4845472574234009
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:picoxystrobin",
+                "name": "picoxystrobin",
+                "score": 0.03055037313432836,
+                "bm25_rank": 7,
+                "vector_rank": 4,
+                "bm25_score": 8.975227496430186,
+                "vector_score": 0.4978022575378418
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "The QoI mechanism and FRAC group described for azoxystrobin are:\n\n- QoI mechanism: Acts on cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III: Qo site (cyt b gene) [D1].\n\n- FRAC group: International Fungicide Resistance Action Committee FRAC 11, C3, QoI-Fungicide Group (Quinone outside Inhibitors, QoI) [D1].",
+          "extracted_entities": [
+            "azoxystrobin"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:azoxystrobin",
+              "name": "azoxystrobin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:fenamidone",
+              "name": "fenamidone",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:trifloxystrobin",
+              "name": "trifloxystrobin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:pyraclostrobin",
+              "name": "pyraclostrobin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:picoxystrobin",
+              "name": "picoxystrobin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 1175.582,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+        "original_query": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+        "current_query": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+        "resolved_entities": [
+          "azoxystrobin"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "The QoI mechanism and FRAC group described for azoxystrobin are:\n\n- QoI mechanism: Acts on cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III: Qo site (cyt b gene) [D1].\n\n- FRAC group: International Fungicide Resistance Action Committee FRAC 11, C3, QoI-Fungicide Group (Quinone outside Inhibitors, QoI) [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:azoxystrobin",
+                  "name": "azoxystrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:fenamidone",
+                  "name": "fenamidone",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:trifloxystrobin",
+                  "name": "trifloxystrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:pyraclostrobin",
+                  "name": "pyraclostrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:picoxystrobin",
+                  "name": "picoxystrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:azoxystrobin",
+                  "name": "azoxystrobin",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 17.50022743611695,
+                  "vector_score": 0.614010751247406
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:fenamidone",
+                  "name": "fenamidone",
+                  "score": 0.031024531024531024,
+                  "bm25_rank": 3,
+                  "vector_rank": 6,
+                  "bm25_score": 9.899122788363773,
+                  "vector_score": 0.4733743667602539
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:trifloxystrobin",
+                  "name": "trifloxystrobin",
+                  "score": 0.031024531024531024,
+                  "bm25_rank": 6,
+                  "vector_rank": 3,
+                  "bm25_score": 9.280676982641102,
+                  "vector_score": 0.5093748569488525
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:pyraclostrobin",
+                  "name": "pyraclostrobin",
+                  "score": 0.03076923076923077,
+                  "bm25_rank": 5,
+                  "vector_rank": 5,
+                  "bm25_score": 9.286293357840885,
+                  "vector_score": 0.4845472574234009
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:picoxystrobin",
+                  "name": "picoxystrobin",
+                  "score": 0.03055037313432836,
+                  "bm25_rank": 7,
+                  "vector_rank": 4,
+                  "bm25_score": 8.975227496430186,
+                  "vector_score": 0.4978022575378418
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "The QoI mechanism and FRAC group described for azoxystrobin are:\n\n- QoI mechanism: Acts on cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III: Qo site (cyt b gene) [D1].\n\n- FRAC group: International Fungicide Resistance Action Committee FRAC 11, C3, QoI-Fungicide Group (Quinone outside Inhibitors, QoI) [D1].",
+            "extracted_entities": [
+              "azoxystrobin"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:azoxystrobin",
+                "name": "azoxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:fenamidone",
+                "name": "fenamidone",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:trifloxystrobin",
+                "name": "trifloxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:pyraclostrobin",
+                "name": "pyraclostrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:picoxystrobin",
+                "name": "picoxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [
+              "[D1]"
+            ],
+            "latency_ms": 1175.582,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"Which QoI mechanism and FRAC group are described for azoxystrobin?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:azoxystrobin",
+            "name": "azoxystrobin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:fenamidone",
+            "name": "fenamidone",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:trifloxystrobin",
+            "name": "trifloxystrobin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:pyraclostrobin",
+            "name": "pyraclostrobin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:picoxystrobin",
+            "name": "picoxystrobin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [
+          "[D1]"
+        ],
+        "step_count": 2,
+        "final_answer": "Based on the information provided:\n\n- The QoI (Quinone Outside Inhibitor) mechanism for azoxystrobin acts on cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III at the Qo site (cyt b gene) [D1].\n- The FRAC (Fungicide Resistance Action Committee) group for azoxystrobin is FRAC 11, C3, QoI-Fungicide Group (Quinone outside Inhibitors, QoI) [D1].\n\n[D1] citation refers to the New Zealand pesticide dataset.",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?"
+            },
+            "result": {
+              "answer": "The QoI mechanism and FRAC group described for azoxystrobin are:\n\n- QoI mechanism: Acts on cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III: Qo site (cyt b gene) [D1].\n\n- FRAC group: International Fungicide Resistance Action Committee FRAC 11, C3, QoI-Fungicide Group (Quinone outside Inhibitors, QoI) [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:azoxystrobin",
+                  "name": "azoxystrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:fenamidone",
+                  "name": "fenamidone",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:trifloxystrobin",
+                  "name": "trifloxystrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:pyraclostrobin",
+                  "name": "pyraclostrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:picoxystrobin",
+                  "name": "picoxystrobin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:azoxystrobin",
+                  "name": "azoxystrobin",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 17.50022743611695,
+                  "vector_score": 0.614010751247406
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:fenamidone",
+                  "name": "fenamidone",
+                  "score": 0.031024531024531024,
+                  "bm25_rank": 3,
+                  "vector_rank": 6,
+                  "bm25_score": 9.899122788363773,
+                  "vector_score": 0.4733743667602539
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:trifloxystrobin",
+                  "name": "trifloxystrobin",
+                  "score": 0.031024531024531024,
+                  "bm25_rank": 6,
+                  "vector_rank": 3,
+                  "bm25_score": 9.280676982641102,
+                  "vector_score": 0.5093748569488525
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:pyraclostrobin",
+                  "name": "pyraclostrobin",
+                  "score": 0.03076923076923077,
+                  "bm25_rank": 5,
+                  "vector_rank": 5,
+                  "bm25_score": 9.286293357840885,
+                  "vector_score": 0.4845472574234009
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:picoxystrobin",
+                  "name": "picoxystrobin",
+                  "score": 0.03055037313432836,
+                  "bm25_rank": 7,
+                  "vector_rank": 4,
+                  "bm25_score": 8.975227496430186,
+                  "vector_score": 0.4978022575378418
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq009",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "azoxystrobin"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "azoxystrobin"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "QoI",
+            "FRAC 11"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq010",
+      "category": "single_rag",
+      "question": "What complex II target is described for boscalid?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "boscalid"
+      ],
+      "expected_keywords": [
+        "complex II",
+        "succinate dehydrogenase"
+      ],
+      "requires_citation": true,
+      "answer": "Based on the provided evidence, the specific complex II target for boscalid is not described. The evidence only mentions boscalid in relation to its fungicidal properties and resistance management, but does not specify the exact target within complex II.\n\n[D1]",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What complex II target is described for boscalid?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain any information about boscalid or its mode of action targeting complex II. The evidence only mentions boscalid in relation to its fungicidal properties and resistance management, but does not specify the exact target within complex II. Therefore, based on the given evidence, it is not possible to determine the specific complex II target for boscalid.",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:boscalid",
+                "name": "boscalid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:bixafen",
+                "name": "bixafen",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:isoflucypram",
+                "name": "isoflucypram",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:spinosad",
+                "name": "spinosad",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:bromacil",
+                "name": "bromacil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:boscalid",
+                "name": "boscalid",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 12.7734257667895,
+                "vector_score": 0.5488290190696716
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:bixafen",
+                "name": "bixafen",
+                "score": 0.02964426877470356,
+                "bm25_rank": 6,
+                "vector_rank": 9,
+                "bm25_score": 6.917171481808768,
+                "vector_score": 0.4053114354610443
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:isoflucypram",
+                "name": "isoflucypram",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 7.1007866261759744,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:spinosad",
+                "name": "spinosad",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.4377496838569641
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:bromacil",
+                "name": "bromacil",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.4197661280632019
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain any information about boscalid or its mode of action targeting complex II. The evidence only mentions boscalid in relation to its fungicidal properties and resistance management, but does not specify the exact target within complex II. Therefore, based on the given evidence, it is not possible to determine the specific complex II target for boscalid.",
+          "extracted_entities": [
+            "boscalid"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:boscalid",
+              "name": "boscalid",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:bixafen",
+              "name": "bixafen",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:isoflucypram",
+              "name": "isoflucypram",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:spinosad",
+              "name": "spinosad",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:bromacil",
+              "name": "bromacil",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [],
+          "latency_ms": 1003.608,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "What complex II target is described for boscalid?",
+        "original_query": "What complex II target is described for boscalid?",
+        "current_query": "What complex II target is described for boscalid?",
+        "resolved_entities": [
+          "boscalid"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What complex II target is described for boscalid?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain any information about boscalid or its mode of action targeting complex II. The evidence only mentions boscalid in relation to its fungicidal properties and resistance management, but does not specify the exact target within complex II. Therefore, based on the given evidence, it is not possible to determine the specific complex II target for boscalid.",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:boscalid",
+                  "name": "boscalid",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:bixafen",
+                  "name": "bixafen",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:isoflucypram",
+                  "name": "isoflucypram",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:spinosad",
+                  "name": "spinosad",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:bromacil",
+                  "name": "bromacil",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:boscalid",
+                  "name": "boscalid",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 12.7734257667895,
+                  "vector_score": 0.5488290190696716
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:bixafen",
+                  "name": "bixafen",
+                  "score": 0.02964426877470356,
+                  "bm25_rank": 6,
+                  "vector_rank": 9,
+                  "bm25_score": 6.917171481808768,
+                  "vector_score": 0.4053114354610443
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:isoflucypram",
+                  "name": "isoflucypram",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 7.1007866261759744,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:spinosad",
+                  "name": "spinosad",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.4377496838569641
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:bromacil",
+                  "name": "bromacil",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.4197661280632019
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain any information about boscalid or its mode of action targeting complex II. The evidence only mentions boscalid in relation to its fungicidal properties and resistance management, but does not specify the exact target within complex II. Therefore, based on the given evidence, it is not possible to determine the specific complex II target for boscalid.",
+            "extracted_entities": [
+              "boscalid"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:boscalid",
+                "name": "boscalid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:bixafen",
+                "name": "bixafen",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:isoflucypram",
+                "name": "isoflucypram",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:spinosad",
+                "name": "spinosad",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:bromacil",
+                "name": "bromacil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [],
+            "latency_ms": 1003.608,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"What complex II target is described for boscalid?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What complex II target is described for boscalid?"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:boscalid",
+            "name": "boscalid",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:bixafen",
+            "name": "bixafen",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:isoflucypram",
+            "name": "isoflucypram",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:spinosad",
+            "name": "spinosad",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:bromacil",
+            "name": "bromacil",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "Based on the provided evidence, the specific complex II target for boscalid is not described. The evidence only mentions boscalid in relation to its fungicidal properties and resistance management, but does not specify the exact target within complex II.\n\n[D1]",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What complex II target is described for boscalid?"
+            },
+            "result": {
+              "answer": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain any information about boscalid or its mode of action targeting complex II. The evidence only mentions boscalid in relation to its fungicidal properties and resistance management, but does not specify the exact target within complex II. Therefore, based on the given evidence, it is not possible to determine the specific complex II target for boscalid.",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:boscalid",
+                  "name": "boscalid",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:bixafen",
+                  "name": "bixafen",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:isoflucypram",
+                  "name": "isoflucypram",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:spinosad",
+                  "name": "spinosad",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:bromacil",
+                  "name": "bromacil",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:boscalid",
+                  "name": "boscalid",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 12.7734257667895,
+                  "vector_score": 0.5488290190696716
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:bixafen",
+                  "name": "bixafen",
+                  "score": 0.02964426877470356,
+                  "bm25_rank": 6,
+                  "vector_rank": 9,
+                  "bm25_score": 6.917171481808768,
+                  "vector_score": 0.4053114354610443
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:isoflucypram",
+                  "name": "isoflucypram",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 7.1007866261759744,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:spinosad",
+                  "name": "spinosad",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.4377496838569641
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:bromacil",
+                  "name": "bromacil",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.4197661280632019
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq010",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "boscalid"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "boscalid"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 0.5,
+          "passed": false,
+          "matched_keywords": [
+            "complex II"
+          ],
+          "missing_keywords": [
+            "succinate dehydrogenase"
+          ]
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq011",
+      "category": "single_rag",
+      "question": "What HPPD inhibition mechanism is listed for mesotrione?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "mesotrione"
+      ],
+      "expected_keywords": [
+        "HPPD"
+      ],
+      "requires_citation": true,
+      "answer": "Based on the provided evidence, there is no specific information about the HPPD inhibition mechanism for mesotrione. The documents related to other active substances discuss different mechanisms of action.\n\n[D1]",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What HPPD inhibition mechanism is listed for mesotrione?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain specific information about the HPPD inhibition mechanism for mesotrione. All documents related to other active substances discuss different mechanisms of action.",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:mesotrione",
+                "name": "mesotrione",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:methabenzthiazuron",
+                "name": "methabenzthiazuron",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:topramezone",
+                "name": "topramezone",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:buprofezin",
+                "name": "buprofezin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:isoproturon",
+                "name": "isoproturon",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:mesotrione",
+                "name": "mesotrione",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 12.352410996949112,
+                "vector_score": 0.6417289972305298
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:methabenzthiazuron",
+                "name": "methabenzthiazuron",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.48950809240341187
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:topramezone",
+                "name": "topramezone",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 7.371837138143577,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:buprofezin",
+                "name": "buprofezin",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 5.195735716096082,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:isoproturon",
+                "name": "isoproturon",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.48644620180130005
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain specific information about the HPPD inhibition mechanism for mesotrione. All documents related to other active substances discuss different mechanisms of action.",
+          "extracted_entities": [
+            "mesotrione"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:mesotrione",
+              "name": "mesotrione",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:methabenzthiazuron",
+              "name": "methabenzthiazuron",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:topramezone",
+              "name": "topramezone",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:buprofezin",
+              "name": "buprofezin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:isoproturon",
+              "name": "isoproturon",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [],
+          "latency_ms": 551.003,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "What HPPD inhibition mechanism is listed for mesotrione?",
+        "original_query": "What HPPD inhibition mechanism is listed for mesotrione?",
+        "current_query": "What HPPD inhibition mechanism is listed for mesotrione?",
+        "resolved_entities": [
+          "mesotrione"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What HPPD inhibition mechanism is listed for mesotrione?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain specific information about the HPPD inhibition mechanism for mesotrione. All documents related to other active substances discuss different mechanisms of action.",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:mesotrione",
+                  "name": "mesotrione",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:methabenzthiazuron",
+                  "name": "methabenzthiazuron",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:topramezone",
+                  "name": "topramezone",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:buprofezin",
+                  "name": "buprofezin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:isoproturon",
+                  "name": "isoproturon",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:mesotrione",
+                  "name": "mesotrione",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 12.352410996949112,
+                  "vector_score": 0.6417289972305298
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:methabenzthiazuron",
+                  "name": "methabenzthiazuron",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.48950809240341187
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:topramezone",
+                  "name": "topramezone",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 7.371837138143577,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:buprofezin",
+                  "name": "buprofezin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 5.195735716096082,
+                  "vector_score": null
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:isoproturon",
+                  "name": "isoproturon",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.48644620180130005
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain specific information about the HPPD inhibition mechanism for mesotrione. All documents related to other active substances discuss different mechanisms of action.",
+            "extracted_entities": [
+              "mesotrione"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:mesotrione",
+                "name": "mesotrione",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:methabenzthiazuron",
+                "name": "methabenzthiazuron",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:topramezone",
+                "name": "topramezone",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:buprofezin",
+                "name": "buprofezin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:isoproturon",
+                "name": "isoproturon",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [],
+            "latency_ms": 551.003,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"What HPPD inhibition mechanism is listed for mesotrione?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What HPPD inhibition mechanism is listed for mesotrione?"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:mesotrione",
+            "name": "mesotrione",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:methabenzthiazuron",
+            "name": "methabenzthiazuron",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:topramezone",
+            "name": "topramezone",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:buprofezin",
+            "name": "buprofezin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:isoproturon",
+            "name": "isoproturon",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "Based on the provided evidence, there is no specific information about the HPPD inhibition mechanism for mesotrione. The documents related to other active substances discuss different mechanisms of action.\n\n[D1]",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What HPPD inhibition mechanism is listed for mesotrione?"
+            },
+            "result": {
+              "answer": "retrieved evidence is insufficient.\n\nExplanation: The provided evidence does not contain specific information about the HPPD inhibition mechanism for mesotrione. All documents related to other active substances discuss different mechanisms of action.",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:mesotrione",
+                  "name": "mesotrione",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:methabenzthiazuron",
+                  "name": "methabenzthiazuron",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:topramezone",
+                  "name": "topramezone",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:buprofezin",
+                  "name": "buprofezin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:isoproturon",
+                  "name": "isoproturon",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:mesotrione",
+                  "name": "mesotrione",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 12.352410996949112,
+                  "vector_score": 0.6417289972305298
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:methabenzthiazuron",
+                  "name": "methabenzthiazuron",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.48950809240341187
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:topramezone",
+                  "name": "topramezone",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 7.371837138143577,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:buprofezin",
+                  "name": "buprofezin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 5.195735716096082,
+                  "vector_score": null
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:isoproturon",
+                  "name": "isoproturon",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.48644620180130005
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq011",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "mesotrione"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "mesotrione"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "HPPD"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq019",
+      "category": "cross_lingual_zh",
+      "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "fipronil"
+      ],
+      "expected_keywords": [
+        "GABA"
+      ],
+      "requires_citation": true,
+      "answer": "根据查询结果，fipronil 阻断 GABA 激活的氯离子通道，并导致昆虫抽搐 [D1]。\n\n因此，答案是 fipronil。[D1]",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？"
+          },
+          "status": "success",
+          "result": {
+            "answer": "fipronil 阻断 GABA 激活的氯离子通道，并导致昆虫抽搐 [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:furathiocarb",
+                "name": "furathiocarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:carbaryl",
+                "name": "carbaryl",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 8.270334054934292,
+                "vector_score": 0.5771822929382324
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.031054405392392875,
+                "bm25_rank": 2,
+                "vector_rank": 7,
+                "bm25_score": 0.0,
+                "vector_score": 0.5249230861663818
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:furathiocarb",
+                "name": "furathiocarb",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.5494676232337952
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 0.0,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:carbaryl",
+                "name": "carbaryl",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5343718528747559
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "fipronil 阻断 GABA 激活的氯离子通道，并导致昆虫抽搐 [D1].",
+          "extracted_entities": [
+            "fipronil"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:fipronil",
+              "name": "fipronil",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:abamectin",
+              "name": "abamectin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:furathiocarb",
+              "name": "furathiocarb",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:acephate",
+              "name": "acephate",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:carbaryl",
+              "name": "carbaryl",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 502.654,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+        "original_query": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+        "current_query": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+        "resolved_entities": [
+          "fipronil"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？"
+            },
+            "status": "success",
+            "result": {
+              "answer": "fipronil 阻断 GABA 激活的氯离子通道，并导致昆虫抽搐 [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:furathiocarb",
+                  "name": "furathiocarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:acephate",
+                  "name": "acephate",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:carbaryl",
+                  "name": "carbaryl",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 8.270334054934292,
+                  "vector_score": 0.5771822929382324
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.031054405392392875,
+                  "bm25_rank": 2,
+                  "vector_rank": 7,
+                  "bm25_score": 0.0,
+                  "vector_score": 0.5249230861663818
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:furathiocarb",
+                  "name": "furathiocarb",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.5494676232337952
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:acephate",
+                  "name": "acephate",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 0.0,
+                  "vector_score": null
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:carbaryl",
+                  "name": "carbaryl",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5343718528747559
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "fipronil 阻断 GABA 激活的氯离子通道，并导致昆虫抽搐 [D1].",
+            "extracted_entities": [
+              "fipronil"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:furathiocarb",
+                "name": "furathiocarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:carbaryl",
+                "name": "carbaryl",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [
+              "[D1]"
+            ],
+            "latency_ms": 502.654,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:fipronil",
+            "name": "fipronil",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:abamectin",
+            "name": "abamectin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:furathiocarb",
+            "name": "furathiocarb",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:acephate",
+            "name": "acephate",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:carbaryl",
+            "name": "carbaryl",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [
+          "[D1]"
+        ],
+        "step_count": 2,
+        "final_answer": "根据查询结果，fipronil 阻断 GABA 激活的氯离子通道，并导致昆虫抽搐 [D1]。\n\n因此，答案是 fipronil。[D1]",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？"
+            },
+            "result": {
+              "answer": "fipronil 阻断 GABA 激活的氯离子通道，并导致昆虫抽搐 [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:furathiocarb",
+                  "name": "furathiocarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:acephate",
+                  "name": "acephate",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:carbaryl",
+                  "name": "carbaryl",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:fipronil",
+                  "name": "fipronil",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 8.270334054934292,
+                  "vector_score": 0.5771822929382324
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.031054405392392875,
+                  "bm25_rank": 2,
+                  "vector_rank": 7,
+                  "bm25_score": 0.0,
+                  "vector_score": 0.5249230861663818
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:furathiocarb",
+                  "name": "furathiocarb",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.5494676232337952
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:acephate",
+                  "name": "acephate",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 0.0,
+                  "vector_score": null
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:carbaryl",
+                  "name": "carbaryl",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5343718528747559
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq019",
+        "category": "cross_lingual_zh",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "fipronil"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "fipronil"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "GABA"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq023",
+      "category": "empty_or_unknown",
+      "question": "What is the mode of action of nonexistentium according to the corpus?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "nonexistentium"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The retrieved evidence is insufficient to determine the mode of action of nonexistentium according to the corpus.\n\n[D1] cyflufenamid\n[D2] dimethomorph\n[D3] quinoxyfen\n[D4] captan\n[D5] pencycuron\n\nThese are other active substances found in the New Zealand pesticide dataset, but no information on nonexistentium was found.",
+      "tool_trace": [
+        {
+          "step": 1,
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What is the mode of action of nonexistentium according to the corpus?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "retrieved evidence is insufficient.",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:cyflufenamid",
+                "name": "cyflufenamid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:dimethomorph",
+                "name": "dimethomorph",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:quinoxyfen",
+                "name": "quinoxyfen",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:captan",
+                "name": "captan",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pencycuron",
+                "name": "pencycuron",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:cyflufenamid",
+                "name": "cyflufenamid",
+                "score": 0.03131881575727918,
+                "bm25_rank": 1,
+                "vector_rank": 7,
+                "bm25_score": 19.74082745621012,
+                "vector_score": 0.40745463967323303
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:dimethomorph",
+                "name": "dimethomorph",
+                "score": 0.0304147465437788,
+                "bm25_rank": 2,
+                "vector_rank": 10,
+                "bm25_score": 15.519068996900629,
+                "vector_score": 0.40234827995300293
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:quinoxyfen",
+                "name": "quinoxyfen",
+                "score": 0.01639344262295082,
+                "bm25_rank": null,
+                "vector_rank": 1,
+                "bm25_score": null,
+                "vector_score": 0.4311085343360901
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:captan",
+                "name": "captan",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.4270022511482239
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:pencycuron",
+                "name": "pencycuron",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.4223288595676422
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "retrieved evidence is insufficient.",
+          "extracted_entities": [
+            "cyflufenamid"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:cyflufenamid",
+              "name": "cyflufenamid",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:dimethomorph",
+              "name": "dimethomorph",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:quinoxyfen",
+              "name": "quinoxyfen",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:captan",
+              "name": "captan",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:pencycuron",
+              "name": "pencycuron",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [],
+          "latency_ms": 315.342,
+          "attempts": 1,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "user_question": "What is the mode of action of nonexistentium according to the corpus?",
+        "original_query": "What is the mode of action of nonexistentium according to the corpus?",
+        "current_query": "What is the mode of action of nonexistentium according to the corpus?",
+        "resolved_entities": [
+          "cyflufenamid"
+        ],
+        "tool_history": [
+          {
+            "step": 1,
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action of nonexistentium according to the corpus?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "retrieved evidence is insufficient.",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:cyflufenamid",
+                  "name": "cyflufenamid",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:dimethomorph",
+                  "name": "dimethomorph",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:quinoxyfen",
+                  "name": "quinoxyfen",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:captan",
+                  "name": "captan",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pencycuron",
+                  "name": "pencycuron",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:cyflufenamid",
+                  "name": "cyflufenamid",
+                  "score": 0.03131881575727918,
+                  "bm25_rank": 1,
+                  "vector_rank": 7,
+                  "bm25_score": 19.74082745621012,
+                  "vector_score": 0.40745463967323303
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:dimethomorph",
+                  "name": "dimethomorph",
+                  "score": 0.0304147465437788,
+                  "bm25_rank": 2,
+                  "vector_rank": 10,
+                  "bm25_score": 15.519068996900629,
+                  "vector_score": 0.40234827995300293
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:quinoxyfen",
+                  "name": "quinoxyfen",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.4311085343360901
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:captan",
+                  "name": "captan",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.4270022511482239
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pencycuron",
+                  "name": "pencycuron",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.4223288595676422
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "retrieved evidence is insufficient.",
+            "extracted_entities": [
+              "cyflufenamid"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:cyflufenamid",
+                "name": "cyflufenamid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:dimethomorph",
+                "name": "dimethomorph",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:quinoxyfen",
+                "name": "quinoxyfen",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:captan",
+                "name": "captan",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pencycuron",
+                "name": "pencycuron",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [],
+            "latency_ms": 315.342,
+            "attempts": 1,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\": \"What is the mode of action of nonexistentium according to the corpus?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action of nonexistentium according to the corpus?"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:cyflufenamid",
+            "name": "cyflufenamid",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:dimethomorph",
+            "name": "dimethomorph",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:quinoxyfen",
+            "name": "quinoxyfen",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:captan",
+            "name": "captan",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:pencycuron",
+            "name": "pencycuron",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "The retrieved evidence is insufficient to determine the mode of action of nonexistentium according to the corpus.\n\n[D1] cyflufenamid\n[D2] dimethomorph\n[D3] quinoxyfen\n[D4] captan\n[D5] pencycuron\n\nThese are other active substances found in the New Zealand pesticide dataset, but no information on nonexistentium was found.",
+        "status": "completed",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action of nonexistentium according to the corpus?"
+            },
+            "result": {
+              "answer": "retrieved evidence is insufficient.",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:cyflufenamid",
+                  "name": "cyflufenamid",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:dimethomorph",
+                  "name": "dimethomorph",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:quinoxyfen",
+                  "name": "quinoxyfen",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:captan",
+                  "name": "captan",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pencycuron",
+                  "name": "pencycuron",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:cyflufenamid",
+                  "name": "cyflufenamid",
+                  "score": 0.03131881575727918,
+                  "bm25_rank": 1,
+                  "vector_rank": 7,
+                  "bm25_score": 19.74082745621012,
+                  "vector_score": 0.40745463967323303
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:dimethomorph",
+                  "name": "dimethomorph",
+                  "score": 0.0304147465437788,
+                  "bm25_rank": 2,
+                  "vector_rank": 10,
+                  "bm25_score": 15.519068996900629,
+                  "vector_score": 0.40234827995300293
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:quinoxyfen",
+                  "name": "quinoxyfen",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.4311085343360901
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:captan",
+                  "name": "captan",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.4270022511482239
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pencycuron",
+                  "name": "pencycuron",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.4223288595676422
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ]
+      },
+      "automatic_evaluation": {
+        "id": "aq023",
+        "category": "empty_or_unknown",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "nonexistentium"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "nonexistentium"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    }
+  ]
+}

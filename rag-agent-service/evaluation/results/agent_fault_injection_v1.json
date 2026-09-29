@@ -1,0 +1,694 @@
+{
+  "metadata": {
+    "dataset_version": "agent-fault-v1",
+    "normal_benchmark_metrics_included": false
+  },
+  "summary": {
+    "num_cases": 15,
+    "retry_success_rate": 1.0,
+    "resume_success_rate": 1.0,
+    "duplicate_successful_tool_execution_rate": 0.0,
+    "fault_recovery_rate": 1.0,
+    "error_detection_rate": 1.0
+  },
+  "cases": [
+    {
+      "id": "fi001",
+      "fault": "transient_timeout",
+      "passed": true,
+      "retry_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "calls": 2
+    },
+    {
+      "id": "fi002",
+      "fault": "transient_timeout",
+      "passed": true,
+      "retry_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "calls": 2
+    },
+    {
+      "id": "fi003",
+      "fault": "transient_timeout",
+      "passed": true,
+      "retry_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "calls": 2
+    },
+    {
+      "id": "fi004",
+      "fault": "transient_timeout",
+      "passed": true,
+      "retry_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "calls": 2
+    },
+    {
+      "id": "fi005",
+      "fault": "permanent_tool_failure",
+      "passed": true,
+      "retry_applicable": true,
+      "recovered": false,
+      "detected": true,
+      "calls": 2
+    },
+    {
+      "id": "fi006",
+      "fault": "permanent_tool_failure",
+      "passed": true,
+      "retry_applicable": true,
+      "recovered": false,
+      "detected": true,
+      "calls": 2
+    },
+    {
+      "id": "fi007",
+      "fault": "kg_success_rag_failure",
+      "passed": true,
+      "recovered": false,
+      "detected": true,
+      "duplicate_executions": 0,
+      "calls": {
+        "kg": 1,
+        "rag": 2
+      }
+    },
+    {
+      "id": "fi008",
+      "fault": "checkpoint_resume",
+      "passed": true,
+      "resume_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "duplicate_executions": 0,
+      "calls": {
+        "kg": 1,
+        "rag": 1
+      },
+      "trace": [
+        {
+          "task_id": "5c95e1a6-98e0-4a77-ab26-7558884f5f16",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "success",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.002,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "5c95e1a6-98e0-4a77-ab26-7558884f5f16",
+          "step": 1,
+          "event_type": "task_resumed",
+          "tool": "",
+          "arguments": {},
+          "status": "resumed",
+          "result": null,
+          "result_summary": "",
+          "extracted_entities": [],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "5c95e1a6-98e0-4a77-ab26-7558884f5f16",
+          "step": 1,
+          "event_type": "tool_reused",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "reused",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": true,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 2,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "5c95e1a6-98e0-4a77-ab26-7558884f5f16",
+          "step": 2,
+          "event_type": "tool_success",
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "mode of action of spinetoram"
+          },
+          "status": "success",
+          "result": {
+            "answer": "mode [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "spinetoram",
+                "name": "spinetoram"
+              }
+            ]
+          },
+          "result_summary": "mode [D1]",
+          "extracted_entities": [
+            "spinetoram"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "spinetoram",
+              "name": "spinetoram"
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 0.003,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 3,
+          "failure_type": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "fi009",
+      "fault": "checkpoint_resume",
+      "passed": true,
+      "resume_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "duplicate_executions": 0,
+      "calls": {
+        "kg": 1,
+        "rag": 1
+      },
+      "trace": [
+        {
+          "task_id": "116aac0f-a611-4ba2-8d58-4e9dad2b49bb",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "success",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.002,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "116aac0f-a611-4ba2-8d58-4e9dad2b49bb",
+          "step": 1,
+          "event_type": "task_resumed",
+          "tool": "",
+          "arguments": {},
+          "status": "resumed",
+          "result": null,
+          "result_summary": "",
+          "extracted_entities": [],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "116aac0f-a611-4ba2-8d58-4e9dad2b49bb",
+          "step": 1,
+          "event_type": "tool_reused",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "reused",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": true,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 2,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "116aac0f-a611-4ba2-8d58-4e9dad2b49bb",
+          "step": 2,
+          "event_type": "tool_success",
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "mode of action of spinetoram"
+          },
+          "status": "success",
+          "result": {
+            "answer": "mode [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "spinetoram",
+                "name": "spinetoram"
+              }
+            ]
+          },
+          "result_summary": "mode [D1]",
+          "extracted_entities": [
+            "spinetoram"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "spinetoram",
+              "name": "spinetoram"
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 0.002,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 3,
+          "failure_type": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "fi010",
+      "fault": "checkpoint_resume",
+      "passed": true,
+      "resume_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "duplicate_executions": 0,
+      "calls": {
+        "kg": 1,
+        "rag": 1
+      },
+      "trace": [
+        {
+          "task_id": "dec0044b-335a-4886-9ca4-4e1db35ba6f5",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "success",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.002,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "dec0044b-335a-4886-9ca4-4e1db35ba6f5",
+          "step": 1,
+          "event_type": "task_resumed",
+          "tool": "",
+          "arguments": {},
+          "status": "resumed",
+          "result": null,
+          "result_summary": "",
+          "extracted_entities": [],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "dec0044b-335a-4886-9ca4-4e1db35ba6f5",
+          "step": 1,
+          "event_type": "tool_reused",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "reused",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": true,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 2,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "dec0044b-335a-4886-9ca4-4e1db35ba6f5",
+          "step": 2,
+          "event_type": "tool_success",
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "mode of action of spinetoram"
+          },
+          "status": "success",
+          "result": {
+            "answer": "mode [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "spinetoram",
+                "name": "spinetoram"
+              }
+            ]
+          },
+          "result_summary": "mode [D1]",
+          "extracted_entities": [
+            "spinetoram"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "spinetoram",
+              "name": "spinetoram"
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 0.007,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 3,
+          "failure_type": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "fi011",
+      "fault": "checkpoint_resume",
+      "passed": true,
+      "resume_applicable": true,
+      "recovered": true,
+      "detected": true,
+      "duplicate_executions": 0,
+      "calls": {
+        "kg": 1,
+        "rag": 1
+      },
+      "trace": [
+        {
+          "task_id": "e9d71053-2cf5-4e8b-bccb-4fc863067659",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "success",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.003,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "e9d71053-2cf5-4e8b-bccb-4fc863067659",
+          "step": 1,
+          "event_type": "task_resumed",
+          "tool": "",
+          "arguments": {},
+          "status": "resumed",
+          "result": null,
+          "result_summary": "",
+          "extracted_entities": [],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 1,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "e9d71053-2cf5-4e8b-bccb-4fc863067659",
+          "step": 1,
+          "event_type": "tool_reused",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "reused",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 0.0,
+          "attempt": 0,
+          "attempts": 0,
+          "retry_count": 0,
+          "retry": false,
+          "reused": true,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 2,
+          "failure_type": null,
+          "error": null
+        },
+        {
+          "task_id": "e9d71053-2cf5-4e8b-bccb-4fc863067659",
+          "step": 2,
+          "event_type": "tool_success",
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "mode of action of spinetoram"
+          },
+          "status": "success",
+          "result": {
+            "answer": "mode [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "spinetoram",
+                "name": "spinetoram"
+              }
+            ]
+          },
+          "result_summary": "mode [D1]",
+          "extracted_entities": [
+            "spinetoram"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "spinetoram",
+              "name": "spinetoram"
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 0.005,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": true,
+          "resumed_from_step": 1,
+          "checkpoint_version": 3,
+          "failure_type": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "fi012",
+      "fault": "malformed_tool_arguments",
+      "passed": true,
+      "recovered": false,
+      "detected": true
+    },
+    {
+      "id": "fi013",
+      "fault": "invalid_citation",
+      "passed": true,
+      "recovered": false,
+      "detected": true
+    },
+    {
+      "id": "fi014",
+      "fault": "empty_tool_result",
+      "passed": true,
+      "recovered": true,
+      "detected": true
+    },
+    {
+      "id": "fi015",
+      "fault": "missing_required_fact",
+      "passed": true,
+      "recovered": false,
+      "detected": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "dataset_version": "frozen-agent-v3",
+  "case_count": 53,
+  "frozen_at": "2026-08-31",
+  "policy": "Original aq001-aq023 retained; new cases are grounded in the existing frozen retrieval/generation datasets or directly verified Neo4j relations. Cases must not be removed after evaluation to improve metrics.",
+  "excluded_schema_relations": [
+    "Pesticide-APPLIED_TO-Crop",
+    "Pesticide-TREATS-Disease",
+    "Disease-INFECTS-Crop"
+  ],
+  "exclusion_reason": "Current graph contains only '-' placeholder Crop and Disease nodes, so these relations are not reliable benchmark facts."
+}

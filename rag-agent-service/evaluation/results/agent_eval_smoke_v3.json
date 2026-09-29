@@ -1,0 +1,1943 @@
+{
+  "metadata": {
+    "dataset_version": "frozen-agent-v3",
+    "eval_queries_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/agent_eval_queries.json",
+    "retrieval_results_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/evaluation/results/retrieval_eval_results.json",
+    "completed_query_count": 6,
+    "answer_evaluation": "deterministic_entities_and_required_keywords",
+    "llm_judge": "disabled"
+  },
+  "summary": {
+    "num_cases": 6,
+    "retrieval_hit1": 0.8,
+    "retrieval_hit3": 0.9666666666666667,
+    "retrieval_hit5": 1.0,
+    "tool_selection_accuracy": 1.0,
+    "tool_sequence_accuracy": 1.0,
+    "entity_propagation_accuracy": 1.0,
+    "citation_presence_accuracy": 1.0,
+    "citation_validity_accuracy": 1.0,
+    "answer_entity_accuracy": 1.0,
+    "required_fact_accuracy": 1.0,
+    "no_answer_accuracy": 1.0,
+    "answer_accuracy": 1.0,
+    "error_rate": 0.0
+  },
+  "by_category": {
+    "single_kg_forward": {
+      "query_count": 3,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "no_answer_accuracy": 1.0,
+      "answer_accuracy": 1.0,
+      "task_completed_rule": 1.0,
+      "error_rate": 0.0
+    },
+    "single_kg_reverse": {
+      "query_count": 2,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "no_answer_accuracy": 1.0,
+      "answer_accuracy": 1.0,
+      "task_completed_rule": 1.0,
+      "error_rate": 0.0
+    },
+    "single_rag": {
+      "query_count": 1,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "no_answer_accuracy": 1.0,
+      "answer_accuracy": 1.0,
+      "task_completed_rule": 1.0,
+      "error_rate": 0.0
+    }
+  },
+  "cases": [
+    {
+      "id": "aq001",
+      "category": "single_kg_forward",
+      "question": "What is the active substance of Sparta?",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Sparta",
+        "spinetoram"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "requires_no_answer": false,
+      "answer": "The active substance of Sparta is spinetoram. This information was obtained through the query_active_substance tool, which confirmed that the active ingredient in Sparta is indeed spinetoram.",
+      "tool_trace": [
+        {
+          "task_id": "00caf24d-e421-4787-b1f6-0dea09c6ea16",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "status": "success",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 21.766,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 5,
+          "failure_type": null,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "task_id": "00caf24d-e421-4787-b1f6-0dea09c6ea16",
+        "user_question": "What is the active substance of Sparta?",
+        "original_query": "What is the active substance of Sparta?",
+        "current_query": "What is the active substance of Sparta?",
+        "resolved_entities": [
+          "Sparta",
+          "spinetoram"
+        ],
+        "tool_history": [
+          {
+            "task_id": "00caf24d-e421-4787-b1f6-0dea09c6ea16",
+            "step": 1,
+            "event_type": "tool_success",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Sparta"
+            },
+            "status": "success",
+            "result": [
+              "spinetoram"
+            ],
+            "result_summary": "[\"spinetoram\"]",
+            "extracted_entities": [
+              "Sparta",
+              "spinetoram"
+            ],
+            "evidence": [],
+            "citations": [],
+            "latency_ms": 21.766,
+            "attempt": 1,
+            "attempts": 1,
+            "retry_count": 0,
+            "retry": false,
+            "reused": false,
+            "resumed": false,
+            "resumed_from_step": null,
+            "checkpoint_version": 5,
+            "failure_type": null,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "query_active_substance:{\"pesticide_name\":\"Sparta\"}",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Sparta"
+            },
+            "result": [
+              "spinetoram"
+            ]
+          }
+        ],
+        "completed_tool_calls": [
+          {
+            "key": "query_active_substance:{\"pesticide_name\":\"Sparta\"}",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Sparta"
+            },
+            "result": [
+              "spinetoram"
+            ]
+          }
+        ],
+        "evidence": [],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "The active substance of Sparta is spinetoram. This information was obtained through the query_active_substance tool, which confirmed that the active ingredient in Sparta is indeed spinetoram.",
+        "status": "COMPLETED",
+        "observations": [
+          {
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Sparta"
+            },
+            "result": [
+              "spinetoram"
+            ]
+          }
+        ],
+        "checkpoint_version": 5,
+        "resumed": false,
+        "resumed_from_step": null,
+        "no_answer_reason": ""
+      },
+      "automatic_evaluation": {
+        "id": "aq001",
+        "category": "single_kg_forward",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": []
+        },
+        "citation_validity": {
+          "applicable": false,
+          "passed": true,
+          "citations": [],
+          "evidence_labels": [],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "no_answer_accuracy": {
+          "applicable": false,
+          "required": false,
+          "passed": true,
+          "detected": false,
+          "reason": ""
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq002",
+      "category": "single_kg_forward",
+      "question": "What active substance does Kenja 400 SC contain?",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Kenja 400 SC",
+        "isofetamid"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "requires_no_answer": false,
+      "answer": "The active substance contained in Kenja 400 SC is isofetamid. This information was obtained through the query_active_substance tool, which confirmed that Kenja 400 SC contains isofetamid as its active ingredient.\n\n",
+      "tool_trace": [
+        {
+          "task_id": "41537212-9b98-401b-89a8-9cd8f9330278",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Kenja 400 SC"
+          },
+          "status": "success",
+          "result": [
+            "isofetamid"
+          ],
+          "result_summary": "[\"isofetamid\"]",
+          "extracted_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 19.509,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 5,
+          "failure_type": null,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "task_id": "41537212-9b98-401b-89a8-9cd8f9330278",
+        "user_question": "What active substance does Kenja 400 SC contain?",
+        "original_query": "What active substance does Kenja 400 SC contain?",
+        "current_query": "What active substance does Kenja 400 SC contain?",
+        "resolved_entities": [
+          "Kenja 400 SC",
+          "isofetamid"
+        ],
+        "tool_history": [
+          {
+            "task_id": "41537212-9b98-401b-89a8-9cd8f9330278",
+            "step": 1,
+            "event_type": "tool_success",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Kenja 400 SC"
+            },
+            "status": "success",
+            "result": [
+              "isofetamid"
+            ],
+            "result_summary": "[\"isofetamid\"]",
+            "extracted_entities": [
+              "Kenja 400 SC",
+              "isofetamid"
+            ],
+            "evidence": [],
+            "citations": [],
+            "latency_ms": 19.509,
+            "attempt": 1,
+            "attempts": 1,
+            "retry_count": 0,
+            "retry": false,
+            "reused": false,
+            "resumed": false,
+            "resumed_from_step": null,
+            "checkpoint_version": 5,
+            "failure_type": null,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "query_active_substance:{\"pesticide_name\":\"Kenja 400 SC\"}",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Kenja 400 SC"
+            },
+            "result": [
+              "isofetamid"
+            ]
+          }
+        ],
+        "completed_tool_calls": [
+          {
+            "key": "query_active_substance:{\"pesticide_name\":\"Kenja 400 SC\"}",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Kenja 400 SC"
+            },
+            "result": [
+              "isofetamid"
+            ]
+          }
+        ],
+        "evidence": [],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "The active substance contained in Kenja 400 SC is isofetamid. This information was obtained through the query_active_substance tool, which confirmed that Kenja 400 SC contains isofetamid as its active ingredient.\n\n",
+        "status": "COMPLETED",
+        "observations": [
+          {
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Kenja 400 SC"
+            },
+            "result": [
+              "isofetamid"
+            ]
+          }
+        ],
+        "checkpoint_version": 5,
+        "resumed": false,
+        "resumed_from_step": null,
+        "no_answer_reason": ""
+      },
+      "automatic_evaluation": {
+        "id": "aq002",
+        "category": "single_kg_forward",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": []
+        },
+        "citation_validity": {
+          "applicable": false,
+          "passed": true,
+          "citations": [],
+          "evidence_labels": [],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "no_answer_accuracy": {
+          "applicable": false,
+          "required": false,
+          "passed": true,
+          "detected": false,
+          "reason": ""
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq003",
+      "category": "single_kg_forward",
+      "question": "Identify the active substance in Yates Success Ultra Insect Control.",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Yates Success Ultra Insect Control",
+        "spinetoram"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "requires_no_answer": false,
+      "answer": "The active substance in Yates Success Ultra Insect Control is spinetoram. This information was obtained through the query_active_substance tool, which confirmed that spinetoram is the active ingredient in this pesticide product.",
+      "tool_trace": [
+        {
+          "task_id": "dd170905-ab50-4861-99ae-b62539c61ed7",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Yates Success Ultra Insect Control"
+          },
+          "status": "success",
+          "result": [
+            "spinetoram"
+          ],
+          "result_summary": "[\"spinetoram\"]",
+          "extracted_entities": [
+            "Yates Success Ultra Insect Control",
+            "spinetoram"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 18.314,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 5,
+          "failure_type": null,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "task_id": "dd170905-ab50-4861-99ae-b62539c61ed7",
+        "user_question": "Identify the active substance in Yates Success Ultra Insect Control.",
+        "original_query": "Identify the active substance in Yates Success Ultra Insect Control.",
+        "current_query": "Identify the active substance in Yates Success Ultra Insect Control.",
+        "resolved_entities": [
+          "Yates Success Ultra Insect Control",
+          "spinetoram"
+        ],
+        "tool_history": [
+          {
+            "task_id": "dd170905-ab50-4861-99ae-b62539c61ed7",
+            "step": 1,
+            "event_type": "tool_success",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Yates Success Ultra Insect Control"
+            },
+            "status": "success",
+            "result": [
+              "spinetoram"
+            ],
+            "result_summary": "[\"spinetoram\"]",
+            "extracted_entities": [
+              "Yates Success Ultra Insect Control",
+              "spinetoram"
+            ],
+            "evidence": [],
+            "citations": [],
+            "latency_ms": 18.314,
+            "attempt": 1,
+            "attempts": 1,
+            "retry_count": 0,
+            "retry": false,
+            "reused": false,
+            "resumed": false,
+            "resumed_from_step": null,
+            "checkpoint_version": 5,
+            "failure_type": null,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "query_active_substance:{\"pesticide_name\":\"Yates Success Ultra Insect Control\"}",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Yates Success Ultra Insect Control"
+            },
+            "result": [
+              "spinetoram"
+            ]
+          }
+        ],
+        "completed_tool_calls": [
+          {
+            "key": "query_active_substance:{\"pesticide_name\":\"Yates Success Ultra Insect Control\"}",
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Yates Success Ultra Insect Control"
+            },
+            "result": [
+              "spinetoram"
+            ]
+          }
+        ],
+        "evidence": [],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "The active substance in Yates Success Ultra Insect Control is spinetoram. This information was obtained through the query_active_substance tool, which confirmed that spinetoram is the active ingredient in this pesticide product.",
+        "status": "COMPLETED",
+        "observations": [
+          {
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Yates Success Ultra Insect Control"
+            },
+            "result": [
+              "spinetoram"
+            ]
+          }
+        ],
+        "checkpoint_version": 5,
+        "resumed": false,
+        "resumed_from_step": null,
+        "no_answer_reason": ""
+      },
+      "automatic_evaluation": {
+        "id": "aq003",
+        "category": "single_kg_forward",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Yates Success Ultra Insect Control",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": []
+        },
+        "citation_validity": {
+          "applicable": false,
+          "passed": true,
+          "citations": [],
+          "evidence_labels": [],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Yates Success Ultra Insect Control",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "no_answer_accuracy": {
+          "applicable": false,
+          "required": false,
+          "passed": true,
+          "detected": false,
+          "reason": ""
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq004",
+      "category": "single_kg_reverse",
+      "question": "Which pesticide products contain spinetoram?",
+      "expected_tools": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_entities": [
+        "spinetoram",
+        "Sparta",
+        "Yates Success Ultra Insect Control"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "requires_no_answer": false,
+      "answer": "The pesticide products that contain spinetoram include Yates Success Ultra Insect Control, Sparta, and Uphold. These products are known to use spinetoram as their active ingredient for controlling pests.",
+      "tool_trace": [
+        {
+          "task_id": "3c27e909-5c42-4136-b824-b1f27a224e0d",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_pesticides_by_active_substance",
+          "arguments": {
+            "active_substance_name": "spinetoram"
+          },
+          "status": "success",
+          "result": [
+            "Yates Success Ultra Insect Control",
+            "Sparta",
+            "Uphold"
+          ],
+          "result_summary": "[\"Yates Success Ultra Insect Control\", \"Sparta\", \"Uphold\"]",
+          "extracted_entities": [
+            "spinetoram",
+            "Yates Success Ultra Insect Control",
+            "Sparta",
+            "Uphold"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 18.956,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 5,
+          "failure_type": null,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "task_id": "3c27e909-5c42-4136-b824-b1f27a224e0d",
+        "user_question": "Which pesticide products contain spinetoram?",
+        "original_query": "Which pesticide products contain spinetoram?",
+        "current_query": "Which pesticide products contain spinetoram?",
+        "resolved_entities": [
+          "spinetoram",
+          "Yates Success Ultra Insect Control",
+          "Sparta",
+          "Uphold"
+        ],
+        "tool_history": [
+          {
+            "task_id": "3c27e909-5c42-4136-b824-b1f27a224e0d",
+            "step": 1,
+            "event_type": "tool_success",
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "spinetoram"
+            },
+            "status": "success",
+            "result": [
+              "Yates Success Ultra Insect Control",
+              "Sparta",
+              "Uphold"
+            ],
+            "result_summary": "[\"Yates Success Ultra Insect Control\", \"Sparta\", \"Uphold\"]",
+            "extracted_entities": [
+              "spinetoram",
+              "Yates Success Ultra Insect Control",
+              "Sparta",
+              "Uphold"
+            ],
+            "evidence": [],
+            "citations": [],
+            "latency_ms": 18.956,
+            "attempt": 1,
+            "attempts": 1,
+            "retry_count": 0,
+            "retry": false,
+            "reused": false,
+            "resumed": false,
+            "resumed_from_step": null,
+            "checkpoint_version": 5,
+            "failure_type": null,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "query_pesticides_by_active_substance:{\"active_substance_name\":\"spinetoram\"}",
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "spinetoram"
+            },
+            "result": [
+              "Yates Success Ultra Insect Control",
+              "Sparta",
+              "Uphold"
+            ]
+          }
+        ],
+        "completed_tool_calls": [
+          {
+            "key": "query_pesticides_by_active_substance:{\"active_substance_name\":\"spinetoram\"}",
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "spinetoram"
+            },
+            "result": [
+              "Yates Success Ultra Insect Control",
+              "Sparta",
+              "Uphold"
+            ]
+          }
+        ],
+        "evidence": [],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "The pesticide products that contain spinetoram include Yates Success Ultra Insect Control, Sparta, and Uphold. These products are known to use spinetoram as their active ingredient for controlling pests.",
+        "status": "COMPLETED",
+        "observations": [
+          {
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "spinetoram"
+            },
+            "result": [
+              "Yates Success Ultra Insect Control",
+              "Sparta",
+              "Uphold"
+            ]
+          }
+        ],
+        "checkpoint_version": 5,
+        "resumed": false,
+        "resumed_from_step": null,
+        "no_answer_reason": ""
+      },
+      "automatic_evaluation": {
+        "id": "aq004",
+        "category": "single_kg_reverse",
+        "expected_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "actual_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "spinetoram",
+            "Sparta",
+            "Yates Success Ultra Insect Control"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": []
+        },
+        "citation_validity": {
+          "applicable": false,
+          "passed": true,
+          "citations": [],
+          "evidence_labels": [],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "spinetoram",
+            "Sparta",
+            "Yates Success Ultra Insect Control"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "no_answer_accuracy": {
+          "applicable": false,
+          "required": false,
+          "passed": true,
+          "detected": false,
+          "reason": ""
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq005",
+      "category": "single_kg_reverse",
+      "question": "Which pesticide products contain isofetamid?",
+      "expected_tools": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_entities": [
+        "isofetamid",
+        "Kenja 400 SC"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "requires_no_answer": false,
+      "answer": "The pesticide product that contains isofetamid is Kenja 400 SC. \n\nThis answer is based on the observation from the query tool which confirmed the presence of isofetamid in the Kenja 400 SC pesticide product.",
+      "tool_trace": [
+        {
+          "task_id": "42c7efcf-5367-4876-b838-1bcb3bf9dd7a",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "query_pesticides_by_active_substance",
+          "arguments": {
+            "active_substance_name": "isofetamid"
+          },
+          "status": "success",
+          "result": [
+            "Kenja 400 SC"
+          ],
+          "result_summary": "[\"Kenja 400 SC\"]",
+          "extracted_entities": [
+            "isofetamid",
+            "Kenja 400 SC"
+          ],
+          "evidence": [],
+          "citations": [],
+          "latency_ms": 230.549,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 5,
+          "failure_type": null,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "task_id": "42c7efcf-5367-4876-b838-1bcb3bf9dd7a",
+        "user_question": "Which pesticide products contain isofetamid?",
+        "original_query": "Which pesticide products contain isofetamid?",
+        "current_query": "Which pesticide products contain isofetamid?",
+        "resolved_entities": [
+          "isofetamid",
+          "Kenja 400 SC"
+        ],
+        "tool_history": [
+          {
+            "task_id": "42c7efcf-5367-4876-b838-1bcb3bf9dd7a",
+            "step": 1,
+            "event_type": "tool_success",
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "isofetamid"
+            },
+            "status": "success",
+            "result": [
+              "Kenja 400 SC"
+            ],
+            "result_summary": "[\"Kenja 400 SC\"]",
+            "extracted_entities": [
+              "isofetamid",
+              "Kenja 400 SC"
+            ],
+            "evidence": [],
+            "citations": [],
+            "latency_ms": 230.549,
+            "attempt": 1,
+            "attempts": 1,
+            "retry_count": 0,
+            "retry": false,
+            "reused": false,
+            "resumed": false,
+            "resumed_from_step": null,
+            "checkpoint_version": 5,
+            "failure_type": null,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "query_pesticides_by_active_substance:{\"active_substance_name\":\"isofetamid\"}",
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "isofetamid"
+            },
+            "result": [
+              "Kenja 400 SC"
+            ]
+          }
+        ],
+        "completed_tool_calls": [
+          {
+            "key": "query_pesticides_by_active_substance:{\"active_substance_name\":\"isofetamid\"}",
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "isofetamid"
+            },
+            "result": [
+              "Kenja 400 SC"
+            ]
+          }
+        ],
+        "evidence": [],
+        "citations": [],
+        "step_count": 2,
+        "final_answer": "The pesticide product that contains isofetamid is Kenja 400 SC. \n\nThis answer is based on the observation from the query tool which confirmed the presence of isofetamid in the Kenja 400 SC pesticide product.",
+        "status": "COMPLETED",
+        "observations": [
+          {
+            "tool": "query_pesticides_by_active_substance",
+            "arguments": {
+              "active_substance_name": "isofetamid"
+            },
+            "result": [
+              "Kenja 400 SC"
+            ]
+          }
+        ],
+        "checkpoint_version": 5,
+        "resumed": false,
+        "resumed_from_step": null,
+        "no_answer_reason": ""
+      },
+      "automatic_evaluation": {
+        "id": "aq005",
+        "category": "single_kg_reverse",
+        "expected_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "actual_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "isofetamid",
+            "Kenja 400 SC"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": []
+        },
+        "citation_validity": {
+          "applicable": false,
+          "passed": true,
+          "citations": [],
+          "evidence_labels": [],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "isofetamid",
+            "Kenja 400 SC"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "no_answer_accuracy": {
+          "applicable": false,
+          "required": false,
+          "passed": true,
+          "detected": false,
+          "reason": ""
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq006",
+      "category": "single_rag",
+      "question": "What is the mode of action and IRAC resistance group of abamectin?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "abamectin"
+      ],
+      "expected_keywords": [
+        "glutamate-gated chloride",
+        "IRAC Group 6"
+      ],
+      "requires_citation": true,
+      "requires_no_answer": false,
+      "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. The IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is supported by [D1].",
+      "tool_trace": [
+        {
+          "task_id": "2eff0faf-c277-4b81-976d-a515d20bd541",
+          "step": 1,
+          "event_type": "tool_success",
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What is the mode of action and IRAC resistance group of abamectin?"
+          },
+          "status": "success",
+          "result": {
+            "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.03252247488101534,
+                "bm25_rank": 1,
+                "vector_rank": 2,
+                "bm25_score": 25.235451566484386,
+                "vector_score": 0.5726490020751953
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "score": 0.01639344262295082,
+                "bm25_rank": null,
+                "vector_rank": 1,
+                "bm25_score": null,
+                "vector_score": 0.57391357421875
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 17.366206335193148,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5573667287826538
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 17.35364323625195,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          },
+          "result_summary": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+          "extracted_entities": [
+            "abamectin",
+            "azadirachtin",
+            "chlorpyrifos",
+            "ametoctradin",
+            "pirimicarb"
+          ],
+          "evidence": [
+            {
+              "label": "D1",
+              "id": "active_substance:abamectin",
+              "name": "abamectin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 1
+            },
+            {
+              "label": "D2",
+              "id": "active_substance:azadirachtin",
+              "name": "azadirachtin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 2
+            },
+            {
+              "label": "D3",
+              "id": "active_substance:chlorpyrifos",
+              "name": "chlorpyrifos",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 3
+            },
+            {
+              "label": "D4",
+              "id": "active_substance:ametoctradin",
+              "name": "ametoctradin",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 4
+            },
+            {
+              "label": "D5",
+              "id": "active_substance:pirimicarb",
+              "name": "pirimicarb",
+              "source": "New Zealand pesticide dataset",
+              "retrieval_rank": 5
+            }
+          ],
+          "citations": [
+            "[D1]"
+          ],
+          "latency_ms": 50184.198,
+          "attempt": 1,
+          "attempts": 1,
+          "retry_count": 0,
+          "retry": false,
+          "reused": false,
+          "resumed": false,
+          "resumed_from_step": null,
+          "checkpoint_version": 5,
+          "failure_type": null,
+          "error": null
+        }
+      ],
+      "execution_state": {
+        "task_id": "2eff0faf-c277-4b81-976d-a515d20bd541",
+        "user_question": "What is the mode of action and IRAC resistance group of abamectin?",
+        "original_query": "What is the mode of action and IRAC resistance group of abamectin?",
+        "current_query": "What is the mode of action and IRAC resistance group of abamectin?",
+        "resolved_entities": [
+          "abamectin",
+          "azadirachtin",
+          "chlorpyrifos",
+          "ametoctradin",
+          "pirimicarb"
+        ],
+        "tool_history": [
+          {
+            "task_id": "2eff0faf-c277-4b81-976d-a515d20bd541",
+            "step": 1,
+            "event_type": "tool_success",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            },
+            "status": "success",
+            "result": {
+              "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03252247488101534,
+                  "bm25_rank": 1,
+                  "vector_rank": 2,
+                  "bm25_score": 25.235451566484386,
+                  "vector_score": 0.5726490020751953
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.57391357421875
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 17.366206335193148,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5573667287826538
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 17.35364323625195,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            },
+            "result_summary": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+            "extracted_entities": [
+              "abamectin",
+              "azadirachtin",
+              "chlorpyrifos",
+              "ametoctradin",
+              "pirimicarb"
+            ],
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "citations": [
+              "[D1]"
+            ],
+            "latency_ms": 50184.198,
+            "attempt": 1,
+            "attempts": 1,
+            "retry_count": 0,
+            "retry": false,
+            "reused": false,
+            "resumed": false,
+            "resumed_from_step": null,
+            "checkpoint_version": 5,
+            "failure_type": null,
+            "error": null
+          }
+        ],
+        "completed_tools": [
+          {
+            "key": "hybrid_rag_query:{\"question\":\"What is the mode of action and IRAC resistance group of abamectin?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            },
+            "result": {
+              "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03252247488101534,
+                  "bm25_rank": 1,
+                  "vector_rank": 2,
+                  "bm25_score": 25.235451566484386,
+                  "vector_score": 0.5726490020751953
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.57391357421875
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 17.366206335193148,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5573667287826538
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 17.35364323625195,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ],
+        "completed_tool_calls": [
+          {
+            "key": "hybrid_rag_query:{\"question\":\"What is the mode of action and IRAC resistance group of abamectin?\"}",
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            },
+            "result": {
+              "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03252247488101534,
+                  "bm25_rank": 1,
+                  "vector_rank": 2,
+                  "bm25_score": 25.235451566484386,
+                  "vector_score": 0.5726490020751953
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.57391357421875
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 17.366206335193148,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5573667287826538
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 17.35364323625195,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "label": "D1",
+            "id": "active_substance:abamectin",
+            "name": "abamectin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 1
+          },
+          {
+            "label": "D2",
+            "id": "active_substance:azadirachtin",
+            "name": "azadirachtin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 2
+          },
+          {
+            "label": "D3",
+            "id": "active_substance:chlorpyrifos",
+            "name": "chlorpyrifos",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 3
+          },
+          {
+            "label": "D4",
+            "id": "active_substance:ametoctradin",
+            "name": "ametoctradin",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 4
+          },
+          {
+            "label": "D5",
+            "id": "active_substance:pirimicarb",
+            "name": "pirimicarb",
+            "source": "New Zealand pesticide dataset",
+            "retrieval_rank": 5
+          }
+        ],
+        "citations": [
+          "[D1]"
+        ],
+        "step_count": 2,
+        "final_answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. The IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is supported by [D1].",
+        "status": "COMPLETED",
+        "observations": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            },
+            "result": {
+              "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03252247488101534,
+                  "bm25_rank": 1,
+                  "vector_rank": 2,
+                  "bm25_score": 25.235451566484386,
+                  "vector_score": 0.5726490020751953
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.57391357421875
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 17.366206335193148,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5573667287826538
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 17.35364323625195,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            }
+          }
+        ],
+        "checkpoint_version": 5,
+        "resumed": false,
+        "resumed_from_step": null,
+        "no_answer_reason": ""
+      },
+      "automatic_evaluation": {
+        "id": "aq006",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "abamectin"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "abamectin"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "glutamate-gated chloride",
+            "IRAC Group 6"
+          ],
+          "missing_keywords": []
+        },
+        "no_answer_accuracy": {
+          "applicable": false,
+          "required": false,
+          "passed": true,
+          "detected": false,
+          "reason": ""
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    }
+  ]
+}

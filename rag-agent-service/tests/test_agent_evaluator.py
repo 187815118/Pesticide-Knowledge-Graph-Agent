@@ -58,6 +58,7 @@ def main() -> int:
         _eval_item(requires_citation=True),
         _result(
             ["query_active_substance", "hybrid_rag_query"],
+            "Sparta's active substance is spinetoram. "
             "spinetoram affects insect nervous systems. [D1]",
         ),
     )
@@ -118,6 +119,10 @@ def main() -> int:
 
     print("验收通过: Agent evaluator 规则工作正常")
     return 0
+
+
+def test_agent_evaluator_rules():
+    assert main() == 0
 
 
 if __name__ == "__main__":

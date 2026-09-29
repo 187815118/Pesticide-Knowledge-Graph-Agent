@@ -1,0 +1,3846 @@
+{
+  "metadata": {
+    "source": "deterministic replay of previously saved real Local Qwen Agent outputs",
+    "source_results_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/evaluation/results/agent_eval_results_local_qwen_state_v2.json",
+    "eval_queries_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/agent_eval_queries.json",
+    "fresh_agent_execution": false,
+    "llm_judge": "disabled"
+  },
+  "summary": {
+    "num_cases": 23,
+    "retrieval_hit1": 0.8,
+    "retrieval_hit3": 0.9666666666666667,
+    "retrieval_hit5": 1.0,
+    "tool_selection_accuracy": 1.0,
+    "tool_sequence_accuracy": 1.0,
+    "entity_propagation_accuracy": 0.7142857142857143,
+    "citation_presence_accuracy": 1.0,
+    "citation_validity_accuracy": 0.5909090909090909,
+    "answer_entity_accuracy": 0.9130434782608695,
+    "required_fact_accuracy": 0.9166666666666666,
+    "answer_accuracy": 0.43478260869565216,
+    "error_rate": 0.0
+  },
+  "by_category": {
+    "single_kg_forward": {
+      "query_count": 3,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 0.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 0.0,
+      "task_completed_rule": 0.0,
+      "error_rate": 0.0
+    },
+    "single_kg_reverse": {
+      "query_count": 2,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 0.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 0.0,
+      "task_completed_rule": 0.0,
+      "error_rate": 0.0
+    },
+    "single_rag": {
+      "query_count": 6,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 0.6666666666666666,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 0.6666666666666666,
+      "task_completed_rule": 0.6666666666666666,
+      "error_rate": 0.0
+    },
+    "kg_to_rag_multistep": {
+      "query_count": 4,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 0.5,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 1.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 0.75,
+      "answer_accuracy": 0.5,
+      "task_completed_rule": 0.5,
+      "error_rate": 0.0
+    },
+    "kg_to_kg_multistep": {
+      "query_count": 2,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 0.0,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 0.0,
+      "task_completed_rule": 0.0,
+      "error_rate": 0.0
+    },
+    "cross_lingual_zh": {
+      "query_count": 3,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 0.6666666666666666,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 0.6666666666666666,
+      "task_completed_rule": 0.6666666666666666,
+      "error_rate": 0.0
+    },
+    "empty_or_unknown": {
+      "query_count": 3,
+      "tool_selection_accuracy": 1.0,
+      "tool_selection_recall": 1.0,
+      "tool_sequence_accuracy": 1.0,
+      "tool_sequence_exact_match": 1.0,
+      "unnecessary_tool_call_rate": 0.0,
+      "entity_preservation": 1.0,
+      "entity_propagation_accuracy": 1.0,
+      "citation_presence_accuracy": 1.0,
+      "citation_validity_accuracy": 0.5,
+      "answer_entity_accuracy": 1.0,
+      "required_fact_accuracy": 1.0,
+      "answer_accuracy": 0.6666666666666666,
+      "task_completed_rule": 0.6666666666666666,
+      "error_rate": 0.0
+    }
+  },
+  "cases": [
+    {
+      "id": "aq001",
+      "category": "single_kg_forward",
+      "question": "What is the active substance of Sparta?",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Sparta",
+        "spinetoram"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The active substance of Sparta is spinetoram. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "result": [
+            "spinetoram"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq001",
+        "category": "single_kg_forward",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq002",
+      "category": "single_kg_forward",
+      "question": "What active substance does Kenja 400 SC contain?",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Kenja 400 SC",
+        "isofetamid"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The active substance contained in Kenja 400 SC is isofetamid. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Kenja 400 SC"
+          },
+          "result": [
+            "isofetamid"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq002",
+        "category": "single_kg_forward",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq003",
+      "category": "single_kg_forward",
+      "question": "Identify the active substance in Yates Success Ultra Insect Control.",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Yates Success Ultra Insect Control",
+        "spinetoram"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The active substance in Yates Success Ultra Insect Control is spinetoram. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Yates Success Ultra Insect Control"
+          },
+          "result": [
+            "spinetoram"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq003",
+        "category": "single_kg_forward",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Yates Success Ultra Insect Control",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Yates Success Ultra Insect Control",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq004",
+      "category": "single_kg_reverse",
+      "question": "Which pesticide products contain spinetoram?",
+      "expected_tools": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_entities": [
+        "spinetoram",
+        "Sparta",
+        "Yates Success Ultra Insect Control"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The pesticide products that contain spinetoram include Yates Success Ultra Insect Control, Sparta, and Uphold. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_pesticides_by_active_substance",
+          "arguments": {
+            "active_substance_name": "spinetoram"
+          },
+          "result": [
+            "Yates Success Ultra Insect Control",
+            "Sparta",
+            "Uphold"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq004",
+        "category": "single_kg_reverse",
+        "expected_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "actual_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "spinetoram",
+            "Sparta",
+            "Yates Success Ultra Insect Control"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "spinetoram",
+            "Sparta",
+            "Yates Success Ultra Insect Control"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq005",
+      "category": "single_kg_reverse",
+      "question": "Which pesticide products contain isofetamid?",
+      "expected_tools": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_entities": [
+        "isofetamid",
+        "Kenja 400 SC"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The pesticide product that contains isofetamid is Kenja 400 SC. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_pesticides_by_active_substance",
+          "arguments": {
+            "active_substance_name": "isofetamid"
+          },
+          "result": [
+            "Kenja 400 SC"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq005",
+        "category": "single_kg_reverse",
+        "expected_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "actual_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "isofetamid",
+            "Kenja 400 SC"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "isofetamid",
+            "Kenja 400 SC"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq006",
+      "category": "single_rag",
+      "question": "What is the mode of action and IRAC resistance group of abamectin?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "abamectin"
+      ],
+      "expected_keywords": [
+        "glutamate-gated chloride",
+        "IRAC Group 6"
+      ],
+      "requires_citation": true,
+      "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. [D1]\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. [D1]",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What is the mode of action and IRAC resistance group of abamectin?"
+          },
+          "result": {
+            "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. [D1]\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.03252247488101534,
+                "bm25_rank": 1,
+                "vector_rank": 2,
+                "bm25_score": 25.235451566484386,
+                "vector_score": 0.5726490020751953
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "score": 0.01639344262295082,
+                "bm25_rank": null,
+                "vector_rank": 1,
+                "bm25_score": null,
+                "vector_score": 0.57391357421875
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:chlorpyrifos",
+                "name": "chlorpyrifos",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 17.366206335193148,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:ametoctradin",
+                "name": "ametoctradin",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5573667287826538
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:pirimicarb",
+                "name": "pirimicarb",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 17.35364323625195,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq006",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "abamectin"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "abamectin"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "glutamate-gated chloride",
+            "IRAC Group 6"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq007",
+      "category": "single_rag",
+      "question": "How does fipronil affect GABA-gated chloride channels?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "fipronil"
+      ],
+      "expected_keywords": [
+        "GABA",
+        "chloride channel"
+      ],
+      "requires_citation": true,
+      "answer": "Fipronil blocks GABA-activated chloride channels, thereby causing hyperexcitability and convulsions in insects [D1].",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "fipronil how does it affect GABA-gated chloride channels"
+          },
+          "result": {
+            "answer": "Fipronil blocks GABA-activated chloride channels, thereby causing hyperexcitability and convulsions in insects [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:chlorothalonil",
+                "name": "chlorothalonil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:emamectin benzoate",
+                "name": "emamectin benzoate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:chlorantraniliprole",
+                "name": "chlorantraniliprole",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 27.287356719747077,
+                "vector_score": 0.6436732411384583
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.030798389007344232,
+                "bm25_rank": 3,
+                "vector_rank": 7,
+                "bm25_score": 15.073145058811608,
+                "vector_score": 0.45142248272895813
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:chlorothalonil",
+                "name": "chlorothalonil",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.4804059863090515
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:emamectin benzoate",
+                "name": "emamectin benzoate",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 16.402571189021565,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:chlorantraniliprole",
+                "name": "chlorantraniliprole",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.4780052602291107
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq007",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "fipronil"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 0.0,
+          "passed": false,
+          "present_entities": [],
+          "missing_entities": [
+            "fipronil"
+          ]
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "GABA",
+            "chloride channel"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq008",
+      "category": "single_rag",
+      "question": "What EPSPS-related mode of action is listed for glyphosate?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "glyphosate"
+      ],
+      "expected_keywords": [
+        "EPSPS"
+      ],
+      "requires_citation": true,
+      "answer": "The EPSPS-related mode of action listed for glyphosate is Inhibitor of 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS) [D1].",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What EPSPS-related mode of action is listed for glyphosate?"
+          },
+          "result": {
+            "answer": "The EPSPS-related mode of action listed for glyphosate is Inhibitor of 5-enolpyruvyl shikimate-3-phosphate synthase (EPSPS) [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:glyphosate",
+                "name": "glyphosate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:phenmedipham",
+                "name": "phenmedipham",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:glufosinate-ammonium",
+                "name": "glufosinate-ammonium",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:paraquat",
+                "name": "paraquat",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:diquat dibromide",
+                "name": "diquat dibromide",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:glyphosate",
+                "name": "glyphosate",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 16.353145954740686,
+                "vector_score": 0.5406650304794312
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:phenmedipham",
+                "name": "phenmedipham",
+                "score": 0.030090497737556562,
+                "bm25_rank": 8,
+                "vector_rank": 5,
+                "bm25_score": 8.263580090409503,
+                "vector_score": 0.5078451633453369
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:glufosinate-ammonium",
+                "name": "glufosinate-ammonium",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.5170403718948364
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:paraquat",
+                "name": "paraquat",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 9.287167024999475,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:diquat dibromide",
+                "name": "diquat dibromide",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 9.210920224813215,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq008",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "glyphosate"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "glyphosate"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "EPSPS"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq009",
+      "category": "single_rag",
+      "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "azoxystrobin"
+      ],
+      "expected_keywords": [
+        "QoI",
+        "FRAC 11"
+      ],
+      "requires_citation": true,
+      "answer": "The QoI mechanism for azoxystrobin is acting on the cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III at the Qo site (cyt b gene), and its FRAC group is FRAC 11, C3, QoI-Fungicide Group [D1].",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "Which QoI mechanism and FRAC group are described for azoxystrobin?"
+          },
+          "result": {
+            "answer": "The QoI mechanism for azoxystrobin is acting on the cytochrome bc1 (ubiquinol oxidase (EC 1.10.3.11)) in complex III at the Qo site (cyt b gene), and its FRAC group is FRAC 11, C3, QoI-Fungicide Group [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:azoxystrobin",
+                "name": "azoxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:fenamidone",
+                "name": "fenamidone",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:trifloxystrobin",
+                "name": "trifloxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:pyraclostrobin",
+                "name": "pyraclostrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:picoxystrobin",
+                "name": "picoxystrobin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:azoxystrobin",
+                "name": "azoxystrobin",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 17.50022743611695,
+                "vector_score": 0.614010751247406
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:fenamidone",
+                "name": "fenamidone",
+                "score": 0.031024531024531024,
+                "bm25_rank": 3,
+                "vector_rank": 6,
+                "bm25_score": 9.899122788363773,
+                "vector_score": 0.4733743667602539
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:trifloxystrobin",
+                "name": "trifloxystrobin",
+                "score": 0.031024531024531024,
+                "bm25_rank": 6,
+                "vector_rank": 3,
+                "bm25_score": 9.280676982641102,
+                "vector_score": 0.5093748569488525
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:pyraclostrobin",
+                "name": "pyraclostrobin",
+                "score": 0.03076923076923077,
+                "bm25_rank": 5,
+                "vector_rank": 5,
+                "bm25_score": 9.286293357840885,
+                "vector_score": 0.4845472574234009
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:picoxystrobin",
+                "name": "picoxystrobin",
+                "score": 0.03055037313432836,
+                "bm25_rank": 7,
+                "vector_rank": 4,
+                "bm25_score": 8.975227496430186,
+                "vector_score": 0.4978022575378418
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq009",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "azoxystrobin"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "azoxystrobin"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "QoI",
+            "FRAC 11"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq010",
+      "category": "single_rag",
+      "question": "What complex II target is described for boscalid?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "boscalid"
+      ],
+      "expected_keywords": [
+        "complex II",
+        "succinate dehydrogenase"
+      ],
+      "requires_citation": true,
+      "answer": "Boscalid acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) [D1]. This information comes from the New Zealand pesticide dataset.",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What complex II target is described for boscalid?"
+          },
+          "result": {
+            "answer": "Boscalid acts in complex II: succinate dehydrogenase (SDH; EC 1.3.5.1) [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:boscalid",
+                "name": "boscalid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:bixafen",
+                "name": "bixafen",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:isoflucypram",
+                "name": "isoflucypram",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:spinosad",
+                "name": "spinosad",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:bromacil",
+                "name": "bromacil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:boscalid",
+                "name": "boscalid",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 12.7734257667895,
+                "vector_score": 0.5488290190696716
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:bixafen",
+                "name": "bixafen",
+                "score": 0.02964426877470356,
+                "bm25_rank": 6,
+                "vector_rank": 9,
+                "bm25_score": 6.917171481808768,
+                "vector_score": 0.4053114354610443
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:isoflucypram",
+                "name": "isoflucypram",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 7.1007866261759744,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:spinosad",
+                "name": "spinosad",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.4377496838569641
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:bromacil",
+                "name": "bromacil",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.4197661280632019
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq010",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "boscalid"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 0.0,
+          "passed": false,
+          "present_entities": [],
+          "missing_entities": [
+            "boscalid"
+          ]
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "complex II",
+            "succinate dehydrogenase"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq011",
+      "category": "single_rag",
+      "question": "What HPPD inhibition mechanism is listed for mesotrione?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "mesotrione"
+      ],
+      "expected_keywords": [
+        "HPPD"
+      ],
+      "requires_citation": true,
+      "answer": "The HPPD inhibition mechanism listed for mesotrione is that it inhibits p-hydroxyphenylpyruvate dioxygenase (HPPD) [D1]. This information comes from the New Zealand pesticide dataset.",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "mesotrione HPPD inhibition mechanism"
+          },
+          "result": {
+            "answer": "Mesotrione inhibits p-hydroxyphenylpyruvate dioxygenase (HPPD) [D1].",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:mesotrione",
+                "name": "mesotrione",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:methabenzthiazuron",
+                "name": "methabenzthiazuron",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:topramezone",
+                "name": "topramezone",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:magnesium phosphide",
+                "name": "magnesium phosphide",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:mesotrione",
+                "name": "mesotrione",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 11.314464850469149,
+                "vector_score": 0.6354936361312866
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:methabenzthiazuron",
+                "name": "methabenzthiazuron",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.4928939938545227
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:topramezone",
+                "name": "topramezone",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 5.158775928066243,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:azadirachtin",
+                "name": "azadirachtin",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 4.703713623832969,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:magnesium phosphide",
+                "name": "magnesium phosphide",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.4884824752807617
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq011",
+        "category": "single_rag",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "mesotrione"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "mesotrione"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "HPPD"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq012",
+      "category": "kg_to_rag_multistep",
+      "question": "What is the active substance of Sparta, and what is its mode of action?",
+      "expected_tools": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "Sparta",
+        "spinetoram"
+      ],
+      "expected_keywords": [
+        "nicotinic acetylcholine receptor"
+      ],
+      "requires_citation": true,
+      "answer": "The active substance of Sparta is spinetoram. The mode of action of spinetoram involves acting as a nicotinic acetylcholine receptor (nAChR) allosteric modulator-binding site I, affecting insect neural action. Allelic activation of its receptor (different from binding site-II of group 32) causes hyperexcitability of the insect nervous system. Acetylcholine is the main excitatory neurotransmitter in the insect central nervous system. [D1]\n\n[D1]: New Zealand pesticide dataset",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "result": [
+            "spinetoram"
+          ]
+        },
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What is the mode of action of spinetoram?"
+          },
+          "result": {
+            "answer": "The mode of action of spinetoram involves acting as a nicotinic acetylcholine receptor (nAChR) allosteric modulator-binding site I, affecting insect neural action. Allelic activation of its receptor (different from binding site-II of group 32) causes hyperexcitability of the insect nervous system. Acetylcholine is the main excitatory neurotransmitter in the insect central nervous system. [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:spinetoram",
+                "name": "spinetoram",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:spinosad",
+                "name": "spinosad",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:fluroxypyr",
+                "name": "fluroxypyr",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:metiram",
+                "name": "metiram",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:bifenthrin",
+                "name": "bifenthrin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:spinetoram",
+                "name": "spinetoram",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 17.036178568458173,
+                "vector_score": 0.6575986742973328
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:spinosad",
+                "name": "spinosad",
+                "score": 0.029877369007803793,
+                "bm25_rank": 5,
+                "vector_rank": 9,
+                "bm25_score": 11.573138489853637,
+                "vector_score": 0.5032735466957092
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:fluroxypyr",
+                "name": "fluroxypyr",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 11.847933206050122,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:metiram",
+                "name": "metiram",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.5370213985443115
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:bifenthrin",
+                "name": "bifenthrin",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5361796617507935
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq012",
+        "category": "kg_to_rag_multistep",
+        "expected_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "entities": [
+            "spinetoram"
+          ],
+          "propagated_entities": [
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "nicotinic acetylcholine receptor"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq013",
+      "category": "kg_to_rag_multistep",
+      "question": "Find the active substance in Kenja 400 SC and explain its mode of action.",
+      "expected_tools": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "Kenja 400 SC",
+        "isofetamid"
+      ],
+      "expected_keywords": [
+        "SDH"
+      ],
+      "requires_citation": true,
+      "answer": "Kenja 400 SC 的活性成分是 isofetamid。Isofetamid 通过作用于复合体II：琥珀酸脱氢酶（SDH；EC 1.3.5.1）的方式发挥作用 [D1]。\n\n[D1] citation 来源：New Zealand pesticide dataset\n\n参考资料：\n- [D2] acephate\n- [D3] abamectin\n- [D4] imazethapyr\n- [D5] acetochlor",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Kenja 400 SC"
+          },
+          "result": [
+            "isofetamid"
+          ]
+        },
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "Isofetamid 的作用方式是什么？"
+          },
+          "result": {
+            "answer": "Isofetamid 通过作用于复合体II：琥珀酸脱氢酶（SDH；EC 1.3.5.1）的方式发挥作用 [D1]。",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:isofetamid",
+                "name": "isofetamid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:imazethapyr",
+                "name": "imazethapyr",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:acetochlor",
+                "name": "acetochlor",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:isofetamid",
+                "name": "isofetamid",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 7.248467058191836,
+                "vector_score": 0.604843258857727
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "score": 0.03200204813108039,
+                "bm25_rank": 3,
+                "vector_rank": 2,
+                "bm25_score": 0.0,
+                "vector_score": 0.5596912503242493
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 0.0,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:imazethapyr",
+                "name": "imazethapyr",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5473111867904663
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:acetochlor",
+                "name": "acetochlor",
+                "score": 0.015625,
+                "bm25_rank": 4,
+                "vector_rank": null,
+                "bm25_score": 0.0,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq013",
+        "category": "kg_to_rag_multistep",
+        "expected_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": true,
+          "score": 0.0,
+          "passed": false,
+          "entities": [
+            "isofetamid"
+          ],
+          "propagated_entities": [],
+          "missing_entities": [
+            "isofetamid"
+          ]
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "SDH"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq014",
+      "category": "kg_to_rag_multistep",
+      "question": "What active substance is in Yates Success Ultra Insect Control, and what resistance information is available for it?",
+      "expected_tools": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "Yates Success Ultra Insect Control",
+        "spinetoram"
+      ],
+      "expected_keywords": [
+        "IRAC Group 5"
+      ],
+      "requires_citation": true,
+      "answer": "The active substance in Yates Success Ultra Insect Control is spinetoram. However, the provided information does not contain specific resistance information for spinetoram. The available resistance information is for abamectin, which is from the same family as spinetoram (IRAC Group 6; Avermectins). For abamectin, the available resistance information indicates that it belongs to this group. [D1]\n\nNote that the provided information is specific to abamectin and not directly related to spinetoram, but it gives an indication of the resistance profile for a similar compound. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Yates Success Ultra Insect Control"
+          },
+          "result": [
+            "spinetoram"
+          ]
+        },
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What is the resistance information available for abamectin?"
+          },
+          "result": {
+            "answer": "The resistance information available for abamectin is that it belongs to IRAC Group 6; Avermectins. [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:bupirimate",
+                "name": "bupirimate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:cyprodinil",
+                "name": "cyprodinil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:cyflufenamid",
+                "name": "cyflufenamid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:cymoxanil",
+                "name": "cymoxanil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 12.9857216232175,
+                "vector_score": 0.5558728575706482
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:bupirimate",
+                "name": "bupirimate",
+                "score": 0.03125763125763126,
+                "bm25_rank": 5,
+                "vector_rank": 3,
+                "bm25_score": 7.085673497470511,
+                "vector_score": 0.5380517244338989
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:cyprodinil",
+                "name": "cyprodinil",
+                "score": 0.02964426877470356,
+                "bm25_rank": 6,
+                "vector_rank": 9,
+                "bm25_score": 6.806825881085317,
+                "vector_score": 0.5219981670379639
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:cyflufenamid",
+                "name": "cyflufenamid",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 11.048267649542492,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:cymoxanil",
+                "name": "cymoxanil",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.5446417927742004
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq014",
+        "category": "kg_to_rag_multistep",
+        "expected_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Yates Success Ultra Insect Control",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": true,
+          "score": 0.0,
+          "passed": false,
+          "entities": [
+            "spinetoram"
+          ],
+          "propagated_entities": [],
+          "missing_entities": [
+            "spinetoram"
+          ]
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Yates Success Ultra Insect Control",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 0.0,
+          "passed": false,
+          "matched_keywords": [],
+          "missing_keywords": [
+            "IRAC Group 5"
+          ]
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq015",
+      "category": "kg_to_rag_multistep",
+      "question": "Sparta contains which active substance, and what introduction does the corpus give for that substance?",
+      "expected_tools": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "Sparta",
+        "spinetoram"
+      ],
+      "expected_keywords": [
+        "Saccharopolyspora spinosa"
+      ],
+      "requires_citation": true,
+      "answer": "Sparta contains the active substance spinetoram. The introduction given in the corpus for spinetoram is as follows: Spinetoram is an active substance produced by fermentation of secondary metabolites of the actinomycete Saccharopolyspora spinosa and chemically modified. It is an alternative product to polymyxin. In the rhamnose 3-position in the chemical structure of polymyxin, the insecticidal activity is increased by 10 times after the natural methyl ether is changed to ethyl ether, and the active ingredient in the original drug is a mixture of ethyl polymyxin-J and ethyl polymyxin-L (the ratio is about 70~90:30~10). This modification mainly results in the control of Lepidoptera and Tassel-winged insect pests. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "result": [
+            "spinetoram"
+          ]
+        },
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "Introduction of spinetoram."
+          },
+          "result": {
+            "answer": "Introduction of spinetoram: Spinetoram is an active substance produced by fermentation of secondary metabolites of the actinomycete Saccharopolyspora spinosa and chemically modified. It is an alternative product to polymyxin. In the rhamnose 3-position in the chemical structure of polymyxin, the insecticidal activity is increased by 10 times after the natural methyl ether is changed to ethyl ether, and the active ingredient in the original drug is a mixture of ethyl polymyxin-J and ethyl polymyxin-L (the ratio is about 70~90:30~10). This modification mainly results in the control of Lepidoptera and Tassel-winged insect pests. [D1]",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:spinetoram",
+                "name": "spinetoram",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:spirotetramat",
+                "name": "spirotetramat",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:sulphur",
+                "name": "sulphur",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:spiroxamine",
+                "name": "spiroxamine",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:alachlor",
+                "name": "alachlor",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:spinetoram",
+                "name": "spinetoram",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 8.640912288307131,
+                "vector_score": 0.5982636213302612
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:spirotetramat",
+                "name": "spirotetramat",
+                "score": 0.03200204813108039,
+                "bm25_rank": 3,
+                "vector_rank": 2,
+                "bm25_score": 3.797050372283615,
+                "vector_score": 0.5485931634902954
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:sulphur",
+                "name": "sulphur",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 3.869573152283203,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:spiroxamine",
+                "name": "spiroxamine",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5350474715232849
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:alachlor",
+                "name": "alachlor",
+                "score": 0.015625,
+                "bm25_rank": 4,
+                "vector_rank": null,
+                "bm25_score": 3.7752876205992383,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq015",
+        "category": "kg_to_rag_multistep",
+        "expected_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "entities": [
+            "spinetoram"
+          ],
+          "propagated_entities": [
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "Saccharopolyspora spinosa"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq016",
+      "category": "kg_to_kg_multistep",
+      "question": "What is the active substance of Sparta, and which pesticide products contain that same active substance?",
+      "expected_tools": [
+        "query_active_substance",
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance",
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_entities": [
+        "Sparta",
+        "spinetoram",
+        "Yates Success Ultra Insect Control"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The active substance of Sparta is spinetoram. Pesticide products that contain the same active substance include Yates Success Ultra Insect Control, Sparta, and Uphold. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "result": [
+            "spinetoram"
+          ]
+        },
+        {
+          "tool": "query_pesticides_by_active_substance",
+          "arguments": {
+            "active_substance_name": "spinetoram"
+          },
+          "result": [
+            "Yates Success Ultra Insect Control",
+            "Sparta",
+            "Uphold"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq016",
+        "category": "kg_to_kg_multistep",
+        "expected_tools": [
+          "query_active_substance",
+          "query_pesticides_by_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance",
+          "query_pesticides_by_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Sparta",
+            "spinetoram",
+            "Yates Success Ultra Insect Control"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "entities": [
+            "spinetoram"
+          ],
+          "propagated_entities": [
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Sparta",
+            "spinetoram",
+            "Yates Success Ultra Insect Control"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq017",
+      "category": "kg_to_kg_multistep",
+      "question": "What active substance does Kenja 400 SC contain, and what products contain that active substance?",
+      "expected_tools": [
+        "query_active_substance",
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance",
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_entities": [
+        "Kenja 400 SC",
+        "isofetamid"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The active substance in Kenja 400 SC is isofetamid. The only product listed that contains this active substance is Kenja 400 SC itself. [D1]\n\nNote: The information provided indicates that there are no other products containing isofetamid besides Kenja 400 SC, based on the available data. [D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Kenja 400 SC"
+          },
+          "result": [
+            "isofetamid"
+          ]
+        },
+        {
+          "tool": "query_pesticides_by_active_substance",
+          "arguments": {
+            "active_substance_name": "isofetamid"
+          },
+          "result": [
+            "Kenja 400 SC"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq017",
+        "category": "kg_to_kg_multistep",
+        "expected_tools": [
+          "query_active_substance",
+          "query_pesticides_by_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance",
+          "query_pesticides_by_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "entities": [
+            "isofetamid"
+          ],
+          "propagated_entities": [
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1",
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq018",
+      "category": "cross_lingual_zh",
+      "question": "Sparta 的活性成分是什么？",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Sparta",
+        "spinetoram"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "Sparta 的活性成分为 spinetoram。[D1]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Sparta"
+          },
+          "result": [
+            "spinetoram"
+          ]
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq018",
+        "category": "cross_lingual_zh",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Sparta",
+            "spinetoram"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq019",
+      "category": "cross_lingual_zh",
+      "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "fipronil"
+      ],
+      "expected_keywords": [
+        "GABA"
+      ],
+      "requires_citation": true,
+      "answer": "根据提供的信息，杀虫剂fipronil阻断GABA激活的氯离子通道，并导致昆虫抽搐 [D1]。",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "哪种杀虫剂阻断 GABA 激活的氯离子通道并导致昆虫抽搐？"
+          },
+          "result": {
+            "answer": "根据提供的信息，杀虫剂fipronil阻断GABA激活的氯离子通道，并导致昆虫抽搐 [D1]。",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:furathiocarb",
+                "name": "furathiocarb",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:carbaryl",
+                "name": "carbaryl",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:fipronil",
+                "name": "fipronil",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 8.270334054934292,
+                "vector_score": 0.5771822929382324
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.031054405392392875,
+                "bm25_rank": 2,
+                "vector_rank": 7,
+                "bm25_score": 0.0,
+                "vector_score": 0.5249230861663818
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:furathiocarb",
+                "name": "furathiocarb",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.5494676232337952
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "score": 0.015873015873015872,
+                "bm25_rank": 3,
+                "vector_rank": null,
+                "bm25_score": 0.0,
+                "vector_score": null
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:carbaryl",
+                "name": "carbaryl",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.5343718528747559
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq019",
+        "category": "cross_lingual_zh",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "fipronil"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "fipronil"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "GABA"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq020",
+      "category": "cross_lingual_zh",
+      "question": "Kenja 400 SC 的活性成分是什么？并说明该活性成分的作用机制。",
+      "expected_tools": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance",
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "Kenja 400 SC",
+        "isofetamid"
+      ],
+      "expected_keywords": [
+        "SDH"
+      ],
+      "requires_citation": true,
+      "answer": "Kenja 400 SC 的活性成分为 isofetamid。isofetamid 的作用机制是通过作用于复合体II：琥珀酸脱氢酶（SDH；EC 1.3.5.1）来实现的 [D1]。",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Kenja 400 SC"
+          },
+          "result": [
+            "isofetamid"
+          ]
+        },
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "isofetamid 的作用机制是什么？"
+          },
+          "result": {
+            "answer": "isofetamid的作用机制是通过作用于复合体II：琥珀酸脱氢酶（SDH；EC 1.3.5.1）来实现的 [D1]。",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:isofetamid",
+                "name": "isofetamid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:imidacloprid",
+                "name": "imidacloprid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:acetochlor",
+                "name": "acetochlor",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:isofetamid",
+                "name": "isofetamid",
+                "score": 0.03278688524590164,
+                "bm25_rank": 1,
+                "vector_rank": 1,
+                "bm25_score": 7.248467058191836,
+                "vector_score": 0.6022503972053528
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:acephate",
+                "name": "acephate",
+                "score": 0.031746031746031744,
+                "bm25_rank": 3,
+                "vector_rank": 3,
+                "bm25_score": 0.0,
+                "vector_score": 0.5474444627761841
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:abamectin",
+                "name": "abamectin",
+                "score": 0.016129032258064516,
+                "bm25_rank": 2,
+                "vector_rank": null,
+                "bm25_score": 0.0,
+                "vector_score": null
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:imidacloprid",
+                "name": "imidacloprid",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.5500472784042358
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:acetochlor",
+                "name": "acetochlor",
+                "score": 0.015625,
+                "bm25_rank": 4,
+                "vector_rank": null,
+                "bm25_score": 0.0,
+                "vector_score": null
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq020",
+        "category": "cross_lingual_zh",
+        "expected_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "query_active_substance",
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "entities": [
+            "isofetamid"
+          ],
+          "propagated_entities": [
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "citation_presence": {
+          "required": true,
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Kenja 400 SC",
+            "isofetamid"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": true,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [
+            "SDH"
+          ],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq021",
+      "category": "empty_or_unknown",
+      "question": "What is the active substance of Nonexistent Product XYZ?",
+      "expected_tools": [
+        "query_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_active_substance"
+      ],
+      "expected_entities": [
+        "Nonexistent Product XYZ"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The pesticide \"Nonexistent Product XYZ\" does not exist in our records. Therefore, we cannot determine its active substance. Please provide a valid pesticide name. [D1]\n\n[D1] [徐威 et al., 2020] [D2]",
+      "tool_trace": [
+        {
+          "tool": "query_active_substance",
+          "arguments": {
+            "pesticide_name": "Nonexistent Product XYZ"
+          },
+          "result": []
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq021",
+        "category": "empty_or_unknown",
+        "expected_tools": [
+          "query_active_substance"
+        ],
+        "actual_tools": [
+          "query_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "Nonexistent Product XYZ"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D1",
+            "D2"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": false,
+          "citations": [
+            "D1",
+            "D1",
+            "D2"
+          ],
+          "evidence_labels": [],
+          "invalid_citations": [
+            "D1",
+            "D2"
+          ]
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "Nonexistent Product XYZ"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": false,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq022",
+      "category": "empty_or_unknown",
+      "question": "Which pesticide products contain nonexistentium?",
+      "expected_tools": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_tool_sequence": [
+        "query_pesticides_by_active_substance"
+      ],
+      "expected_entities": [
+        "nonexistentium"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "There are no pesticide products that contain nonexistentium.",
+      "tool_trace": [
+        {
+          "tool": "query_pesticides_by_active_substance",
+          "arguments": {
+            "active_substance_name": "nonexistentium"
+          },
+          "result": []
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq022",
+        "category": "empty_or_unknown",
+        "expected_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "actual_tools": [
+          "query_pesticides_by_active_substance"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "nonexistentium"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": []
+        },
+        "citation_validity": {
+          "applicable": false,
+          "passed": true,
+          "citations": [],
+          "evidence_labels": [],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "nonexistentium"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    },
+    {
+      "id": "aq023",
+      "category": "empty_or_unknown",
+      "question": "What is the mode of action of nonexistentium according to the corpus?",
+      "expected_tools": [
+        "hybrid_rag_query"
+      ],
+      "expected_tool_sequence": [
+        "hybrid_rag_query"
+      ],
+      "expected_entities": [
+        "nonexistentium"
+      ],
+      "expected_keywords": [],
+      "requires_citation": false,
+      "answer": "The retrieved evidence is insufficient to determine the mode of action of nonexistentium according to the corpus. [D1] [D2] [D3] [D4] [D5] are some active substances found in the New Zealand pesticide dataset, but none of them are related to nonexistentium. [D1][D2][D3][D4][D5]",
+      "tool_trace": [
+        {
+          "tool": "hybrid_rag_query",
+          "arguments": {
+            "question": "What is the mode of action of nonexistentium according to the corpus?"
+          },
+          "result": {
+            "answer": "retrieved evidence is insufficient.",
+            "evidence": [
+              {
+                "label": "D1",
+                "id": "active_substance:cyflufenamid",
+                "name": "cyflufenamid",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 1
+              },
+              {
+                "label": "D2",
+                "id": "active_substance:dimethomorph",
+                "name": "dimethomorph",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 2
+              },
+              {
+                "label": "D3",
+                "id": "active_substance:quinoxyfen",
+                "name": "quinoxyfen",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 3
+              },
+              {
+                "label": "D4",
+                "id": "active_substance:captan",
+                "name": "captan",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 4
+              },
+              {
+                "label": "D5",
+                "id": "active_substance:pencycuron",
+                "name": "pencycuron",
+                "source": "New Zealand pesticide dataset",
+                "retrieval_rank": 5
+              }
+            ],
+            "retrieval_trace": [
+              {
+                "rank": 1,
+                "id": "active_substance:cyflufenamid",
+                "name": "cyflufenamid",
+                "score": 0.03131881575727918,
+                "bm25_rank": 1,
+                "vector_rank": 7,
+                "bm25_score": 19.74082745621012,
+                "vector_score": 0.40745463967323303
+              },
+              {
+                "rank": 2,
+                "id": "active_substance:dimethomorph",
+                "name": "dimethomorph",
+                "score": 0.0304147465437788,
+                "bm25_rank": 2,
+                "vector_rank": 10,
+                "bm25_score": 15.519068996900629,
+                "vector_score": 0.40234827995300293
+              },
+              {
+                "rank": 3,
+                "id": "active_substance:quinoxyfen",
+                "name": "quinoxyfen",
+                "score": 0.01639344262295082,
+                "bm25_rank": null,
+                "vector_rank": 1,
+                "bm25_score": null,
+                "vector_score": 0.4311085343360901
+              },
+              {
+                "rank": 4,
+                "id": "active_substance:captan",
+                "name": "captan",
+                "score": 0.016129032258064516,
+                "bm25_rank": null,
+                "vector_rank": 2,
+                "bm25_score": null,
+                "vector_score": 0.4270022511482239
+              },
+              {
+                "rank": 5,
+                "id": "active_substance:pencycuron",
+                "name": "pencycuron",
+                "score": 0.015873015873015872,
+                "bm25_rank": null,
+                "vector_rank": 3,
+                "bm25_score": null,
+                "vector_score": 0.4223288595676422
+              }
+            ],
+            "invalid_citations": []
+          }
+        }
+      ],
+      "execution_state": {},
+      "automatic_evaluation": {
+        "id": "aq023",
+        "category": "empty_or_unknown",
+        "expected_tools": [
+          "hybrid_rag_query"
+        ],
+        "actual_tools": [
+          "hybrid_rag_query"
+        ],
+        "tool_selection_accuracy": 1.0,
+        "tool_selection_recall": 1.0,
+        "tool_sequence_accuracy": 1.0,
+        "tool_sequence_exact_match": 1.0,
+        "unnecessary_tool_call_rate": 0.0,
+        "unnecessary_tools": [],
+        "entity_preservation": {
+          "score": 1.0,
+          "passed": true,
+          "preserved_entities": [
+            "nonexistentium"
+          ],
+          "missing_entities": []
+        },
+        "entity_propagation": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "entities": []
+        },
+        "citation_presence": {
+          "required": false,
+          "applicable": false,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ]
+        },
+        "citation_validity": {
+          "applicable": true,
+          "passed": true,
+          "citations": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5",
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "evidence_labels": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "invalid_citations": []
+        },
+        "answer_entity_accuracy": {
+          "score": 1.0,
+          "passed": true,
+          "present_entities": [
+            "nonexistentium"
+          ],
+          "missing_entities": []
+        },
+        "required_fact_accuracy": {
+          "applicable": false,
+          "score": 1.0,
+          "passed": true,
+          "matched_keywords": [],
+          "missing_keywords": []
+        },
+        "task_completed_rule": true,
+        "error": null
+      },
+      "error": null
+    }
+  ]
+}
