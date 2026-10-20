@@ -1,8 +1,8 @@
 {
   "metadata": {
     "source": "deterministic replay of previously saved real Local Qwen Agent outputs",
-    "source_results_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/evaluation/results/agent_eval_results_local_qwen_state_v2.json",
-    "eval_queries_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/agent_eval_queries.json",
+    "source_results_path": "rag-agent-service/evaluation/results/agent_eval_results_local_qwen_state_v2.json",
+    "eval_queries_path": "rag-agent-service/data/agent_eval_queries.json",
     "fresh_agent_execution": false,
     "llm_judge": "disabled"
   },
