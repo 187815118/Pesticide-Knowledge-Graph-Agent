@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "eval_queries_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/agent_eval_queries.json",
-    "retrieval_results_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/evaluation/results/retrieval_eval_results.json",
+    "eval_queries_path": "rag-agent-service/data/agent_eval_queries.json",
+    "retrieval_results_path": "rag-agent-service/evaluation/results/retrieval_eval_results.json",
     "completed_query_count": 23,
     "answer_evaluation": "deterministic_entities_and_required_keywords",
     "llm_judge": "disabled"

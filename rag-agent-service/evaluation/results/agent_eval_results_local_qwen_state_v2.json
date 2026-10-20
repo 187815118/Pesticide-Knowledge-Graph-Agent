@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "eval_queries_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/agent_eval_queries.json",
+    "eval_queries_path": "rag-agent-service/data/agent_eval_queries.json",
     "completed_query_count": 23,
     "judge": "automatic_rules_only_no_llm_judge"
   },

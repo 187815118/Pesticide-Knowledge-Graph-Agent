@@ -1,0 +1,272 @@
+{
+  "mode": "recorded-evaluation-replay",
+  "source_commit": "b1200b13a85746fb7948b4a6db695dc7490e4d63",
+  "source_artifact": "rag-agent-service/evaluation/results/agent_eval_frozen_v3.json",
+  "dataset_version": "frozen-agent-v3",
+  "note": "Saved evaluation responses, replayed without a live model or database. Answers and tool results are copied verbatim; runtime identifiers and timings are omitted.",
+  "examples": [
+    {
+      "case_id": "aq001",
+      "question": "What is the active substance of Sparta?",
+      "response": {
+        "question": "What is the active substance of Sparta?",
+        "answer": "The active substance of Sparta is spinetoram. This information was obtained through the query_active_substance tool, which confirmed that the active ingredient in Sparta is indeed spinetoram.",
+        "tool_trace": [
+          {
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Sparta"
+            },
+            "result": [
+              "spinetoram"
+            ],
+            "status": "success",
+            "event_type": "tool_success"
+          }
+        ],
+        "execution_state": {
+          "status": "COMPLETED"
+        }
+      }
+    },
+    {
+      "case_id": "aq006",
+      "question": "What is the mode of action and IRAC resistance group of abamectin?",
+      "response": {
+        "question": "What is the mode of action and IRAC resistance group of abamectin?",
+        "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. The IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is supported by [D1].",
+        "tool_trace": [
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the mode of action and IRAC resistance group of abamectin?"
+            },
+            "result": {
+              "answer": "The mode of action of abamectin is a glutamate-gated chloride channel (GluCl) allozyme modulator that affects insect nerve and muscle action. Activation of glutamate-gated chloride channels after aliasing causes paralysis. This is supported by [D1].\n\nThe IRAC resistance group of abamectin is IRAC Group 6; Avermectins. This is also supported by [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:abamectin",
+                  "name": "abamectin",
+                  "score": 0.03252247488101534,
+                  "bm25_rank": 1,
+                  "vector_rank": 2,
+                  "bm25_score": 25.235451566484386,
+                  "vector_score": 0.5726490020751953
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:azadirachtin",
+                  "name": "azadirachtin",
+                  "score": 0.01639344262295082,
+                  "bm25_rank": null,
+                  "vector_rank": 1,
+                  "bm25_score": null,
+                  "vector_score": 0.57391357421875
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:chlorpyrifos",
+                  "name": "chlorpyrifos",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 17.366206335193148,
+                  "vector_score": null
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:ametoctradin",
+                  "name": "ametoctradin",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.5573667287826538
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:pirimicarb",
+                  "name": "pirimicarb",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 17.35364323625195,
+                  "vector_score": null
+                }
+              ],
+              "invalid_citations": []
+            },
+            "status": "success",
+            "event_type": "tool_success"
+          }
+        ],
+        "execution_state": {
+          "status": "COMPLETED"
+        }
+      }
+    },
+    {
+      "case_id": "aq012",
+      "question": "What is the active substance of Sparta, and what is its mode of action?",
+      "response": {
+        "question": "What is the active substance of Sparta, and what is its mode of action?",
+        "answer": "The active substance of Sparta is spinetoram [D1]. Its mode of action is as a nicotinic acetylcholine receptor (nAChR) allosteric modulator-binding site I, which affects insect neural action. Allelic activation of its receptor causes hyperexcitability of the insect nervous system [D1].",
+        "tool_trace": [
+          {
+            "tool": "query_active_substance",
+            "arguments": {
+              "pesticide_name": "Sparta"
+            },
+            "result": [
+              "spinetoram"
+            ],
+            "status": "success",
+            "event_type": "tool_success"
+          },
+          {
+            "tool": "hybrid_rag_query",
+            "arguments": {
+              "question": "What is the active substance of Sparta, and what is its mode of action? Resolved active substance: spinetoram."
+            },
+            "result": {
+              "answer": "The active substance of Sparta is spinetoram [D1]. Its mode of action is as a nicotinic acetylcholine receptor (nAChR) allosteric modulator-binding site I, which affects insect neural action. Allelic activation of its receptor causes hyperexcitability of the insect nervous system [D1].",
+              "evidence": [
+                {
+                  "label": "D1",
+                  "id": "active_substance:spinetoram",
+                  "name": "spinetoram",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 1
+                },
+                {
+                  "label": "D2",
+                  "id": "active_substance:chloropicrin",
+                  "name": "chloropicrin",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 2
+                },
+                {
+                  "label": "D3",
+                  "id": "active_substance:spiromesifen",
+                  "name": "spiromesifen",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 3
+                },
+                {
+                  "label": "D4",
+                  "id": "active_substance:diquat",
+                  "name": "diquat",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 4
+                },
+                {
+                  "label": "D5",
+                  "id": "active_substance:spirotetramat",
+                  "name": "spirotetramat",
+                  "source": "New Zealand pesticide dataset",
+                  "retrieval_rank": 5
+                }
+              ],
+              "retrieval_trace": [
+                {
+                  "rank": 1,
+                  "id": "active_substance:spinetoram",
+                  "name": "spinetoram",
+                  "score": 0.03278688524590164,
+                  "bm25_rank": 1,
+                  "vector_rank": 1,
+                  "bm25_score": 26.192066668762454,
+                  "vector_score": 0.6318179368972778
+                },
+                {
+                  "rank": 2,
+                  "id": "active_substance:chloropicrin",
+                  "name": "chloropicrin",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": 2,
+                  "vector_rank": null,
+                  "bm25_score": 21.474974353101565,
+                  "vector_score": null
+                },
+                {
+                  "rank": 3,
+                  "id": "active_substance:spiromesifen",
+                  "name": "spiromesifen",
+                  "score": 0.016129032258064516,
+                  "bm25_rank": null,
+                  "vector_rank": 2,
+                  "bm25_score": null,
+                  "vector_score": 0.612177848815918
+                },
+                {
+                  "rank": 4,
+                  "id": "active_substance:diquat",
+                  "name": "diquat",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": 3,
+                  "vector_rank": null,
+                  "bm25_score": 20.84842238605276,
+                  "vector_score": null
+                },
+                {
+                  "rank": 5,
+                  "id": "active_substance:spirotetramat",
+                  "name": "spirotetramat",
+                  "score": 0.015873015873015872,
+                  "bm25_rank": null,
+                  "vector_rank": 3,
+                  "bm25_score": null,
+                  "vector_score": 0.6102243661880493
+                }
+              ],
+              "invalid_citations": []
+            },
+            "status": "success",
+            "event_type": "tool_success"
+          }
+        ],
+        "execution_state": {
+          "status": "COMPLETED"
+        }
+      }
+    }
+  ]
+}
