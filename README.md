@@ -1,474 +1,216 @@
-# Pesticide Knowledge Agent
+# 农药知识图谱与 RAG 智能问答 Agent
 
-A local-LLM pesticide knowledge assistant that integrates a **Neo4j Knowledge Graph** with **Hybrid RAG**, allowing an LLM agent to autonomously select tools, execute multi-step KG → RAG workflows, and generate grounded answers with citations and execution traces.
+**Pesticide Knowledge Graph Agent** 将 Neo4j 知识图谱、混合检索和大语言模型工具调用结合起来：既能查询“商品名 → 活性成分”等结构化关系，也能根据文档解释作用机制、抗性和背景知识，并展示回答依据与工具执行过程。
 
-The project is upgraded from an existing pesticide knowledge graph and traditional QA system into a modern **RAG + Tool-Calling Agent** architecture.
+项目由原有的 **Spring Boot 农药知识图谱 / 朴素贝叶斯问答系统**扩展而来，新增 **FastAPI + Hybrid RAG + 多步 Tool Calling Agent**，支持本地 Qwen / vLLM 推理。
 
----
+[演示图片](#演示效果) · [无需模型的本地回放](#快速体验历史评测回放) · [完整运行](#完整系统运行) · [评测结果](#评测结果与边界) · [安全说明](SECURITY.md)
 
-## 1. Project Background
+## 演示效果
 
-The original system is a pesticide knowledge graph platform built with:
+演示问题：**“Sparta 的活性成分是什么？该成分的作用机制是什么？”**
 
-* Spring Boot
-* Neo4j
-* MySQL
-* HTML + Vue + Element UI
-* Traditional Bayes-based question answering
+```text
+商品名 Sparta
+    ↓ query_active_substance
+活性成分 spinetoram
+    ↓ hybrid_rag_query（传入上一步解析的准确实体）
+检索文档 → 生成带 [D#] 引用的回答
+    ↓
+最终答案 + 工具轨迹 + 文档来源
+```
 
-The legacy QA module works for relatively fixed query patterns, but has limited ability to handle:
+以下图片使用原有 `agent.html` 页面展示仓库已保存的 `frozen-agent-v3` 评测输出。图片顶部标有**历史评测回放**，本次截图没有调用实时模型或数据库；回放保留原始模型回答及工具结果，不代表人工校正后的事实答案。来源与复现方式见 [演示说明](docs/demo/README.md)。
 
-* semantic natural-language queries;
-* cross-lingual questions;
-* unstructured pesticide descriptions;
-* multi-source reasoning;
-* multi-step questions involving both graph relations and textual knowledge.
+### 问答入口
 
-The upgraded system introduces:
+![Agent 问答入口：输入问题并选择示例](docs/images/demo-start.png)
 
-1. Hybrid Retrieval;
-2. Grounded RAG generation;
-3. LLM Tool Calling;
-4. Knowledge Graph + RAG multi-step reasoning;
-5. Structured Agent State;
-6. Local LLM inference with vLLM;
-7. Agent evaluation and Web Demo.
+### 图谱查询 → RAG 多步问答
 
----
+一次请求展示三部分：**Final Answer** 是最终回答，**Agent Execution Trace** 展示两次工具调用，**Evidence / Sources** 展示引用文档。
 
-## 2. System Architecture
+![Sparta 多步问答回放：活性成分、RAG 回答、工具参数和证据来源](docs/images/demo-multistep.png)
+
+<details>
+<summary>查看单独使用 RAG 的演示：abamectin 的作用机制与 IRAC 类别</summary>
+
+![RAG 回放：回答中的 D1 引用与对应文档](docs/images/demo-rag.png)
+
+</details>
+
+## 快速体验：历史评测回放
+
+只需要 Python 3.9+；无需安装项目依赖、下载模型或启动数据库。
+
+```bash
+git clone https://github.com/187815118/Pesticide-Knowledge-Graph-Agent.git
+cd Pesticide-Knowledge-Graph-Agent
+python scripts/serve_recorded_demo.py
+```
+
+打开 **<http://127.0.0.1:8765/agent.html>**，点击页面中的一个示例，再点击 **Ask Agent**。
+
+- 支持商品名查询、RAG 问答和 KG → RAG 多步问答，共三个已保存案例。
+- 只回放固定案例；自定义问题需要启动完整系统。
+- 服务仅监听本机 `127.0.0.1`，按 `Ctrl+C` 停止。
+
+## 核心能力
+
+| 能力 | 实现方式 |
+|---|---|
+| 结构化知识查询 | Neo4j / Cypher 查询商品名、活性成分、化学类别、靶点与作用类别 |
+| 文本知识检索 | BM25 关键词检索 + BGE-M3 语义检索，通过 RRF 融合排名 |
+| 基于证据回答 | Grounded RAG 将检索结果标为 `[D1]`、`[D2]` 等，约束模型引用证据 |
+| 多步工具调用 | Agent 根据前一步结果选择下一步工具，传递准确实体名称 |
+| 运行状态与恢复 | 保存工具观察、已完成调用和检查点，支持重试、结果复用与任务恢复 |
+| 可观察的 Web 界面 | 同时展示最终答案、工具参数/结果和文档来源 |
+| 回归与故障评测 | 检索、生成、53 题 Agent 基准和故障注入分别评测 |
+
+这些机制用于减少无依据回答，但不能保证每个回答正确；引用标签合法也不等于被引用内容确实支持该事实。
+
+## 系统架构
 
 ```mermaid
 flowchart TD
-    U[Browser] --> S[Spring Boot Web Application]
-
-    S --> P[Agent API Proxy]
-    P --> F[FastAPI Agent Service]
-
-    F --> A[Qwen Tool-Calling Agent]
-
-    A --> KG[Knowledge Graph Tools]
+    U[浏览器 agent.html] --> S[Spring Boot :4399]
+    S -->|POST /api/agent/query| P[AgentController 代理]
+    P -->|POST /agent/query| F[FastAPI :8001]
+    F --> A[多步 Agent / agent_runner.py]
+    A --> KG[结构化查询工具]
     KG --> N[(Neo4j)]
-
-    A --> RT[Hybrid RAG Tool]
-
-    RT --> BM[BM25 Retriever]
-    RT --> DE[BGE-M3 Dense Retriever]
-    BM --> RRF[Reciprocal Rank Fusion]
-    DE --> RRF
-
-    RRF --> GR[Grounded RAG Generation]
-
-    GR --> LLM[Local Qwen2.5-7B-Instruct]
-    A --> LLM
-
-    LLM --> V[vLLM OpenAI-Compatible API]
-
-    A --> ST[Structured Execution State]
-    ST --> FS[Grounded Final Synthesis]
-
-    FS --> O[Final Answer + Tool Trace + Evidence]
+    A --> R[hybrid_rag_query]
+    D[活性成分 JSONL 语料] --> B[BM25]
+    D --> V[BGE-M3]
+    R --> B
+    R --> V
+    B --> H[RRF 排名融合]
+    V --> H
+    H --> G[Grounded RAG / 证据引用]
+    A <--> L[Qwen / vLLM :8000]
+    G <--> L
+    A --> C[AgentState / SQLite 检查点]
+    A --> O[最终答案 + tool_trace + execution_state]
+    S --> OLD[原有图谱 / 朴素贝叶斯问答 / 用户与对话管理]
+    OLD --> N
+    OLD --> M[(MySQL)]
 ```
 
-The main components are separated into three layers:
+Python 服务负责 Agent、工具和 RAG；Java 服务保留原有业务并提供同源代理。浏览器的 Agent 页面只访问 Java 接口；旧版 NeoVis 图谱页面仍采用浏览器直连 Neo4j 的方式，部署约束见 [安全说明](SECURITY.md#旧版图谱页面)。
 
-* **Web / business layer:** existing Spring Boot pesticide system;
-* **Agent / RAG layer:** FastAPI service and Python Agent;
-* **LLM inference layer:** local Qwen served through vLLM.
+### 工具划分
 
----
+| 工具 | 用途 |
+|---|---|
+| `query_active_substance` | 商品名 → 活性成分 |
+| `query_pesticides_by_active_substance` | 活性成分 → 商品名 |
+| `query_chemical_classes` | 明确查询图谱中的化学 / 生物类别 |
+| `query_target_sites` | 明确查询图谱中的结构化作用靶点 |
+| `query_modes_of_action` | 明确查询图谱中的作用类别 |
+| `hybrid_rag_query` | 从语料解释 Introduction、作用机制、作用方式、抗性等文本知识 |
 
-## 3. Hybrid RAG
+普通机制解释优先走 RAG；代码中同时有提示词和路由保护，避免用结构化类别替代文档解释。
 
-The retrieval system combines lexical and semantic retrieval.
-
-### BM25 Retrieval
-
-BM25 is useful for:
-
-* exact pesticide names;
-* active-substance names;
-* terminology matching;
-* highly specific keywords.
-
-### BGE-M3 Dense Retrieval
-
-`BAAI/bge-m3` is used for semantic retrieval.
-
-It improves retrieval for:
-
-* semantic paraphrases;
-* natural-language descriptions;
-* mechanism-related questions;
-* Chinese-English cross-lingual queries.
-
-### Reciprocal Rank Fusion
-
-The two retrieval lists are merged using Reciprocal Rank Fusion (RRF):
+## 项目结构与阅读入口
 
 ```text
-BM25
-   \
-    → RRF → Top-K Evidence
-   /
-BGE-M3
+Pesticide-Knowledge-Graph-Agent/
+├── src/main/java/.../              Java 控制器、业务服务、实体与数据访问
+│   ├── controller/AgentController.java
+│   ├── service/NewAnswerService.java
+│   └── Naive_Bayes.java
+├── src/main/resources/
+│   ├── application.yml             数据库和 Web 配置，密码来自环境变量
+│   ├── data/*.xlsx                 旧问答模块实际使用的实体词表
+│   └── static/agent.html           Agent 页面（含 Vue 交互代码）
+├── rag-agent-service/
+│   ├── app/main.py                 FastAPI 入口
+│   ├── agent/                      Agent 循环、工具注册、结构化状态
+│   ├── tools/                      Neo4j 查询与 RAG 工具
+│   ├── retrieval/                  语料构建、BM25、向量与 RRF 检索
+│   ├── rag/                        基于证据的答案生成
+│   ├── runtime/checkpoint_store.py 检查点实现；SQLite 运行文件不入库
+│   ├── data/                       RAG 输入语料及冻结评测题
+│   ├── evaluation/                 指标、评测入口和已发布结果
+│   └── tests/                      mock 测试与环境集成检查
+├── legacy-data/naive-bayes/         旧问答仍依赖的词典与分类训练样本
+├── docs/                           演示图片、回放案例与审查记录
+├── scripts/                        启停服务与本地回放脚本
+├── .env.example                    环境变量模板（不会自动加载）
+└── pom.xml                         Maven 构建与 Java 依赖
 ```
 
-The current Hybrid Retriever uses a fixed retrieval configuration and retrieves evidence from pesticide active-substance documents.
+推荐先读：`agent.html → AgentController.java → app/main.py → agent_runner.py → tool_registry.py`，再分开学习图谱工具、RAG 和检查点。`runtime/` 和 `legacy-data/` 都包含仍在使用的逻辑或输入，不能按目录名整体删除。
 
-### Retrieval Evaluation
+## 完整系统运行
 
-A frozen 30-query retrieval benchmark covers explicit entity queries, semantic queries, mechanism/resistance questions, and Chinese cross-lingual questions.
+以下命令面向 Linux / Bash，各服务使用独立终端。完整运行需要准备实际数据库、模型和适配 GPU 的推理环境；仓库不附带 Neo4j / MySQL 全量导出、Qwen / BGE-M3 权重，也没有附带构建 RAG 语料所需的原始 CSV。现成的 259 篇 JSONL 语料已在 `rag-agent-service/data/active_substance_docs.jsonl` 中保留。
 
-| Metric    | Hybrid RRF |
-| --------- | ---------: |
-| Hit@1     |     0.8000 |
-| Hit@3     |     0.9667 |
-| Hit@5     |     1.0000 |
-| MRR@10    |     0.8639 |
-| Recall@5  |     0.8084 |
-| Recall@10 |     0.9052 |
+### 1. 环境与配置
 
----
-
-## 4. Grounded RAG Generation
-
-Retrieved documents are converted into evidence blocks:
-
-```text
-[D1]
-[D2]
-[D3]
-...
-```
-
-The generation module requires the LLM to answer using retrieved evidence rather than unsupported model knowledge.
-
-The current Grounded RAG pipeline includes:
-
-* evidence-only generation constraints;
-* citation preservation;
-* citation-label validation;
-* entity preservation;
-* unsupported negative-inference prevention;
-* explicit insufficient-evidence handling.
-
-Example:
-
-```text
-Question:
-What is the mode of action of spinetoram?
-
-Evidence:
-[D1] spinetoram ...
-
-Answer:
-Spinetoram acts as a nicotinic acetylcholine receptor
-allosteric modulator ... [D1]
-```
-
-The generation evaluation uses a frozen 12-query benchmark covering citation behavior, groundedness, insufficient evidence, and Chinese response handling.
-
-Automatic evaluation achieved:
-
-* Citation presence: 100%
-* Citation validity: 100%
-* Insufficient-evidence handling: 100%
-* Chinese-language handling: 100%
-
-Manual evidence-conditioned review found no unsupported claims in the evaluated samples.
-
----
-
-## 5. Agent Design
-
-The Agent uses an OpenAI-compatible Tool Calling loop.
-
-Current tools include:
-
-### `query_active_substance`
-
-Queries the Knowledge Graph for the active substance of a pesticide product.
-
-Example:
-
-```text
-Sparta
-→ spinetoram
-```
-
-### `query_pesticides_by_active_substance`
-
-Queries pesticide products containing a given active substance.
-
-### `hybrid_rag_query`
-
-Runs:
-
-```text
-BM25
-+
-BGE-M3
-+
-RRF
-+
-Grounded Generation
-```
-
-and returns:
-
-* answer;
-* evidence;
-* retrieval trace;
-* citation validation result.
-
----
-
-## 6. Multi-Step KG → RAG Reasoning
-
-The Agent is not limited to selecting a single tool.
-
-For example:
-
-```text
-Question:
-What is the active substance of Sparta,
-and what is its mode of action?
-```
-
-The Agent executes:
-
-```text
-Step 1 — Knowledge Graph
-
-query_active_substance(
-    pesticide_name="Sparta"
-)
-
-→ spinetoram
-```
-
-The resolved entity is then propagated to the next tool:
-
-```text
-Step 2 — Hybrid RAG
-
-hybrid_rag_query(
-    question="What is the mode of action of spinetoram?"
-)
-```
-
-The final answer combines both observations:
-
-```text
-The active substance of Sparta is spinetoram.
-
-Spinetoram acts as a nicotinic acetylcholine receptor
-(nAChR) allosteric modulator ... [D1]
-```
-
-This enables heterogeneous reasoning across structured graph relations and unstructured textual knowledge.
-
----
-
-## 7. Structured Execution State
-
-A basic Tool-Calling Agent can execute the correct tools while still losing intermediate information during later reasoning or final answer generation.
-
-Two practical failure modes were observed during development:
-
-1. intermediate KG facts could disappear from the final answer;
-2. downstream tools could receive ambiguous references such as:
-
-```text
-"What is the mode of action of its active substance?"
-```
-
-instead of the resolved entity name.
-
-To address this, the Agent maintains structured execution state:
-
-```python
-execution_state = {
-    "user_question": "...",
-    "observations": [
-        {
-            "tool": "...",
-            "arguments": {...},
-            "result": ...
-        }
-    ]
-}
-```
-
-A lightweight planning state is also provided to subsequent Agent steps.
-
-This allows the Agent to explicitly propagate resolved entities:
-
-```text
-Sparta
-→ spinetoram
-→ query spinetoram
-```
-
-rather than relying on ambiguous pronouns.
-
-The final synthesis stage receives:
-
-* the original question;
-* tool observations;
-* resolved entities;
-* RAG evidence;
-* candidate answer.
-
-It then produces a grounded final response while preserving valid `[D#]` citations.
-
----
-
-## 8. Local LLM Deployment
-
-The Agent supports an OpenAI-compatible LLM backend.
-
-The current local setup uses:
-
-* Qwen2.5-7B-Instruct / AWQ;
-* vLLM;
-* OpenAI-compatible Chat Completion API.
-
-The backend is configured using:
+- Java 8、Maven、Python 3.11，以及 Neo4j / MySQL。
+- Python Agent 依赖见 `rag-agent-service/requirements.txt`。
+- 本地推理还需要适配的 PyTorch / CUDA / vLLM 环境；`requirements.txt` 不包含完整 GPU 推理环境。
+- `VectorRetriever` 使用 `local_files_only=True`；需提前准备 `BAAI/bge-m3` 缓存，Agent RAG 工具当前固定使用 CUDA。
+- 图谱查询使用已有标签和关系，以及旧式 Neo4j HTTP 事务端点 / Cypher 参数语法。迁移到其他 Neo4j 版本时需核对兼容性。
 
 ```bash
-export LLM_BASE_URL=http://127.0.0.1:8000/v1
-export LLM_API_KEY=local
-export LLM_MODEL=qwen2.5-7b-instruct
+python -m pip install -r rag-agent-service/requirements.txt
+cp .env.example .env
+# 在本机编辑 .env，填写新的数据库凭据；不要提交该文件。
+
+# 每个服务终端均需加载；程序不会自动读取 .env。
+set -a
+source .env
+set +a
 ```
 
-The same backend configuration is shared by:
+### 2. 启动模型服务
 
-* Agent orchestration;
-* Tool selection;
-* Grounded RAG generation;
-* Final synthesis.
+在已安装 vLLM、且具有所需 GPU 的独立环境中，将 `QWEN_MODEL_PATH` 设置为实际模型目录：
 
-The implementation still supports an OpenRouter-compatible backend when required.
-
-Local deployment removes dependency on free-model API quotas and improves reproducibility for repeated Agent evaluation.
-
----
-
-## 9. Agent Evaluation
-
-The Agent is evaluated using a frozen 23-query benchmark.
-
-The benchmark contains:
-
-| Category              | Queries |
-| --------------------- | ------: |
-| Single KG forward     |       3 |
-| Single KG reverse     |       2 |
-| Single RAG            |       6 |
-| KG → RAG multi-step   |       4 |
-| KG → KG multi-step    |       2 |
-| Chinese cross-lingual |       3 |
-| Empty / unknown       |       3 |
-| **Total**             |  **23** |
-
-Final regression results with the local Qwen Agent:
-
-| Metric                     | Result |
-| -------------------------- | -----: |
-| Tool Sequence Exact Match  |   100% |
-| Tool Selection Recall      |   100% |
-| Unnecessary Tool Call Rate |     0% |
-| Entity Preservation        |   100% |
-| Citation Presence          |   100% |
-| Runtime Error Rate         |     0% |
-
-The benchmark is primarily a **rule-based regression evaluation** for routing, execution consistency, entity preservation, and citation behavior.
-
-**These values should not be interpreted as 100% end-to-end factual accuracy.**
-
-During real multi-step testing, additional failures involving entity propagation and final synthesis were discovered beyond the automatic evaluator and were subsequently addressed through structured execution state.
-
----
-
-## 10. Web Demo
-
-A Web Agent interface is integrated into the original pesticide knowledge system.
-
-Main page:
-
-```text
-/agent.html
+```bash
+vllm serve "$QWEN_MODEL_PATH" \
+  --served-model-name qwen2.5-7b-instruct \
+  --host 127.0.0.1 --port 8000 \
+  --enable-auto-tool-choice --tool-call-parser hermes
 ```
 
-The interface contains:
+也可使用其他兼容后端，但需要对应设置 `LLM_BASE_URL`、`LLM_API_KEY` 和 `LLM_MODEL`。示例中的 `LLM_API_KEY=local` 仅用于未启用鉴权的本地服务，不是云端 API key。
 
-### Final Answer
+### 3. 启动 Agent 服务
 
-Displays the grounded Agent response and `[D#]` citations.
+确保数据库可访问、环境变量已加载、BGE-M3 本地缓存可用：
 
-### Agent Execution Trace
-
-Visualizes the actual Tool Calling process.
-
-Example:
-
-```text
-Step 1 · Knowledge Graph
-
-query_active_substance
-
-pesticide_name = Sparta
-→ spinetoram
+```bash
+uvicorn app.main:app \
+  --app-dir rag-agent-service \
+  --host 127.0.0.1 --port 8001
 ```
 
-```text
-Step 2 · Hybrid RAG
+### 4. 启动 Web / 业务服务
 
-hybrid_rag_query
+在项目根目录、已加载数据库环境变量的另一个终端运行：
 
-What is the mode of action of spinetoram?
+```bash
+mvn spring-boot:run
 ```
 
-### Evidence / Sources
+打开 **<http://localhost:4399/agent.html>**。
 
-Displays evidence used by the final answer:
+已有 Conda 环境 `pesticide-llm` 和 `pesticide-rag` 时，也可参考 `scripts/start_services.sh` / `scripts/stop_services.sh`。脚本含模型缓存位置和 GPU 编号默认值，需要按机器设置 `MODEL_CACHE`、`LLM_GPU`、`RAG_GPU` 等变量。
 
-```text
-[D1] spinetoram
-Source: New Zealand pesticide dataset
-Retrieval Rank: 1
+### 5. 检查接口
+
+```bash
+curl --noproxy '*' http://127.0.0.1:8001/health
+
+curl --noproxy '*' http://127.0.0.1:4399/api/agent/query \
+  -H 'Content-Type: application/json' \
+  -d '{"question":"What is the active substance of Sparta, and what is its mode of action?"}'
 ```
 
-The browser sends requests only to the Spring Boot application:
-
-```http
-POST /api/agent/query
-```
-
-Spring Boot proxies the request to the FastAPI Agent service.
-
-This avoids exposing internal Agent-service addresses directly to the browser.
-
----
-
-## 11. API Example
-
-Request:
-
-```http
-POST /api/agent/query
-Content-Type: application/json
-```
-
-```json
-{
-  "question": "What is the active substance of Sparta, and what is its mode of action?"
-}
-```
-
-The response contains:
+响应结构：
 
 ```json
 {
@@ -479,189 +221,38 @@ The response contains:
 }
 ```
 
-`tool_trace` is retained so the Web Demo can visualize the Agent execution process.
+## 评测结果与边界
 
----
+下表来自仓库已保存的结果文件，**不是本次重新运行的实验**。此前 README 主要展示 23 题旧基准；当前 Agent 数据集版本为 `frozen-agent-v3`，共有 **53 题**。
 
-## 12. Project Structure
+| 评测 | 样本与来源 | 已保存结果 |
+|---|---|---|
+| 混合检索 | 30 题；`retrieval_eval_results.json` | Hit@1 80.00%，Hit@3 96.67%，Hit@5 100.00%，MRR@10 0.8639 |
+| Grounded RAG 生成 | 12 题；`rag_generation_eval_results_v1_reviewed.json` | 引用出现率 100%，引用标签有效率 100%，自动规则通过率 **66.67%** |
+| 多步 Agent | 53 题；`agent_eval_frozen_v3.json` | 工具序列准确率 **98.11%**，实体传递准确率 100%，引用标签有效率 **92.59%**，答案规则通过率 **86.79%** |
+| 故障注入 | 15 个模拟案例；`agent_fault_injection_v1.json` | 已保存重试/恢复成功率 100%，重复执行已成功工具比例 0% |
 
-```text
-PesticideKnowledgeMappingSystem/
-├── src/
-│   └── main/
-│       ├── java/
-│       │   └── .../
-│       │       └── controller/
-│       │           └── AgentController.java
-│       │
-│       └── resources/
-│           └── static/
-│               ├── home.html
-│               └── agent.html
-│
-├── rag-agent-service/
-│   ├── agent/
-│   │   ├── agent_runner.py
-│   │   └── tool_registry.py
-│   │
-│   ├── tools/
-│   │   ├── pesticide_query.py
-│   │   └── rag_query.py
-│   │
-│   ├── retrieval/
-│   │   ├── bm25_retriever.py
-│   │   ├── vector_retriever.py
-│   │   └── hybrid_retriever.py
-│   │
-│   ├── rag/
-│   │   └── grounded_rag.py
-│   │
-│   ├── evaluation/
-│   │   ├── agent_evaluator.py
-│   │   └── results/
-│   │
-│   ├── data/
-│   └── tests/
-│
-├── pom.xml
-└── README.md
-```
+文件位于 [`rag-agent-service/evaluation/results/`](rag-agent-service/evaluation/results/)。不同指标的适用样本和分母不同；“答案规则通过率”由实体、关键词、引用等确定性规则计算，**不能视为人工确认的端到端事实准确率**。故障注入结果也只适用于这些模拟案例。
 
----
-
-## 13. Tech Stack
-
-### Agent / LLM
-
-* Qwen2.5-7B-Instruct
-* vLLM
-* OpenAI-compatible Chat Completion API
-* Function / Tool Calling
-
-### Retrieval / RAG
-
-* BM25
-* BGE-M3
-* Reciprocal Rank Fusion
-* Grounded generation
-* Citation validation
-
-### Knowledge Graph
-
-* Neo4j
-* Cypher
-* Pesticide-product / active-substance relations
-
-### Backend
-
-* FastAPI
-* Python
-* Spring Boot
-* Java
-* Maven
-
-### Frontend
-
-* HTML
-* Vue
-* Element UI
-* Axios
-
-### Evaluation
-
-* Frozen retrieval benchmark
-* Grounded-generation benchmark
-* Frozen Agent routing benchmark
-* Rule-based regression metrics
-
----
-
-## 14. Quick Start
-
-### Requirements
-
-Typical environment requirements:
-
-```text
-Java 8
-Maven
-Python 3.11
-Neo4j
-PyTorch + CUDA
-vLLM
-Qwen2.5-7B-Instruct
-BAAI/bge-m3
-```
-
-### Environment Variables
-
-Example:
+运行评测时建议将新结果放进被忽略的 `results/local/`，避免覆盖已发布基线：
 
 ```bash
-export NEO4J_PASSWORD=...
-export MYSQL_PASSWORD=...
+python rag-agent-service/evaluation/run_retrieval_evaluation.py \
+  --device cuda --output rag-agent-service/evaluation/results/local/retrieval.json
 
-export LLM_BASE_URL=http://127.0.0.1:8000/v1
-export LLM_API_KEY=local
-export LLM_MODEL=qwen2.5-7b-instruct
+python rag-agent-service/evaluation/run_agent_evaluation.py \
+  --output rag-agent-service/evaluation/results/local/agent.json
+
+PYTHONPATH=rag-agent-service python rag-agent-service/evaluation/agent_fault_eval_runner.py \
+  --output rag-agent-service/evaluation/results/local/fault.json
 ```
 
-Do not commit credentials into the repository.
+检索和完整 Agent 评测需要对应模型 / 数据库环境。生成评测脚本目前单独使用 OpenRouter 配置，需参考其参数与 `OPENROUTER_API_KEY`；不要把它误认为自动继承本地 vLLM 配置。
 
-### Start Services
+## 凭据与公开部署
 
-Start the components in the following order:
+- 数据库密码和云端 API key 通过环境变量传入；`.env`、本地 NeoVis 配置、私钥和运行数据库均不应提交。
+- 旧图谱页面的硬编码凭据已从本次修改中移除；旧凭据仍需更换，历史提交也需要单独处理。
+- 当前工程是研究 / 本地演示系统。公开部署前需补充认证、访问控制和日志脱敏；不要直接把现有数据库或演示服务暴露到公网。
 
-```text
-1. Neo4j
-2. Local Qwen / vLLM service
-3. FastAPI Agent service
-4. Spring Boot application
-5. Open /agent.html
-```
-
-Typical local endpoints:
-
-```text
-vLLM                 :8000
-FastAPI Agent        :8001
-Spring Boot Web App  :4399
-```
-
-After all services are available, open:
-
-```text
-http://localhost:4399/agent.html
-```
-
----
-
-## 15. Project Evolution
-
-```text
-Traditional Pesticide Knowledge Graph
-                ↓
-        Bayes QA Baseline
-                ↓
-        BM25 Retrieval
-                ↓
-       BGE-M3 Dense Retrieval
-                ↓
-       Hybrid RRF Retrieval
-                ↓
-        Grounded RAG
-                ↓
-       Agent Tool Integration
-                ↓
-     KG + RAG Multi-Step Agent
-                ↓
-     Structured Execution State
-                ↓
-     Grounded Final Synthesis
-                ↓
-       Local Qwen Deployment
-                ↓
-         Web Agent Demo
-```
-
-The goal of the project is not to build a general-purpose autonomous agent, but to demonstrate a practical **knowledge-grounded domain Agent** that can coordinate structured and unstructured pesticide knowledge sources in a traceable and reproducible way.
+处理清单及范围见 [安全说明](SECURITY.md) 和 [2026-10-20 仓库审查记录](docs/SECURITY_AUDIT_2026-10-20.md)。

@@ -295,7 +295,7 @@
 //    public static void main(String[] agrs) throws Exception {
 //        System.out.println("Hello World !");
 ////        queryAbstract("Can Yoichi Kumiai Lime Sulfur Compound be used to prevent plant regulator?");
-////        Naive_Bayes ns = new Naive_Bayes("E:/LearningMaterials/实训/问答系统/");
+////        Naive_Bayes ns = new Naive_Bayes("legacy-data/naive-bayes/");
 //    }
 //}
 
@@ -461,7 +461,7 @@ public class Naive_Bayes {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello World !");
-        Naive_Bayes nb = new Naive_Bayes("E:/LearningMaterials/实训/问答系统/");
+        Naive_Bayes nb = new Naive_Bayes("legacy-data/naive-bayes/");
     }
 
     static class LabeledPoint {

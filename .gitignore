@@ -41,3 +41,18 @@ rag-agent-service/evaluation/results/rag_generation_eval_results_invalid_zh_enco
 rag-agent-service/STARTUP_LOCAL.md
 /logs/
 /run/
+
+### Local credentials and machine-specific configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+/src/main/resources/static/neo4j-config.local.js
+
+### New local experiment runs (published baseline artifacts remain tracked)
+/rag-agent-service/evaluation/results/local/
+/.cache/
+/.venv/

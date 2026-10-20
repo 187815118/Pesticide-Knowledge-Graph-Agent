@@ -2,8 +2,8 @@
   "metadata": {
     "evaluation_query_count": 30,
     "retrieval_depth": 10,
-    "eval_queries_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/retrieval_eval_queries.json",
-    "corpus_path": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/active_substance_docs.jsonl",
+    "eval_queries_path": "rag-agent-service/data/retrieval_eval_queries.json",
+    "corpus_path": "rag-agent-service/data/active_substance_docs.jsonl",
     "vector_model_name": "BAAI/bge-m3",
     "vector_device": "cuda",
     "hybrid": {

@@ -46,9 +46,13 @@
         }
     </style>
 
+    <!-- Optional local read-only connection; never commit credentials. -->
+    <script src="neo4j-config.local.js"></script>
+    <script src="ziyuan/js/neo4j-browser-config.js"></script>
+
     <!-- Load NeoVis.js -->
     <script type="text/javascript" src="ziyuan/js/neovis.js"></script>
-    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="ziyuan/js/jquery.min.js"></script>
 
     <!--图片下载库-->
     <script src="ziyuan/js/html2canvas.min.js"></script>
@@ -67,11 +71,16 @@
 
                 // 在成功返回后将查询语句赋值给 initial_cypher
                 var initialCypher = data;
+                var connection = getPesticideGraphConnection();
+                if (!connection) {
+                    document.getElementById("viz").textContent = "Graph connection is not configured.";
+                    return;
+                }
                 var config = {
                     container_id: "viz",
-                    server_url: "bolt://gdpkg.samlab.cn:7687",
-                    server_user: "neo4j",
-                    server_password: "REDACTED_NEO4J_PASSWORD",
+                    server_url: connection.server_url,
+                    server_user: connection.server_user,
+                    server_password: connection.server_password,
                     labels: {
                         "Pesticide": {
                             "caption": "name", "font": {

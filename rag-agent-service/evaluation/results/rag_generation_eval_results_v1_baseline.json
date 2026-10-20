@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "dataset": "/data/zbp08/L/rag/PesticideKnowledgeMappingSystem/rag-agent-service/data/rag_generation_eval_queries.json",
+    "dataset": "rag-agent-service/data/rag_generation_eval_queries.json",
     "requested_model": "nvidia/nemotron-3-ultra-550b-a55b:free",
     "top_k": 5,
     "retrieval_method": "RRF Hybrid",
